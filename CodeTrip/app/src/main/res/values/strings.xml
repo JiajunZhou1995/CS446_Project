@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+
+    <string name="sidebar_home">Home</string>
+    <string name="sidebar_course">Course</string>
+    <string name="sidebar_favorite">Favorite</string>
+    <string name="sidebar_achievement">Achievement</string>
+    <string name="sidebar_setting">Setting</string>
+    <string name="sidebar_about_us">About Us</string>
+</resources>

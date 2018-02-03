@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    tools:context="com.mtr.codetrip.myapplication.MainActivity">
+    
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/colorAccent">
+    </FrameLayout>
+
+    <ImageView style="@style/SideBarSeparateLine"/>
+
+    <RelativeLayout style="@style/SideBarBackground">
+        <TextView
+            android:id="@+id/sidebar_home_textView"
+            style="@style/SideBarTextView"
+            android:drawableStart="@mipmap/sidebar_home"
+            android:text="@string/sidebar_home"/>
+        <Button
+            style="@style/SideBarTransButton"
+            android:layout_alignBottom="@+id/sidebar_home_textView"/>
+    </RelativeLayout>
+
+    <ImageView style="@style/SideBarSeparateLine"/>
+
+    <RelativeLayout style="@style/SideBarBackground">
+        <TextView
+            android:id="@+id/sidebar_course_textView"
+            style="@style/SideBarTextView"
+            android:drawableStart="@mipmap/sidebar_course"
+            android:text="@string/sidebar_course"/>
+        <Button
+            style="@style/SideBarTransButton"
+            android:layout_alignBottom="@+id/sidebar_course_textView"/>
+    </RelativeLayout>
+
+    <ImageView style="@style/SideBarSeparateLine"/>
+
+    <RelativeLayout style="@style/SideBarBackground">
+        <TextView
+            android:id="@+id/sidebar_favorite_textView"
+            style="@style/SideBarTextView"
+            android:drawableStart="@mipmap/sidebar_favorite"
+            android:text="@string/sidebar_favorite"/>
+        <Button
+            style="@style/SideBarTransButton"
+            android:layout_alignBottom="@+id/sidebar_favorite_textView"/>
+    </RelativeLayout>
+
+    <ImageView style="@style/SideBarSeparateLine"/>
+
+    <RelativeLayout style="@style/SideBarBackground">
+        <TextView
+            android:id="@+id/sidebar_achievement_textView"
+            style="@style/SideBarTextView"
+            android:drawableStart="@mipmap/sidebar_achievement"
+            android:text="@string/sidebar_achievement"/>
+        <Button
+            style="@style/SideBarTransButton"
+            android:layout_alignBottom="@+id/sidebar_achievement_textView"/>
+    </RelativeLayout>
+
+    <ImageView style="@style/SideBarSeparateLine"/>
+
+    <RelativeLayout style="@style/SideBarBackground">
+        <TextView
+            android:id="@+id/sidebar_setting_textView"
+            style="@style/SideBarTextView"
+            android:drawableStart="@mipmap/sidebar_setting"
+            android:text="@string/sidebar_setting"/>
+        <Button
+            style="@style/SideBarTransButton"
+            android:layout_alignBottom="@+id/sidebar_setting_textView"/>
+    </RelativeLayout>
+
+    <ImageView style="@style/SideBarSeparateLine"/>
+
+    <RelativeLayout style="@style/SideBarBackground">
+        <TextView
+            android:id="@+id/sidebar_about_us_textView"
+            style="@style/SideBarTextView"
+            android:drawableStart="@mipmap/sidebar_about_us"
+            android:text="@string/sidebar_about_us"/>
+        <Button
+            style="@style/SideBarTransButton"
+            android:layout_alignBottom="@+id/sidebar_about_us_textView"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
