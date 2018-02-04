@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/sidebar_home"
+            android:icon="@mipmap/sidebar_home"
+            android:title="@string/sidebar_home" />
+        <item
+            android:id="@+id/sidebar_course"
+            android:icon="@mipmap/sidebar_course"
+            android:title="@string/sidebar_course" />
+        <item
+            android:id="@+id/sidebar_favorite"
+            android:icon="@mipmap/sidebar_favorite"
+            android:title="@string/sidebar_favorite" />
+        <item
+            android:id="@+id/sidebar_achievement"
+            android:icon="@mipmap/sidebar_achievement"
+            android:title="@string/sidebar_achievement" />
+
+        <item
+            android:id="@+id/sidebar_setting"
+            android:icon="@mipmap/sidebar_setting"
+            android:title="@string/sidebar_setting" />
+
+        <item
+            android:id="@+id/sidebar_about_us"
+            android:icon="@mipmap/sidebar_about_us"
+            android:title="@string/sidebar_about_us" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

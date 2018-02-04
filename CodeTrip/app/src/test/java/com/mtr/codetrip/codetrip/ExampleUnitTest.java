@@ -1,4 +1,4 @@
-package com.mtr.codetrip.myapplication;
+package com.mtr.codetrip.codetrip;
 
 import org.junit.Test;
 

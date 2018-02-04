@@ -1,4 +1,4 @@
-package com.mtr.codetrip.myapplication;
+package com.mtr.codetrip.codetrip;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.mtr.codetrip.myapplication", appContext.getPackageName());
+        assertEquals("com.mtr.codetrip.codetrip", appContext.getPackageName());
     }
 }
