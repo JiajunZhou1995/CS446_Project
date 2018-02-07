@@ -29,7 +29,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_star);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_course);
@@ -49,6 +49,16 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         update_course_node(0);
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_course);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -62,11 +72,9 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.sidebar_course) {
-//            intent.setClass(CourseActivity.this,CourseActivity.class);
-//            startActivity(intent);
-//            finish();
+
         } else if (id == R.id.sidebar_favorite) {
-            intent.setClass(this,MainActivity.class);
+            intent.setClass(this,FavoriteActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_achievement) {
 

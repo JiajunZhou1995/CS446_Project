@@ -7,22 +7,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.mtr.codetrip.codetrip.HomeActivity"
-    tools:showIn="@layout/app_bar_home">
+    tools:context="com.mtr.codetrip.codetrip.FavoriteActivity"
+    tools:showIn="@layout/app_bar_favorite">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hey"
+        android:text="this is favorite"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="150dp"/>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="im home"
+        android:text="hope"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="90dp"/>
 

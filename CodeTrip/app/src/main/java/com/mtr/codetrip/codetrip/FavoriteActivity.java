@@ -19,11 +19,11 @@ public class FavoriteActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_favorite);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_favorite);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -33,6 +33,16 @@ public class FavoriteActivity extends MainActivity {
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(2).setChecked(true);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_favorite);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -51,9 +61,7 @@ public class FavoriteActivity extends MainActivity {
             intent.setClass(this,CourseActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_favorite) {
-//            intent.setClass(this,MainActivity.class);
-//            startActivity(intent);
-//            finish();
+
         } else if (id == R.id.sidebar_achievement) {
 
         } else if (id == R.id.sidebar_setting) {
@@ -62,8 +70,10 @@ public class FavoriteActivity extends MainActivity {
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_favorite);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

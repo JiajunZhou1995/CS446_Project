@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
     }
 
 
@@ -96,7 +95,8 @@ public class MainActivity extends AppCompatActivity
             intent.setClass(this,CourseActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_favorite) {
-
+            intent.setClass(this,FavoriteActivity.class);
+            startActivity(intent);
         } else if (id == R.id.sidebar_achievement) {
 
         } else if (id == R.id.sidebar_setting) {

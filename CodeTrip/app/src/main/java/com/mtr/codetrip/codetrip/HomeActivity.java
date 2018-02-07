@@ -31,9 +31,17 @@ public class HomeActivity extends MainActivity implements NavigationView.OnNavig
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.getMenu().getItem(0).setChecked(true);
     }
-
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_home);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -51,7 +59,7 @@ public class HomeActivity extends MainActivity implements NavigationView.OnNavig
             intent.setClass(this,CourseActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_favorite) {
-            intent.setClass(this,MainActivity.class);
+            intent.setClass(this,FavoriteActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_achievement) {
 
