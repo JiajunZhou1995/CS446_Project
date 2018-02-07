@@ -40,6 +40,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(1).setChecked(true);
 
         generate_courses();
 

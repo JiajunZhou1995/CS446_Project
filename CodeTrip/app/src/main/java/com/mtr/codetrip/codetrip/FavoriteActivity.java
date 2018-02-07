@@ -31,6 +31,8 @@ public class FavoriteActivity extends MainActivity {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(2).setChecked(true);
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

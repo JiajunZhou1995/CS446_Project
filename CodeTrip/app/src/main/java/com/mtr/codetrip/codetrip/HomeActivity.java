@@ -31,6 +31,7 @@ public class HomeActivity extends MainActivity implements NavigationView.OnNavig
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

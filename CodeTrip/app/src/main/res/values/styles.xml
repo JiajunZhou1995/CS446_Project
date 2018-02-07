@@ -6,7 +6,7 @@
 
         <!-- sidebar selected, action bar -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <!--  toolbar color, -->
+        <!--  statusbar color, -->
         <item name="colorPrimaryDark">@color/colorBlack</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
