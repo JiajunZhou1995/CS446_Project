@@ -1,79 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/question_page"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:background="@color/colorAccent">
+        android:background="@color/colorPrimary">
+
+        <include layout="@layout/app_bar_question"/>
 
         <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
-
+            android:id="@+id/question_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark">
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccent">
+        <Button
+            android:id="@+id/run_button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorBlack"
+            />
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark">
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccent">
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark">
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccent">
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark">
-
-        </LinearLayout>
 
     </LinearLayout>
-</HorizontalScrollView>
+
+
+
+</LinearLayout>

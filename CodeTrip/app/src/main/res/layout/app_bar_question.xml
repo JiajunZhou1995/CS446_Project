@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:background="@mipmap/question_return"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="30"/>
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@mipmap/question_hint"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
