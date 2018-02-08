@@ -1,7 +1,6 @@
 package com.mtr.codetrip.codetrip;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,10 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Catrina on 2/3/2018.
@@ -42,11 +39,11 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(1).setChecked(true);
 
-        generate_courses();
+        generateCourses();
 
         courseList.get(0).courseStatus = CourseStatus.AVAILABLE;
 
-        update_course_node(0);
+        updateCourseNode(0);
     }
 
     @Override
@@ -89,7 +86,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         return true;
     }
 
-    private void generate_courses(){
+    private void generateCourses(){
         courseList = new ArrayList<>();
         for (int i = 0; i < 10; ++i){
             Course newCourse = new Course(i);
@@ -110,7 +107,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         }
     }
 
-    private void update_course_node(int index){
+    private void updateCourseNode(int index){
         Course currentCourse = courseList.get(index);
         Button btn = currentCourse.boundBtn;
         if (currentCourse.courseStatus==CourseStatus.AVAILABLE){
