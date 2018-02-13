@@ -42,3 +42,9 @@ Jan 29, 2018
     establish project tasker
     settle the correct version of device
     
+Feb 7, 2018
+ - group meeting #4
+   using existing API for the frames of icons
+   determine the JSON structure for read
+   determine that the project will read-in and load 
+   content only one at the first time of launching the software
