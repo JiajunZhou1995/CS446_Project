@@ -13,10 +13,10 @@ import android.widget.Button;
  */
 
 
-enum CourseType{LECTURE, PROJECT, QUIZ}
-enum CourseStatus{AVAILABLE, UNAVAILABLE}
-
 public class Course extends Object  {
+
+    enum CourseType{LECTURE, PROJECT, QUIZ}
+    enum CourseStatus{AVAILABLE, UNAVAILABLE}
 
     int courseID;
 //    Pair<Integer,Integer> position;
