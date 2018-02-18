@@ -57,45 +57,50 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        System.out.println("before creating.....");
+
+
+        String databaseName = "fine.db";
 
         // db
-        myDatabaseUtil = new MyDatabaseUtil(this, "dbName.db",null,1);
-        myDB = this.openOrCreateDatabase("dbName.db",Context.MODE_PRIVATE,null);
+        myDatabaseUtil = new MyDatabaseUtil(this, databaseName,null,1);
+        myDB = this.openOrCreateDatabase(databaseName,Context.MODE_PRIVATE,null);
 
         if(!myDatabaseUtil.tableIsExist("question")){
             myDB.execSQL("CREATE TABLE question (_id integer primary key autoincrement, name varchar(20))");
             ContentValues values = new ContentValues();
             //for loop
             for(int i=0;i<10;i++){
+                System.out.println("output:" + i);
                 values.put("name", "name "+ i);
-                myDB.insert("person", "_id", values);
+                myDB.insert("question", "_id", values);
             }
         }else {
             Log.i("+++++","already exist");
         }
 
         /*更新数据库*/
-        ContentValues values =new ContentValues();
-        values.put("name", "wxl");
-        myDB.update("person", values, "_id=1", null);
-        myDB.update("person", values, "_id=?", new String[]{"5"});
-
-        /*查询数据*/
-        Cursor c = myDB.query("person", null, null, null, null, null, null);
-        c.moveToFirst();
-        while(!c.isAfterLast()){
-            int index = c.getColumnIndex("name");
-            Log.d("SQLite", c.getString(index));
-            c.moveToNext();
-        }
-
-        c = myDB.rawQuery("select * from person", null);
-        c.moveToFirst();
-        while(!c.isAfterLast()){
-            int index = c.getColumnIndex("name");
-            Log.d("SQLite", c.getString(index));
-            c.moveToNext();
-        }
+//        ContentValues values =new ContentValues();
+//        values.put("name", "wxl");
+//        myDB.update("person", values, "_id=1", null);
+//        myDB.update("person", values, "_id=?", new String[]{"5"});
+//
+//        /*查询数据*/
+//        Cursor c = myDB.query("person", null, null, null, null, null, null);
+//        c.moveToFirst();
+//        while(!c.isAfterLast()){
+//            int index = c.getColumnIndex("name");
+//            Log.d("SQLite", c.getString(index));
+//            c.moveToNext();
+//        }
+//
+//        c = myDB.rawQuery("select * from person", null);
+//        c.moveToFirst();
+//        while(!c.isAfterLast()){
+//            int index = c.getColumnIndex("name");
+//            Log.d("SQLite", c.getString(index));
+//            c.moveToNext();
+//        }
 
     }
 

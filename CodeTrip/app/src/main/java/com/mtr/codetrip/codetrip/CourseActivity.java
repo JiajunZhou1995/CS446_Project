@@ -41,7 +41,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
         generateCourses();
 
-        courseList.get(0).courseStatus = CourseStatus.AVAILABLE;
+        courseList.get(0).courseStatus = Course.CourseStatus.AVAILABLE;
 
         updateCourseNode(0);
     }
@@ -91,11 +91,11 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         for (int i = 0; i < 10; ++i){
             Course newCourse = new Course(i);
 
-            if (i==7) { newCourse.courseType = CourseType.QUIZ;}
-            else if(i==6){newCourse.courseType = CourseType.PROJECT;}
-            else{newCourse.courseType=CourseType.LECTURE;}
+            if (i==7) { newCourse.courseType = Course.CourseType.QUIZ;}
+            else if(i==6){newCourse.courseType = Course.CourseType.PROJECT;}
+            else{newCourse.courseType= Course.CourseType.LECTURE;}
 
-            newCourse.courseStatus = CourseStatus.UNAVAILABLE;
+            newCourse.courseStatus = Course.CourseStatus.UNAVAILABLE;
 
             String stringID = "course_" + i;
             int id = getResources().getIdentifier(stringID,"id",getPackageName());
@@ -110,7 +110,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
     private void updateCourseNode(int index){
         Course currentCourse = courseList.get(index);
         Button btn = currentCourse.boundBtn;
-        if (currentCourse.courseStatus==CourseStatus.AVAILABLE){
+        if (currentCourse.courseStatus== Course.CourseStatus.AVAILABLE){
             btn.setBackgroundColor(Color.YELLOW);
         }
     }
@@ -122,19 +122,19 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         int courseId = Integer.parseInt(courseIdString.substring(7));
         Course currentCourse = courseList.get(courseId);
 
-        CourseType courseType  =  currentCourse.courseType;
-        CourseStatus courseStatus = currentCourse.courseStatus;
+        Course.CourseType courseType  =  currentCourse.courseType;
+        Course.CourseStatus courseStatus = currentCourse.courseStatus;
 
-        if (courseStatus == CourseStatus.AVAILABLE){
+        if (courseStatus == Course.CourseStatus.AVAILABLE){
 
             Intent intent = new Intent();
             intent.setClass(this,QuestionActivity.class);
             intent.putExtra("question_file_name","file_name");
             startActivity(intent);
         }else{
-            if (courseType == CourseType.LECTURE){
+            if (courseType == Course.CourseType.LECTURE){
 
-            }else if (courseType == CourseType.PROJECT){
+            }else if (courseType == Course.CourseType.PROJECT){
 
             }else{
 
