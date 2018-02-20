@@ -30,8 +30,8 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        LayoutInflater layoutInflater1 = LayoutInflater.from(this);
-        View action_menu = layoutInflater1.inflate(R.layout.stars_indicator,null);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View action_menu = layoutInflater.inflate(R.layout.stars_indicator,null);
         toolbar.addView(action_menu);
 
         setSupportActionBar(toolbar);
@@ -48,7 +48,6 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         navigationView.getMenu().getItem(1).setChecked(true);
 
         CoordinatorLayout container = (CoordinatorLayout) findViewById(R.id.app_bar_main);
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
         View child = layoutInflater.inflate(R.layout.content_course,null);
         container.addView(child);
 
