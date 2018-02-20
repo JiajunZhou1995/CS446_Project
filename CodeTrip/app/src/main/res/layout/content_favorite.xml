@@ -7,16 +7,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.mtr.codetrip.codetrip.FavoriteActivity"
-    tools:showIn="@layout/app_bar_favorite">
+    tools:context="com.mtr.codetrip.codetrip.FavoriteActivity">
 
     <Button
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="this is favorite"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="150dp"/>
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/button8"
+        android:layout_marginEnd="51dp"
+        android:layout_marginTop="26dp"
+        android:text="this is favorite" />
 
     <Button
         android:id="@+id/button8"

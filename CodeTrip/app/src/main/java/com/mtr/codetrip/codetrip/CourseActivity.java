@@ -3,11 +3,13 @@ package com.mtr.codetrip.codetrip;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -25,11 +27,17 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_star);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        LayoutInflater layoutInflater1 = LayoutInflater.from(this);
+        View action_menu = layoutInflater1.inflate(R.layout.stars_indicator,null);
+        toolbar.addView(action_menu);
+
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_course);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -38,6 +46,12 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(1).setChecked(true);
+
+        CoordinatorLayout container = (CoordinatorLayout) findViewById(R.id.app_bar_main);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View child = layoutInflater.inflate(R.layout.content_course,null);
+        container.addView(child);
+
 
         generateCourses();
 
@@ -48,7 +62,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_course);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -81,7 +95,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_course);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -12,20 +12,10 @@
 
         <include layout="@layout/app_bar_question"/>
 
-        <LinearLayout
-            android:id="@+id/question_content"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/questionPager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/run_button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/colorBlack"
-            />
+            android:layout_height="match_parent"/>
 
 
     </LinearLayout>
