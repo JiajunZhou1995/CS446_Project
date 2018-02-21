@@ -59,38 +59,45 @@ public class MainActivity extends AppCompatActivity
 
 
     public void initDB(){
-        String course = "course.db";
+        String course = "codetrip.db";
         myDatabaseUtil = new MyDatabaseUtil(this, course,null,1);
         myDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
 
-        if(!myDatabaseUtil.tableIsExist("course")){
-            myDB.execSQL("CREATE TABLE course " +
-                    "(courseid integer primary key autoincrement," +    //1
+        myDB.execSQL("DROP TABLE IF EXISTS course");
+
+        myDB.execSQL("CREATE TABLE IF NOT EXISTS course " +
+                    "(courseid integer primary key," +    //1
                     "title text not null," +                            //print
                     "type text not null," +                             //lecture
                     "position text not null," +                         //L1 -> left 1
                     "complete integer not null," +                      //0 -> 0 question completed
                     "total interger not null)");                        //7 -> 7 question in this course
-        }else{
-            Log.i("+++++","already exist");
-        }
+
 
         //String question = "question.db";
 
-        if(!myDatabaseUtil.tableIsExist("question")){
-            myDB.execSQL("CREATE TABLE question " +
-                    "(questionid integer primary key autoincrement," +
+//        myDatabaseUtil = new MyDatabaseUtil(this, course,null,1);
+//        myDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
+
+
+        myDB.execSQL("DROP TABLE IF EXISTS question");
+
+
+        myDB.execSQL("CREATE TABLE IF NOT EXISTS question " +
+                    "(questionid integer," +
+                    "courseid interger," +
+                    "type text," +
                     "knowledge text," +
                     "instruction text," +
                     "code text," +
                     "console integer," +
-                    "total text," +
+                    "codeblock text," +
                     "choice text," +
                     "hint text," +
-                    "FOREIGN KEY(courseid) REFERENCES course (courseid))");
-        }else{
-            Log.i("+++++", "already exist");
-        }
+                    "FOREIGN KEY (courseid) REFERENCES course (courseid)," +
+                    "PRIMARY KEY (questionid, courseid))");
+
+
 
         try {
             readDataToDb(myDB);
@@ -98,6 +105,16 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+
+        Cursor c = myDB.rawQuery("select * from course", null);
+
+        c.moveToFirst();
+        while(!c.isAfterLast()){
+            int index = c.getColumnIndex("courseid");
+            Log.d("!!!!!!!!!!SQLite", c.getString(index));
+            System.out.println("!!!!!!!!!" + c.getString(index));
+            c.moveToNext();
         }
 
         /*更新数据库*/
@@ -115,13 +132,7 @@ public class MainActivity extends AppCompatActivity
 //            c.moveToNext();
 //        }
 //
-//        c = myDB.rawQuery("select * from person", null);
-//        c.moveToFirst();
-//        while(!c.isAfterLast()){
-//            int index = c.getColumnIndex("name");
-//            Log.d("SQLite", c.getString(index));
-//            c.moveToNext();
-//        }
+
     }
 
     private void readDataToDb(SQLiteDatabase db) throws IOException, JSONException {
@@ -136,16 +147,6 @@ public class MainActivity extends AppCompatActivity
             String position;
             int complete;
             int total;
-
-            int questionid = 0;
-            String knowledge;
-            String instruction;
-            String code;
-            int console;
-            String codeblock;
-            String choice;
-            String hint;
-
 
             for (int i = 0; i < courseArray.length(); ++i) {
 
@@ -168,10 +169,19 @@ public class MainActivity extends AppCompatActivity
 
                 db.insert("course", null, courseValues);
 
-                courseid++;
+                courseid = courseid + 1;
                 Log.d("+++++", "Inserted Successfully " + courseValues );
 
                 JSONArray questionArray = new JSONArray(courseObject.getString("Question"));
+
+                int questionid = 0;
+                String knowledge;
+                String instruction;
+                String code;
+                int console;
+                String codeblock;
+                String choice;
+                String hint;
 
                 for (int j = 0; j < questionArray.length(); ++j) {
 
@@ -180,10 +190,10 @@ public class MainActivity extends AppCompatActivity
                     type = question.getString("Type");
                     knowledge = question.getString("Knowledge");
                     instruction = question.getString("Instruction");
-                    code = question.getString("Code");
+                    code = question.getJSONArray("Code").toString();
                     console = question.getInt("Console");
-                    codeblock = question.getString("CodeBlock");
-                    choice = question.getString("Choice");
+                    codeblock = question.getJSONArray("CodeBlock").toString();
+                    choice = question.getJSONArray("Choice").toString();
                     hint = question.getString("Hint");
 
                     ContentValues questionValues = new ContentValues();
@@ -201,7 +211,7 @@ public class MainActivity extends AppCompatActivity
 
                     db.insert("question", null, questionValues);
 
-                    questionid++;
+                    questionid = questionid + 1;
 
                     Log.d("+++++", "Inserted Successfully " + questionValues );
 
