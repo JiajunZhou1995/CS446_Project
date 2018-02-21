@@ -76,9 +76,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         //String question = "question.db";
-        myDatabaseUtil = new MyDatabaseUtil(this, course,null,1);
-        myDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
-
 
         if(!myDatabaseUtil.tableIsExist("question")){
             myDB.execSQL("CREATE TABLE question " +

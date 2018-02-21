@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <ImageView
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="80dp"
-        android:background="@mipmap/sidebar_home"
+        android:layout_marginStart="80dp"
+        android:background="@mipmap/question_star"
         android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
         android:layout_marginStart="4dp"
         android:textColor="@color/colorBlack"
-        android:textSize="25dp"
-        android:text="5"></TextView>
+        android:textSize="@dimen/star_text_indicator"
+        android:text="@string/count_star" />
 </LinearLayout>

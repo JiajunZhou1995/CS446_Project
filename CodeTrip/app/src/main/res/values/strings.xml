@@ -7,7 +7,7 @@
     <string name="action_settings">Settings</string>
 
 
-<!--Sidebar String-->
+    <!--Sidebar String-->
     <string name="sidebar_home">Home</string>
     <string name="sidebar_course">Course</string>
     <string name="sidebar_favorite">Favorite</string>
@@ -15,7 +15,11 @@
     <string name="sidebar_setting">Setting</string>
     <string name="sidebar_about_us">About Us</string>
 
-<!--Question Page Run Button Action-->
+
+    <!--Course Page-->
+    <string name="count_star">5</string>
+
+    <!--Question Page Run Button Action-->
     <string name="question_action_doit">Do it!</string>
     <string name="question_action_run">Run</string>
     <string name="question_action_continue">continue</string>
