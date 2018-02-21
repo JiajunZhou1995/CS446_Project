@@ -15,8 +15,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="com.mtr.codetrip.codetrip.CourseActivity"
-        tools:showIn="@layout/app_bar_course">
+        tools:context="com.mtr.codetrip.codetrip.CourseActivity">
 
         <Button
             android:id="@+id/course_0"

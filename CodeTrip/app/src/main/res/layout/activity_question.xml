@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
 
-    <LinearLayout
-        android:id="@+id/question_page"
-        android:orientation="vertical"
+
+    <include layout="@layout/app_bar_question"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/questionPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
-
-        <include layout="@layout/app_bar_question"/>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/questionPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-
-    </LinearLayout>
-
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>
