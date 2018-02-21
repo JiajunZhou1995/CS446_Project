@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
                     "total text," +
                     "choice text," +
                     "hint text," +
-                    "FOREIGN KEY(courseid) REFERENCES course(courseid))");
+                    "FOREIGN KEY(courseid) REFERENCES course (courseid))");
         }else{
             Log.i("+++++", "already exist");
         }

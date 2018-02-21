@@ -3,7 +3,14 @@
     <color name="colorPrimary">#dfdfdf</color>
     <color name="colorPrimaryDark">#2d2da4</color>
     <color name="colorAccent">#ff4081</color>
+
+
+    <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorDarkGrey">#FF7B7B7B</color>
+    <color name="colorOrange">#FFA500</color>
+    <color name="colorAquaMarine">#458b74</color>
+    <color name="colorFireBrick">#ff3030</color>
 </resources>
 
 
