@@ -27,7 +27,7 @@
           "[?](\"Hello World\")"
         ],
         "Console": "1",
-        "Code Block": [
+        "CodeBlock": [
           "[print()]",
           "[print]"
         ],
@@ -42,7 +42,7 @@
           "print(\"Hi\")"
         ],
         "Console": "0",
-        "Code Block": [],
+        "CodeBlock": [],
         "Choice": [
           "Hi",
           "Hello"
@@ -57,7 +57,7 @@
           "print([?])"
         ],
         "Console": "1",
-        "Code Block": [
+        "CodeBlock": [
           "[Hello World]",
           "[Hello There]"
         ],
@@ -73,7 +73,7 @@
           "print([?])"
         ],
         "Console": "2",
-        "Code Block": [
+        "CodeBlock": [
           "[I’m a dog]",
           "[I’m a cat]"
         ],
@@ -86,7 +86,7 @@
         "Instruction": "What does print() do?",
         "Code": [],
         "Console": "0",
-        "Code Block": [],
+        "CodeBlock": [],
         "Choice": [
           "Print words on paper",
           "Print words into console"
@@ -110,7 +110,7 @@
           "print([?])"
         ],
         "Console": "1",
-        "Code Block": [
+        "CodeBlock": [
           "[Apple]",
           "[fruit]"
         ],
@@ -127,7 +127,7 @@
           "print(action [?] fruit)"
         ],
         "Console": "1",
-        "Code Block": [
+        "CodeBlock": [
           "[+]",
           "[-]"
         ],
@@ -146,7 +146,7 @@
           "print([?])"
         ],
         "Console": "1",
-        "Code Block": [
+        "CodeBlock": [
           "[animal]",
           "[furit]"
         ],
@@ -163,7 +163,7 @@
           "print(furit)"
         ],
         "Console": "0",
-        "Code Block": [],
+        "CodeBlock": [],
         "Choice": [
           "apple",
           "banana"
