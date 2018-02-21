@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="slide_animation_duration">300</integer>
+
+    <integer name="unit_marginTop">90</integer>
+    <integer name="non_quiz_size">80</integer>
+    <integer name="quiz_size">120</integer>
+    <integer name="non_quiz_left_marginLeft">20</integer>
+    <integer name="non_quiz_right_marginLeft">65</integer>
+    <integer name="non_quiz_horizontal_space">20</integer>
+    <integer name="quiz_left_marginLeft">5</integer>
+    <integer name="quiz_right_marginLeft">30</integer>
 </resources>
