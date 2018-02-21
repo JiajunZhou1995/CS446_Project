@@ -3,24 +3,28 @@ package com.mtr.codetrip.codetrip;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.transition.TransitionManager;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 
 public class MainActivity extends AppCompatActivity
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity
 
     private SQLiteDatabase myDB;
     private MyDatabaseUtil myDatabaseUtil;
+    private Resources mResources;
 
 
     @Override
@@ -49,24 +54,53 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         System.out.println("before creating.....");
+        initDB();
+    }
 
-        String databaseName = "okok.db";
 
-        // db
-        myDatabaseUtil = new MyDatabaseUtil(this, databaseName,null,1);
-        myDB = this.openOrCreateDatabase(databaseName,Context.MODE_PRIVATE,null);
+    public void initDB(){
+        String course = "course.db";
+        myDatabaseUtil = new MyDatabaseUtil(this, course,null,1);
+        myDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
+
+        if(!myDatabaseUtil.tableIsExist("course")){
+            myDB.execSQL("CREATE TABLE course " +
+                    "(courseid integer primary key autoincrement," +    //1
+                    "title text not null," +                            //print
+                    "type text not null," +                             //lecture
+                    "position text not null," +                         //L1 -> left 1
+                    "complete integer not null," +                      //0 -> 0 question completed
+                    "total interger not null)");                        //7 -> 7 question in this course
+        }else{
+            Log.i("+++++","already exist");
+        }
+
+        //String question = "question.db";
+        myDatabaseUtil = new MyDatabaseUtil(this, course,null,1);
+        myDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
+
 
         if(!myDatabaseUtil.tableIsExist("question")){
-            myDB.execSQL("CREATE TABLE question (_id integer primary key autoincrement, name varchar(20))");
-            ContentValues values = new ContentValues();
-            //for loop
-            for(int i=0;i<10;i++){
-                System.out.println("output:" + i);
-                values.put("name", "name "+ i);
-                myDB.insert("question", "_id", values);
-            }
-        }else {
-            Log.i("+++++","already exist");
+            myDB.execSQL("CREATE TABLE question " +
+                    "(questionid integer primary key autoincrement," +
+                    "knowledge text," +
+                    "instruction text," +
+                    "code text," +
+                    "console integer," +
+                    "total text," +
+                    "choice text," +
+                    "hint text," +
+                    "FOREIGN KEY(courseid) REFERENCES course(courseid))");
+        }else{
+            Log.i("+++++", "already exist");
+        }
+
+        try {
+            readDataToDb(myDB);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
         /*更新数据库*/
@@ -91,9 +125,122 @@ public class MainActivity extends AppCompatActivity
 //            Log.d("SQLite", c.getString(index));
 //            c.moveToNext();
 //        }
-
     }
 
+    private void readDataToDb(SQLiteDatabase db) throws IOException, JSONException {
+
+        try {
+            String jsonDataString = readJsonDataFromFile();
+            JSONArray courseArray = new JSONArray(jsonDataString);
+
+            int courseid = 0;
+            String title;
+            String type;
+            String position;
+            int complete;
+            int total;
+
+            int questionid = 0;
+            String knowledge;
+            String instruction;
+            String code;
+            int console;
+            String codeblock;
+            String choice;
+            String hint;
+
+
+            for (int i = 0; i < courseArray.length(); ++i) {
+
+                JSONObject courseObject = courseArray.getJSONObject(i);
+
+                title = courseObject.getString("Title");
+                type = courseObject.getString("Type");
+                position = courseObject.getString("Position");
+                complete = 0;
+                total = courseObject.getInt("Total");
+
+                ContentValues courseValues = new ContentValues();
+
+                courseValues.put("courseid", courseid);
+                courseValues.put("title", title);
+                courseValues.put("type", type);
+                courseValues.put("position", position);
+                courseValues.put("complete", complete);
+                courseValues.put("total", total);
+
+                db.insert("course", null, courseValues);
+
+                courseid++;
+                Log.d("+++++", "Inserted Successfully " + courseValues );
+
+                JSONArray questionArray = new JSONArray(courseObject.getString("Question"));
+
+                for (int j = 0; j < questionArray.length(); ++j) {
+
+                    JSONObject question = questionArray.getJSONObject(j);
+
+                    type = question.getString("Type");
+                    knowledge = question.getString("Knowledge");
+                    instruction = question.getString("Instruction");
+                    code = question.getString("Code");
+                    console = question.getInt("Console");
+                    codeblock = question.getString("CodeBlock");
+                    choice = question.getString("Choice");
+                    hint = question.getString("Hint");
+
+                    ContentValues questionValues = new ContentValues();
+
+                    questionValues.put("questionid", questionid);
+                    questionValues.put("courseid", courseid);
+                    questionValues.put("type", type);
+                    questionValues.put("knowledge", knowledge);
+                    questionValues.put("instruction", instruction);
+                    questionValues.put("code", code);
+                    questionValues.put("console", console);
+                    questionValues.put("codeblock", codeblock);
+                    questionValues.put("choice", choice);
+                    questionValues.put("hint", hint);
+
+                    db.insert("question", null, questionValues);
+
+                    questionid++;
+
+                    Log.d("+++++", "Inserted Successfully " + questionValues );
+
+                }
+            }
+
+
+        } catch (JSONException e) {
+            Log.e("ERROR", e.getMessage(),e);
+            e.printStackTrace();
+        }
+    }
+
+    private String readJsonDataFromFile() throws IOException {
+
+        InputStream inputStream = null;
+        StringBuilder builder = new StringBuilder();
+
+        try {
+            String jsonDataString = null;
+            inputStream = getResources().openRawResource(
+                    getResources().getIdentifier("data",
+                            "raw", getPackageName()));
+            BufferedReader bufferedReader = new BufferedReader(
+                    new InputStreamReader(inputStream, "UTF-8"));
+            while ((jsonDataString = bufferedReader.readLine()) != null) {
+                builder.append(jsonDataString);
+            }
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
+
+        return new String(builder);
+    }
 
 
     @Override
