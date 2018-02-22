@@ -75,7 +75,9 @@ public class MainActivity extends AppCompatActivity
                     "type text not null," +                             //lecture
                     "position text not null," +                         //L1 -> left 1
                     "complete integer not null," +                      //0 -> 0 question completed
-                    "total interger not null)");                        //7 -> 7 question in this course
+                    "total interger not null," +
+                    "available text not null," +
+                    "unit integer not null)");                        //7 -> 7 question in this course
 
 
         //String question = "question.db";
@@ -151,6 +153,8 @@ public class MainActivity extends AppCompatActivity
             String position;
             int complete;
             int total;
+            String available;
+            int unit;
 
             for (int i = 0; i < courseArray.length(); ++i) {
 
@@ -161,6 +165,8 @@ public class MainActivity extends AppCompatActivity
                 position = courseObject.getString("Position");
                 complete = 0;
                 total = courseObject.getInt("Total");
+                available = courseObject.getString("Available");
+                unit = courseObject.getInt("Unit");
 
                 ContentValues courseValues = new ContentValues();
 
@@ -170,6 +176,8 @@ public class MainActivity extends AppCompatActivity
                 courseValues.put("position", position);
                 courseValues.put("complete", complete);
                 courseValues.put("total", total);
+                courseValues.put("available", available);
+                courseValues.put("unit", unit);
 
                 db.insert("course", null, courseValues);
 
