@@ -77,9 +77,6 @@ public class QuestionActivity extends FragmentActivity {
         });
 
 
-        // Get the application context
-        mContext = getApplicationContext();
-
         // Get the activity
         mActivity = QuestionActivity.this;
 
@@ -92,7 +89,7 @@ public class QuestionActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 // Initialize a new instance of LayoutInflater service
-                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+                LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
                 // Inflate the custom layout/view
                 View customView = inflater.inflate(R.layout.hint,null);
@@ -153,7 +150,6 @@ public class QuestionActivity extends FragmentActivity {
                 mPopupWindow.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
             }
         });
-
     }
 
     @Override
