@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import org.json.JSONArray;
@@ -27,16 +29,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private SQLiteDatabase myDB;
+    public SQLiteDatabase myDB;
     private MyDatabaseUtil myDatabaseUtil;
     private Resources mResources;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -112,8 +116,8 @@ public class MainActivity extends AppCompatActivity
         c.moveToFirst();
         while(!c.isAfterLast()){
             int index = c.getColumnIndex("courseid");
-            Log.d("!!!!!!!!!!SQLite", c.getString(index));
-            System.out.println("!!!!!!!!!" + c.getString(index));
+//            Log.d("!!!!!!!!!!SQLite", c.getString(index));
+//            System.out.println("!!!!!!!!!" + c.getString(index));
             c.moveToNext();
         }
 
@@ -131,7 +135,7 @@ public class MainActivity extends AppCompatActivity
 //            Log.d("SQLite", c.getString(index));
 //            c.moveToNext();
 //        }
-//
+
 
     }
 
@@ -170,7 +174,7 @@ public class MainActivity extends AppCompatActivity
                 db.insert("course", null, courseValues);
 
                 courseid = courseid + 1;
-                Log.d("+++++", "Inserted Successfully " + courseValues );
+//                Log.d("+++++", "Inserted Successfully " + courseValues );
 
                 JSONArray questionArray = new JSONArray(courseObject.getString("Question"));
 
@@ -212,8 +216,7 @@ public class MainActivity extends AppCompatActivity
                     db.insert("question", null, questionValues);
 
                     questionid = questionid + 1;
-
-                    Log.d("+++++", "Inserted Successfully " + questionValues );
+//                    Log.d("+++++", "Inserted Successfully " + questionValues );
 
                 }
             }
@@ -266,7 +269,7 @@ public class MainActivity extends AppCompatActivity
 //        getMenuInflater().inflate(R.menu.main, menu);
 //        return true;
 //    }
-
+//
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        // Handle action bar item clicks here. The action bar will
