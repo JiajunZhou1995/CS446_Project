@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -72,9 +73,8 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
 
 
-//        courseList.get(0).courseStatus = Course.CourseStatus.AVAILABLE;
-//
-//        updateCourseNode(0);
+        courseList.get(0).courseStatus = Course.CourseStatus.AVAILABLE;
+        updateCourseNode(0);
     }
 
     @Override
@@ -118,82 +118,33 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
     }
 
 
-    private Pair<Integer,Integer> nomalizPositioneString(String position){
-        String[] rowColNum = position.split("\\D");
-        String direction = position.replaceAll("[0-9]","");
 
-        int x = (Integer.parseInt(rowColNum[1])-1) *
-                (getResources().getInteger(R.integer.non_quiz_horizontal_space) +
-                        getResources().getInteger(R.integer.non_quiz_size));
-        if (direction.equals("L")){
-            x += getResources().getInteger(R.integer.non_quiz_left_marginLeft);
-        }else{
-            x += getResources().getInteger(R.integer.non_quiz_right_marginLeft);
-        }
 
-        int y = getResources().getInteger(R.integer.non_quiz_size) * (Integer.parseInt(rowColNum[0])-1);
 
-        Pair<Integer,Integer> xyPosition = new Pair<>(DensityUtil.dip2px(this,x),DensityUtil.dip2px(this,y));
 
-        return  xyPosition;
-    }
+
 
 
     private void generateCourses(){
+        courseList = new ArrayList<>();
 
         Cursor c = myDB.query("course", null, null, null, null, null, null);
         c.moveToFirst();
 
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.course_content_page);
-//        TextView textView = new TextView(this);
-//        textView.setText("okokokokoko");
-//        textView.setBackgroundColor(getColor(R.color.colorAccent));
-//        RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(DensityUtil.dip2px(this,200),DensityUtil.dip2px(this,200));
-//        rlp.setMargins(DensityUtil.dip2px(this,90),DensityUtil.dip2px(this,90),0,0);
-//        relativeLayout.addView(textView,rlp);
-
-//        LayoutInflater layoutInflater = LayoutInflater.from(this);
-
-        int margin_top = DensityUtil.dip2px(this,getResources().getInteger(R.integer.unit_marginTop));
-        int size = DensityUtil.dip2px(this,getResources().getInteger(R.integer.non_quiz_size));
 
         while(!c.isAfterLast()){
-//            int index = c.getColumnIndex("title");
-//            Log.d("SQLite", c.getString(index));
-            String courseTag = "course_"+c.getString(c.getColumnIndex("courseid"));
-            String title = c.getString(c.getColumnIndex("title"));
-            String type = c.getString(c.getColumnIndex("type"));
-            Pair<Integer,Integer> xyPosition = nomalizPositioneString(c.getString(c.getColumnIndex("position")));
-            Button course = new Button(this);
-            RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(size,size);
-            rlp.setMargins(xyPosition.first,xyPosition.second+margin_top,0,0);
-            course.setBackgroundColor(getColor(R.color.colorAquaMarine));
-            course.setTag(courseTag);
-            course.setText(title);
-            course.setTextSize(8);
-            relativeLayout.addView(course,rlp);
+
+            Course newCourse = new Course(this, c);
+            newCourse.boundBtn.setOnClickListener(this);
+            courseList.add(newCourse);
+
+            newCourse.printCourse();
+
+            relativeLayout.addView(newCourse.boundBtn,newCourse.layoutParams);
             c.moveToNext();
         }
 
-//        courseList = new ArrayList<>();
-//        for (int i = 0; i < 10; ++i){
-//            Course newCourse = new Course(i);
-//
-//            if (i==7) { newCourse.courseType = Course.CourseType.QUIZ;}
-//            else if(i==6){newCourse.courseType = Course.CourseType.PROJECT;}
-//            else{newCourse.courseType= Course.CourseType.LECTURE;}
-//
-//            newCourse.courseStatus = Course.CourseStatus.UNAVAILABLE;
-//
-//            String stringID = "course_" + i;
-//            int id = getResources().getIdentifier(stringID,"id",getPackageName());
-//
-//            newCourse.setBoundBtn((Button) findViewById(id));
-//
-//            newCourse.boundBtn.setOnClickListener(this);
-//
-//            courseList.add(newCourse);
-//        }
     }
 
     private void updateCourseNode(int index){
@@ -207,9 +158,10 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        String courseIdString = getResources().getResourceEntryName(view.getId());
-        int courseId = Integer.parseInt(courseIdString.substring(7));
-        Course currentCourse = courseList.get(courseId);
+        String courseIdString = (String)view.getTag();
+        Course currentCourse = courseList.get(Integer.parseInt(courseIdString));
+//        int courseId = Integer.parseInt(courseIdString.substring(7));
+//        Course currentCourse = courseList.get(courseId);
 
         Course.CourseType courseType  =  currentCourse.courseType;
         Course.CourseStatus courseStatus = currentCourse.courseStatus;
