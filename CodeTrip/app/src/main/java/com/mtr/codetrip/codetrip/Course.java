@@ -35,7 +35,7 @@ public class Course extends Object  {
 
         courseID = cursor.getInt(cursor.getColumnIndex("courseid"));
 
-        String tmp = cursor.getString(cursor.getColumnIndex("title"));
+        String tmp = cursor.getString(cursor.getColumnIndex("type"));
         switch (tmp){
             case "Lecture":
                 courseType = CourseType.LECTURE;
@@ -51,6 +51,13 @@ public class Course extends Object  {
                 break;
         }
 
+        tmp = cursor.getString(cursor.getColumnIndex("available"));
+        if (tmp.equals("true")){
+            courseStatus = CourseStatus.AVAILABLE;
+        }else{
+            courseStatus = CourseStatus.UNAVAILABLE;
+        }
+
         tmp = cursor.getString(cursor.getColumnIndex("position"));
         boundBtn = generateCourseButton(context);
         layoutParams = setUpLayout(context,tmp);
@@ -58,10 +65,11 @@ public class Course extends Object  {
 //        tmp = cursor.getString()
     }
 
-    protected void printCourse(){
+    public void printCourse(){
         if (courseType==CourseType.LECTURE) Log.d("type","lecture");
         if (courseType==CourseType.QUIZ) Log.d("type","quiz");
         if (courseType==CourseType.PROJECT) Log.d("type","project");
+        Log.d("nothing","happened");
     }
 
     private Button generateCourseButton(Context context){
@@ -83,7 +91,7 @@ public class Course extends Object  {
 
             unit_width = context.getResources().getInteger(R.integer.non_quiz_width);
             unit_height = context.getResources().getInteger(R.integer.non_quiz_height);
-        }else {
+        }else{
             unit_width = context.getResources().getInteger(R.integer.quiz_width);
             unit_height = context.getResources().getInteger(R.integer.quiz_height);
         }
@@ -103,27 +111,26 @@ public class Course extends Object  {
 
         double x = 0, y;
         if (courseType != CourseType.QUIZ){
-            x = (Integer.parseInt(rowColNum[1])-1) * (context.getResources().getInteger(R.integer.non_quiz_horizontal_space) +
+            x = Integer.parseInt(rowColNum[1]) * (context.getResources().getInteger(R.integer.non_quiz_horizontal_space) +
                     context.getResources().getInteger(R.integer.non_quiz_width));
             if (direction.equals("L")){
                 x += context.getResources().getInteger(R.integer.non_quiz_left_marginLeft);
             }else{
                 x += context.getResources().getInteger(R.integer.non_quiz_right_marginLeft);
             }
-        }else if (direction.equals("L") && rowColNum[1].equals("1")){
+        }else if (direction.equals("L") && rowColNum[1].equals("0")){
             x = context.getResources().getInteger(R.integer.quiz_left_first_marginLeft);
-        }else if (direction.equals("L") && rowColNum[1].equals("2")){
+        }else if (direction.equals("L") && rowColNum[1].equals("1")){
             x = 0;
-        }else if (direction.equals("R") && rowColNum[1].equals("1")){
+        }else if (direction.equals("R") && rowColNum[1].equals("0")){
             x = context.getResources().getInteger(R.integer.quiz_right_first_marginLeft);
         }else{
-            //r1
             x = context.getResources().getInteger(R.integer.quiz_right_second_marginLeft);
         }
 
         x = x * MainActivity.ScreenWidthRatio + 0.5f;
 
-        y = context.getResources().getInteger(R.integer.non_quiz_height)* MainActivity.ScreenHeightRatio * (Integer.parseInt(rowColNum[0])-1) +0.5f;
+        y = context.getResources().getInteger(R.integer.non_quiz_height)* MainActivity.ScreenHeightRatio * Integer.parseInt(rowColNum[0]) +0.5f;
         if (courseType == CourseType.QUIZ){
             CourseActivity.marginTop = (int)y + context.getResources().getInteger(R.integer.quiz_height);
         }

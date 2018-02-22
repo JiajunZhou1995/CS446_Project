@@ -43,6 +43,8 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
 
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
