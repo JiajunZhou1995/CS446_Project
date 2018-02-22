@@ -2,12 +2,18 @@
 <resources>
     <integer name="slide_animation_duration">300</integer>
 
-    <integer name="unit_marginTop">90</integer>
-    <integer name="non_quiz_size">80</integer>
-    <integer name="quiz_size">120</integer>
-    <integer name="non_quiz_left_marginLeft">20</integer>
-    <integer name="non_quiz_right_marginLeft">65</integer>
-    <integer name="non_quiz_horizontal_space">20</integer>
-    <integer name="quiz_left_marginLeft">5</integer>
-    <integer name="quiz_right_marginLeft">30</integer>
+    <!--UI-->
+    <integer name="unit_marginTop">440</integer>
+    <integer name="non_quiz_width">320</integer>
+    <integer name="non_quiz_height">375</integer>
+    <integer name="quiz_width">500</integer>
+    <integer name="quiz_height">580</integer>
+    <integer name="non_quiz_left_marginLeft">80</integer>
+    <integer name="non_quiz_right_marginLeft">280</integer>
+    <integer name="non_quiz_horizontal_space">70</integer>
+    <integer name="quiz_left_first_marginLeft">190</integer>
+    <integer name="quiz_right_first_marginLeft">385</integer>
+    <integer name="quiz_right_second_marginLeft">780</integer>
+    <integer name="ui_design_screen_width">1458</integer>
+
 </resources>

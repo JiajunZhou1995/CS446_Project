@@ -36,6 +36,7 @@ import static java.lang.Math.floor;
 public class CourseActivity extends MainActivity implements View.OnClickListener {
 
     ArrayList<Course>courseList;
+    public static int marginTop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +69,9 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         container.addView(child);
 
         generateCourses();
+        //should be commented
+//        makeAvailable(0);
 
-
-
-
-
-        courseList.get(0).courseStatus = Course.CourseStatus.AVAILABLE;
-        updateCourseNode(0);
     }
 
     @Override
@@ -119,12 +116,6 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
 
 
-
-
-
-
-
-
     private void generateCourses(){
         courseList = new ArrayList<>();
 
@@ -132,10 +123,12 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         c.moveToFirst();
 
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.course_content_page);
-
+        marginTop = (int) (getResources().getInteger(R.integer.unit_marginTop)* MainActivity.ScreenHeightRatio+0.5f);
         while(!c.isAfterLast()){
 
-            Course newCourse = new Course(this, c);
+            // there should be a filter to filter the unit
+
+            Course newCourse = new Course(this, c,marginTop);
             newCourse.boundBtn.setOnClickListener(this);
             courseList.add(newCourse);
 
@@ -144,15 +137,19 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
             relativeLayout.addView(newCourse.boundBtn,newCourse.layoutParams);
             c.moveToNext();
         }
+    }
 
+
+
+    private void makeAvailable(int index){
+        Course course = courseList.get(index);
+        //should modify database
+        course.courseStatus = Course.CourseStatus.AVAILABLE;
+        updateCourseNode(index);
     }
 
     private void updateCourseNode(int index){
-        Course currentCourse = courseList.get(index);
-        Button btn = currentCourse.boundBtn;
-        if (currentCourse.courseStatus== Course.CourseStatus.AVAILABLE){
-            btn.setBackgroundColor(Color.YELLOW);
-        }
+        courseList.get(index).updateCourseBtn(this);
     }
 
 
@@ -160,8 +157,6 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
     public void onClick(View view) {
         String courseIdString = (String)view.getTag();
         Course currentCourse = courseList.get(Integer.parseInt(courseIdString));
-//        int courseId = Integer.parseInt(courseIdString.substring(7));
-//        Course currentCourse = courseList.get(courseId);
 
         Course.CourseType courseType  =  currentCourse.courseType;
         Course.CourseStatus courseStatus = currentCourse.courseStatus;
@@ -172,14 +167,12 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
             intent.setClass(this,QuestionActivity.class);
             intent.putExtra("question_file_name","file_name");
             startActivity(intent);
+        }else if (courseType == Course.CourseType.LECTURE){
+
+        }else if (courseType == Course.CourseType.PROJECT){
+
         }else{
-            if (courseType == Course.CourseType.LECTURE){
 
-            }else if (courseType == Course.CourseType.PROJECT){
-
-            }else{
-
-            }
         }
     }
 }

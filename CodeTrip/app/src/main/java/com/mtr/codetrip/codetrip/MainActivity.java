@@ -33,6 +33,10 @@ import java.io.InputStreamReader;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    public static double ScreenWidthRatio;
+    public static double ScreenHeightRatio;
+
     public SQLiteDatabase myDB;
     private MyDatabaseUtil myDatabaseUtil;
     private Resources mResources;
@@ -40,6 +44,17 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DisplayMetrics metric = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metric);
+        int width = metric.widthPixels;     // 屏幕宽度（像素）
+        int height = metric.heightPixels;   // 屏幕高度（像素）
+        double ratioWidthHeight = width/(height+0.0);
+
+
+        double uiScreenHeight = getResources().getInteger(R.integer.ui_design_screen_width) / ratioWidthHeight;
+        ScreenWidthRatio = width/(getResources().getInteger(R.integer.ui_design_screen_width)+0.0);
+
+        ScreenHeightRatio = height/uiScreenHeight;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -76,8 +91,8 @@ public class MainActivity extends AppCompatActivity
                     "position text not null," +                         //L1 -> left 1
                     "complete integer not null," +                      //0 -> 0 question completed
                     "total interger not null)");
-//                    "available text not null," +
-//                    "unit integer not null)");                        //7 -> 7 question in this course
+                    "available text not null," +
+                    "unit integer not null)");                        //7 -> 7 question in this course
 
 
         //String question = "question.db";
@@ -153,8 +168,8 @@ public class MainActivity extends AppCompatActivity
             String position;
             int complete;
             int total;
-//            String available;
-//            int unit;
+            String available;
+            int unit;
 
             for (int i = 0; i < courseArray.length(); ++i) {
 
@@ -165,8 +180,8 @@ public class MainActivity extends AppCompatActivity
                 position = courseObject.getString("Position");
                 complete = 0;
                 total = courseObject.getInt("Total");
-//                available = courseObject.getString("Available");
-//                unit = courseObject.getInt("Unit");
+                available = courseObject.getString("Available");
+                unit = courseObject.getInt("Unit");
 
                 ContentValues courseValues = new ContentValues();
 
@@ -176,8 +191,8 @@ public class MainActivity extends AppCompatActivity
                 courseValues.put("position", position);
                 courseValues.put("complete", complete);
                 courseValues.put("total", total);
-//                courseValues.put("available", available);
-//                courseValues.put("unit", unit);
+                courseValues.put("available", available);
+                courseValues.put("unit", unit);
 
                 db.insert("course", null, courseValues);
 

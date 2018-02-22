@@ -10,6 +10,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +23,8 @@ import java.util.zip.Inflater;
  */
 
 public class QuestionActivity extends FragmentActivity {
+
+
 
     private static final int NUM_PAGES = 5;
 
