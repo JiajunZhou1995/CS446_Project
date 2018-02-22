@@ -1,11 +1,16 @@
 [
   {
+    "Available": "true",
+    "Unit": "1",
     "Type": "Lecture",
     "Title": "Print",
     "Total": "6",
-    "Position": "1L1",
+    "Position": "0L0",
     "Question": [
       {
+        "Answer": [
+          "Hello World"
+        ],
         "Type": "Drag&Drop",
         "Knowledge": "Print is a function in Python.",
         "Instruction": "Let’s drag and drop a code block into the code.",
@@ -20,6 +25,9 @@
         "Hint": "Drag and drop Hello World into [?]"
       },
       {
+        "Answer": [
+          "Hello World"
+        ],
         "Type": "Drag&Drop",
         "Knowledge": "Function will have a function name follow by (), and whatever in the () will be passed as parameter.",
         "Instruction": "Let’s drag and drop a code block into the code.",
@@ -35,6 +43,9 @@
         "Hint": "Drag and drop [print] into [?]"
       },
       {
+        "Answer": [
+          "Hi"
+        ],
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "Guess the output of this program",
@@ -50,6 +61,9 @@
         "Hint": "What's in the function? "
       },
       {
+        "Answer": [
+          "Hello There"
+        ],
         "Type": "Drag&Drop",
         "Knowledge": "Print function will print words into the console. ",
         "Instruction": "Let’s drag and drop a code block into the code so it will print Hello There.",
@@ -65,6 +79,7 @@
         "Hint": " Drag and drop Hello There into [?]"
       },
       {
+        "Answer": [],
         "Type": "Drag&Drop",
         "Knowledge": "You can have multiple print function at once. ",
         "Instruction": "Let’s drag and drop a code block into the code.",
@@ -81,6 +96,9 @@
         "Hint": "Drag and drop any block into [?]"
       },
       {
+        "Answer": [
+          "Print words into console"
+        ],
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "What does print() do?",
@@ -96,12 +114,17 @@
     ]
   },
   {
+    "Available": "false",
+    "Unit": "1",
     "Type": "Lecture",
     "Title": "Variable",
     "Total": "4",
-    "Position": "2R1",
+    "Position": "1R0",
     "Question": [
       {
+        "Answer": [
+          "Apple"
+        ],
         "Type": "Drag&Drop",
         "Knowledge": "You can print String which is a Variable.",
         "Instruction": null,
@@ -118,6 +141,9 @@
         "Hint": "Drag Apple then the fruit"
       },
       {
+        "Answer": [
+          "Eatapple"
+        ],
         "Type": "Drag&Drop",
         "Knowledge": "You can have string concatenate together.",
         "Instruction": null,
@@ -131,13 +157,13 @@
           "[+]",
           "[-]"
         ],
-        "Choice": [
-          "Hi",
-          "Hello"
-        ],
+        "Choice": [],
         "Hint": "We want then to add up"
       },
       {
+        "Answer": [
+          "apple"
+        ],
         "Type": "Drag&Drop",
         "Knowledge": "You can only print the Variable you have defined.  ",
         "Instruction": null,
@@ -154,6 +180,9 @@
         "Hint": "furit has been defined"
       },
       {
+        "Answer": [
+          "banana"
+        ],
         "Type": "MultipleChoice",
         "Knowledge": "Once you defined a Varibale, you can update it by assigne it with a new value",
         "Instruction": "What will print out?",
@@ -173,113 +202,194 @@
     ]
   },
   {
+    "Available": "false",
+    "Unit": "1",
     "Type": "Lecture",
     "Title": "Arithmetic Operators",
-    "Total": "6",
-    "Position": "2R2",
+    "Total": "8",
+    "Position": "1R1",
     "Question": [
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "Arithmetic operators in python are +, - , * ,/.",
-        "Instruction": "What's the result of expression 4 + 2 * 4 / 2 - 1?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "13",
-          "7",
-          "4",
-          "11"
+        "Answer": [],
+        "Type": "Drag&Drop",
+        "Knowledge": "Arithmetic operators in python are +, - , * ,/, which has the same meaning as in math expressions.",
+        "Instruction": "Let's put different operator into block and see what happened?",
+        "Code": [
+          "z = x[?]y",
+          "print(z)"
         ],
-        "Hint": "Same as the normal mathematical calculations."
+        "Console": "1",
+        "CodeBlock": [
+          "+",
+          "-",
+          "*",
+          "/"
+        ],
+        "Choice": [],
+        "Hint": "Play with it and see if there is any difference!"
       },
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "Parentheseses are used in python to decide the order of calculation.",
-        "Instruction": "What's the result of expression (4 + 3) * 2 + 1?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "15",
-          "3",
-          "10",
-          "14"
+        "Answer": [
+          "False"
         ],
-        "Hint": "Same as the normal mathematical calculations."
-      },
-      {
         "Type": "MultipleChoice",
-        "Knowledge": "Parentheseses are used in python to decide the order of calculation.",
-        "Instruction": "Is expression (4 + 3) * 2 + 1 = 12 is true?",
+        "Knowledge": null,
+        "Instruction": "Is expression 4 + 3 * 2 + 1 = 12 equal to be true?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [
           "True",
           "False"
+        ],
+        "Hint": "Think about how will do it if you are taking a math class!"
+      },
+      {
+        "Answer": [
+          "No"
+        ],
+        "Type": "MutipleChoice",
+        "Knowledge": "When we doing math in python, do we need to apply the same rule as we used in math?",
+        "Instruction": "Is there any difference between the following two expressions?",
+        "Code": [
+          "x = 3 + 2 * 5",
+          "y = (3 + 2) * 5"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [
+          "Yes",
+          "No",
+          "I don't know",
+          "Take a guess"
         ],
         "Hint": "Same as the normal mathematical cal1culations."
       },
       {
-        "Type": "MultipleChoice",
+        "Answer": [
+          "14"
+        ],
+        "Type": "Drag&Drop",
         "Knowledge": "Parentheseses are used in python to decide the order of calculation.",
-        "Instruction": "Is expression (2 + 4) / 2 + 1 * 5 = 8 is true?",
-        "Code": [],
+        "Instruction": "If we want get 14 for the following expression, where should we put parentheseses?",
+        "Code": [
+          "x = [?]4 * 3[?] + 2",
+          "print(x)"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          "(",
+          ")"
+        ],
+        "Choice": [],
+        "Hint": "Think about how we use parentheseses in math."
+      },
+      {
+        "Answer": [
+          "16"
+        ],
+        "Type": "ShortAnswer",
+        "Knowledge": null,
+        "Instruction": "Look at the expression below, if we want to get 16, what numbers are you going to put into those blocks?",
+        "Code": [
+          "x = [?] + [?]",
+          "y = [?] / [?]",
+          "z = [?] * [?]",
+          "print(z)"
+        ],
         "Console": "1",
         "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "Same as the normal mathematical calculations."
+        "Choice": [],
+        "Hint": "You cna also put x and y in it, try it out!"
       },
       {
-        "Type": "Drag&Drop",
-        "Knowledge": "The order of operators decide the result of an experssion.",
-        "Instruction": "Drag and drop code block into the right position to calculate 12.",
+        "Answer": [
+          "17"
+        ],
+        "Type": "ShortAnswer",
+        "Knowledge": null,
+        "Instruction": "This time we will try to put in operators and parentheseses to get 17, let's try it!",
         "Code": [
-          " x = (3 [?] 8) / 4 [?] 1 [?] 2"
+          " x = [?] 3 [?] 8 [?] [?] 4 [?] 1 [?] 2",
+          "print(x)"
         ],
         "Console": "1",
-        "CodeBlock": [
-          "+",
-          "-",
-          "*",
-          "/"
-        ],
+        "CodeBlock": [],
         "Choice": [],
-        "Hint": "Same as the normal mathematical calculations."
+        "Hint": "Can you find more than 1 answer?"
       },
       {
-        "Type": "Drag&Drop",
-        "Knowledge": "The order of operators decide the result of an experssion.",
-        "Instruction": "Drag and drop code block into the right position to calculate 7.",
+        "Answer": [],
+        "Type": "Rearrange",
+        "Knowledge": null,
+        "Instruction": "Order of calculation will have different outcomes, rearrange the code below and see what will happen!",
         "Code": [
-          "x = (2 [?] 4) [?] 7 [?] 3 [?] 5"
+          "x = 1 + 2 / 2",
+          "y = 1 * 2 * 3",
+          "z = 3 * 3",
+          "x = 4",
+          "y = 2",
+          "z = 11",
+          "print(x)",
+          "print(y)",
+          "print(z)"
         ],
-        "Console": "1",
-        "CodeBlock": [
-          "+",
-          "-",
-          "*",
-          "/"
-        ],
+        "Console": "3",
+        "CodeBlock": [],
         "Choice": [],
-        "Hint": "Same as the normal mathematical calculations."
+        "Hint": "There could be more than one order, find it out!."
+      },
+      {
+        "Answer": [],
+        "Type": "Rearrange",
+        "Knowledge": null,
+        "Instruction": "Think about what we learned in variable class, this time we have variale in the code, rearrange it with the right order and see the result!",
+        "Code": [
+          "x = 1 + 4",
+          "y = x * 2 * 3",
+          "z = x * 3",
+          "x = 4 * x",
+          "y = 2 * x",
+          "z = 3 * z",
+          "print(x)",
+          "print(y)",
+          "print(z)"
+        ],
+        "Console": "3",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Recall from variable class, we can not use an undefined variable!"
       }
     ]
   },
   {
+    "Available": "false",
+    "Unit": "1",
     "Type": "Lecture",
     "Title": "Modulus",
-    "Total": "4",
-    "Position": "3L3",
+    "Total": "5",
+    "Position": "2L2",
     "Question": [
       {
-        "Type": "MultipleChoice",
+        "Answer": [],
+        "Type": "ShortAnswer",
         "Knowledge": "Modulus(%) is used to calculate the remainder.",
-        "Instruction": "What's the result of 8%3?",
+        "Instruction": "When we use operator %,  it means we want to do a remainder calculation, type in different numbers to see the difference!",
+        "Code": [
+          "print([?] % [?])"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Think about how we calculate remainder in math!"
+      },
+      {
+        "Answer": [
+          "1"
+        ],
+        "Type": "MultipleChoice",
+        "Knowledge": "When we want do calculate the remainder for the negative number, it follows the same rule as we do for the possitive number",
+        "Instruction": "What's the result for -10%3?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
@@ -289,42 +399,38 @@
           "3",
           "4"
         ],
-        "Hint": "A%B is calculating the remainder of A/B."
+        "Hint": "% follows the same rule for the positive and the negative number."
       },
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "Modulus(%) is used to calculate the remainder.",
-        "Instruction": "What's the result of -10%3?",
-        "Code": [],
+        "Answer": [
+          "2"
+        ],
+        "Type": "Rearrange",
+        "Knowledge": null,
+        "Instruction": "Look at the code below, if we want to print '2', in which order we should arrange the following code?",
+        "Code": [
+          "x = 3 % 2",
+          "x = x - y",
+          "y = 6 % 2",
+          "x = y + 1",
+          "x = x * 3",
+          "print(x)"
+        ],
         "Console": "1",
         "CodeBlock": [],
-        "Choice": [
-          "1",
-          "2",
-          "3",
-          "4"
-        ],
-        "Hint": "% is the same for positive and negative number."
+        "Choice": [],
+        "Hint": "Think about what we learned in variable class."
       },
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "Modulus(%) is used to calculate the remainder.",
-        "Instruction": "Is expression 8%3 = 3 is true?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
+        "Answer": [
+          "0"
         ],
-        "Hint": "A%B is calculating the remainder of A/B."
-      },
-      {
         "Type": "Drag&Drop",
-        "Knowledge": "Modulus(%) is used to calculate the remainder.",
+        "Knowledge": null,
         "Instruction": "Drag and drop code block into the right position to calculate 0",
         "Code": [
-          " x = (7 [?] 4) [?] 2 [?] 1 [?] 5"
+          " x = (7 [?] 4) [?] 2 [?] 3 [?] 5",
+          "print(x)"
         ],
         "Console": "1",
         "CodeBlock": [
@@ -335,20 +441,48 @@
           "%"
         ],
         "Choice": [],
-        "Hint": "A%B is calculating the remainder of A/B."
+        "Hint": "Can we do it without using '%'?."
+      },
+      {
+        "Answer": [
+          "2"
+        ],
+        "Type": "Drag&Drop",
+        "Knowledge": null,
+        "Instruction": "This time we will try to use numbers.Drag and drop code block into the right position to calculate 2",
+        "Code": [
+          " x = [?] % ([?] + [?]) * ([?] % [?])",
+          "print(x)"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "Choice": [],
+        "Hint": "There could be different answers!"
       }
     ]
   },
   {
+    "Available": "false",
+    "Unit": "1",
     "Type": "Lecture",
     "Title": "Boolean Expression",
-    "Total": "9",
-    "Position": "4R3",
+    "Total": "7",
+    "Position": "3R2",
     "Question": [
       {
+        "Answer": [
+          "True"
+        ],
         "Type": "MultipleChoice",
         "Knowledge": "Boolean in python are 'True' and 'False'",
-        "Instruction": "3 equals to 3 is true or false?",
+        "Instruction": "Is 3 equals to 3 evaluted to be true or false?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
@@ -356,76 +490,75 @@
           "True",
           "False"
         ],
-        "Hint": "Boolean expression"
+        "Hint": "Boolean expression only have two options."
       },
       {
-        "Type": "MultipleChoice",
+        "Answer": [],
+        "Type": "Drag&Drop",
         "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "What will be the result of 3 < 4?",
-        "Code": [],
+        "Instruction": "Look at the code below and play with it, see what will be result will we get? Is there only two out comes for the following code?",
+        "Code": [
+          "x = 3 [?] 7",
+          "print(x)"
+        ],
         "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
+        "CodeBlock": [
+          "<",
+          "<=",
+          ">",
+          ">=",
+          "==",
+          "!="
+        ],
+        "Choice": [],
+        "Hint": "Boolean expression could only be evaluted to be true or false."
+      },
+      {
+        "Answer": [
+          "True"
+        ],
+        "Type": "Drag&Drop",
+        "Knowledge": "A < B means if A is less than B, A<= B means if A is less or equal to B, same for > and >. A == B means if A is equal to B and A != B means if A is not equal to B",
+        "Instruction": "If we want the following code evaluted to be true, what operator will we fill into the block?",
+        "Code": [
+          "x = 3 [?] 4",
+          "print(x)"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "==",
+          "!="
+        ],
+        "Choice": [],
+        "Hint": "Use the principle of boolean expression to find the answer!"
+      },
+      {
+        "Answer": [
           "True",
           "False"
         ],
-        "Hint": "A < B means if A is less than B"
+        "Type": "ShortAnswer",
+        "Knowledge": null,
+        "Instruction": "Fill out the blank below to let x evaluted to be false and y evaluted to vbe true",
+        "Code": [
+          "x = [?] >= [?]",
+          "y = [?] < [?]"
+        ],
+        "Console": "2",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "A >= B means if A is greater or equal to B and A < B means if A is less than B."
       },
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "What will be the result of 3 < =3?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
+        "Answer": [
           "False"
         ],
-        "Hint": "A <= B means if A is less or equal to B"
-      },
-      {
         "Type": "MultipleChoice",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "What will be the result of 3 > 3?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "A > B means if A is greater than B"
-      },
-      {
-        "Type": "MultipleChoice",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "What will be the result of 3 >= 3?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "A >= B means if A is greater or equal to B"
-      },
-      {
-        "Type": "MultipleChoice",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "What will be the result of 3 == 4?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "A == B means if A is equal to B"
-      },
-      {
-        "Type": "MultipleChoice",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
+        "Knowledge": null,
         "Instruction": "What will be the result of 3 != 3?",
         "Code": [],
         "Console": "1",
@@ -434,53 +567,62 @@
           "True",
           "False"
         ],
-        "Hint": "A != B means if A is not equal to B"
+        "Hint": "A != B means if A is not equal to B."
       },
       {
-        "Type": "Drag&Drop",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "Drag codeblock to the right position to make x is true and y is false.",
+        "Answer": [
+          "True"
+        ],
+        "Type": "ShortAnswer",
+        "Knowledge": null,
+        "Instruction": "Fill out the following blank to let x is evaluted to be true.",
         "Code": [
-          "x = 3 [?] 4",
-          "y = 3 [?] 4"
+          "x = [?] == [?]",
+          "print(x)"
         ],
         "Console": "1",
-        "CodeBlock": [
-          "<",
-          ">",
-          "<=",
-          ">="
-        ],
-        "Choice": [],
-        "Hint": "Boolean Expression"
-      },
-      {
-        "Type": "ShortAnswer",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "Fill in the blank and see what will console print.",
-        "Code": [
-          "x = 4 [?] 4",
-          "y = 3 [?] 4",
-          "print(x)",
-          "print(y)"
-        ],
-        "Console": "2",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Boolean Expression"
+        "Hint": "A == B means if A is equal to B"
+      },
+      {
+        "Answer": [],
+        "Type": "Rearrange",
+        "Knowledge": null,
+        "Instruction": "Rearrange the following code and see the different results!",
+        "Code": [
+          "A = 2 > 3",
+          "B = 4 <= 2",
+          "C = 2 != 2",
+          "A = 3 < 5",
+          "B = 5 > 2",
+          "C = 4 == 4",
+          "print(A)",
+          "print(B)",
+          "print(C)"
+        ],
+        "Console": "3",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "See how many possible answers are there!"
       }
     ]
   },
   {
+    "Available": "false",
+    "Unit": "1",
     "Type": "Lecture",
     "Title": "Logical Expression",
-    "Total": "5",
-    "Position": "5L3",
+    "Total": "7",
+    "Position": "4L2",
     "Question": [
       {
+        "Answer": [
+          "False"
+        ],
         "Type": "MultipleChoice",
-        "Knowledge": "Logical expression in python are 'And', 'Or', 'Not'",
-        "Instruction": "What will be the result of expression 'True and False'?",
+        "Knowledge": "Logical expression in python are 'And', 'Or', 'Not' and they will only return 'True' or 'False'",
+        "Instruction": "What result will be given by expression 'True and False?'",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
@@ -491,56 +633,42 @@
         "Hint": "A and B is true if and only if both A and B are evaluated to be true."
       },
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "Logical expression in python are 'And', 'Or', 'Not'",
-        "Instruction": "What will be the result of expression 'True or False'?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
+        "Answer": [
+          "True"
         ],
-        "Hint": "A or B is true if A or B are evaluated to be true."
-      },
-      {
-        "Type": "MultipleChoice",
-        "Knowledge": "Logical expression in python are 'And', 'Or', 'Not'",
-        "Instruction": "What will be the result of expression given below?",
-        "Code": [
-          "A = true",
-          "B = not A",
-          "print(B)"
-        ],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "If A is true, then not A will be false."
-      },
-      {
-        "Type": "MultipleChoice",
-        "Knowledge": "Logical expression in python are 'And', 'Or', 'Not'",
-        "Instruction": "What will be the result of expression given below?",
-        "Code": [
-          "A = true",
-          "B = not A",
-          "A = (not (A and B) or B)",
-          "print(A)"
-        ],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "Logical expression."
-      },
-      {
         "Type": "Drag&Drop",
-        "Knowledge": "Logical expression in python are 'And', 'Or', 'Not'",
+        "Knowledge": null,
+        "Instruction": "Fill the bland with right answer to let z evaluted to be True.",
+        "Code": [
+          "x = 3 [?] 2",
+          "y = 4 [?] 3",
+          "z = x [?] y",
+          "print(z)"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          "<",
+          "<=",
+          ">",
+          ">=",
+          "==",
+          "!=",
+          "and",
+          "or",
+          "not"
+        ],
+        "Choice": [
+          "True",
+          "False"
+        ],
+        "Hint": "Use the knowlegde or Boolean expression and Logical expression to solve this problem!"
+      },
+      {
+        "Answer": [
+          "True"
+        ],
+        "Type": "Drag&Drop",
+        "Knowledge": null,
         "Instruction": "Drag and drop code block into right position to make A evaluated to be true",
         "Code": [
           "A = true",
@@ -555,17 +683,103 @@
           "not"
         ],
         "Choice": [],
-        "Hint": "Logical expression."
+        "Hint": "There should be more than 1 answer, try it out!"
+      },
+      {
+        "Answer": [
+          "false"
+        ],
+        "Type": "ShortAnswer",
+        "Knowledge": null,
+        "Instruction": "Think about the code given below, find the answer that let B evaluted to be false.",
+        "Code": [
+          "A = [?] < [?]",
+          "B = [?] A",
+          "B = A [?] B",
+          "print(B)"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "If A is true, then not A will be false."
+      },
+      {
+        "Answer": [
+          "false"
+        ],
+        "Type": "ShortAnswer",
+        "Knowledge": null,
+        "Instruction": "Think about the code given below, find the answer that let B evaluted to be false.",
+        "Code": [
+          "A = 3 [?] 4",
+          "B = 5 [?] 2",
+          "C = 2 [?] 2",
+          "A = (C [?] B) [?] A [?] B",
+          "B = (C [?] B) [?] (A [?] C) [?] (C [?] A)",
+          "print(B)"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Try to solve it step by step!"
+      },
+      {
+        "Answer": [],
+        "Type": "Rearrange",
+        "Knowledge": null,
+        "Instruction": "Rearrange the following code and see the different results!",
+        "Code": [
+          "A = 2 > 3",
+          "B = 4 <= 2",
+          "C = 2 != 2",
+          "A = (C and B) or A",
+          "B = (C or B) and (A or C)",
+          "C = not A",
+          "print(A)",
+          "print(B)",
+          "print(C)"
+        ],
+        "Console": "3",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "See how many possible answers are there!"
+      },
+      {
+        "Answer": [],
+        "Type": "Rearrange",
+        "Knowledge": null,
+        "Instruction": "Rearrange the following code to see if you can make A, B, C all evaluted to be true !",
+        "Code": [
+          "A = 2 == 3",
+          "B = 3 != 2",
+          "C = 2 >= 1",
+          "A = (C and B) or A",
+          "B = (C or B) and (A or C)",
+          "C = not A",
+          "A = B and (not C)",
+          "B = A and B or (C and D) and (not A)",
+          "print(A)",
+          "print(B)",
+          "print(C)"
+        ],
+        "Console": "3",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "There might be more than one available answer!"
       }
     ]
   },
   {
+    "Available": "false",
+    "Unit": "1",
     "Type": "Lecture",
-    "Title": "Array",
-    "Total": "3",
-    "Position": "6R2",
+    "Title": "ArrayIndex",
+    "Total": "4",
+    "Position": "5R1",
     "Question": [
       {
+
+        "Answer":["0"],
         "Type": "MultipleChoice",
         "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
         "Instruction": "What will be the index of '5' in array [5,1,3,4]?",
@@ -581,57 +795,107 @@
         "Hint": "Array index start at 0"
       },
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
-        "Instruction": "What will be the index of '1' in array [5,2,3,4]?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "0",
-          "1",
-          "2",
-          "None"
+        "Answer": [
+          "[1,2,3,5,7,9]"
         ],
-        "Hint": "Array index start at 0"
+        "Type": "Drag&Drop",
+        "Knowledge": null,
+        "Instruction": "Drag the code block into the right place to achieve a sorted array.",
+        "Code": [
+          "x = [[?],[?],[?],[?],[?],[?]]",
+          "print(x)"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          "5",
+          "7",
+          "1",
+          "9",
+          "2",
+          "3"
+        ],
+        "Choice": [],
+        "Hint": "Sorted array looks like [1,2,3,4,5]"
       },
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
-        "Instruction": "Is array [5,2,3,4] sorted?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
+        "Answer": [],
+        "Type": "ShortAnswer",
+        "Knowledge": null,
+        "Instruction": "Put different numbers in the array and see what are the printed result.",
+        "Code": [
+          "x = [[?],[?],[?],[?],[?],[?]]",
+          "print(x[0])",
+          "print(x[1])",
+          "print(x[2])",
+          "print(x[3])",
+          "print(x[4])",
+          "print(x[5])"
         ],
-        "Hint": "Sorted array looks like [1,2,3,4,5]"
+        "Console": "6",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Play with the array and see the different outcomes."
+      },
+      {
+        "Answer": [],
+        "Type": "Rearrange",
+        "Knowledge": null,
+        "Instruction": "Rearrange the following code and see how will the array change.",
+        "Code": [
+          "x = [1,3,6,4,5,2]",
+          "x[0] = 2",
+          "x[1] = 8",
+          "x[2] = 10",
+          "x[3] = 12",
+          "x[4] = 15",
+          "x[5] = 7",
+          "print(x[0])",
+          "print(x[1])",
+          "print(x[2])",
+          "print(x[3])",
+          "print(x[4])",
+          "print(x[5])"
+        ],
+        "Console": "6",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "You can put print statement before assignment statement."
       }
     ]
   },
   {
+    "Available": "false",
     "Type": "Quiz",
-    "Title": "Quiz",
+    "Unit": "1",
+    "Title": "Quiz1",
     "Total": "5",
-    "Position": "7R1",
+    "Position": "6R0",
     "Question": [
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
-        "Instruction": "What will be the index of '5' in array [5,1,3,4]?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "0",
-          "1",
-          "2",
-          "3"
+        "Answer": [
+          "[1,2,3,4,6,7]"
         ],
+        "Type": "Drag&Drop",
+        "Knowledge": null,
+        "Instruction": "Drag the following code to make print numbers in sorted order.",
+        "Code": [
+          "x = [4,1,7,3,2,6]",
+          "print(x[0])",
+          "print(x[1])",
+          "print(x[2])",
+          "print(x[3])",
+          "print(x[4])",
+          "print(x[5])"
+        ],
+        "Console": "6",
+        "CodeBlock": [],
+        "Choice": [],
         "Hint": "Array index start at 0"
       },
       {
+        "Answer": [
+          "None"
+        ],
         "Type": "MultipleChoice",
         "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
         "Instruction": "What will be the index of '1' in array [5,2,3,4]?",
@@ -647,43 +911,77 @@
         "Hint": "Array index start at 0"
       },
       {
+        "Answer": [
+          "0"
+        ],
         "Type": "MultipleChoice",
-        "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
-        "Instruction": "Is array [5,2,3,4] sorted?",
+        "Knowledge": null,
+        "Instruction": "What's the result for (-10 + 20) /5 * 15 % 3?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [
-          "True",
-          "False"
+          "0",
+          "1",
+          "2",
+          "3"
         ],
-        "Hint": "Sorted array looks like [1,2,3,4,5]"
+        "Hint": "% follows the same rule for the positive and the negative number."
       },
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "What will be the result of 3 >= 3?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
+        "Answer": [],
+        "Type": "Rearrange",
+        "Knowledge": null,
+        "Instruction": "Rearrange the following code to see if you can make A, B, C all evaluted to be true !",
+        "Code": [
+          "A = 3 != 3",
+          "B = 5 == 2",
+          "C = 2 >= 1",
+          "A = 7 <= 3",
+          "B = 5 > 2",
+          "C = 2 < 1",
+          "A = (C and B) or A and B",
+          "B = (C or B) and (A or C) and (A and B)",
+          "C = not A",
+          "C = not C",
+          "A = B and (not C)",
+          "B = A and B or (C and D) and (not A)",
+          "print(A)",
+          "print(B)",
+          "print(C)"
         ],
-        "Hint": "A >= B means if A is greater or equal to B"
+        "Console": "3",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "There might be more than one available answer!"
       },
       {
-        "Type": "MultipleChoice",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "What will be the result of 3 == 4?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
+        "Answer": [
+          "[2,8,10,12,15,7]"
         ],
-        "Hint": "A == B means if A is equal to B"
+        "Type": "ShortAnswer",
+        "Knowledge": null,
+        "Instruction": "Put the answer for the array after we changed the value for it.",
+        "Code": [
+          "x = [1,3,6,4,5,2]",
+          "x[0] = 2",
+          "x[1] = 8",
+          "x[2] = 10",
+          "x[3] = 12",
+          "x[4] = 15",
+          "x[5] = 7",
+          "x = [[?],[?],[?],[?],[?],[?]]",
+          "print(x[0])",
+          "print(x[1])",
+          "print(x[2])",
+          "print(x[3])",
+          "print(x[4])",
+          "print(x[5])"
+        ],
+        "Console": "6",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Play with the array and see the different outcomes."
       }
     ]
   }

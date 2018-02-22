@@ -90,9 +90,9 @@ public class MainActivity extends AppCompatActivity
                     "type text not null," +                             //lecture
                     "position text not null," +                         //L1 -> left 1
                     "complete integer not null," +                      //0 -> 0 question completed
-                    "total interger not null)");
+                    "total interger not null," +
                     "available text not null," +
-                    "unit integer not null)");                        //7 -> 7 question in this course
+                    "unit text not null)");                        //7 -> 7 question in this course
 
 
         //String question = "question.db";
@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity
                     "codeblock text," +
                     "choice text," +
                     "hint text," +
+                    "answer text," +
                     "FOREIGN KEY (courseid) REFERENCES course (courseid)," +
                     "PRIMARY KEY (questionid, courseid))");
 
@@ -169,7 +170,8 @@ public class MainActivity extends AppCompatActivity
             int complete;
             int total;
             String available;
-            int unit;
+
+            String unit;
 
             for (int i = 0; i < courseArray.length(); ++i) {
 
@@ -181,7 +183,8 @@ public class MainActivity extends AppCompatActivity
                 complete = 0;
                 total = courseObject.getInt("Total");
                 available = courseObject.getString("Available");
-                unit = courseObject.getInt("Unit");
+
+                unit = courseObject.getString("Unit");
 
                 ContentValues courseValues = new ContentValues();
 
@@ -209,6 +212,7 @@ public class MainActivity extends AppCompatActivity
                 String codeblock;
                 String choice;
                 String hint;
+                String answer;
 
                 for (int j = 0; j < questionArray.length(); ++j) {
 
@@ -222,6 +226,7 @@ public class MainActivity extends AppCompatActivity
                     codeblock = question.getJSONArray("CodeBlock").toString();
                     choice = question.getJSONArray("Choice").toString();
                     hint = question.getString("Hint");
+                    answer = question.getString("Answer");
 
                     ContentValues questionValues = new ContentValues();
 
@@ -235,6 +240,7 @@ public class MainActivity extends AppCompatActivity
                     questionValues.put("codeblock", codeblock);
                     questionValues.put("choice", choice);
                     questionValues.put("hint", hint);
+                    questionValues.put("answer", answer);
 
                     db.insert("question", null, questionValues);
 
