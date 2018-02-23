@@ -4,7 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -27,6 +35,7 @@ public class Course extends Object  {
     CourseStatus courseStatus;
     Button boundBtn;
     RelativeLayout.LayoutParams layoutParams;
+    Drawable background;
     private int defaultMarginTop;
 
     public Course(Context context, Cursor cursor, int margin_top){
@@ -34,6 +43,8 @@ public class Course extends Object  {
         defaultMarginTop = margin_top;
 
         courseID = cursor.getInt(cursor.getColumnIndex("courseid"));
+
+        background = context.getDrawable(context.getResources().getIdentifier("course"+Integer.toString(courseID),"mipmap",context.getPackageName()));
 
         String tmp = cursor.getString(cursor.getColumnIndex("type"));
         switch (tmp){
@@ -61,8 +72,8 @@ public class Course extends Object  {
         tmp = cursor.getString(cursor.getColumnIndex("position"));
         boundBtn = generateCourseButton(context);
         layoutParams = setUpLayout(context,tmp);
+        boundBtn.setLayoutParams(layoutParams);
 
-//        tmp = cursor.getString()
     }
 
     public void printCourse(){
@@ -72,12 +83,26 @@ public class Course extends Object  {
         Log.d("nothing","happened");
     }
 
+    private void updateBtn(Context context, Button boundBtn){
+        Drawable backgroundImg = boundBtn.getBackground();
+
+        if (courseStatus==CourseStatus.AVAILABLE){
+            boundBtn.setBackground(backgroundImg);
+        }else{
+            Bitmap bitmap = ((BitmapDrawable)backgroundImg).getBitmap();
+            Bitmap bm = toGrayscale(bitmap);
+            boundBtn.setBackground(new BitmapDrawable(context.getResources(), bm));
+        }
+    }
+
     private Button generateCourseButton(Context context){
         Button courseBtn = new Button(context);
         if (courseStatus==CourseStatus.AVAILABLE){
-            courseBtn.setBackground(context.getDrawable(R.mipmap.hex_yellow));
+            courseBtn.setBackground(background);
         }else{
-            courseBtn.setBackground(context.getDrawable(R.mipmap.hex_green));
+            Bitmap bitmap = ((BitmapDrawable)background).getBitmap();
+            Bitmap bm = toGrayscale(bitmap);
+            courseBtn.setBackground(new BitmapDrawable(context.getResources(), bm));
         }
         courseBtn.setTextSize(8);
         courseBtn.setTag(Integer.toString(courseID));
@@ -140,9 +165,31 @@ public class Course extends Object  {
 
 
     protected void updateCourseBtn(Context context){
-        if (courseStatus== Course.CourseStatus.AVAILABLE){
-            boundBtn.setBackground(context.getDrawable(R.mipmap.hex_yellow));
+        if(courseStatus==CourseStatus.AVAILABLE){
+            boundBtn.setBackground(background);
         }
+//        if (courseStatus== Course.CourseStatus.AVAILABLE){
+//            boundBtn.setBackground(context.getDrawable(R.mipmap.hex_yellow));
+//        }
     }
 
+    public static Bitmap toGrayscale(Bitmap bmp) {
+        if (bmp != null) {
+            int width, height;
+            Paint paint = new Paint();
+            height = bmp.getHeight();
+            width = bmp.getWidth();
+            Bitmap bm = Bitmap.createBitmap(width, height,
+                    Bitmap.Config.RGB_565);
+            Canvas c = new Canvas(bm);
+            ColorMatrix cm = new ColorMatrix();
+            cm.setSaturation(0);
+            ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
+            paint.setColorFilter(f);
+            c.drawBitmap(bmp, 0, 0, paint);
+            return bm;
+        }else{
+            return bmp;
+        }
+    }
 }

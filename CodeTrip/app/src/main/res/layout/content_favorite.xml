@@ -27,4 +27,10 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="90dp"/>
 
+    <Button
+        android:id="@+id/course11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/course11"/>
+
 </RelativeLayout>

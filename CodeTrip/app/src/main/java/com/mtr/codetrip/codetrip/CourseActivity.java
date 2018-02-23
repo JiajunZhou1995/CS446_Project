@@ -3,7 +3,10 @@ package com.mtr.codetrip.codetrip;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -72,7 +75,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
         generateCourses();
         //should be commented
-//        makeAvailable(0);
+        makeAvailable(3);
 
     }
 
@@ -128,8 +131,8 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
         marginTop = (int) (getResources().getInteger(R.integer.unit_marginTop)* MainActivity.ScreenHeightRatio+0.5f);
         while(!c.isAfterLast()){
 
-            // there should be a filter to filter the unit
 
+            // there should be a filter to filter the unit
             Course newCourse = new Course(this, c,marginTop);
             newCourse.boundBtn.setOnClickListener(this);
             courseList.add(newCourse);
@@ -139,6 +142,9 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
             relativeLayout.addView(newCourse.boundBtn,newCourse.layoutParams);
             c.moveToNext();
         }
+
+
+
     }
 
 

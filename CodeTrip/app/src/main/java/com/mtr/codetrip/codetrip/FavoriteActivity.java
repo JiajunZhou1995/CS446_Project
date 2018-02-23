@@ -1,6 +1,9 @@
 package com.mtr.codetrip.codetrip;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -11,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 /**
  * Created by Catrina on 2/3/2018.
@@ -40,6 +44,13 @@ public class FavoriteActivity extends MainActivity {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View child = layoutInflater.inflate(R.layout.content_favorite,null);
         container.addView(child);
+
+
+        Button button11 = (Button) findViewById(R.id.course11);
+        Drawable drawable = button11.getBackground();
+        Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+        Bitmap bm = Course.toGrayscale(bitmap);
+        button11.setBackground(new BitmapDrawable(getResources(), bm));
     }
 
     @Override
