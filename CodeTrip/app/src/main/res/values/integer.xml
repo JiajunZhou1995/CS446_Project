@@ -4,8 +4,12 @@
 
     <!--UI-->
     <integer name="unit_marginTop">440</integer>
+    <integer name="non_quiz_flag_y">180</integer>
+    <integer name="non_quiz_flag_height">90</integer>
     <integer name="non_quiz_width">320</integer>
     <integer name="non_quiz_height">375</integer>
+    <integer name="quiz_flag_y">280</integer>
+    <integer name="quiz_flag_height">150</integer>
     <integer name="quiz_width">500</integer>
     <integer name="quiz_height">580</integer>
     <integer name="non_quiz_left_marginLeft">80</integer>

@@ -139,7 +139,11 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
             newCourse.printCourse();
 
-            relativeLayout.addView(newCourse.boundBtn,newCourse.layoutParams);
+            relativeLayout.addView(newCourse.boundBtn,newCourse.buttonLayoutParams);
+            relativeLayout.addView(newCourse.courseTitle,newCourse.titleLayoutParams);
+            newCourse.boundBtn.setTranslationZ(0);
+            newCourse.courseTitle.setTranslationZ(10);
+
             c.moveToNext();
         }
 

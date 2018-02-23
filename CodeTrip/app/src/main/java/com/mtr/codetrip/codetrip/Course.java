@@ -15,9 +15,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.Pair;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+
+import me.grantland.widget.AutofitTextView;
 
 
 /**
@@ -34,9 +37,13 @@ public class Course extends Object  {
     CourseType courseType;
     CourseStatus courseStatus;
     Button boundBtn;
-    RelativeLayout.LayoutParams layoutParams;
+    RelativeLayout.LayoutParams buttonLayoutParams;
+    RelativeLayout.LayoutParams titleLayoutParams;
     Drawable background;
     private int defaultMarginTop;
+    AutofitTextView courseTitle;
+
+
 
     public Course(Context context, Cursor cursor, int margin_top){
 
@@ -45,6 +52,10 @@ public class Course extends Object  {
         courseID = cursor.getInt(cursor.getColumnIndex("courseid"));
 
         background = context.getDrawable(context.getResources().getIdentifier("course"+Integer.toString(courseID),"mipmap",context.getPackageName()));
+
+        courseTitle = (AutofitTextView) LayoutInflater.from(context).inflate(R.layout.course_title,null);
+        courseTitle.setText(cursor.getString(cursor.getColumnIndex("title")));
+
 
         String tmp = cursor.getString(cursor.getColumnIndex("type"));
         switch (tmp){
@@ -71,9 +82,7 @@ public class Course extends Object  {
 
         tmp = cursor.getString(cursor.getColumnIndex("position"));
         boundBtn = generateCourseButton(context);
-        layoutParams = setUpLayout(context,tmp);
-        boundBtn.setLayoutParams(layoutParams);
-
+        buttonLayoutParams = setUpLayout(context,tmp);
     }
 
     public void printCourse(){
@@ -110,22 +119,20 @@ public class Course extends Object  {
     }
 
     private RelativeLayout.LayoutParams setUpLayout(Context context,String position){
-        double unit_width, unit_height;
-
-        if (courseType != CourseType.QUIZ){
-
-            unit_width = context.getResources().getInteger(R.integer.non_quiz_width);
-            unit_height = context.getResources().getInteger(R.integer.non_quiz_height);
-        }else{
-            unit_width = context.getResources().getInteger(R.integer.quiz_width);
-            unit_height = context.getResources().getInteger(R.integer.quiz_height);
-        }
-        unit_width = unit_width * MainActivity.ScreenWidthRatio +0.5f;
-        unit_height = unit_height *  MainActivity.ScreenHeightRatio +0.5f;
-
         Pair<Integer,Integer> xyPosition = nomalizPositioneString(context,position);
-        RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams((int)unit_width,(int)unit_height);
+
+        int unit_width = (int)(((courseType != CourseType.QUIZ)? context.getResources().getInteger(R.integer.non_quiz_width) : context.getResources().getInteger(R.integer.quiz_width))*MainActivity.ScreenHeightRatio +0.5f);
+        int unit_height = (int)(((courseType != CourseType.QUIZ)? context.getResources().getInteger(R.integer.non_quiz_height) : context.getResources().getInteger(R.integer.quiz_height))*MainActivity.ScreenHeightRatio +0.5f);
+        int flag_y = (int)(((courseType != CourseType.QUIZ)? context.getResources().getInteger(R.integer.non_quiz_flag_y) : context.getResources().getInteger(R.integer.quiz_flag_y))*MainActivity.ScreenHeightRatio +0.5f);
+        int flag_x = (int) (int) (unit_width * 0.05 + 0.5f);
+        int flag_width = (int) (unit_width*0.9 + 0.5f);
+        int flag_height = (int)(((courseType != CourseType.QUIZ)? context.getResources().getInteger(R.integer.non_quiz_flag_height) : context.getResources().getInteger(R.integer.quiz_flag_height))*MainActivity.ScreenHeightRatio +0.5f);
+
+
+        RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(unit_width,unit_height);
         rlp.setMargins(xyPosition.first,xyPosition.second + defaultMarginTop,0,0);
+        titleLayoutParams = new RelativeLayout.LayoutParams(flag_width,flag_height);
+        titleLayoutParams.setMargins(xyPosition.first + flag_x,xyPosition.second + defaultMarginTop + flag_y,0,0);
         return rlp;
     }
 
