@@ -205,7 +205,7 @@
     "Available": "false",
     "Unit": "1",
     "Type": "Lecture",
-    "Title": "Arithmetic Operators",
+    "Title": "Arithmetic",
     "Total": "8",
     "Position": "1R1",
     "Question": [
@@ -472,7 +472,7 @@
     "Available": "false",
     "Unit": "1",
     "Type": "Lecture",
-    "Title": "Boolean Expression",
+    "Title": "Boolean",
     "Total": "7",
     "Position": "3R2",
     "Question": [
@@ -612,7 +612,7 @@
     "Available": "false",
     "Unit": "1",
     "Type": "Lecture",
-    "Title": "Logical Expression",
+    "Title": "Logic",
     "Total": "7",
     "Position": "4L2",
     "Question": [
@@ -773,7 +773,7 @@
     "Available": "false",
     "Unit": "1",
     "Type": "Lecture",
-    "Title": "ArrayIndex",
+    "Title": "Array",
     "Total": "4",
     "Position": "5R1",
     "Question": [
