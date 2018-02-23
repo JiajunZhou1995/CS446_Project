@@ -179,8 +179,7 @@ public class Course extends Object  {
             Paint paint = new Paint();
             height = bmp.getHeight();
             width = bmp.getWidth();
-            Bitmap bm = Bitmap.createBitmap(width, height,
-                    Bitmap.Config.RGB_565);
+            Bitmap bm = Bitmap.createBitmap(width, height,Bitmap.Config.ARGB_8888);
             Canvas c = new Canvas(bm);
             ColorMatrix cm = new ColorMatrix();
             cm.setSaturation(0);
