@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import me.grantland.widget.AutofitTextView;
 
@@ -41,7 +42,7 @@ public class Course extends Object  {
     RelativeLayout.LayoutParams titleLayoutParams;
     Drawable background;
     private int defaultMarginTop;
-    AutofitTextView courseTitle;
+    TextView courseTitle;
 
 
 
@@ -53,7 +54,7 @@ public class Course extends Object  {
 
         background = context.getDrawable(context.getResources().getIdentifier("course"+Integer.toString(courseID),"mipmap",context.getPackageName()));
 
-        courseTitle = (AutofitTextView) LayoutInflater.from(context).inflate(R.layout.course_title,null);
+        courseTitle = (TextView) LayoutInflater.from(context).inflate(R.layout.course_title,null);
         courseTitle.setText(cursor.getString(cursor.getColumnIndex("title")));
 
 
@@ -98,9 +99,8 @@ public class Course extends Object  {
         if (courseStatus==CourseStatus.AVAILABLE){
             boundBtn.setBackground(backgroundImg);
         }else{
-            Bitmap bitmap = ((BitmapDrawable)backgroundImg).getBitmap();
-            Bitmap bm = toGrayscale(bitmap);
-            boundBtn.setBackground(new BitmapDrawable(context.getResources(), bm));
+            setGrayscale(background, true);
+            boundBtn.setBackground(background);
         }
     }
 
@@ -109,9 +109,8 @@ public class Course extends Object  {
         if (courseStatus==CourseStatus.AVAILABLE){
             courseBtn.setBackground(background);
         }else{
-            Bitmap bitmap = ((BitmapDrawable)background).getBitmap();
-            Bitmap bm = toGrayscale(bitmap);
-            courseBtn.setBackground(new BitmapDrawable(context.getResources(), bm));
+            setGrayscale(background, true);
+            courseBtn.setBackground(background);
         }
         courseBtn.setTextSize(8);
         courseBtn.setTag(Integer.toString(courseID));
@@ -175,27 +174,22 @@ public class Course extends Object  {
         if(courseStatus==CourseStatus.AVAILABLE){
             boundBtn.setBackground(background);
         }
-//        if (courseStatus== Course.CourseStatus.AVAILABLE){
-//            boundBtn.setBackground(context.getDrawable(R.mipmap.hex_yellow));
-//        }
     }
 
-    public static Bitmap toGrayscale(Bitmap bmp) {
-        if (bmp != null) {
-            int width, height;
-            Paint paint = new Paint();
-            height = bmp.getHeight();
-            width = bmp.getWidth();
-            Bitmap bm = Bitmap.createBitmap(width, height,Bitmap.Config.ARGB_8888);
-            Canvas c = new Canvas(bm);
-            ColorMatrix cm = new ColorMatrix();
-            cm.setSaturation(0);
-            ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
-            paint.setColorFilter(f);
-            c.drawBitmap(bmp, 0, 0, paint);
-            return bm;
-        }else{
-            return bmp;
+    public static Drawable setGrayscale(Drawable drawable, boolean bool) {
+        if (bool){
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setSaturation(0);
+
+            ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+
+            drawable.setColorFilter(filter);
+
+            return drawable;
+        }
+        else{
+            drawable.setColorFilter(null);
+            return drawable;
         }
     }
 }

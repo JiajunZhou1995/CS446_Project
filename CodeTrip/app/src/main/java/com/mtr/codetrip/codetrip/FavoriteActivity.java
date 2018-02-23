@@ -48,9 +48,8 @@ public class FavoriteActivity extends MainActivity {
 
         Button button11 = (Button) findViewById(R.id.course11);
         Drawable drawable = button11.getBackground();
-        Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
-        Bitmap bm = Course.toGrayscale(bitmap);
-        button11.setBackground(new BitmapDrawable(getResources(), bm));
+        Course.setGrayscale(drawable, true);
+        button11.setBackground(drawable);
     }
 
     @Override
