@@ -21,7 +21,6 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import me.grantland.widget.AutofitTextView;
 
 
 /**

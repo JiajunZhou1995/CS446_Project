@@ -20,14 +20,13 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin" />
 
         <ProgressBar
+            android:id="@+id/question_progressbar"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_weight="1"
             android:layout_margin="20dp"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-            android:indeterminate="false"
-            android:max="100"
-            android:progress="30"/>
+            android:indeterminate="false" />
 
         <Button
             android:id="@+id/hint_button"

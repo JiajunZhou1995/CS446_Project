@@ -60,9 +60,7 @@ public class ScreenSlidePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        SQLiteDatabase myDB = getContext().openOrCreateDatabase("codetrip.db", Context.MODE_PRIVATE,null);
         String sql = "SELECT * FROM question WHERE courseid =" + Integer.toString(courseID) +" AND questionid =" + Integer.toString(questionID);
-//        String sql = "SELECT * FROM question WHERE courseid =" + "1" +" AND questionid =" + "1";
         Cursor cursor =  MainActivity.myDB.rawQuery(sql, null);
 
         String questionType = "";
@@ -70,15 +68,7 @@ public class ScreenSlidePageFragment extends Fragment {
         if(!cursor.isAfterLast()) {
             questionType = cursor.getString(cursor.getColumnIndex("type"));
         }
-//        while(!c.isAfterLast()){
-//            int index = c.getColumnIndex("courseid");
-////            Log.d("!!!!!!!!!!SQLite", c.getString(index));
-//            Log.d("current type", questionType);
-//            c.moveToNext();
-//        }
-//        String questionType = cursor.getString(cursor.getColumnIndex("type"));
-//        Log.d("current type", questionType);
-        //String questionType = "Rearrange";
+
 
         final ViewGroup rootView;
         // Inflate the layout containing a title and body text.

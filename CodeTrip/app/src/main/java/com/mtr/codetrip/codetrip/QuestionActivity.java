@@ -1,5 +1,9 @@
 package com.mtr.codetrip.codetrip;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,10 +24,14 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import java.util.List;
@@ -54,8 +62,9 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private Activity mActivity;
 
     private LinearLayout mLinearLayout;
-    private Button mButton;
-    private Button returnButton;
+    Button mButton;
+    Button returnButton;
+    ProgressBar progressBar;
 
     private PopupWindow mPopupWindow;
 
@@ -70,7 +79,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
-
         Intent intent = getIntent();
         courseID = intent.getIntExtra("courseID",0);
         Log.d("courseID", Integer.toString(courseID));
@@ -79,6 +87,9 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         Cursor c = MainActivity.myDB.rawQuery(sql,null);
         c.moveToFirst();
         NUM_PAGES = c.getInt(c.getColumnIndex("total"));
+        progressBar = (ProgressBar) findViewById(R.id.question_progressbar);
+        progressBar.setMax(NUM_PAGES);
+        progressBar.setProgress(0);
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.questionPager);
@@ -126,8 +137,33 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         }
 
         @Override
+        public void setPrimaryItem(ViewGroup container, final int position, Object object) {
+            super.setPrimaryItem(container,position,object);
+            progressBar.setProgress(position);
+
+        }
+
+        @Override
         public int getCount() {
             return NUM_PAGES;
+        }
+    }
+
+
+    private class ProgressBarAnimation extends Animation {
+        private ProgressBar progressBar;
+        private  float from;
+        private  float to;
+        private ProgressBarAnimation(ProgressBar progressBar, float from, float to){
+            super();
+            this.progressBar = progressBar;
+            this.from = from;
+            this.to = to;
+        }
+        protected void applyTransformation(float interpolatedTime, Transformation transformation){
+            super.applyTransformation(interpolatedTime,transformation);
+            float progress = from + (to - from) * interpolatedTime;
+            progressBar.setProgress((int) (progress+0.5f));
         }
     }
 
@@ -164,15 +200,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
                     RelativeLayout.LayoutParams.WRAP_CONTENT
             );
 
-            // Set an elevation value for popup window
-            if(Build.VERSION.SDK_INT>=21){
-                mPopupdim.setElevation(5.0f);
-            }
+            mPopupWindow.setElevation(6.0f);
 
-            // Set an elevation value for popup window
-            if(Build.VERSION.SDK_INT>=21){
-                mPopupWindow.setElevation(6.0f);
-            }
 
             // Get a reference for the custom view close button
             ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
