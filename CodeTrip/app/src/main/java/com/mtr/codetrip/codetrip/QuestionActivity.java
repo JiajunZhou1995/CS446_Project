@@ -56,14 +56,17 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private Button returnButton;
 
     private PopupWindow mPopupWindow;
+    private int courseID;
 
-    private List<Question> listofQuestion;
+//    private List<Question> listofQuestion;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        courseID = savedInstanceState.getInt("courseID");
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.questionPager);
@@ -108,8 +111,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         }
 
         @Override
-        public android.support.v4.app.Fragment getItem(int position) {
-            return ScreenSlidePageFragment.create(position);
+        public android.support.v4.app.Fragment getItem(int currentQuestion) {
+            return ScreenSlidePageFragment.create(courseID,currentQuestion);
         }
 
         @Override

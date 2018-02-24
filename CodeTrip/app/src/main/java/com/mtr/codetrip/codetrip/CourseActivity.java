@@ -177,7 +177,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
             Intent intent = new Intent();
             intent.setClass(this,QuestionActivity.class);
-            intent.putExtra("question_file_name","file_name");
+            intent.putExtra("courseID",currentCourse.courseID);
             startActivity(intent);
         }else if (courseType == Course.CourseType.LECTURE){
 

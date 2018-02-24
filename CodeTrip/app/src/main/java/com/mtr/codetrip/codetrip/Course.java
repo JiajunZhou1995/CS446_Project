@@ -34,7 +34,7 @@ public class Course extends Object  {
     enum CourseType{LECTURE, PROJECT, QUIZ}
     enum CourseStatus{AVAILABLE, UNAVAILABLE}
 
-    private int courseID;
+    protected int courseID;
     CourseType courseType;
     CourseStatus courseStatus;
     Button boundBtn;
