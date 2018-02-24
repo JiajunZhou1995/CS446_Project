@@ -56,7 +56,9 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private Button returnButton;
 
     private PopupWindow mPopupWindow;
+
     private int courseID;
+    private PopupWindow mPopupdim;
 
 //    private List<Question> listofQuestion;
 
@@ -158,6 +160,18 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             // Inflate the custom layout/view
             View customView = inflater.inflate(R.layout.hint,null);
 
+            // Inflate the custom layout/view
+            View customdimView = inflater.inflate(R.layout.dim,null);
+
+
+            // Initialize a new instance of dim window
+            mPopupdim = new PopupWindow(
+                    customdimView,
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.MATCH_PARENT
+            );
+
+
             // Initialize a new instance of popup window
             mPopupWindow = new PopupWindow(
                     customView,
@@ -167,7 +181,12 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
             // Set an elevation value for popup window
             if(Build.VERSION.SDK_INT>=21){
-                mPopupWindow.setElevation(5.0f);
+                mPopupdim.setElevation(5.0f);
+            }
+
+            // Set an elevation value for popup window
+            if(Build.VERSION.SDK_INT>=21){
+                mPopupWindow.setElevation(6.0f);
             }
 
             // Get a reference for the custom view close button
@@ -179,11 +198,17 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
                 public void onClick(View view) {
                     // Dismiss the popup window
                     mPopupWindow.dismiss();
+                    // Dismiss the popup dim
+                    mPopupdim.dismiss();
                 }
             });
 
             // Finally, show the popup window at the center location of root relative layout
+            mPopupdim.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
+
+            // Finally, show the popup window at the center location of root relative layout
             mPopupWindow.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
+
         }
     }
 
