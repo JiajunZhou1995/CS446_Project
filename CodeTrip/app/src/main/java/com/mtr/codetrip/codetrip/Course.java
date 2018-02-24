@@ -22,7 +22,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-
 /**
  * Created by Catrina on 2/3/2018.
  */
