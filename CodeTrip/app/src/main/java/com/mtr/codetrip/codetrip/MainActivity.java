@@ -199,7 +199,6 @@ public class MainActivity extends AppCompatActivity
 
                 db.insert("course", null, courseValues);
 
-                courseid = courseid + 1;
 //                Log.d("+++++", "Inserted Successfully " + courseValues );
 
                 JSONArray questionArray = new JSONArray(courseObject.getString("Question"));
@@ -248,6 +247,8 @@ public class MainActivity extends AppCompatActivity
 //                    Log.d("+++++", "Inserted Successfully " + questionValues );
 
                 }
+
+                courseid = courseid + 1;
             }
 
 
