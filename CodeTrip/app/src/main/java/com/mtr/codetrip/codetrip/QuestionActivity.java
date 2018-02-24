@@ -80,12 +80,11 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         c.moveToFirst();
         NUM_PAGES = c.getInt(c.getColumnIndex("total"));
 
-        Log.d("number of questions", Integer.toString(NUM_PAGES));
-
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.questionPager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setOffscreenPageLimit(NUM_PAGES);
         mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -102,13 +101,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         mActivity = QuestionActivity.this;
 
         // Get the widgets reference from XML layout
-        mLinearLayout = (LinearLayout) findViewById(R.id.rl);
-
+        mLinearLayout = (LinearLayout) findViewById(R.id.question_page_toolbar);
         returnButton = (Button) findViewById(R.id.retrun_button);
         returnButton.setOnClickListener(this);
         mButton = (Button) findViewById(R.id.hint_button);
-
-        // Set a click listener for the text view
         mButton.setOnClickListener(this);
     }
 
@@ -134,30 +130,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             return NUM_PAGES;
         }
     }
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                // Navigate "up" the demo structure to the launchpad activity.
-//                // See http://developer.android.com/design/patterns/navigation.html for more.
-//                NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
-//                return true;
-//
-//            case R.id.action_previous:
-//                // Go to the previous step in the wizard. If there is no previous step,
-//                // setCurrentItem will do nothing.
-//                mPager.setCurrentItem(mPager.getCurrentItem() - 1);
-//                return true;
-//
-//            case R.id.action_next:
-//                // Advance to the next step in the wizard. If there is no next step, setCurrentItem
-//                // will do nothing.
-//                mPager.setCurrentItem(mPager.getCurrentItem() + 1);
-//                return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+
 
     @Override
     public void onClick(View v) {

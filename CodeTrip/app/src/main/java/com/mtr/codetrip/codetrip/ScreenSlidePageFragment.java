@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
@@ -79,7 +80,7 @@ public class ScreenSlidePageFragment extends Fragment {
 //        Log.d("current type", questionType);
         //String questionType = "Rearrange";
 
-        ViewGroup rootView;
+        final ViewGroup rootView;
         // Inflate the layout containing a title and body text.
 
         switch (questionType){
@@ -94,18 +95,18 @@ public class ScreenSlidePageFragment extends Fragment {
                 break;
             case "Drag&Drop":
                 rootView = (ViewGroup) inflater.inflate(R.layout.question_drag_and_drop,container,false);
+                Button doitButton = (Button) rootView.findViewById(R.id.doit);
+                doitButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        rootView.setBackgroundColor(getResources().getColor(R.color.colorAquaMarine));
+                    }
+                });
                 break;
             default:
                 rootView = null;
                 break;
         }
-
-//        if (questionID==0) rootView = (ViewGroup) inflater.inflate(R.layout.layout_question, container, false);
-//        else rootView = (ViewGroup) inflater.inflate(R.layout.content_favorite, container, false);
-        // Set the title view to show the page number.
-//        ((TextView) rootView.findViewById(android.R.id.text1)).setText(
-//                getString(R.string.title_template_step, mPageNumber + 1));
-
         return rootView;
     }
 
