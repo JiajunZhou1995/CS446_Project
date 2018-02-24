@@ -95,52 +95,52 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         mButton.setOnClickListener(this);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-
-        System.out.println("inflate!!!!");
-
-        getMenuInflater().inflate(R.menu.activity_screen_slide, menu);
-
-        menu.findItem(R.id.action_previous).setEnabled(mPager.getCurrentItem() > 0);
-
-        // Add either a "next" or "finish" button to the action bar, depending on which page
-        // is currently selected.
-        MenuItem item = menu.add(Menu.NONE, R.id.action_next, Menu.NONE,
-                (mPager.getCurrentItem() == mPagerAdapter.getCount() - 1)
-                        ? "Finished"
-                        : "Next");
-        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        return true;
+    public void onQuestionFragmentSwipe(int swipeGesture){
+        mPager.setCurrentItem(mPager.getCurrentItem() + swipeGesture);
     }
-
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // Navigate "up" the demo structure to the launchpad activity.
-                // See http://developer.android.com/design/patterns/navigation.html for more.
-                NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
-                return true;
-
-            case R.id.action_previous:
-                // Go to the previous step in the wizard. If there is no previous step,
-                // setCurrentItem will do nothing.
-                mPager.setCurrentItem(mPager.getCurrentItem() - 1);
-                return true;
-
-            case R.id.action_next:
-                // Advance to the next step in the wizard. If there is no next step, setCurrentItem
-                // will do nothing.
-                mPager.setCurrentItem(mPager.getCurrentItem() + 1);
-                return true;
+    /**
+     * A simple pager adapter that represents 5 {@link ScreenSlidePageFragment} objects, in
+     * sequence.
+     */
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public android.support.v4.app.Fragment getItem(int position) {
+            return ScreenSlidePageFragment.create(position);
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
     }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                // Navigate "up" the demo structure to the launchpad activity.
+//                // See http://developer.android.com/design/patterns/navigation.html for more.
+//                NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
+//                return true;
+//
+//            case R.id.action_previous:
+//                // Go to the previous step in the wizard. If there is no previous step,
+//                // setCurrentItem will do nothing.
+//                mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+//                return true;
+//
+//            case R.id.action_next:
+//                // Advance to the next step in the wizard. If there is no next step, setCurrentItem
+//                // will do nothing.
+//                mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+//                return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
     public void onClick(View v) {
@@ -184,23 +184,5 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         }
     }
 
-    /**
-     * A simple pager adapter that represents 5 {@link ScreenSlidePageFragment} objects, in
-     * sequence.
-     */
-    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-        public ScreenSlidePagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
 
-        @Override
-        public android.support.v4.app.Fragment getItem(int position) {
-            return ScreenSlidePageFragment.create(position);
-        }
-
-        @Override
-        public int getCount() {
-            return NUM_PAGES;
-        }
-    }
 }

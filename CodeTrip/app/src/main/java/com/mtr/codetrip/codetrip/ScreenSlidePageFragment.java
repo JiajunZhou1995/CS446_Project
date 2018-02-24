@@ -33,8 +33,6 @@ public class ScreenSlidePageFragment extends Fragment {
         return fragment;
     }
 
-    public ScreenSlidePageFragment() {
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,10 +43,12 @@ public class ScreenSlidePageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout containing a title and body text.
-//        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_screen_slide_page, container, false);
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.layout_question, container, false);
 
+        ViewGroup rootView = null;
+        // Inflate the layout containing a title and body text.
+
+        if (mPageNumber==0) rootView = (ViewGroup) inflater.inflate(R.layout.layout_question, container, false);
+        else rootView = (ViewGroup) inflater.inflate(R.layout.content_favorite, container, false);
         // Set the title view to show the page number.
 //        ((TextView) rootView.findViewById(android.R.id.text1)).setText(
 //                getString(R.string.title_template_step, mPageNumber + 1));
