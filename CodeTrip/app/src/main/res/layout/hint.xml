@@ -10,8 +10,9 @@
 
     <ImageButton
         android:id="@+id/ib_close"
-        android:layout_width="40px"
-        android:layout_height="40px"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_margin="5dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@mipmap/question_return" />
@@ -23,4 +24,5 @@
         android:layout_centerInParent="true"
         android:padding="25sp"
         />
+
 </RelativeLayout>
