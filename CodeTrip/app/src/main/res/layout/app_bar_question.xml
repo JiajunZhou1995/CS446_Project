@@ -13,6 +13,7 @@
         android:orientation="horizontal"
         android:gravity="center">
         <Button
+            android:id="@+id/retrun_button"
             android:layout_height="20dp"
             android:layout_width="20dp"
             android:background="@mipmap/question_return"
@@ -29,7 +30,7 @@
             android:progress="30"/>
 
         <Button
-            android:id="@+id/hintButton"
+            android:id="@+id/hint_button"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:background="@mipmap/question_hint"

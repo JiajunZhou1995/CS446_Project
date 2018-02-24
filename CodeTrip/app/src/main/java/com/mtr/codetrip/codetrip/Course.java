@@ -172,6 +172,7 @@ public class Course extends Object  {
 
     protected void updateCourseBtn(Context context){
         if(courseStatus==CourseStatus.AVAILABLE){
+            setGrayscale(background,false);
             boundBtn.setBackground(background);
         }
     }
