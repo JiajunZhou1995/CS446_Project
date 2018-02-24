@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
     public static double ScreenWidthRatio;
     public static double ScreenHeightRatio;
 
-    public SQLiteDatabase myDB;
+    public static SQLiteDatabase myDB;
     private MyDatabaseUtil myDatabaseUtil;
     private Resources mResources;
 
