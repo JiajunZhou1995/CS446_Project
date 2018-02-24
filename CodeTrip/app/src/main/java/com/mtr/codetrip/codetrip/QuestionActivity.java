@@ -73,10 +73,15 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
         Intent intent = getIntent();
         courseID = intent.getIntExtra("courseID",0);
+        Log.d("courseID", Integer.toString(courseID));
 
-        Cursor c = MainActivity.myDB.query("course", null, null, null, null, null, null);
+        String sql = "SELECT * FROM course WHERE courseid =" + Integer.toString(courseID);
+        Cursor c = MainActivity.myDB.rawQuery(sql,null);
         c.moveToFirst();
         NUM_PAGES = c.getInt(c.getColumnIndex("total"));
+
+        Log.d("number of questions", Integer.toString(NUM_PAGES));
+
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.questionPager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
