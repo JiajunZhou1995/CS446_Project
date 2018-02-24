@@ -3,6 +3,7 @@ package com.mtr.codetrip.codetrip;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -13,6 +14,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,7 +37,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
 
-    private static final int NUM_PAGES = 5;
+    private int NUM_PAGES = 0;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -68,8 +70,13 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
-        courseID = savedInstanceState.getInt("courseID");
 
+        Intent intent = getIntent();
+        courseID = intent.getIntExtra("courseID",0);
+
+        Cursor c = MainActivity.myDB.query("course", null, null, null, null, null, null);
+        c.moveToFirst();
+        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.questionPager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());

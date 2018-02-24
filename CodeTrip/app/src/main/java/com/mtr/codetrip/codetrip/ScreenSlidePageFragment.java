@@ -84,23 +84,20 @@ public class ScreenSlidePageFragment extends Fragment {
 
         switch (questionType){
             case "Rearrange":
-//                rootView = (ViewGroup) inflater.inflate(R.layout.question_rearrange,container);
-                rootView = (ViewGroup) inflater.inflate(R.layout.layout_question, container, false);
+                rootView = (ViewGroup) inflater.inflate(R.layout.question_rearrange,container,false);
                 break;
             case "MultipleChoice":
-//                rootView = (ViewGroup) inflater.inflate(R.layout.question_multiple_choice,container);
-                rootView = (ViewGroup) inflater.inflate(R.layout.content_favorite,container,false);
+                rootView = (ViewGroup) inflater.inflate(R.layout.question_multiple_choice,container,false);
                 break;
-            case "ShoreAnswer":
-//                rootView = (ViewGroup) inflater.inflate(R.layout.question_short_answer,container);
-                rootView = (ViewGroup) inflater.inflate(R.layout.content_course,container,false);
+            case "ShortAnswer":
+                rootView = (ViewGroup) inflater.inflate(R.layout.question_short_answer,container,false);
                 break;
             case "Drag&Drop":
-//                rootView = (ViewGroup) inflater.inflate(R.layout.question_drag_and_drop,container);
-                rootView = (ViewGroup) inflater.inflate(R.layout.content_home,container,false);
+                rootView = (ViewGroup) inflater.inflate(R.layout.question_drag_and_drop,container,false);
                 break;
             default:
                 rootView = null;
+                break;
         }
 
 //        if (questionID==0) rootView = (ViewGroup) inflater.inflate(R.layout.layout_question, container, false);
