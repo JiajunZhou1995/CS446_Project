@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip;
+package com.mtr.codetrip.codetrip.helper;
 
 import android.support.v7.widget.RecyclerView;
 /**
@@ -17,7 +17,7 @@ public interface ItemTouchHelperAdapter {
      * @see RecyclerView#getAdapterPositionFor(RecyclerView.ViewHolder)
      * @see RecyclerView.ViewHolder#getAdapterPosition()
      */
-    void onItemMove(int fromPosition, int toPosition);
+    boolean onItemMove(int fromPosition, int toPosition);
 
 
     /**
