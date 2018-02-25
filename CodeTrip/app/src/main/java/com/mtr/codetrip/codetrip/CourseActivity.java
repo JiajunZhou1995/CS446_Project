@@ -116,6 +116,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
+        finish();
         return true;
     }
 

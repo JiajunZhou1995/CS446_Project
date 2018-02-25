@@ -83,6 +83,7 @@ public class HomeActivity extends MainActivity implements NavigationView.OnNavig
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
+        finish();
         return true;
     }
 }

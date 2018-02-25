@@ -89,6 +89,7 @@ public class FavoriteActivity extends MainActivity {
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
+        finish();
         return true;
     }
 
