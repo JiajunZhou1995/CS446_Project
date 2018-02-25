@@ -1,17 +1,12 @@
 package com.mtr.codetrip.codetrip;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CursorAdapter;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -19,7 +14,7 @@ import java.util.List;
  * Created by Catrina on 2/19/2018.
  */
 
-public class ScreenSlidePageFragment extends Fragment {
+public class QuestionPageFragment extends Fragment {
 
 //    enum
     /**
@@ -39,8 +34,8 @@ public class ScreenSlidePageFragment extends Fragment {
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
      */
-    public static ScreenSlidePageFragment create(int courseID, int pageNumber) {
-        ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
+    public static QuestionPageFragment create(int courseID, int pageNumber) {
+        QuestionPageFragment fragment = new QuestionPageFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, pageNumber);
         args.putInt(COURSE_ID,courseID);
@@ -85,6 +80,8 @@ public class ScreenSlidePageFragment extends Fragment {
                 break;
             case "Drag&Drop":
                 rootView = (ViewGroup) inflater.inflate(R.layout.question_drag_and_drop,container,false);
+
+
                 Button doitButton = (Button) rootView.findViewById(R.id.doit);
                 doitButton.setOnClickListener(new View.OnClickListener() {
                     @Override

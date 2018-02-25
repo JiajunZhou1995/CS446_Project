@@ -1,28 +1,18 @@
 package com.mtr.codetrip.codetrip;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.Build;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -33,9 +23,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-
-import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by Catrina on 2/4/2018.
@@ -123,7 +110,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         mPager.setCurrentItem(mPager.getCurrentItem() + swipeGesture);
     }
     /**
-     * A simple pager adapter that represents 5 {@link ScreenSlidePageFragment} objects, in
+     * A simple pager adapter that represents 5 {@link QuestionPageFragment} objects, in
      * sequence.
      */
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -133,7 +120,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
         @Override
         public android.support.v4.app.Fragment getItem(int currentQuestion) {
-            return ScreenSlidePageFragment.create(courseID,currentQuestion);
+            return QuestionPageFragment.create(courseID,currentQuestion);
         }
 
         @Override

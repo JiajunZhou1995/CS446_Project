@@ -26,6 +26,8 @@ public class Question {
 
     private enum RUN_BUTTON_STATUS{FILL_IN_THE_BLANK, RUN, CONTINUE, BACK_TO_CURRENT};
 
+
+
     public void populateFromDB(Cursor c) throws JSONException{
         knowledge = c.getString(c.getColumnIndex("knowledge"));
         instruction = c.getString(c.getColumnIndex("instruction"));
