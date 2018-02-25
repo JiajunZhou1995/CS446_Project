@@ -5,7 +5,8 @@
     android:layout_margin="30dp"
     android:textSize="14sp"
     android:layout_marginHorizontal="30dp"
-    android:background="@drawable/drop_block_round">
+    android:background="@drawable/drop_block_round"
+    android:textAllCaps="false">
 
 
 </Button>
