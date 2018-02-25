@@ -19,7 +19,7 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "[\"Hello World\"]"
+          "\"Hello World\""
         ],
         "Choice": [],
         "Hint": "Drag and drop Hello World into [?]"
@@ -36,8 +36,8 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "[print()]",
-          "[print]"
+          "print()",
+          "print"
         ],
         "Choice": [],
         "Hint": "Drag and drop [print] into [?]"
@@ -72,8 +72,8 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "[\"Hello World\"]",
-          "[\"Hello There\"]"
+          "\"Hello World\"",
+          "\"Hello There\""
         ],
         "Choice": [],
         "Hint": " Drag and drop Hello There into [?]"
@@ -89,8 +89,8 @@
         ],
         "Console": "2",
         "CodeBlock": [
-          "[I’m a dog]",
-          "[I’m a cat]"
+          "I’m a dog",
+          "I’m a cat"
         ],
         "Choice": [],
         "Hint": "Drag and drop any block into [?]"
@@ -134,8 +134,8 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "[\"Apple\"]",
-          "[fruit]"
+          "\"Apple\"",
+          "fruit"
         ],
         "Choice": [],
         "Hint": "Drag Apple then the fruit"
@@ -154,8 +154,8 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "[+]",
-          "[-]"
+          "+",
+          "-"
         ],
         "Choice": [],
         "Hint": "We want then to add up"
@@ -173,8 +173,8 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "[animal]",
-          "[furit]"
+          "animal",
+          "furit"
         ],
         "Choice": [],
         "Hint": "animal is not yet defined"
