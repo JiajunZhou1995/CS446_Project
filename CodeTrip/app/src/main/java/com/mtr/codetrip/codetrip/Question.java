@@ -25,7 +25,7 @@ public class Question {
     protected String answer;
 
 
-    private enum RUN_BUTTON_STATUS{FILL_IN_THE_BLANK, RUN, CONTINUE, BACK_TO_CURRENT};
+    protected enum RUN_BUTTON_STATUS{FILL_IN_THE_BLANK, RUN, CONTINUE, BACK_TO_CURRENT};
 
 
     public Question(ViewGroup view){
@@ -55,10 +55,21 @@ public class Question {
 
     protected void inflateContent(ViewGroup rootView){
         TextView knowledgeTV = (TextView)rootView.findViewById(R.id.question_knowledge);
-        knowledgeTV.setText(knowledge);
         TextView instructionTV = (TextView)rootView.findViewById(R.id.question_instruction);
-        instructionTV.setText(instruction);
 
+        if (!knowledge.equals("null")){
+            knowledgeTV.setText(knowledge);
+        }
+        else {
+            knowledgeTV.setVisibility(View.GONE);
+        }
+
+        if (!instruction.equals("null")){
+            instructionTV.setText(instruction);
+        }
+        else {
+            instructionTV.setVisibility(View.GONE);
+        }
     }
 
 

@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip;
+package com.mtr.codetrip.codetrip.helper;
 
 /*
  * Copyright (C) 2015 Paul Burke
@@ -28,9 +28,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mtr.codetrip.codetrip.helper.ItemTouchHelperAdapter;
-import com.mtr.codetrip.codetrip.helper.ItemTouchHelperViewHolder;
-import com.mtr.codetrip.codetrip.helper.OnStartDragListener;
+import com.mtr.codetrip.codetrip.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -77,10 +75,14 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
         });
     }
 
-    @Override
-    public void onItemDismiss(int position) {
-        mItems.remove(position);
-        notifyItemRemoved(position);
+//    @Override
+//    public void onItemDismiss(int position) {
+//        mItems.remove(position);
+//        notifyItemRemoved(position);
+//    }
+
+    public List<String> getItems(){
+        return mItems;
     }
 
     @Override

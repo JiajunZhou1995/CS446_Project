@@ -2,6 +2,7 @@ package com.mtr.codetrip.codetrip.helper;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+
 /**
  * Created by j66zhu on 2018-02-24.
  */
@@ -47,7 +48,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback{
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
-        mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+        //mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
     }
 
     @Override

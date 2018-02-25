@@ -20,12 +20,12 @@ public interface ItemTouchHelperAdapter {
     boolean onItemMove(int fromPosition, int toPosition);
 
 
-    /**
-     * Called when an item has been dismissed by a swipe.
-     *
-     * @param position The position of the item dismissed.
-     * @see RecyclerView#getAdapterPositionFor(RecyclerView.ViewHolder)
-     * @see RecyclerView.ViewHolder#getAdapterPosition()
-     */
-    void onItemDismiss(int position);
+//    /**
+//     * Called when an item has been dismissed by a swipe.
+//     *
+//     * @param position The position of the item dismissed.
+//     * @see RecyclerView#getAdapterPositionFor(RecyclerView.ViewHolder)
+//     * @see RecyclerView.ViewHolder#getAdapterPosition()
+//     */
+//    void onItemDismiss(int position);
 }

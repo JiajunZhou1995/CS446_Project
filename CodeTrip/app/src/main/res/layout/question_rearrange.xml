@@ -9,6 +9,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rearrange_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:layout_marginVertical="2dp">
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>
