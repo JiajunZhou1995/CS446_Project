@@ -37,14 +37,18 @@ public class Question {
         knowledge = c.getString(c.getColumnIndex("knowledge"));
         instruction = c.getString(c.getColumnIndex("instruction"));
         hint = c.getString(c.getColumnIndex("hint"));
-
     }
 
-    protected List<String> getArrayFromDB(Cursor c, String columnName) throws JSONException{
+    protected List<String> getArrayFromDB(Cursor c, String columnName){
         List<String> strings = new ArrayList<String>();
-        JSONArray jsArr = new JSONArray(c.getString(c.getColumnIndex(columnName)));
-        for(int i = 0; i < jsArr.length(); i++){
-            strings.add(jsArr.getString(i));
+        try{
+            JSONArray jsArr = new JSONArray(c.getString(c.getColumnIndex(columnName)));
+            for(int i = 0; i < jsArr.length(); i++){
+                strings.add(jsArr.getString(i));
+            }
+        }
+        catch (JSONException e){
+            e.printStackTrace();
         }
         return strings;
     }

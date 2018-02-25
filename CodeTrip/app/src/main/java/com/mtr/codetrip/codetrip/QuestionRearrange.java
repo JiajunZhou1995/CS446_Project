@@ -25,6 +25,11 @@ public class QuestionRearrange extends Question implements OnStartDragListener{
         super(view);
 
     }
+
+    public void populateFromDB(Cursor cursor){
+        super.populateFromDB(cursor);
+
+    }
     @Override
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);

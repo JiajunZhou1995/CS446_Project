@@ -24,13 +24,8 @@ public class QuestionDragAndDrop extends Question {
     public void populateFromDB(Cursor c){
         super.populateFromDB(c);
 
-        try{
-            codeArea =  getArrayFromDB(c, "code");
-            codeBlocks = getArrayFromDB(c, "codeblock");
-        }
-        catch (JSONException e){
-            e.printStackTrace();
-        }
+        codeArea =  getArrayFromDB(c, "code");
+        codeBlocks = getArrayFromDB(c, "codeblock");
     }
     @Override
     protected void inflateContent(ViewGroup rootView){
