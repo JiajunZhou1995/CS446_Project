@@ -10,9 +10,12 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.mtr.codetrip.codetrip.helper.OnStartDragListener;
 import com.mtr.codetrip.codetrip.helper.SimpleItemTouchHelperCallback;
+
+import java.util.List;
 
 /**
  * Created by j66zhu on 2018-02-24.
@@ -20,51 +23,45 @@ import com.mtr.codetrip.codetrip.helper.SimpleItemTouchHelperCallback;
 
 public class QuestionRearrange extends Question implements OnStartDragListener{
     private ItemTouchHelper mItemTouchHelper;
+    private List<String> codeIns;
 
     QuestionRearrange(ViewGroup view){
         super(view);
 
     }
 
+    @Override
     public void populateFromDB(Cursor cursor){
         super.populateFromDB(cursor);
 
+        codeIns = getArrayFromDB(cursor, "code");
+
     }
+
+    @Override
+    protected void inflateContent(ViewGroup rootView){
+        super.inflateContent(rootView);
+
+        LinearLayout questionContent = rootView.findViewById(R.id.question_content);
+        LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
+        View rearrange = layoutInflater.inflate(R.layout.question_rearrange,null);
+        questionContent.addView(rearrange);
+
+        RecyclerListAdapter adapter = new RecyclerListAdapter(rootView.getContext(), this, codeIns);
+
+        RecyclerView recyclerView = rootView.findViewById(R.id.rearrange_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(recyclerView);
+    }
+
     @Override
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
     }
-
-
-//    public class RearrangeFragment {
-//        private ItemTouchHelper mItemTouchHelper;
-//
-//        public RearrangeFragment() {
-//        }
-//
-//        @Nullable
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//            return new RecyclerView(container.getContext());
-//        }
-//
-//        @Override
-//        public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-//            super.onViewCreated(view, savedInstanceState);
-//
-//            RecyclerListAdapter adapter = new RecyclerListAdapter(getActivity(), this);
-//
-//            RecyclerView recyclerView = (RecyclerView) view;
-//            recyclerView.setHasFixedSize(true);
-//            recyclerView.setAdapter(adapter);
-//            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//
-//            ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
-//            mItemTouchHelper = new ItemTouchHelper(callback);
-//            mItemTouchHelper.attachToRecyclerView(recyclerView);
-//        }
-//
-//
-//    }
 
 }

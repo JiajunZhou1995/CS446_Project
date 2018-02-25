@@ -49,9 +49,9 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
 
     private final OnStartDragListener mDragStartListener;
 
-    public RecyclerListAdapter(Context context, OnStartDragListener dragStartListener) {
+    public RecyclerListAdapter(Context context, OnStartDragListener dragStartListener, List<String> items) {
         mDragStartListener = dragStartListener;
-        //mItems.addAll(Arrays.asList(context.getResources().getStringArray(R.array.dummy_items)));
+        mItems.addAll(items);
     }
 
     @Override
