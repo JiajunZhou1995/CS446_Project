@@ -18,10 +18,10 @@ import com.mtr.codetrip.codetrip.helper.SimpleItemTouchHelperCallback;
  * Created by j66zhu on 2018-02-24.
  */
 
-public class RearrangeQuestion extends Question implements OnStartDragListener{
+public class QuestionRearrange extends Question implements OnStartDragListener{
     private ItemTouchHelper mItemTouchHelper;
 
-    RearrangeQuestion(View view){
+    QuestionRearrange(ViewGroup view){
         super(view);
 
     }

@@ -90,7 +90,7 @@ public class QuestionPageFragment extends Fragment {
                     }
                 });
 
-                RearrangeQuestion rearrangeQ = new RearrangeQuestion(rootView);
+                QuestionRearrange rearrangeQ = new QuestionRearrange(rootView);
                 rearrangeQ.populateFromDB(cursor);
 
                 break;
