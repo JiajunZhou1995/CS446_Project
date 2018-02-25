@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Question {
 
-    private View view;
+    private View rootView;
     private String knowledge;
     private String instruction;
     private String hint;
@@ -26,14 +26,23 @@ public class Question {
 
     private enum RUN_BUTTON_STATUS{FILL_IN_THE_BLANK, RUN, CONTINUE, BACK_TO_CURRENT};
 
-    public void populateFromDB(Cursor c) throws JSONException{
-        knowledge = c.getString(c.getColumnIndex("knowledge"));
-        instruction = c.getString(c.getColumnIndex("instruction"));
-        hint = c.getString(c.getColumnIndex("hint"));
+    Question(View view){
+        rootView = view;
+    }
 
-        codeInstructions =  getArrayFromDB(c, "code");
-        codeBlocks = getArrayFromDB(c, "codeblocks");
-        choices = getArrayFromDB(c, "choice");
+    public void populateFromDB(Cursor c){
+        try{
+            knowledge = c.getString(c.getColumnIndex("knowledge"));
+            instruction = c.getString(c.getColumnIndex("instruction"));
+            hint = c.getString(c.getColumnIndex("hint"));
+
+            codeInstructions =  getArrayFromDB(c, "code");
+            codeBlocks = getArrayFromDB(c, "codeblocks");
+            choices = getArrayFromDB(c, "choice");
+        }
+        catch (JSONException e){
+            e.printStackTrace();
+        }
     }
 
     private List<String> getArrayFromDB(Cursor c, String columnName) throws JSONException{
