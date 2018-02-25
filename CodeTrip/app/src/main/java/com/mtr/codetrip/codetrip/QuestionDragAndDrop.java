@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -67,6 +68,13 @@ public class QuestionDragAndDrop extends Question {
 
             codeAreaLinearLayout.addView(singleLine);
             lineIndex++;
+        }
+
+        LinearLayout codeBlockArea = (LinearLayout) questionContent.findViewById(R.id.question_code_block_area);
+        for (String codeBlockText : codeBlocks){
+            Button codeBlockButton = (Button) layoutInflater.inflate(R.layout.question_code_block_button,null);
+            codeBlockButton.setText(codeBlockText);
+            codeBlockArea.addView(codeBlockButton);
         }
     }
 
