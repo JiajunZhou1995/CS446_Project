@@ -3,6 +3,7 @@ package com.mtr.codetrip.codetrip;
 import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +49,13 @@ public class Question {
         return strings;
     }
 
+    protected void inflateContent(ViewGroup rootView){
+        TextView knowledgeTV = (TextView)rootView.findViewById(R.id.question_knowledge);
+        knowledgeTV.setText(knowledge);
+        TextView instructionTV = (TextView)rootView.findViewById(R.id.question_instruction);
+        instructionTV.setText(instruction);
+
+    }
 
 
 }

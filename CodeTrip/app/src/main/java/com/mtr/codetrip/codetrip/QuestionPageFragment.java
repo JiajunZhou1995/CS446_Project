@@ -83,15 +83,10 @@ public class QuestionPageFragment extends Fragment {
 
 
                 Button doitButton = (Button) rootView.findViewById(R.id.doit);
-                doitButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rootView.setBackgroundColor(getResources().getColor(R.color.colorAquaMarine));
-                    }
-                });
 
-                QuestionRearrange rearrangeQ = new QuestionRearrange(rootView);
+                QuestionDragAndDrop rearrangeQ = new QuestionDragAndDrop(rootView);
                 rearrangeQ.populateFromDB(cursor);
+                rearrangeQ.inflateContent(rootView);
 
                 break;
             default:

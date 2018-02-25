@@ -15,13 +15,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/question_knowledge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Drag \'n Drop"
                 android:textSize="20sp"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/question_instruction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/question_instruction"/>

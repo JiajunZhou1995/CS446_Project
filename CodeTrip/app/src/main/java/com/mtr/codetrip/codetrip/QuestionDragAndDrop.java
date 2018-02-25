@@ -26,10 +26,14 @@ public class QuestionDragAndDrop extends Question {
 
         try{
             codeArea =  getArrayFromDB(c, "code");
-            codeBlocks = getArrayFromDB(c, "codeblocks");
+            codeBlocks = getArrayFromDB(c, "codeblock");
         }
         catch (JSONException e){
             e.printStackTrace();
         }
+    }
+    @Override
+    protected void inflateContent(ViewGroup rootView){
+        super.inflateContent(rootView);
     }
 }
