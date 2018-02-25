@@ -9,6 +9,9 @@
     <!--Course Page-->
     <dimen name="star_text_indicator">25sp</dimen>
     <!--Question Page-->
-    <dimen name="question_content_width">300dp</dimen>
+    <dimen name="question_content_width">360dp</dimen>
     <dimen name="question_button_corner_radius">50dip</dimen>
+
+    <dimen name="code_area_corner_radius">5dip</dimen>
+    <dimen name="code_area_button_corner_radius">5dip</dimen>
 </resources>

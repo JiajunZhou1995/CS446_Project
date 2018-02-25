@@ -9,17 +9,22 @@
         android:id="@+id/question_code_area"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/colorAccent">
-
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/code_area_round">
     </LinearLayout>
+
+
+
     <TextView
         android:id="@+id/console"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/colorBlack"
-        android:textColor="@color/colorWhite" />
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>
 

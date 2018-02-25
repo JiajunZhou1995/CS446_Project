@@ -27,6 +27,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.helper.MultipleClickUtility;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -164,6 +166,9 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+        if (MultipleClickUtility.isFastDoubleClick()) {
+            return;
+        }
         String courseIdString = (String)view.getTag();
         Course currentCourse = courseList.get(Integer.parseInt(courseIdString));
 

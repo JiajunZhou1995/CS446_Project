@@ -8,6 +8,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorDarkGrey">#FF7B7B7B</color>
+    <color name="colorLightGrey">#b6b5b5</color>
     <color name="colorOrange">#FFA500</color>
     <color name="colorAquaMarine">#458b74</color>
     <color name="colorFireBrick">#ff3030</color>
