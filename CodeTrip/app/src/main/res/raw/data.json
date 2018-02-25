@@ -19,7 +19,7 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "[Hello World]"
+          "[\"Hello World\"]"
         ],
         "Choice": [],
         "Hint": "Drag and drop Hello World into [?]"
@@ -44,7 +44,7 @@
       },
       {
         "Answer": [
-          "Hi"
+          "1"
         ],
         "Type": "MultipleChoice",
         "Knowledge": null,
@@ -72,8 +72,8 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "[Hello World]",
-          "[Hello There]"
+          "[\"Hello World\"]",
+          "[\"Hello There\"]"
         ],
         "Choice": [],
         "Hint": " Drag and drop Hello There into [?]"
@@ -97,7 +97,7 @@
       },
       {
         "Answer": [
-          "Print words into console"
+          "2"
         ],
         "Type": "MultipleChoice",
         "Knowledge": null,
@@ -134,7 +134,7 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "[Apple]",
+          "[\"Apple\"]",
           "[fruit]"
         ],
         "Choice": [],
@@ -165,7 +165,7 @@
           "apple"
         ],
         "Type": "Drag&Drop",
-        "Knowledge": "You can only print the Variable you have defined.  ",
+        "Knowledge": "You can only print the Variable you have defined.",
         "Instruction": null,
         "Code": [
           "furit = \"apple\"",
@@ -177,11 +177,11 @@
           "[furit]"
         ],
         "Choice": [],
-        "Hint": "furit has been defined"
+        "Hint": "animal is not yet defined"
       },
       {
         "Answer": [
-          "banana"
+          "2"
         ],
         "Type": "MultipleChoice",
         "Knowledge": "Once you defined a Varibale, you can update it by assigne it with a new value",
@@ -206,7 +206,7 @@
     "Unit": "1",
     "Type": "Lecture",
     "Title": "Arithmetic",
-    "Total": "8",
+    "Total": "7",
     "Position": "1R1",
     "Question": [
       {
@@ -215,6 +215,8 @@
         "Knowledge": "Arithmetic operators in python are +, - , * ,/, which has the same meaning as in math expressions.",
         "Instruction": "Let's put different operator into block and see what happened?",
         "Code": [
+          "x = 1",
+          "y = 2",
           "z = x[?]y",
           "print(z)"
         ],
@@ -230,7 +232,7 @@
       },
       {
         "Answer": [
-          "False"
+          "2"
         ],
         "Type": "MultipleChoice",
         "Knowledge": null,
@@ -246,7 +248,7 @@
       },
       {
         "Answer": [
-          "No"
+          "2"
         ],
         "Type": "MutipleChoice",
         "Knowledge": "When we doing math in python, do we need to apply the same rule as we used in math?",
@@ -294,29 +296,13 @@
         "Code": [
           "x = [?] + [?]",
           "y = [?] / [?]",
-          "z = [?] * [?]",
+          "z = x * y",
           "print(z)"
         ],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "You cna also put x and y in it, try it out!"
-      },
-      {
-        "Answer": [
-          "17"
-        ],
-        "Type": "ShortAnswer",
-        "Knowledge": null,
-        "Instruction": "This time we will try to put in operators and parentheseses to get 17, let's try it!",
-        "Code": [
-          " x = [?] 3 [?] 8 [?] [?] 4 [?] 1 [?] 2",
-          "print(x)"
-        ],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "Can you find more than 1 answer?"
+        "Hint": "You can also put x and y in it, try it out!"
       },
       {
         "Answer": [],
@@ -340,20 +326,17 @@
         "Hint": "There could be more than one order, find it out!."
       },
       {
-        "Answer": [],
+        "Answer": ["240"],
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Think about what we learned in variable class, this time we have variale in the code, rearrange it with the right order and see the result!",
         "Code": [
           "x = 1 + 4",
           "y = x * 2 * 3",
-          "z = x * 3",
           "x = 4 * x",
           "y = 2 * x",
-          "z = 3 * z",
-          "print(x)",
-          "print(y)",
-          "print(z)"
+          "print(y)"
+
         ],
         "Console": "3",
         "CodeBlock": [],
@@ -389,7 +372,7 @@
         ],
         "Type": "MultipleChoice",
         "Knowledge": "When we want do calculate the remainder for the negative number, it follows the same rule as we do for the possitive number",
-        "Instruction": "What's the result for -10%3?",
+        "Instruction": "What's the result for -10 % 3?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
@@ -409,10 +392,8 @@
         "Knowledge": null,
         "Instruction": "Look at the code below, if we want to print '2', in which order we should arrange the following code?",
         "Code": [
-          "x = 3 % 2",
-          "x = x - y",
-          "y = 6 % 2",
-          "x = y + 1",
+          "x = 1",
+          "x = x - 1",
           "x = x * 3",
           "print(x)"
         ],
@@ -482,7 +463,7 @@
         ],
         "Type": "MultipleChoice",
         "Knowledge": "Boolean in python are 'True' and 'False'",
-        "Instruction": "Is 3 equals to 3 evaluted to be true or false?",
+        "Instruction": "Is 3 equals to 3 evaluted to be True or False?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
@@ -592,14 +573,8 @@
         "Instruction": "Rearrange the following code and see the different results!",
         "Code": [
           "A = 2 > 3",
-          "B = 4 <= 2",
-          "C = 2 != 2",
           "A = 3 < 5",
-          "B = 5 > 2",
-          "C = 4 == 4",
-          "print(A)",
-          "print(B)",
-          "print(C)"
+          "print(A)"
         ],
         "Console": "3",
         "CodeBlock": [],
@@ -618,7 +593,7 @@
     "Question": [
       {
         "Answer": [
-          "False"
+          "2"
         ],
         "Type": "MultipleChoice",
         "Knowledge": "Logical expression in python are 'And', 'Or', 'Not' and they will only return 'True' or 'False'",
@@ -652,10 +627,7 @@
           ">",
           ">=",
           "==",
-          "!=",
-          "and",
-          "or",
-          "not"
+          "!="
         ],
         "Choice": [
           "True",
@@ -714,17 +686,17 @@
           "A = 3 [?] 4",
           "B = 5 [?] 2",
           "C = 2 [?] 2",
-          "A = (C [?] B) [?] A [?] B",
-          "B = (C [?] B) [?] (A [?] C) [?] (C [?] A)",
-          "print(B)"
+          "print(A)",
+          "print(B)",
+          "print(C)"
         ],
-        "Console": "1",
+        "Console": "3",
         "CodeBlock": [],
         "Choice": [],
         "Hint": "Try to solve it step by step!"
       },
       {
-        "Answer": [],
+        "Answer": ["True"],
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange the following code and see the different results!",
@@ -735,8 +707,6 @@
           "A = (C and B) or A",
           "B = (C or B) and (A or C)",
           "C = not A",
-          "print(A)",
-          "print(B)",
           "print(C)"
         ],
         "Console": "3",
@@ -745,7 +715,7 @@
         "Hint": "See how many possible answers are there!"
       },
       {
-        "Answer": [],
+        "Answer": ["False"],
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange the following code to see if you can make A, B, C all evaluted to be true !",
@@ -756,10 +726,6 @@
           "A = (C and B) or A",
           "B = (C or B) and (A or C)",
           "C = not A",
-          "A = B and (not C)",
-          "B = A and B or (C and D) and (not A)",
-          "print(A)",
-          "print(B)",
           "print(C)"
         ],
         "Console": "3",
@@ -774,12 +740,11 @@
     "Unit": "1",
     "Type": "Lecture",
     "Title": "Array",
-    "Total": "4",
+    "Total": "3",
     "Position": "5R1",
     "Question": [
       {
-
-        "Answer":["0"],
+        "Answer":["1"],
         "Type": "MultipleChoice",
         "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
         "Instruction": "What will be the index of '5' in array [5,1,3,4]?",
@@ -824,42 +789,12 @@
         "Instruction": "Put different numbers in the array and see what are the printed result.",
         "Code": [
           "x = [[?],[?],[?],[?],[?],[?]]",
-          "print(x[0])",
-          "print(x[1])",
-          "print(x[2])",
-          "print(x[3])",
-          "print(x[4])",
-          "print(x[5])"
+          "print(x)"
         ],
-        "Console": "6",
+        "Console": "1",
         "CodeBlock": [],
         "Choice": [],
         "Hint": "Play with the array and see the different outcomes."
-      },
-      {
-        "Answer": [],
-        "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Rearrange the following code and see how will the array change.",
-        "Code": [
-          "x = [1,3,6,4,5,2]",
-          "x[0] = 2",
-          "x[1] = 8",
-          "x[2] = 10",
-          "x[3] = 12",
-          "x[4] = 15",
-          "x[5] = 7",
-          "print(x[0])",
-          "print(x[1])",
-          "print(x[2])",
-          "print(x[3])",
-          "print(x[4])",
-          "print(x[5])"
-        ],
-        "Console": "6",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "You can put print statement before assignment statement."
       }
     ]
   },
@@ -868,30 +803,9 @@
     "Type": "Quiz",
     "Unit": "1",
     "Title": "Quiz",
-    "Total": "5",
+    "Total": "4",
     "Position": "6R0",
     "Question": [
-      {
-        "Answer": [
-          "[1,2,3,4,6,7]"
-        ],
-        "Type": "Drag&Drop",
-        "Knowledge": null,
-        "Instruction": "Drag the following code to make print numbers in sorted order.",
-        "Code": [
-          "x = [4,1,7,3,2,6]",
-          "print(x[0])",
-          "print(x[1])",
-          "print(x[2])",
-          "print(x[3])",
-          "print(x[4])",
-          "print(x[5])"
-        ],
-        "Console": "6",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "Array index start at 0"
-      },
       {
         "Answer": [
           "None"
@@ -912,7 +826,7 @@
       },
       {
         "Answer": [
-          "0"
+          "1"
         ],
         "Type": "MultipleChoice",
         "Knowledge": null,
@@ -929,7 +843,7 @@
         "Hint": "% follows the same rule for the positive and the negative number."
       },
       {
-        "Answer": [],
+        "Answer": ["False"],
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange the following code to see if you can make A, B, C all evaluted to be true !",
@@ -937,17 +851,8 @@
           "A = 3 != 3",
           "B = 5 == 2",
           "C = 2 >= 1",
-          "A = 7 <= 3",
-          "B = 5 > 2",
-          "C = 2 < 1",
-          "A = (C and B) or A and B",
-          "B = (C or B) and (A or C) and (A and B)",
-          "C = not A",
           "C = not C",
-          "A = B and (not C)",
-          "B = A and B or (C and D) and (not A)",
-          "print(A)",
-          "print(B)",
+          "C = B and (not C)",
           "print(C)"
         ],
         "Console": "3",
