@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,7 +19,7 @@ import android.widget.RelativeLayout;
  * Created by Catrina on 2/3/2018.
  */
 
-public class HomeActivity extends MainActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +64,6 @@ public class HomeActivity extends MainActivity implements NavigationView.OnNavig
         Intent intent = new Intent();
 
         if (id == R.id.sidebar_home) {
-//            intent.setClass(HomeActivity.this,HomeActivity.class);
-//            startActivity(intent);
-//            finish();
             // Handle the camera action
         } else if (id == R.id.sidebar_course) {
             intent.setClass(this,CourseActivity.class);
@@ -83,7 +81,8 @@ public class HomeActivity extends MainActivity implements NavigationView.OnNavig
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
-        finish();
+        if (id != R.id.sidebar_home && id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
+
         return true;
     }
 }

@@ -324,6 +324,7 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent();
 
         if (id == R.id.sidebar_home) {
+
             intent.setClass(this,HomeActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_course) {
@@ -342,6 +343,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
+//        if (id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;
     }
 

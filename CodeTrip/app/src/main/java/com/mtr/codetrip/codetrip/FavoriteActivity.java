@@ -10,6 +10,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -20,7 +21,7 @@ import android.widget.Button;
  * Created by Catrina on 2/3/2018.
  */
 
-public class FavoriteActivity extends MainActivity {
+public class FavoriteActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     @Override
@@ -77,6 +78,7 @@ public class FavoriteActivity extends MainActivity {
         } else if (id == R.id.sidebar_course) {
             intent.setClass(this,CourseActivity.class);
             startActivity(intent);
+
         } else if (id == R.id.sidebar_favorite) {
 
         } else if (id == R.id.sidebar_achievement) {
@@ -89,9 +91,10 @@ public class FavoriteActivity extends MainActivity {
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
-        finish();
+        if (id != R.id.sidebar_favorite && id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;
     }
+
 
 
 }

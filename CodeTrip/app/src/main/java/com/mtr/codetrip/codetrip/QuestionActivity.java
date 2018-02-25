@@ -166,13 +166,13 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
             // Inflate the custom layout/view
-            View customView = inflater.inflate(R.layout.hint,null);
+            View customView = inflater.inflate(R.layout.question_hint_popup,null);
 
             // Inflate the custom layout/view
-            View customdimView = inflater.inflate(R.layout.dim,null);
+            View customdimView = inflater.inflate(R.layout.question_hint_overlay,null);
 
 
-            // Initialize a new instance of dim window
+            // Initialize a new instance of question_hint_overlay window
             mPopupdim = new PopupWindow(
                     customdimView,
                     RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -199,7 +199,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
                 public void onClick(View view) {
                     // Dismiss the popup window
                     mPopupWindow.dismiss();
-                    // Dismiss the popup dim
+                    // Dismiss the popup question_hint_overlay
                     mPopupdim.dismiss();
                 }
             });

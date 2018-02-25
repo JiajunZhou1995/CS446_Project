@@ -13,6 +13,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -36,15 +37,13 @@ import static java.lang.Math.floor;
  * Created by Catrina on 2/3/2018.
  */
 
-public class CourseActivity extends MainActivity implements View.OnClickListener {
+public class CourseActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     ArrayList<Course>courseList;
     public static int marginTop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
 
 
@@ -90,7 +89,6 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
-    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -116,7 +114,8 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
-        finish();
+        if (id != R.id.sidebar_course && id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
+
         return true;
     }
 
@@ -125,7 +124,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
     private void generateCourses(){
         courseList = new ArrayList<>();
 
-        Cursor c = myDB.query("course", null, null, null, null, null, null);
+        Cursor c = MainActivity.myDB.query("course", null, null, null, null, null, null);
         c.moveToFirst();
 
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.course_content_page);
@@ -138,7 +137,7 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
             newCourse.boundBtn.setOnClickListener(this);
             courseList.add(newCourse);
 
-            newCourse.printCourse();
+//            newCourse.printCourse();
 
             relativeLayout.addView(newCourse.boundBtn,newCourse.buttonLayoutParams);
             relativeLayout.addView(newCourse.courseTitle,newCourse.titleLayoutParams);
@@ -147,9 +146,6 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
             c.moveToNext();
         }
-
-
-
     }
 
 
@@ -188,4 +184,6 @@ public class CourseActivity extends MainActivity implements View.OnClickListener
 
         }
     }
+
+
 }

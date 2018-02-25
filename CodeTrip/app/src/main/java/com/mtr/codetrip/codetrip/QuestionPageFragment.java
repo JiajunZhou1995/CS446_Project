@@ -1,6 +1,10 @@
 package com.mtr.codetrip.codetrip;
 
+import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQuery;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.util.List;
+
+import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 /**
  * Created by Catrina on 2/19/2018.
@@ -54,9 +60,8 @@ public class QuestionPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         String sql = "SELECT * FROM question WHERE courseid =" + Integer.toString(courseID) +" AND questionid =" + Integer.toString(questionID);
-        Cursor cursor =  MainActivity.myDB.rawQuery(sql, null);
+        Cursor cursor = MainActivity.myDB.rawQuery(sql, null);
 
         String questionType = "";
         cursor.moveToFirst();
