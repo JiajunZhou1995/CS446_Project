@@ -10,14 +10,15 @@
 
     <ImageButton
         android:id="@+id/ib_close"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_margin="5dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@mipmap/question_return" />
     <TextView
         android:id="@+id/tv"
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hint: This is a hint."
