@@ -6,20 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import org.json.JSONException;
-
 import java.util.List;
 
 /**
  * Created by Catrina on 24/02/2018.
  */
 
-public class QuestionDragAndDrop extends Question {
+public class QuestionMultipleChoice extends Question {
+
     private List<String> codeArea;
     private List<String> codeBlocks;
 
 
-    public QuestionDragAndDrop(ViewGroup viewGroup){
+    public QuestionMultipleChoice(ViewGroup viewGroup){
         super(viewGroup);
     }
 
@@ -33,10 +32,9 @@ public class QuestionDragAndDrop extends Question {
     @Override
     protected void inflateContent(ViewGroup rootView){
         super.inflateContent(rootView);
-        LinearLayout questionContent = rootView.findViewById(R.id.question_content);
-        LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
-        View dragAndDrop = layoutInflater.inflate(R.layout.question_drag_and_drop,null);
-        questionContent.addView(dragAndDrop);
+//        LinearLayout questionContent = rootView.findViewById(R.id.question_content);
+//        LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
+//        View dragAndDrop = layoutInflater.inflate(R.layout.question_multiple_choice,null);
+//        questionContent.addView(dragAndDrop);
     }
-
 }

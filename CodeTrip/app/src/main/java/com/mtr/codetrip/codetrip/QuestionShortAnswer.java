@@ -6,20 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import org.json.JSONException;
-
 import java.util.List;
 
 /**
  * Created by Catrina on 24/02/2018.
  */
 
-public class QuestionDragAndDrop extends Question {
+public class QuestionShortAnswer extends Question {
     private List<String> codeArea;
     private List<String> codeBlocks;
 
 
-    public QuestionDragAndDrop(ViewGroup viewGroup){
+    public QuestionShortAnswer(ViewGroup viewGroup){
         super(viewGroup);
     }
 
@@ -35,8 +33,7 @@ public class QuestionDragAndDrop extends Question {
         super.inflateContent(rootView);
         LinearLayout questionContent = rootView.findViewById(R.id.question_content);
         LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
-        View dragAndDrop = layoutInflater.inflate(R.layout.question_drag_and_drop,null);
+        View dragAndDrop = layoutInflater.inflate(R.layout.question_short_answer,null);
         questionContent.addView(dragAndDrop);
     }
-
 }

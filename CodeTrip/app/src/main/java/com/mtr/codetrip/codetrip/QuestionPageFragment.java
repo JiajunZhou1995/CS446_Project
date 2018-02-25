@@ -65,29 +65,33 @@ public class QuestionPageFragment extends Fragment {
         }
 
 
-        final ViewGroup rootView;
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
         // Inflate the layout containing a title and body text.
 
         switch (questionType){
             case "Rearrange":
-                rootView = (ViewGroup) inflater.inflate(R.layout.question_rearrange,container,false);
+//                rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
+                QuestionRearrange questionRearrange = new QuestionRearrange(rootView);
+                questionRearrange.populateFromDB(cursor);
+                questionRearrange.inflateContent(rootView);
                 break;
             case "MultipleChoice":
-                rootView = (ViewGroup) inflater.inflate(R.layout.question_multiple_choice,container,false);
+//                rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
+                QuestionMultipleChoice questionMultipleChoice = new QuestionMultipleChoice(rootView);
+                questionMultipleChoice.populateFromDB(cursor);
+                questionMultipleChoice.inflateContent(rootView);
                 break;
             case "ShortAnswer":
-                rootView = (ViewGroup) inflater.inflate(R.layout.question_short_answer,container,false);
+//                rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
+                QuestionShortAnswer questionShortAnswer = new QuestionShortAnswer(rootView);
+                questionShortAnswer.populateFromDB(cursor);
+                questionShortAnswer.inflateContent(rootView);
                 break;
             case "Drag&Drop":
-                rootView = (ViewGroup) inflater.inflate(R.layout.question_drag_and_drop,container,false);
-
-
-                Button doitButton = (Button) rootView.findViewById(R.id.doit);
-
-                QuestionDragAndDrop rearrangeQ = new QuestionDragAndDrop(rootView);
-                rearrangeQ.populateFromDB(cursor);
-                rearrangeQ.inflateContent(rootView);
-
+//                rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
+                QuestionDragAndDrop questionDragAndDrop = new QuestionDragAndDrop(rootView);
+                questionDragAndDrop.populateFromDB(cursor);
+                questionDragAndDrop.inflateContent(rootView);
                 break;
             default:
                 rootView = null;
