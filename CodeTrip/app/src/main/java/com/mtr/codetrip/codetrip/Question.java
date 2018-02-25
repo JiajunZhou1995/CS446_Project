@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 
 public class Question {
-
+    protected Context context;
     protected ViewGroup rootView;
     protected String knowledge;
     protected String instruction;
@@ -30,6 +31,7 @@ public class Question {
 
     public Question(ViewGroup view){
         rootView = view;
+        context = rootView.getContext();
     }
 
     protected void populateFromDB(Cursor c){

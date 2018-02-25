@@ -11,12 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.mtr.codetrip.codetrip.helper.OnStartDragListener;
 import com.mtr.codetrip.codetrip.helper.RecyclerListAdapter;
 import com.mtr.codetrip.codetrip.helper.SimpleItemTouchHelperCallback;
