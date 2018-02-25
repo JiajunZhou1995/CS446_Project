@@ -89,6 +89,10 @@ public class QuestionPageFragment extends Fragment {
                         rootView.setBackgroundColor(getResources().getColor(R.color.colorAquaMarine));
                     }
                 });
+
+                RearrangeQuestion rearrangeQ = new RearrangeQuestion(rootView);
+                rearrangeQ.populateFromDB(cursor);
+
                 break;
             default:
                 rootView = null;
