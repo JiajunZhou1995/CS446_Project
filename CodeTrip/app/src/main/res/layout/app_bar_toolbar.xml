@@ -16,16 +16,6 @@
         app:titleMarginStart="110dp"
         app:popupTheme="@style/AppTheme.PopupOverlay">
 
-        <!--<LinearLayout-->
-            <!--android:id="@+id/toobar_right_corner"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:gravity="end"-->
-            <!--android:layout_marginRight="1dp"-->
-            <!--android:background="@color/colorOrange">-->
-
-        <!--</LinearLayout>-->
     </android.support.v7.widget.Toolbar>
 
 
