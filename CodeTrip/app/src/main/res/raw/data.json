@@ -4,7 +4,7 @@
     "Unit": "1",
     "Type": "Lecture",
     "Title": "Print",
-    "Total": "6",
+    "Total": "7",
     "Position": "0L0",
     "Question": [
       {
@@ -89,11 +89,25 @@
         ],
         "Console": "2",
         "CodeBlock": [
-          "I’m a dog",
-          "I’m a cat"
+          "\"I’m a dog person\"",
+          "\"I’m a cat person\""
         ],
         "Choice": [],
         "Hint": "Drag and drop any block into [?]"
+      },
+      {
+        "Answer": [],
+        "Type": "Rearrange",
+        "Knowledge": null,
+        "Instruction": "Rearrange following code to make it print \"Code\" before \"Trip\".",
+        "Code": [
+          "print(\"Trip\")",
+          "print(\"Code\")"
+        ],
+        "Console": "2",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Rearrange Code before Trip."
       },
       {
         "Answer": [
@@ -174,7 +188,7 @@
         "Console": "1",
         "CodeBlock": [
           "animal",
-          "furit"
+          "\"furit\""
         ],
         "Choice": [],
         "Hint": "animal is not yet defined"
@@ -368,11 +382,11 @@
       },
       {
         "Answer": [
-          "1"
+          "2"
         ],
         "Type": "MultipleChoice",
         "Knowledge": "When we want do calculate the remainder for the negative number, it follows the same rule as we do for the possitive number",
-        "Instruction": "What's the result for -10 % 3?",
+        "Instruction": "What's the result for 10 % 3?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
