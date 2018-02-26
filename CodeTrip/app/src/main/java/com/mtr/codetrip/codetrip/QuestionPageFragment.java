@@ -35,7 +35,7 @@ public class QuestionPageFragment extends Fragment {
     private int questionID;
     private int courseID;
 
-    public List<Question> questionList;
+    private Question currentQ;
 
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -55,6 +55,7 @@ public class QuestionPageFragment extends Fragment {
         super.onCreate(savedInstanceState);
         questionID = getArguments().getInt(ARG_PAGE);
         courseID = getArguments().getInt(COURSE_ID);
+        currentQ = null;
     }
 
     @Override
@@ -69,38 +70,31 @@ public class QuestionPageFragment extends Fragment {
             questionType = cursor.getString(cursor.getColumnIndex("type"));
         }
 
-
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
         // Inflate the layout containing a title and body text.
-
+        Question question = null;
         switch (questionType){
             case "Rearrange":
-//                rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
-                QuestionRearrange questionRearrange = new QuestionRearrange(rootView);
-                questionRearrange.populateFromDB(cursor);
-                questionRearrange.inflateContent(rootView);
+                question = new QuestionRearrange(rootView);
                 break;
             case "MultipleChoice":
-//                rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
-                QuestionMultipleChoice questionMultipleChoice = new QuestionMultipleChoice(rootView);
-                questionMultipleChoice.populateFromDB(cursor);
-                questionMultipleChoice.inflateContent(rootView);
+                question = new QuestionMultipleChoice(rootView);
                 break;
             case "ShortAnswer":
-//                rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
-                QuestionShortAnswer questionShortAnswer = new QuestionShortAnswer(rootView);
-                questionShortAnswer.populateFromDB(cursor);
-                questionShortAnswer.inflateContent(rootView);
+                question = new QuestionShortAnswer(rootView);
                 break;
             case "Drag&Drop":
-//                rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
-                QuestionDragAndDrop questionDragAndDrop = new QuestionDragAndDrop(rootView);
-                questionDragAndDrop.populateFromDB(cursor);
-                questionDragAndDrop.inflateContent(rootView);
+                question = new QuestionDragAndDrop(rootView);
                 break;
             default:
                 rootView = null;
                 break;
+        }
+
+        if (question != null){
+            question.populateFromDB(cursor);
+            question.inflateContent(rootView);
+            currentQ = question;
         }
         return rootView;
     }
@@ -110,5 +104,9 @@ public class QuestionPageFragment extends Fragment {
      */
     public int getPageNumber() {
         return questionID;
+    }
+
+    public Question getCurrentQuestion(){
+        return currentQ;
     }
 }

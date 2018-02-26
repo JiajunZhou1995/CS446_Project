@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -23,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /**
  * Created by Catrina on 2/4/2018.
@@ -43,7 +45,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     /**
      * The pager adapter, which provides the pages to the view pager widget.
      */
-    private PagerAdapter mPagerAdapter;
+    private ScreenSlidePagerAdapter mPagerAdapter;
 
     private Context mContext;
     private Activity mActivity;
@@ -168,13 +170,21 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             // Inflate the custom layout/view
             View customView = inflater.inflate(R.layout.question_hint_popup,null);
 
+            int index = mPager.getCurrentItem();
+
+            String hintSql = "SELECT hint FROM question WHERE courseid =" + Integer.toString(courseID) + " AND questionid =" + Integer.toString(index);
+            Cursor c = MainActivity.myDB.rawQuery(hintSql,null);
+            c.moveToFirst();
+            TextView hintTV = customView.findViewById(R.id.tv);
+            hintTV.setText(c.getString(0));
+
             // Inflate the custom layout/view
-            View customdimView = inflater.inflate(R.layout.question_hint_overlay,null);
+            View customDimView = inflater.inflate(R.layout.question_hint_overlay,null);
 
 
             // Initialize a new instance of question_hint_overlay window
             mPopupdim = new PopupWindow(
-                    customdimView,
+                    customDimView,
                     RelativeLayout.LayoutParams.MATCH_PARENT,
                     RelativeLayout.LayoutParams.MATCH_PARENT
             );

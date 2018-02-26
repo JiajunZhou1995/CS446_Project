@@ -9,7 +9,20 @@
         android:id="@+id/question_code_area"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@color/colorAccent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:background="@drawable/code_area_round">
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/question_choice_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
     </LinearLayout>
 </LinearLayout>

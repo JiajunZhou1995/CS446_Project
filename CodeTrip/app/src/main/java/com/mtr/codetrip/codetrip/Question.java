@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -23,7 +24,6 @@ public class Question {
     protected String knowledge;
     protected String instruction;
     protected String hint;
-    protected String answer;
 
 
     protected enum RUN_BUTTON_STATUS{FILL_IN_THE_BLANK, RUN, CONTINUE, BACK_TO_CURRENT};
@@ -56,8 +56,8 @@ public class Question {
     }
 
     protected void inflateContent(ViewGroup rootView){
-        TextView knowledgeTV = (TextView)rootView.findViewById(R.id.question_knowledge);
-        TextView instructionTV = (TextView)rootView.findViewById(R.id.question_instruction);
+        TextView knowledgeTV = rootView.findViewById(R.id.question_knowledge);
+        TextView instructionTV = rootView.findViewById(R.id.question_instruction);
 
         if (!knowledge.equals("null")){
             knowledgeTV.setText(knowledge);
@@ -72,6 +72,10 @@ public class Question {
         else {
             instructionTV.setVisibility(View.GONE);
         }
+    }
+
+    public String getHint(){
+        return hint;
     }
 
 

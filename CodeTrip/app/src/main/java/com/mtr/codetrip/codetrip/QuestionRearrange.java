@@ -27,7 +27,6 @@ public class QuestionRearrange extends Question implements OnStartDragListener{
 
     QuestionRearrange(ViewGroup view){
         super(view);
-
     }
 
     @Override
@@ -58,8 +57,8 @@ public class QuestionRearrange extends Question implements OnStartDragListener{
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(recyclerView);
 
-        Button doit = rootView.findViewById(R.id.doit);
-        doit.setOnClickListener(new View.OnClickListener() {
+        Button doIt = rootView.findViewById(R.id.doit);
+        doIt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RUN_BUTTON_STATUS status = updateStatus(adapter);
