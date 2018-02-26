@@ -96,7 +96,7 @@
         "Hint": "Drag and drop any block into [?]"
       },
       {
-        "Answer": [],
+        "Answer": ["Code\nTrip"],
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange following code to make it print \"Code\" before \"Trip\".",
