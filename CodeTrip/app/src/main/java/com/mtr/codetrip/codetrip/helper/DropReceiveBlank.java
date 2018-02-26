@@ -1,7 +1,6 @@
 package com.mtr.codetrip.codetrip.helper;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +13,7 @@ import java.util.List;
  * Created by Catrina on 25/02/2018.
  */
 
-public class FillInTheBlank {
+public class DropReceiveBlank {
 
     public enum DoItButtonState{INVALID,RUN,CONTINUE,BACKTOCURRENT}
     private Context context;
@@ -22,20 +21,20 @@ public class FillInTheBlank {
     public DoItButtonState doitButtonState;
     private List<Button> blankSpaceList;
 
-    public FillInTheBlank(Context context, Button button){
+    public DropReceiveBlank(Context context, Button button){
         this.context = context;
         this.doitButton = button;
         updateDoItButtonState(DoItButtonState.INVALID);
         blankSpaceList = new ArrayList<>();
     }
 
-    public void  restore(DropTextView currentTextView){
+    public void  restore(TextViewDropBlank currentTextView){
         int index = (int) currentTextView.getTag();
         Button currButton = blankSpaceList.get(index);
         if (currButton!=null) currButton.setVisibility(View.VISIBLE);
         blankSpaceList.set(index,null);
         //set textview to default
-        currentTextView.setDropState(DropTextView.DropState.DEFAULT);
+        currentTextView.updateDropState(TextViewDropBlank.DropState.DEFAULT);
 
         //update doit button
         for (Button b : blankSpaceList){
@@ -45,6 +44,7 @@ public class FillInTheBlank {
     }
 
     public void addEntry(){
+
         blankSpaceList.add(null);
     }
 
@@ -55,7 +55,7 @@ public class FillInTheBlank {
 
         // update doit button
         if (!blankSpaceList.contains(null)){
-            Log.d("++++++CAN","RUN");
+//            Log.d("++++++CAN","RUN");
             updateDoItButtonState(DoItButtonState.RUN);
         }
     }

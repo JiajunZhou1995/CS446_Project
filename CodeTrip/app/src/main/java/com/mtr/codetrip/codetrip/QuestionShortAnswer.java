@@ -14,7 +14,6 @@ import java.util.List;
 
 public class QuestionShortAnswer extends Question {
     private List<String> codeArea;
-    private List<String> codeBlocks;
 
 
     public QuestionShortAnswer(ViewGroup viewGroup){
@@ -26,12 +25,11 @@ public class QuestionShortAnswer extends Question {
         super.populateFromDB(c);
 
         codeArea =  getArrayFromDB(c, "code");
-        codeBlocks = getArrayFromDB(c, "codeblock");
     }
     @Override
     protected void inflateContent(ViewGroup rootView){
         super.inflateContent(rootView);
-        LinearLayout questionContent = rootView.findViewById(R.id.question_content);
+        LinearLayout questionContent = rootView.findViewById(R.id.question_body);
         LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
         View dragAndDrop = layoutInflater.inflate(R.layout.question_short_answer,null);
         questionContent.addView(dragAndDrop);

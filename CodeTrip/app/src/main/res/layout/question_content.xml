@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:scrollbars="none">
         <LinearLayout
-            android:id="@+id/question_content"
+            android:id="@+id/question_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

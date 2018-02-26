@@ -41,7 +41,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener{
     protected void inflateContent(ViewGroup rootView){
         super.inflateContent(rootView);
 
-        LinearLayout questionContent = rootView.findViewById(R.id.question_content);
+        LinearLayout questionContent = rootView.findViewById(R.id.question_body);
         LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
         View rearrange = layoutInflater.inflate(R.layout.question_rearrange,null);
         questionContent.addView(rearrange);

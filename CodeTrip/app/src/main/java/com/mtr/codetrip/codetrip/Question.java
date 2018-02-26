@@ -78,5 +78,16 @@ public class Question {
         return hint;
     }
 
+//    protected void setUpView(View view,int width,int height, int marginLeft, int marginTop, int marginRight, int marginBottom){
+//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+//                (width==0)?ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT,
+//                (height==0)?ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT);
+//        layoutParams.setMargins(DensityUtil.dip2px(context,marginLeft),
+//                DensityUtil.dip2px(context,marginTop),
+//                DensityUtil.dip2px(context,marginRight),
+//                DensityUtil.dip2px(context,marginBottom));
+//        view.setLayoutParams(layoutParams);
+//    }
+
 
 }

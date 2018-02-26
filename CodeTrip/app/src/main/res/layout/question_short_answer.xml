@@ -13,4 +13,12 @@
         android:layout_height="300dp"
         android:background="@color/colorAccent">
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/console_short_answer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/colorBlack"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>

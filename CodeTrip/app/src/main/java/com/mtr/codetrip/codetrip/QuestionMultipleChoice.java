@@ -9,6 +9,10 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.helper.LayoutUtil;
+import com.mtr.codetrip.codetrip.helper.TextViewLineNumber;
+import com.mtr.codetrip.codetrip.helper.TextViewNormalCode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,16 +42,6 @@ public class QuestionMultipleChoice extends Question{
         choices = getArrayFromDB(c, "choice");
     }
 
-    private void setUpView(View view,int width,int height, int marginLeft, int marginTop, int marginRight, int marginBottom){
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                (width==0)?ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT,
-                (height==0)?ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(DensityUtil.dip2px(context,marginLeft),
-                DensityUtil.dip2px(context,marginTop),
-                DensityUtil.dip2px(context,marginRight),
-                DensityUtil.dip2px(context,marginBottom));
-        view.setLayoutParams(layoutParams);
-    }
 
     private void updateSelection(int newSelection){
         int lastSelection = currentSelection;
@@ -62,7 +56,7 @@ public class QuestionMultipleChoice extends Question{
     protected void inflateContent(ViewGroup rootView){
         super.inflateContent(rootView);
 
-        LinearLayout questionContent = rootView.findViewById(R.id.question_content);
+        LinearLayout questionContent = rootView.findViewById(R.id.question_body);
         LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
         View multiple_choice = layoutInflater.inflate(R.layout.question_multiple_choice,null);
         questionContent.addView(multiple_choice);
@@ -75,16 +69,17 @@ public class QuestionMultipleChoice extends Question{
             code_area.setVisibility(View.GONE);
         }
         for (String codeLine : codeIns){
-            singleLine = (LinearLayout) layoutInflater.inflate(R.layout.question_code_area_single_line,null);
+            singleLine = new LinearLayout(context);
+            singleLine.setOrientation(LinearLayout.HORIZONTAL);
+            LayoutUtil.setup(context, LayoutUtil.LayoutType.LINEAR,singleLine, LayoutUtil.ParamType.MATCH_PARENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
 
-            TextView lineNumberTextView = (TextView) layoutInflater.inflate(R.layout.question_code_area_line_number_textview,null);
-            setUpView(lineNumberTextView,1,1,15,0,5,0);
-            lineNumberTextView.setText(String.format("%d.",lineIndex++));
-            singleLine.addView(lineNumberTextView);
 
-            TextView normalTextView = (TextView) layoutInflater.inflate(R.layout.question_code_area_normal_textview,null);
-            setUpView(normalTextView,1,1,0,0,0,0);
-            normalTextView.setText(codeLine);
+            TextViewLineNumber textViewLineNumber = new TextViewLineNumber(context,Integer.toString(lineIndex)+".");
+            LayoutUtil.setup(context, LayoutUtil.LayoutType.LINEAR,textViewLineNumber, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,15,0,5,0);
+            singleLine.addView(textViewLineNumber);
+
+            TextViewNormalCode normalTextView = new TextViewNormalCode(context, codeLine);
+            LayoutUtil.setup(context, LayoutUtil.LayoutType.LINEAR, normalTextView, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
             singleLine.addView(normalTextView);
 
             codeAreaLinearLayout.addView(singleLine);
@@ -109,10 +104,6 @@ public class QuestionMultipleChoice extends Question{
             });
             choiceViews.add(choiceView);
             choiceArea.addView(choiceView);
-
         }
-
-
-
     }
 }
