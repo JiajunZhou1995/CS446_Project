@@ -5,32 +5,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_home"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.mtr.codetrip.codetrip.FavoriteActivity">
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/button8"
-        android:layout_marginEnd="51dp"
-        android:layout_marginTop="26dp"
-        android:text="this is favorite" />
 
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hope"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="90dp"/>
 
-    <Button
-        android:id="@+id/course11"
-        android:layout_width="wrap_content"
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@mipmap/course11"/>
+        android:iconifiedByDefault="true"
+        android:layout_marginTop="60dp"
+        android:queryHint="Unit Name"/>
+
+    <ExpandableListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_weight="1" />
+
 
 </RelativeLayout>
