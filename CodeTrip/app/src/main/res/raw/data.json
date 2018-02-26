@@ -9,7 +9,7 @@
     "Question": [
       {
         "Answer": [
-          "Hello World"
+          "Hello World\n"
         ],
         "Type": "Drag&Drop",
         "Knowledge": "Print is a function in Python.",
@@ -26,7 +26,7 @@
       },
       {
         "Answer": [
-          "Hello World"
+          "Hello World\n"
         ],
         "Type": "Drag&Drop",
         "Knowledge": "Function will have a function name follow by (), and whatever in the () will be passed as parameter.",
@@ -62,7 +62,7 @@
       },
       {
         "Answer": [
-          "Hello There"
+          "Hello There\n"
         ],
         "Type": "Drag&Drop",
         "Knowledge": "Print function will print words into the console. ",
@@ -137,7 +137,7 @@
     "Question": [
       {
         "Answer": [
-          "Apple"
+          "Apple\n"
         ],
         "Type": "Drag&Drop",
         "Knowledge": "You can print String which is a Variable.",
@@ -156,7 +156,7 @@
       },
       {
         "Answer": [
-          "Eatapple"
+          "Eatapple\n"
         ],
         "Type": "Drag&Drop",
         "Knowledge": "You can have string concatenate together.",
@@ -176,7 +176,7 @@
       },
       {
         "Answer": [
-          "apple"
+          "apple\n"
         ],
         "Type": "Drag&Drop",
         "Knowledge": "You can only print the Variable you have defined.",
@@ -283,7 +283,7 @@
       },
       {
         "Answer": [
-          "14"
+          "14\n"
         ],
         "Type": "Drag&Drop",
         "Knowledge": "Parentheseses are used in python to decide the order of calculation.",
@@ -302,7 +302,7 @@
       },
       {
         "Answer": [
-          "16"
+          "16\n"
         ],
         "Type": "ShortAnswer",
         "Knowledge": null,
