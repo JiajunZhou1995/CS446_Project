@@ -7,22 +7,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.mtr.codetrip.codetrip.HomeActivity">
+    tools:context="com.mtr.codetrip.codetrip.HomeActivity"
+    android:background="@drawable/course_background">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hey"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="150dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="100dp"
+        android:gravity="left"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="im home"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="90dp"/>
+        <Button
+            android:id="@+id/Course_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_button_background1"
+            android:padding="50dp"
+            android:text="Course"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"/>
+
+        <Button
+            android:id="@+id/Gist_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_button_background2"
+            android:padding="50dp"
+            android:text="Gist"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"/>
+
+        <Button
+            android:id="@+id/Achievement_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_button_background3"
+            android:padding="50dp"
+            android:text="Achievements"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"/>
+
+        <Button
+            android:id="@+id/Settings_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_button_background4"
+            android:padding="50dp"
+            android:text="Settings"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
