@@ -36,5 +36,5 @@
     <Button
         android:id="@+id/doit"
         style="@style/question_button.doit"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 </LinearLayout>

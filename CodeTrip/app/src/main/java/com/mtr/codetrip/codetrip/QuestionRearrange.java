@@ -30,7 +30,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener{
     }
 
     @Override
-    public void populateFromDB(Cursor cursor){
+    protected void populateFromDB(Cursor cursor){
         super.populateFromDB(cursor);
 
         codeIns = getArrayFromDB(cursor, "code");

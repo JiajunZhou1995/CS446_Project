@@ -75,7 +75,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse{
                             index++;
                         }
 
-                        console.setText("1231231232132");
+                        console.setText(codeString);
 
                         HttpPostAsyncTask request = new HttpPostAsyncTask(codeString);
                         request.delegate = thisQuestionView;
@@ -93,7 +93,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse{
     }
 
     @Override
-    public void populateFromDB(Cursor c){
+    protected void populateFromDB(Cursor c){
         super.populateFromDB(c);
 
         codeArea =  getArrayFromDB(c, "code");
@@ -168,7 +168,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse{
         View dragAndDropContent = layoutInflater.inflate(R.layout.question_drag_and_drop,null);
         questionBody.addView(dragAndDropContent);
 
-        console = rootView.findViewById(R.id.console_dragNdrop);
+        console = rootView.findViewById(R.id.console);
 
         inflateCodeArea(dragAndDropContent);
         inflateCodeBlocks(dragAndDropContent);

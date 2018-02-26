@@ -36,7 +36,7 @@ public class QuestionMultipleChoice extends Question{
     }
 
     @Override
-    public void populateFromDB(Cursor c){
+    protected void populateFromDB(Cursor c){
         super.populateFromDB(c);
         codeIns =  getArrayFromDB(c, "code");
         choices = getArrayFromDB(c, "choice");

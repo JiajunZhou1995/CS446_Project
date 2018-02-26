@@ -25,7 +25,6 @@ public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextVi
         this.question = question;
         this.context = context;
         this.setTag(tag);
-        this.setBackgroundColor(context.getColor(R.color.colorWhite));
         this.setPadding(DensityUtil.dip2px(context,20),DensityUtil.dip2px(context,5),DensityUtil.dip2px(context,20),DensityUtil.dip2px(context,5));
         this.setBackgroundColor(context.getColor(R.color.colorWhite));
         this.setTextSize(DensityUtil.dip2px(context,14));
