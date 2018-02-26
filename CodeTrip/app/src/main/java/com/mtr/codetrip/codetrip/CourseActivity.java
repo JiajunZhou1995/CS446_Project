@@ -53,9 +53,11 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 
+//        LinearLayout toolbar_right_corner = (LinearLayout) findViewById(R.id.toobar_right_corner);
 
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View action_menu = layoutInflater.inflate(R.layout.stars_indicator,null);
+//        toolbar_right_corner.addView(action_menu);
         toolbar.addView(action_menu);
         setSupportActionBar(toolbar);
 
