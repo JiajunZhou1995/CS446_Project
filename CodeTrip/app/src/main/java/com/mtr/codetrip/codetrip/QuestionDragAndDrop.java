@@ -15,8 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.helper.AsyncResponse;
 import com.mtr.codetrip.codetrip.helper.DropTextView;
 import com.mtr.codetrip.codetrip.helper.FillInTheBlank;
+import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
+import com.mtr.codetrip.codetrip.helper.ServerAPIResponse;
 
 import org.json.JSONException;
 
@@ -28,7 +31,7 @@ import java.util.zip.Inflater;
  * Created by Catrina on 24/02/2018.
  */
 
-public class QuestionDragAndDrop extends Question {
+public class QuestionDragAndDrop extends Question implements AsyncResponse{
     private List<String> codeArea;
     private List<String> codeBlocks;
     private String currentOnDragButtonText;
@@ -36,12 +39,58 @@ public class QuestionDragAndDrop extends Question {
     private List<Button> codeBlockButtonList;
     public FillInTheBlank fillInTheBlank;
     public Button doitButon;
-
+    private List<TextView> normalCode;
+    private String codeString;
+    private List<DropTextView> dbtv;
+    private QuestionDragAndDrop me;
+    private TextView console;
 
     public QuestionDragAndDrop(ViewGroup viewGroup){
         super(viewGroup);
+        me = this;
+        codeString = "";
+        normalCode = new ArrayList<>();
         codeBlockButtonList = new ArrayList<>();
+        dbtv = new ArrayList<>();
         doitButon = rootView.findViewById(R.id.doit);
+        doitButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FillInTheBlank.DoItButtonState state = fillInTheBlank.doitButtonState;
+                switch (state){
+                    case INVALID:
+                        break;
+                    case RUN:
+                        for (DropTextView dtv: dbtv){
+                            dtv.setClickable(false);
+                        }
+                        for (Button b : codeBlockButtonList){
+                            b.setEnabled(false);
+                        }
+                        int index = 0;
+                        for (TextView tv : normalCode){
+                            codeString +=tv.getText();
+                            if (index<normalCode.size()-1) codeString+=codeBlockButtonList.get(index).getText();
+                            index++;
+                        }
+
+                        HttpPostAsyncTask request = new HttpPostAsyncTask(codeString);
+                        request.delegate = me;
+                        request.execute();
+
+//                        ServerAPIResponse serverAPIResponse = new ServerAPIResponse(codeString);
+//                        String result = serverAPIResponse.getResult();
+//                        Log.d("now String",result);
+
+                        fillInTheBlank.updateDoItButtonState(FillInTheBlank.DoItButtonState.CONTINUE);
+                        break;
+                    case CONTINUE:
+                        break;
+                    case BACKTOCURRENT:
+                        break;
+                }
+            }
+        });
         fillInTheBlank = new FillInTheBlank(context,doitButon);
     }
 
@@ -72,6 +121,7 @@ public class QuestionDragAndDrop extends Question {
         View dragAndDrop = layoutInflater.inflate(R.layout.question_drag_and_drop,null);
         questionContent.addView(dragAndDrop);
 
+        console = rootView.findViewById(R.id.console_dragNdrop);
 
         View action_menu = layoutInflater.inflate(R.layout.stars_indicator,null);
 
@@ -95,16 +145,17 @@ public class QuestionDragAndDrop extends Question {
                 setUpView(normalTextView,1,1,0,0,0,0);
                 normalTextView.setText(s);
                 singleLine.addView(normalTextView);
+                normalCode.add(normalTextView);
 
                 if (index++ < code.length -1){
 
                     DropTextView dropTextView = new DropTextView(context);
-
-//                    DropTextView dropTextView = (DropTextView)  layoutInflater.inflate(R.layout.question_code_area_drop_textview,null);
                     setUpView(dropTextView,1,1,5,0,5,0);
                     dropTextView.setTag(blankIndex);
                     dropTextView.setDropState(DropTextView.DropState.DEFAULT);
                     fillInTheBlank.addEntry();
+                    dbtv.add(dropTextView);
+//                    dropBlockTextView.add(dropTextView);
                     singleLine.addView(dropTextView);
                     dropTextView.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -214,4 +265,9 @@ public class QuestionDragAndDrop extends Question {
         }
     }
 
+    @Override
+    public void processFinish(String output) {
+        Log.d("out put",output);
+        console.setText(output);
+    }
 }

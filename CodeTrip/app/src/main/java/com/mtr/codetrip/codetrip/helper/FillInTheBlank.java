@@ -16,10 +16,10 @@ import java.util.List;
 
 public class FillInTheBlank {
 
-    enum DoItButtonState{INVALID,RUN,CONTINUE,BACKTOCURRENT}
+    public enum DoItButtonState{INVALID,RUN,CONTINUE,BACKTOCURRENT}
     private Context context;
     private Button doitButton;
-    private DoItButtonState doitButtonState;
+    public DoItButtonState doitButtonState;
     private List<Button> blankSpaceList;
 
     public FillInTheBlank(Context context, Button button){
@@ -60,7 +60,7 @@ public class FillInTheBlank {
         }
     }
 
-    private void updateDoItButtonState(DoItButtonState newState){
+    public void updateDoItButtonState(DoItButtonState newState){
         doitButtonState = newState;
         switch(newState){
             case INVALID:
