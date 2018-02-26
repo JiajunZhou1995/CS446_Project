@@ -8,9 +8,7 @@
     "Position": "0L0",
     "Question": [
       {
-        "Answer": [
-          "Hello World\n"
-        ],
+        "Answer": "Hello World\n",
         "Type": "Drag&Drop",
         "Knowledge": "Print is a function in Python.",
         "Instruction": "Let’s drag and drop a code block into the code.",
@@ -25,9 +23,7 @@
         "Hint": "Drag and drop Hello World into [?]"
       },
       {
-        "Answer": [
-          "Hello World\n"
-        ],
+        "Answer": "Hello World\n",
         "Type": "Drag&Drop",
         "Knowledge": "Function will have a function name follow by (), and whatever in the () will be passed as parameter.",
         "Instruction": "Let’s drag and drop a code block into the code.",
@@ -43,9 +39,7 @@
         "Hint": "Drag and drop [print] into [?]"
       },
       {
-        "Answer": [
-          "1"
-        ],
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "Guess the output of this program",
@@ -61,9 +55,7 @@
         "Hint": "What's in the function? "
       },
       {
-        "Answer": [
-          "Hello There\n"
-        ],
+        "Answer": "Hello There\n",
         "Type": "Drag&Drop",
         "Knowledge": "Print function will print words into the console. ",
         "Instruction": "Let’s drag and drop a code block into the code so it will print Hello There.",
@@ -79,7 +71,7 @@
         "Hint": " Drag and drop Hello There into [?]"
       },
       {
-        "Answer": [],
+        "Answer": null,
         "Type": "Drag&Drop",
         "Knowledge": "You can have multiple print function at once. ",
         "Instruction": "Let’s drag and drop a code block into the code.",
@@ -96,7 +88,7 @@
         "Hint": "Drag and drop any block into [?]"
       },
       {
-        "Answer": ["Code\nTrip"],
+        "Answer": "Code\nTrip\n",
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange following code to make it print \"Code\" before \"Trip\".",
@@ -110,9 +102,7 @@
         "Hint": "Rearrange Code before Trip."
       },
       {
-        "Answer": [
-          "2"
-        ],
+        "Answer": "2",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "What does print() do?",
@@ -136,9 +126,7 @@
     "Position": "1R0",
     "Question": [
       {
-        "Answer": [
-          "Apple\n"
-        ],
+        "Answer": "Apple\n",
         "Type": "Drag&Drop",
         "Knowledge": "You can print String which is a Variable.",
         "Instruction": null,
@@ -155,9 +143,7 @@
         "Hint": "Drag Apple then the fruit"
       },
       {
-        "Answer": [
-          "Eatapple\n"
-        ],
+        "Answer": "Eatapple\n",
         "Type": "Drag&Drop",
         "Knowledge": "You can have string concatenate together.",
         "Instruction": null,
@@ -175,9 +161,7 @@
         "Hint": "We want then to add up"
       },
       {
-        "Answer": [
-          "apple\n"
-        ],
+        "Answer": "apple\n",
         "Type": "Drag&Drop",
         "Knowledge": "You can only print the Variable you have defined.",
         "Instruction": null,
@@ -194,9 +178,7 @@
         "Hint": "animal is not yet defined"
       },
       {
-        "Answer": [
-          "2"
-        ],
+        "Answer": "2",
         "Type": "MultipleChoice",
         "Knowledge": "Once you defined a Varibale, you can update it by assigne it with a new value",
         "Instruction": "What will print out?",
