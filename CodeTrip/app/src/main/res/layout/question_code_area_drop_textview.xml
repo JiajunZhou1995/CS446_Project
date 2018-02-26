@@ -9,6 +9,6 @@
     android:text="\?"
     android:fontFamily="@font/menlo"
     android:textSize="14dp"
-    android:background="@drawable/drop_block_round">
+    android:background="@drawable/drop_block_round_default">
 
 </TextView>

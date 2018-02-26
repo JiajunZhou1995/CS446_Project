@@ -1,5 +1,10 @@
 <resources>
 
+
+    <style name="DropButtonStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorDarkGrey</item>
+    </style>
      <!--Base application theme.-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" >
         <!-- Customize your theme here. -->
@@ -76,7 +81,7 @@
     </style>
 
     <style name="question_button.doit">
-        <item name="android:background">@drawable/round_button_dark_grey</item>
+        <item name="android:background">@drawable/doit_button_invalid</item>
         <item name="android:text">@string/question_action_doit</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>

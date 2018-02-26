@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textSize="14sp"
-    android:background="@drawable/drop_block_round"
+    android:background="@drawable/drop_block_round_default"
     android:minWidth="45dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
