@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.mtr.codetrip.codetrip.helper.AsyncResponse;
+import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
 import com.mtr.codetrip.codetrip.helper.OnStartDragListener;
 import com.mtr.codetrip.codetrip.helper.RecyclerListAdapter;
 import com.mtr.codetrip.codetrip.helper.SimpleItemTouchHelperCallback;
@@ -21,20 +23,21 @@ import java.util.List;
  * Created by j66zhu on 2018-02-24.
  */
 
-public class QuestionRearrange extends Question implements OnStartDragListener{
+public class QuestionRearrange extends Question implements OnStartDragListener, AsyncResponse{
     private ItemTouchHelper mItemTouchHelper;
     private List<String> codeIns;
+    private String answer;
 
     QuestionRearrange(ViewGroup view){
         super(view);
     }
 
     @Override
-    protected void populateFromDB(Cursor cursor){
-        super.populateFromDB(cursor);
+    protected void populateFromDB(Cursor c){
+        super.populateFromDB(c);
 
-        codeIns = getArrayFromDB(cursor, "code");
-
+        codeIns = getArrayFromDB(c, "code");
+        answer = c.getString(c.getColumnIndex("answer"));
     }
 
     @Override
@@ -58,10 +61,11 @@ public class QuestionRearrange extends Question implements OnStartDragListener{
         mItemTouchHelper.attachToRecyclerView(recyclerView);
 
         Button doIt = rootView.findViewById(R.id.doit);
+        doIt.setClickable(true);
         doIt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RUN_BUTTON_STATUS status = updateStatus(adapter);
+                RUN_BUTTON_STATUS status = updateAnswer(adapter);
             }
         });
     }
@@ -71,35 +75,22 @@ public class QuestionRearrange extends Question implements OnStartDragListener{
         mItemTouchHelper.startDrag(viewHolder);
     }
 
-    private RUN_BUTTON_STATUS updateStatus(RecyclerListAdapter adapter){
+    private RUN_BUTTON_STATUS updateAnswer(RecyclerListAdapter adapter){
         String currentOrder = adapter.getItems().toString();
         currentOrder = currentOrder.replaceAll(", ", "\n");
         currentOrder = currentOrder.substring(1, currentOrder.length()-1);
         Log.d("jasmine", currentOrder);
+
+        HttpPostAsyncTask asyncTask = new HttpPostAsyncTask(currentOrder);
+        asyncTask.delegate = this;
+        asyncTask.execute();
+
         return RUN_BUTTON_STATUS.RUN;
     }
 
-//    private String resultFromServer(String msg){
-
-//        // Instantiate the RequestQueue.
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        String url ="http://www.google.com";
-//
-//// Request a string response from the provided URL.
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        // Display the first 500 characters of the response string.
-//                        //mTextView.setText("Response is: "+ response.substring(0,500));
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                //mTextView.setText("That didn't work!");
-//            }
-//        });
-//// Add the request to the RequestQueue.
-//        queue.add(stringRequest);
-//    }
+    public void processFinish(String output){
+        if (output == answer){
+            Log.d("jasmine", "correct!");
+        }
+    }
 }

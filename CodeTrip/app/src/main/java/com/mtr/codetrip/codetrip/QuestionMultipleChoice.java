@@ -13,6 +13,8 @@ import com.mtr.codetrip.codetrip.helper.LayoutUtil;
 import com.mtr.codetrip.codetrip.helper.TextViewLineNumber;
 import com.mtr.codetrip.codetrip.helper.TextViewNormalCode;
 
+import com.mtr.codetrip.codetrip.helper.AsyncResponse;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +22,7 @@ import java.util.List;
  * Created by Catrina on 24/02/2018.
  */
 
-public class QuestionMultipleChoice extends Question{
+public class QuestionMultipleChoice extends Question implements AsyncResponse{
 
     private List<String> codeIns;
     private List<String> choices;
@@ -49,7 +51,6 @@ public class QuestionMultipleChoice extends Question{
         if (lastSelection != currentSelection){
             choiceViews.get(lastSelection).setBackground(context.getDrawable(R.drawable.code_area_round));
         }
-
     }
 
     @Override
@@ -105,5 +106,9 @@ public class QuestionMultipleChoice extends Question{
             choiceViews.add(choiceView);
             choiceArea.addView(choiceView);
         }
+    }
+
+    public void processFinish(String output){
+
     }
 }

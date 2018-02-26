@@ -24,6 +24,7 @@ public class Question {
     protected String knowledge;
     protected String instruction;
     protected String hint;
+    protected RUN_BUTTON_STATUS status;
 
 
     protected enum RUN_BUTTON_STATUS{FILL_IN_THE_BLANK, RUN, CONTINUE, BACK_TO_CURRENT};
@@ -42,7 +43,7 @@ public class Question {
     }
 
     protected List<String> getArrayFromDB(Cursor c, String columnName){
-        List<String> strings = new ArrayList<String>();
+        List<String> strings = new ArrayList<>();
         try{
             JSONArray jsArr = new JSONArray(c.getString(c.getColumnIndex(columnName)));
             for(int i = 0; i < jsArr.length(); i++){
