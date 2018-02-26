@@ -16,13 +16,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
+import org.json.JSONObject;
+import com.mtr.codetrip.codetrip.helper.AsyncResponse;
+import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +31,7 @@ import java.io.InputStreamReader;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, AsyncResponse {
 
 
     public static double ScreenWidthRatio;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
     public static SQLiteDatabase myDB;
     private MyDatabaseUtil myDatabaseUtil;
     private Resources mResources;
-
+    String APIrespones = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +74,18 @@ public class MainActivity extends AppCompatActivity
 
         System.out.println("before creating.....");
         initDB();
+
+        // Make Http request
+        HttpPostAsyncTask request = new HttpPostAsyncTask("print(\"Hello World\")");
+        request.delegate = this;
+        request.execute();
     }
 
+    // After Http request
+    @Override
+    public void processFinish(String output){
+        Log.d("Http Request result", output);
+    }
 
     public void initDB(){
         String course = "codetrip.db";
@@ -94,15 +104,7 @@ public class MainActivity extends AppCompatActivity
                     "available text not null," +
                     "unit text not null)");                        //7 -> 7 question in this course
 
-
-        //String question = "question.db";
-
-//        myDatabaseUtil = new MyDatabaseUtil(this, course,null,1);
-//        myDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
-
-
         myDB.execSQL("DROP TABLE IF EXISTS question");
-
 
         myDB.execSQL("CREATE TABLE IF NOT EXISTS question " +
                     "(questionid integer," +
