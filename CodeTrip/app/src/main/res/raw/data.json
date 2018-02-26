@@ -227,9 +227,7 @@
         "Hint": "Play with it and see if there is any difference!"
       },
       {
-        "Answer": [
-          "2"
-        ],
+        "Answer": "2",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "Is expression 4 + 3 * 2 + 1 = 12 equal to be true?",
@@ -243,9 +241,7 @@
         "Hint": "Think about how will do it if you are taking a math class!"
       },
       {
-        "Answer": [
-          "2"
-        ],
+        "Answer": "2",
         "Type": "MutipleChoice",
         "Knowledge": "When we doing math in python, do we need to apply the same rule as we used in math?",
         "Instruction": "Is there any difference between the following two expressions?",
@@ -264,9 +260,7 @@
         "Hint": "Same as the normal mathematical cal1culations."
       },
       {
-        "Answer": [
-          "14\n"
-        ],
+        "Answer": "14\n",
         "Type": "Drag&Drop",
         "Knowledge": "Parentheseses are used in python to decide the order of calculation.",
         "Instruction": "If we want get 14 for the following expression, where should we put parentheseses?",
@@ -283,9 +277,7 @@
         "Hint": "Think about how we use parentheseses in math."
       },
       {
-        "Answer": [
-          "16\n"
-        ],
+        "Answer": "16\n",
         "Type": "ShortAnswer",
         "Knowledge": null,
         "Instruction": "Look at the expression below, if we want to get 16, what numbers are you going to put into those blocks?",
@@ -301,7 +293,7 @@
         "Hint": "You can also put x and y in it, try it out!"
       },
       {
-        "Answer": [],
+        "Answer": null,
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Order of calculation will have different outcomes, rearrange the code below and see what will happen!",
@@ -322,7 +314,7 @@
         "Hint": "There could be more than one order, find it out!."
       },
       {
-        "Answer": ["240"],
+        "Answer": "40",
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Think about what we learned in variable class, this time we have variale in the code, rearrange it with the right order and see the result!",
@@ -332,7 +324,6 @@
           "x = 4 * x",
           "y = 2 * x",
           "print(y)"
-
         ],
         "Console": "3",
         "CodeBlock": [],
@@ -363,9 +354,7 @@
         "Hint": "Think about how we calculate remainder in math!"
       },
       {
-        "Answer": [
-          "2"
-        ],
+        "Answer": "2",
         "Type": "MultipleChoice",
         "Knowledge": "When we want do calculate the remainder for the negative number, it follows the same rule as we do for the possitive number",
         "Instruction": "What's the result for 10 % 3?",
@@ -381,9 +370,7 @@
         "Hint": "% follows the same rule for the positive and the negative number."
       },
       {
-        "Answer": [
-          "2"
-        ],
+        "Answer": "2",
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Look at the code below, if we want to print '2', in which order we should arrange the following code?",
@@ -399,9 +386,7 @@
         "Hint": "Think about what we learned in variable class."
       },
       {
-        "Answer": [
-          "0"
-        ],
+        "Answer": "0",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "Drag and drop code block into the right position to calculate 0",
@@ -421,9 +406,7 @@
         "Hint": "Can we do it without using '%'?."
       },
       {
-        "Answer": [
-          "2"
-        ],
+        "Answer": "2",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "This time we will try to use numbers.Drag and drop code block into the right position to calculate 2",
@@ -454,9 +437,7 @@
     "Position": "3R2",
     "Question": [
       {
-        "Answer": [
-          "True"
-        ],
+        "Answer": "True",
         "Type": "MultipleChoice",
         "Knowledge": "Boolean in python are 'True' and 'False'",
         "Instruction": "Is 3 equals to 3 evaluted to be True or False?",
@@ -491,9 +472,7 @@
         "Hint": "Boolean expression could only be evaluted to be true or false."
       },
       {
-        "Answer": [
-          "True"
-        ],
+        "Answer": "True",
         "Type": "Drag&Drop",
         "Knowledge": "A < B means if A is less than B, A<= B means if A is less or equal to B, same for > and >. A == B means if A is equal to B and A != B means if A is not equal to B",
         "Instruction": "If we want the following code evaluted to be true, what operator will we fill into the block?",
@@ -514,10 +493,7 @@
         "Hint": "Use the principle of boolean expression to find the answer!"
       },
       {
-        "Answer": [
-          "True",
-          "False"
-        ],
+        "Answer": "True\nFalse",
         "Type": "ShortAnswer",
         "Knowledge": null,
         "Instruction": "Fill out the blank below to let x evaluted to be false and y evaluted to vbe true",
@@ -531,9 +507,7 @@
         "Hint": "A >= B means if A is greater or equal to B and A < B means if A is less than B."
       },
       {
-        "Answer": [
-          "False"
-        ],
+        "Answer": "False",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "What will be the result of 3 != 3?",
@@ -547,9 +521,7 @@
         "Hint": "A != B means if A is not equal to B."
       },
       {
-        "Answer": [
-          "True"
-        ],
+        "Answer": "True",
         "Type": "ShortAnswer",
         "Knowledge": null,
         "Instruction": "Fill out the following blank to let x is evaluted to be true.",
@@ -563,7 +535,7 @@
         "Hint": "A == B means if A is equal to B"
       },
       {
-        "Answer": [],
+        "Answer": null,
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange the following code and see the different results!",
@@ -588,9 +560,7 @@
     "Position": "4L2",
     "Question": [
       {
-        "Answer": [
-          "2"
-        ],
+        "Answer": "2",
         "Type": "MultipleChoice",
         "Knowledge": "Logical expression in python are 'And', 'Or', 'Not' and they will only return 'True' or 'False'",
         "Instruction": "What result will be given by expression 'True and False?'",
@@ -604,9 +574,7 @@
         "Hint": "A and B is true if and only if both A and B are evaluated to be true."
       },
       {
-        "Answer": [
-          "True"
-        ],
+        "Answer": "True",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "Fill the bland with right answer to let z evaluted to be True.",
@@ -632,9 +600,7 @@
         "Hint": "Use the knowlegde or Boolean expression and Logical expression to solve this problem!"
       },
       {
-        "Answer": [
-          "True"
-        ],
+        "Answer": "True",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "Drag and drop code block into right position to make A evaluated to be true",
@@ -654,9 +620,7 @@
         "Hint": "There should be more than 1 answer, try it out!"
       },
       {
-        "Answer": [
-          "false"
-        ],
+        "Answer": "False",
         "Type": "ShortAnswer",
         "Knowledge": null,
         "Instruction": "Think about the code given below, find the answer that let B evaluted to be false.",
@@ -672,9 +636,7 @@
         "Hint": "If A is true, then not A will be false."
       },
       {
-        "Answer": [
-          "false"
-        ],
+        "Answer": "False",
         "Type": "ShortAnswer",
         "Knowledge": null,
         "Instruction": "Think about the code given below, find the answer that let B evaluted to be false.",
@@ -692,7 +654,7 @@
         "Hint": "Try to solve it step by step!"
       },
       {
-        "Answer": ["True"],
+        "Answer": "True",
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange the following code and see the different results!",
@@ -711,7 +673,7 @@
         "Hint": "See how many possible answers are there!"
       },
       {
-        "Answer": ["False"],
+        "Answer": "False",
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange the following code to see if you can make A, B, C all evaluted to be true !",
@@ -740,7 +702,7 @@
     "Position": "5R1",
     "Question": [
       {
-        "Answer":["1"],
+        "Answer":"1",
         "Type": "MultipleChoice",
         "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
         "Instruction": "What will be the index of '5' in array [5,1,3,4]?",
@@ -756,9 +718,7 @@
         "Hint": "Array index start at 0"
       },
       {
-        "Answer": [
-          "[1,2,3,5,7,9]"
-        ],
+        "Answer": "[1,2,3,5,7,9]",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "Drag the code block into the right place to achieve a sorted array.",
@@ -779,7 +739,7 @@
         "Hint": "Sorted array looks like [1,2,3,4,5]"
       },
       {
-        "Answer": [],
+        "Answer": null,
         "Type": "ShortAnswer",
         "Knowledge": null,
         "Instruction": "Put different numbers in the array and see what are the printed result.",
@@ -803,9 +763,7 @@
     "Position": "6R0",
     "Question": [
       {
-        "Answer": [
-          "None"
-        ],
+        "Answer": "None",
         "Type": "MultipleChoice",
         "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
         "Instruction": "What will be the index of '1' in array [5,2,3,4]?",
@@ -821,9 +779,7 @@
         "Hint": "Array index start at 0"
       },
       {
-        "Answer": [
-          "1"
-        ],
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "What's the result for (-10 + 20) /5 * 15 % 3?",
@@ -839,7 +795,7 @@
         "Hint": "% follows the same rule for the positive and the negative number."
       },
       {
-        "Answer": ["False"],
+        "Answer": "False",
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange the following code to see if you can make A, B, C all evaluted to be true !",
@@ -857,9 +813,7 @@
         "Hint": "There might be more than one available answer!"
       },
       {
-        "Answer": [
-          "[2,8,10,12,15,7]"
-        ],
+        "Answer": "[2,8,10,12,15,7]",
         "Type": "ShortAnswer",
         "Knowledge": null,
         "Instruction": "Put the answer for the array after we changed the value for it.",
