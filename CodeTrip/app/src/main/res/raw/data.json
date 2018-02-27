@@ -86,7 +86,7 @@
         "Hint": "Type anything into the [?] block"
       },
       {
-        "Answer": "Code\nTrip\n",
+        "Answer": "Code\nTrip\nis\nAwesome",
         "Type": "Rearrange",
         "Knowledge": "The order of print matters.",
         "Instruction": "Rearrange following code to make it print Code Trip is Awesome.",

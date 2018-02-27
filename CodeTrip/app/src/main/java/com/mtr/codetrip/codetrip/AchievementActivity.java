@@ -158,7 +158,7 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
                 mImageView = new ImageView(mContext);
                 mImageView.setLayoutParams(new GridView.LayoutParams(350, 350));
                 mImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-                mImageView.setPadding(70,70,70,70);
+                mImageView.setPadding(90,70,90,70);
 //                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 //                lp.setMargins(10,0,10,0);
 //                mImageView.setLayoutParams(lp);
