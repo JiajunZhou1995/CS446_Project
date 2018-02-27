@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -16,6 +21,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.Button;
@@ -181,14 +187,13 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             // Inflate the custom layout/view
             View customDimView = inflater.inflate(R.layout.question_hint_overlay,null);
 
-
+            ViewGroup root = (ViewGroup) getWindow().getDecorView().getRootView();
             // Initialize a new instance of question_hint_overlay window
             mPopupdim = new PopupWindow(
                     customDimView,
                     RelativeLayout.LayoutParams.MATCH_PARENT,
                     RelativeLayout.LayoutParams.MATCH_PARENT
             );
-
 
             // Initialize a new instance of popup window
             mPopupWindow = new PopupWindow(
@@ -197,31 +202,51 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
                     RelativeLayout.LayoutParams.WRAP_CONTENT
             );
 
-            mPopupWindow.setElevation(6.0f);
+            mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
 
-
-            // Get a reference for the custom view close button
-            ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
-
-            // Set a click listener for the popup window close button
-            closeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    // Dismiss the popup window
-                    mPopupWindow.dismiss();
-                    // Dismiss the popup question_hint_overlay
+                public void onDismiss() {
+                    // TODO Auto-generated method stub
                     mPopupdim.dismiss();
+
                 }
             });
+
+            // Closes the popup window when touch outside.
+            mPopupWindow.setOutsideTouchable(true);
+            mPopupWindow.setFocusable(true);
+
+            // Removes default background.
+            mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+
+            mPopupWindow.setElevation(6.0f);
+
+            // Get a reference for the custom view close button
+            //ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
+
+//            // Set a click listener for the popup window close button
+//            closeButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    // Dismiss the popup window
+//                    mPopupWindow.dismiss();
+//                    // Dismiss the popup question_hint_overlay
+//                    mPopupdim.dismiss();
+//                }
+//            });
+
 
             // Finally, show the popup window at the center location of root relative layout
             mPopupdim.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
 
             // Finally, show the popup window at the center location of root relative layout
             mPopupWindow.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
-
         }
+
+
     }
+
+
 
 
 }

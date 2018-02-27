@@ -8,14 +8,7 @@
     android:background="#ffffff"
     >
 
-    <ImageButton
-        android:id="@+id/ib_close"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_margin="5dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@mipmap/question_return" />
+
     <TextView
         android:id="@+id/tv"
         android:layout_margin="10dp"
@@ -24,6 +17,7 @@
         android:text="Hint: This is a hint."
         android:layout_centerInParent="true"
         android:padding="25sp"
+        android:background="#80FFFFFF"
         />
 
 </RelativeLayout>
