@@ -1,7 +1,6 @@
-package com.mtr.codetrip.codetrip;
+package com.mtr.codetrip.codetrip.Object;
 
 import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +9,10 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
-import com.mtr.codetrip.codetrip.helper.LayoutUtil;
-import com.mtr.codetrip.codetrip.helper.RecyclerListAdapter;
-import com.mtr.codetrip.codetrip.helper.TextViewLineNumber;
-import com.mtr.codetrip.codetrip.helper.TextViewNormalCode;
-
-import com.mtr.codetrip.codetrip.helper.AsyncResponse;
+import com.mtr.codetrip.codetrip.R;
+import com.mtr.codetrip.codetrip.Utility.LayoutUtil;
+import com.mtr.codetrip.codetrip.CostumWidgets.TextViewLineNumber;
+import com.mtr.codetrip.codetrip.CostumWidgets.TextViewNormalCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +21,7 @@ import java.util.List;
  * Created by Catrina on 24/02/2018.
  */
 
-public class QuestionMultipleChoice extends Question{
+public class QuestionMultipleChoice extends Question {
 
     private List<String> codeIns;
     private List<String> choices;

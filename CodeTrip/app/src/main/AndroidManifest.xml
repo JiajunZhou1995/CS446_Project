@@ -22,8 +22,8 @@
         </activity>
         <activity android:name=".CourseActivity" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".KeynoteActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AchievementActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".QuestionActivity" android:theme="@style/AppTheme.Question"/>
-        <activity android:name=".MilestoneActivity" android:theme="@style/AppTheme.Question"/>
     </application>
 
     <supports-screens

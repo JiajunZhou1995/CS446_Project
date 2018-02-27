@@ -23,8 +23,8 @@ import android.view.View;
 import android.widget.Button;
 
 import org.json.JSONObject;
-import com.mtr.codetrip.codetrip.helper.AsyncResponse;
-import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
+import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
+import com.mtr.codetrip.codetrip.Utility.HttpPostAsyncTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
             case R.id.home_navigation_achievement:
-                intent.setClass(this,MilestoneActivity.class);
+                intent.setClass(this,AchievementActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -338,7 +338,8 @@ public class MainActivity extends AppCompatActivity
             intent.setClass(this,KeynoteActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_achievement) {
-
+            intent.setClass(this,AchievementActivity.class);
+            startActivity(intent);
         } else if (id == R.id.sidebar_setting) {
 
         } else if (id == R.id.sidebar_about_us) {
@@ -347,7 +348,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
-        if (id != R.id.sidebar_home && id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
+        if (id != R.id.sidebar_home && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;
     }
 

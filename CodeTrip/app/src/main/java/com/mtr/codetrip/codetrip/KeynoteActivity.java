@@ -19,8 +19,8 @@ import android.widget.ArrayAdapter;
 
 import java.util.*;
 
-import com.mtr.codetrip.codetrip.helper.ExpandAdapter;
-import com.mtr.codetrip.codetrip.helper.onExpandListener;
+import com.mtr.codetrip.codetrip.Utility.ExpandAdapter;
+import com.mtr.codetrip.codetrip.Utility.onExpandListener;
 
 
 /**
@@ -175,7 +175,8 @@ public class KeynoteActivity extends MainActivity{
         } else if (id == R.id.sidebar_favorite) {
 
         } else if (id == R.id.sidebar_achievement) {
-
+            intent.setClass(this,AchievementActivity.class);
+            startActivity(intent);
         } else if (id == R.id.sidebar_setting) {
 
         } else if (id == R.id.sidebar_about_us) {
@@ -184,7 +185,7 @@ public class KeynoteActivity extends MainActivity{
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
-        finish();
+        if (id != R.id.sidebar_favorite && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;
     }
 

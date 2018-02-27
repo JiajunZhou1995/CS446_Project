@@ -1,20 +1,19 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.CostumWidgets;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.*;
+import com.mtr.codetrip.codetrip.Object.Question;
+import com.mtr.codetrip.codetrip.Object.QuestionShortAnswer;
+import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 
 /**
  * Created by Catrina on 2/26/2018.

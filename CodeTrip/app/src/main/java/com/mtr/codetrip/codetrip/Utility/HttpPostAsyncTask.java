@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.Utility;
 
 import android.os.AsyncTask;
 import android.util.Log;

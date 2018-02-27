@@ -1,15 +1,13 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.CostumWidgets;
 
 import android.content.Context;
-import android.graphics.Paint;
 import android.view.DragEvent;
 import android.view.View;
 
-import com.mtr.codetrip.codetrip.Question;
-import com.mtr.codetrip.codetrip.QuestionDragAndDrop;
+import com.mtr.codetrip.codetrip.Object.Question;
+import com.mtr.codetrip.codetrip.Object.QuestionDragAndDrop;
 import com.mtr.codetrip.codetrip.R;
-
-import java.util.List;
+import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 
 /**
  * Created by Catrina on 25/02/2018.

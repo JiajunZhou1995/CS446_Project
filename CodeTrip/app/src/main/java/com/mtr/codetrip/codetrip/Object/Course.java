@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip;
+package com.mtr.codetrip.codetrip.Object;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +21,10 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.CourseActivity;
+import com.mtr.codetrip.codetrip.MainActivity;
+import com.mtr.codetrip.codetrip.R;
+
 
 /**
  * Created by Catrina on 2/3/2018.
@@ -29,18 +33,18 @@ import android.widget.TextView;
 
 public class Course extends Object  {
 
-    enum CourseType{LECTURE, PROJECT, QUIZ}
-    enum CourseStatus{AVAILABLE, UNAVAILABLE}
+    public enum CourseType{LECTURE, PROJECT, QUIZ}
+    public enum CourseStatus{AVAILABLE, UNAVAILABLE}
 
-    protected int courseID;
-    CourseType courseType;
-    CourseStatus courseStatus;
-    Button boundBtn;
-    RelativeLayout.LayoutParams buttonLayoutParams;
-    RelativeLayout.LayoutParams titleLayoutParams;
+    public int courseID;
+    public CourseType courseType;
+    public CourseStatus courseStatus;
+    public Button boundBtn;
+    public RelativeLayout.LayoutParams buttonLayoutParams;
+    public RelativeLayout.LayoutParams titleLayoutParams;
     Drawable background;
     private int defaultMarginTop;
-    TextView courseTitle;
+    public TextView courseTitle;
 
 
 
@@ -91,7 +95,7 @@ public class Course extends Object  {
         Log.d("nothing","happened");
     }
 
-    private void updateBtn(Context context, Button boundBtn){
+    public void updateBtn(Context context){
         Drawable backgroundImg = boundBtn.getBackground();
 
         if (courseStatus==CourseStatus.AVAILABLE){
@@ -118,7 +122,7 @@ public class Course extends Object  {
     private RelativeLayout.LayoutParams setUpLayout(Context context,String position){
         Pair<Integer,Integer> xyPosition = nomalizPositioneString(context,position);
 
-        int unit_width = (int)(((courseType != CourseType.QUIZ)? context.getResources().getInteger(R.integer.non_quiz_width) : context.getResources().getInteger(R.integer.quiz_width))*MainActivity.ScreenHeightRatio +0.5f);
+        int unit_width = (int)(((courseType != CourseType.QUIZ)? context.getResources().getInteger(R.integer.non_quiz_width) : context.getResources().getInteger(R.integer.quiz_width))* MainActivity.ScreenHeightRatio +0.5f);
         int unit_height = (int)(((courseType != CourseType.QUIZ)? context.getResources().getInteger(R.integer.non_quiz_height) : context.getResources().getInteger(R.integer.quiz_height))*MainActivity.ScreenHeightRatio +0.5f);
         int flag_y = (int)(((courseType != CourseType.QUIZ)? context.getResources().getInteger(R.integer.non_quiz_flag_y) : context.getResources().getInteger(R.integer.quiz_flag_y))*MainActivity.ScreenHeightRatio +0.5f);
         int flag_x = (int) (int) (unit_width * 0.05 + 0.5f);

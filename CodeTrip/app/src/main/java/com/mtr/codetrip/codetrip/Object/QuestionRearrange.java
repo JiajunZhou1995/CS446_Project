@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip;
+package com.mtr.codetrip.codetrip.Object;
 
 import android.database.Cursor;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,13 +12,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mtr.codetrip.codetrip.helper.AsyncResponse;
-import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
-import com.mtr.codetrip.codetrip.helper.OnStartDragListener;
-import com.mtr.codetrip.codetrip.helper.RecyclerListAdapter;
-import com.mtr.codetrip.codetrip.helper.SimpleItemTouchHelperCallback;
+import com.mtr.codetrip.codetrip.R;
+import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
+import com.mtr.codetrip.codetrip.Utility.HttpPostAsyncTask;
+import com.mtr.codetrip.codetrip.Utility.OnStartDragListener;
+import com.mtr.codetrip.codetrip.Utility.RecyclerListAdapter;
+import com.mtr.codetrip.codetrip.Utility.SimpleItemTouchHelperCallback;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 /**

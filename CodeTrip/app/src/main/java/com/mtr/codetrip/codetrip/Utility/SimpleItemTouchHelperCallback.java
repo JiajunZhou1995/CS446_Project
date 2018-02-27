@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.Utility;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;

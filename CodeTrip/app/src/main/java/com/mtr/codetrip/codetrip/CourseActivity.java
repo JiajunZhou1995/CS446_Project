@@ -15,7 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.mtr.codetrip.codetrip.helper.MultipleClickUtility;
+import com.mtr.codetrip.codetrip.Object.Course;
+import com.mtr.codetrip.codetrip.Utility.MultipleClickUtility;
 
 import java.util.ArrayList;
 
@@ -86,14 +87,14 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         if (id == R.id.sidebar_home) {
             intent.setClass(this,MainActivity.class);
             startActivity(intent);
-            // Handle the camera action
         } else if (id == R.id.sidebar_course) {
 
         } else if (id == R.id.sidebar_favorite) {
             intent.setClass(this,KeynoteActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_achievement) {
-
+            intent.setClass(this,AchievementActivity.class);
+            startActivity(intent);
         } else if (id == R.id.sidebar_setting) {
 
         } else if (id == R.id.sidebar_about_us) {
@@ -102,7 +103,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
-        if (id != R.id.sidebar_course && id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
+        if (id != R.id.sidebar_course  && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
 
         return true;
     }
@@ -146,7 +147,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void updateCourseNode(int index){
-        courseList.get(index).updateCourseBtn(this);
+        courseList.get(index).updateBtn(this);
     }
 
 

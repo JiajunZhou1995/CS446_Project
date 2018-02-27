@@ -1,17 +1,17 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.CostumWidgets;
 
 import android.content.ClipData;
 import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
-import android.util.AttributeSet;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.mtr.codetrip.codetrip.Question;
-import com.mtr.codetrip.codetrip.QuestionDragAndDrop;
+import com.mtr.codetrip.codetrip.Object.Question;
+import com.mtr.codetrip.codetrip.Object.QuestionDragAndDrop;
 import com.mtr.codetrip.codetrip.R;
+import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 
 /**
  * Created by Catrina on 2/26/2018.

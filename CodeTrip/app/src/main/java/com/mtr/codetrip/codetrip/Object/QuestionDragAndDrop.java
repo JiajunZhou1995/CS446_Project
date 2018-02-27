@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip;
+package com.mtr.codetrip.codetrip.Object;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,15 +11,16 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mtr.codetrip.codetrip.helper.AsyncResponse;
-import com.mtr.codetrip.codetrip.helper.ButtonCodeBlock;
-import com.mtr.codetrip.codetrip.helper.RunButton;
-import com.mtr.codetrip.codetrip.helper.TextViewDropBlank;
-import com.mtr.codetrip.codetrip.helper.DropReceiveBlank;
-import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
-import com.mtr.codetrip.codetrip.helper.LayoutUtil;
-import com.mtr.codetrip.codetrip.helper.TextViewLineNumber;
-import com.mtr.codetrip.codetrip.helper.TextViewNormalCode;
+import com.mtr.codetrip.codetrip.R;
+import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
+import com.mtr.codetrip.codetrip.CostumWidgets.ButtonCodeBlock;
+import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
+import com.mtr.codetrip.codetrip.CostumWidgets.TextViewDropBlank;
+import com.mtr.codetrip.codetrip.Utility.DropReceiveBlank;
+import com.mtr.codetrip.codetrip.Utility.HttpPostAsyncTask;
+import com.mtr.codetrip.codetrip.Utility.LayoutUtil;
+import com.mtr.codetrip.codetrip.CostumWidgets.TextViewLineNumber;
+import com.mtr.codetrip.codetrip.CostumWidgets.TextViewNormalCode;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.Utility;
 
 /**
  * Created by Catrina on 26/02/2018.

@@ -1,10 +1,11 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.CostumWidgets;
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.AppCompatTextView;
 
 import com.mtr.codetrip.codetrip.R;
+import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 
 /**
  * Created by Catrina on 2/26/2018.

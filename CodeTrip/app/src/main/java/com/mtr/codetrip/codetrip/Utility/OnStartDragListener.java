@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.Utility;
 
 /*
  * Copyright (C) 2015 Paul Burke

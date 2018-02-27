@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.Utility;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +7,6 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.R;
-import com.mtr.codetrip.codetrip.helper.onExpandListener;
 
 
 /**

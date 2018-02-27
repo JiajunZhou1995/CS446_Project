@@ -1,12 +1,10 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.Utility;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
-import com.mtr.codetrip.codetrip.*;
 
 /**
  * Created by Catrina on 2/26/2018.

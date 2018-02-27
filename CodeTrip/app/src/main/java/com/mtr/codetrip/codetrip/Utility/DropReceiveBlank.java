@@ -1,11 +1,12 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.Utility;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.mtr.codetrip.codetrip.R;
+import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
+import com.mtr.codetrip.codetrip.CostumWidgets.TextViewDropBlank;
 
 import java.util.ArrayList;
 import java.util.List;

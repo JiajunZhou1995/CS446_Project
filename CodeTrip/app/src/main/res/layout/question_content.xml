@@ -32,7 +32,7 @@
 
     </ScrollView>
 
-    <com.mtr.codetrip.codetrip.helper.RunButton
+    <com.mtr.codetrip.codetrip.CostumWidgets.RunButton
         android:id="@+id/doit"
         style="@style/question_button.doit"
         android:textAllCaps="false"

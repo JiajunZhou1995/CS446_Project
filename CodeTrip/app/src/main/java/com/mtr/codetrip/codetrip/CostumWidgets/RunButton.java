@@ -1,14 +1,10 @@
-package com.mtr.codetrip.codetrip.helper;
+package com.mtr.codetrip.codetrip.CostumWidgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
-import com.mtr.codetrip.codetrip.Question;
-import com.mtr.codetrip.codetrip.QuestionShortAnswer;
+import com.mtr.codetrip.codetrip.Object.Question;
 import com.mtr.codetrip.codetrip.R;
 
 /**

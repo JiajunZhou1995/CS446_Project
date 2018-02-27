@@ -1,20 +1,15 @@
-package com.mtr.codetrip.codetrip;
+package com.mtr.codetrip.codetrip.Object;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.mtr.codetrip.codetrip.helper.RunButton;
-
-import java.util.List;
+import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
+import com.mtr.codetrip.codetrip.MainActivity;
+import com.mtr.codetrip.codetrip.R;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
