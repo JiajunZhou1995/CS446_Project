@@ -42,7 +42,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
      */
-    private ViewPager mPager;
+    private static ViewPager mPager;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
@@ -111,7 +111,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         mButton.setOnClickListener(this);
     }
 
-    public void onQuestionFragmentSwipe(int swipeGesture){
+    public static void onQuestionFragmentSwipe(int swipeGesture){
         mPager.setCurrentItem(mPager.getCurrentItem() + swipeGesture);
     }
     /**
@@ -132,7 +132,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         public void setPrimaryItem(ViewGroup container, final int position, Object object) {
             super.setPrimaryItem(container,position,object);
             progressBar.setProgress(position);
-
         }
 
         @Override
@@ -217,21 +216,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
             mPopupWindow.setElevation(6.0f);
-
-            // Get a reference for the custom view close button
-            //ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
-
-//            // Set a click listener for the popup window close button
-//            closeButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    // Dismiss the popup window
-//                    mPopupWindow.dismiss();
-//                    // Dismiss the popup question_hint_overlay
-//                    mPopupdim.dismiss();
-//                }
-//            });
-
 
             // Finally, show the popup window at the center location of root relative layout
             mPopupdim.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);

@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.mtr.codetrip.codetrip.Object.Question;
+import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 
 /**
@@ -19,37 +20,23 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
 
     private RunButtonState buttonState;
     private Context context;
-    public Question currentQuestion;
+    private Question currentQuestion;
+
     public RunButton(Context context) {
         super(context);
-//        updateDoItButtonState(RunButtonState.INVALID);
         this.context = context;
         this.setOnClickListener(this);
-
-//        this.setId(R.id.question_run_button);
-//
-//        this.setAllCaps(false);
-//        this.setTextColor(context.getColor(R.color.colorWhite));
-//        this.setBackground(context.getDrawable(R.drawable.doit_button_invalid));
-//
-//
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(context,360), LinearLayout.LayoutParams.WRAP_CONTENT);
-//        lp.gravity = Gravity.CENTER_HORIZONTAL;
-//        lp.setMargins(0,DensityUtil.dip2px(context,20),0,DensityUtil.dip2px(context,20));
-//        this.setLayoutParams(lp);
     }
 
 
     public RunButton(Context context, AttributeSet attrs){
         super(context, attrs);
-//        updateDoItButtonState(RunButtonState.INVALID);
         this.context = context;
         this.setOnClickListener(this);
     }
 
     public RunButton(Context context, AttributeSet attrs, int defStyle){
         super(context, attrs, defStyle);
-//        updateDoItButtonState(RunButtonState.INVALID);
         this.context = context;
         this.setOnClickListener(this);
     }
@@ -70,6 +57,8 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
                 updateDoItButtonState(RunButtonState.CONTINUE);
                 break;
             case CONTINUE:
+                QuestionActivity.onQuestionFragmentSwipe(1);
+                updateDoItButtonState(RunButtonState.BACKTOCURRENT);
                 break;
             case BACKTOCURRENT:
                 break;
