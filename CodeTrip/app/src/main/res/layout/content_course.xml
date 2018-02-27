@@ -23,7 +23,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/bear"
+            android:src="@mipmap/course_map_element_bear"
             android:layout_marginTop="400dp"
             android:layout_marginLeft="40dp"
             android:id="@+id/imageView2" />
@@ -35,7 +35,7 @@
             android:layout_below="@+id/textView2"
             android:layout_marginStart="126dp"
             android:layout_marginTop="29dp"
-            android:src="@mipmap/cloud" />
+            android:src="@mipmap/course_map_element_cloud" />
 
 
         <TextView

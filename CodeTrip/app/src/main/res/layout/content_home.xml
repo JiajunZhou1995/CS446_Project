@@ -6,26 +6,29 @@
     android:id="@+id/content_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.mtr.codetrip.codetrip.HomeActivity"
-    android:background="@drawable/course_background">
+    tools:context="com.mtr.codetrip.codetrip.MainActivity"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
         android:layout_height="match_parent"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="50dp"
-        android:gravity="center_vertical"
+        android:background="@mipmap/home_background"
+        android:gravity="center"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/home_navigation_course"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/home_button_background1"
+            android:background="@mipmap/okok"
+            android:layout_marginHorizontal="20dp"
             android:padding="50dp"
             android:text="@string/navigation_course"
-            android:textSize="20dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"/>
 
@@ -33,10 +36,13 @@
             android:id="@+id/home_navigation_keynotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/home_button_background2"
+            android:background="@mipmap/jksdhhhh"
+            android:layout_marginHorizontal="20dp"
+
             android:padding="50dp"
             android:text="@string/navigation_keynotes"
-            android:textSize="20dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"/>
 
@@ -44,10 +50,13 @@
             android:id="@+id/home_navigation_achievement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/home_button_background3"
+            android:background="@mipmap/wwwewewe"
+            android:layout_marginHorizontal="20dp"
+
             android:padding="50dp"
             android:text="@string/navigation_achievement"
-            android:textSize="20dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"/>
 

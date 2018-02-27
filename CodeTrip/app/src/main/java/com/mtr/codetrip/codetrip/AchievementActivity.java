@@ -19,7 +19,6 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,18 +32,18 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
     GridView androidGridView;
 
     Integer[] imageIDs = {
-            R.mipmap.beginner,
-            R.mipmap.stars10,
-            R.mipmap.stars50,
-            R.mipmap.stars100,
-            R.mipmap.traveler,
-            R.mipmap.oneweek,
-            R.mipmap.learningstreak,
-            R.mipmap.bravetraveler,
-            R.mipmap.traveler,
-            R.mipmap.tourismexpert,
-            R.mipmap.pythondiploma,
-            R.mipmap.pythonking
+            R.mipmap.achievement_beginner,
+            R.mipmap.achievement_stars10,
+            R.mipmap.achievement_stars50,
+            R.mipmap.achievement_stars100,
+            R.mipmap.achievement_traveler,
+            R.mipmap.achievement_oneweek,
+            R.mipmap.achievement_learningstreak,
+            R.mipmap.achievement_bravetraveler,
+            R.mipmap.achievement_traveler,
+            R.mipmap.achievement_tourismexpert,
+            R.mipmap.achievement_pythondiploma,
+            R.mipmap.achievement_pythonking
     };
 
     @Override

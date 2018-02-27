@@ -1,5 +1,7 @@
 package com.mtr.codetrip.codetrip;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.Button;
 
 import org.json.JSONObject;
@@ -42,6 +45,17 @@ public class MainActivity extends AppCompatActivity
     public static double ScreenWidthRatio;
     public static double ScreenHeightRatio;
 
+    private Button course_button;
+    private Button keynotes_button;
+    private Button achievement_button;
+
+
+    ObjectAnimator animator_course;
+    ObjectAnimator animator_keynotes;
+    ObjectAnimator animator_achievement;
+
+    MainActivity me;
+
     public static SQLiteDatabase myDB;
     private MyDatabaseUtil myDatabaseUtil;
     private Resources mResources;
@@ -49,6 +63,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        me = this;
+
+
         DisplayMetrics metric = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metric);
         int width = metric.widthPixels;     // 屏幕宽度（像素）
@@ -95,12 +112,24 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initHomeScreenButtonListener(){
-        Button course_button = (Button) findViewById(R.id.home_navigation_course);
+
+
+
+        course_button = (Button) findViewById(R.id.home_navigation_course);
         course_button.setOnClickListener(this);
-        Button keynotes_button = (Button) findViewById(R.id.home_navigation_keynotes);
+
+        keynotes_button = (Button) findViewById(R.id.home_navigation_keynotes);
         keynotes_button.setOnClickListener(this);
-        Button achievement_button = (Button) findViewById(R.id.home_navigation_achievement);
+        achievement_button = (Button) findViewById(R.id.home_navigation_achievement);
         achievement_button.setOnClickListener(this);
+
+
+        animator_course = ObjectAnimator.ofFloat(course_button, "translationX", 1700);
+        animator_course.setDuration(1000);
+        animator_keynotes = ObjectAnimator.ofFloat(keynotes_button, "translationX", 1700);
+        animator_keynotes.setDuration(1000);
+        animator_achievement = ObjectAnimator.ofFloat(achievement_button, "translationX", 1700);
+        animator_achievement.setDuration(1000);
     }
 
 
@@ -111,20 +140,82 @@ public class MainActivity extends AppCompatActivity
 
         switch (id){
             case R.id.home_navigation_course:
-                intent.setClass(this,CourseActivity.class);
-                startActivity(intent);
+                animator_achievement.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        animator_keynotes.start();
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        Intent intent = new Intent();
+                        intent.setClass(me,CourseActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) { }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) { }
+                });
+                animator_keynotes.setStartDelay(250);
+                animator_achievement.start();
                 break;
             case R.id.home_navigation_keynotes:
-                intent.setClass(this,KeynoteActivity.class);
-                startActivity(intent);
+                animator_course.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        animator_achievement.start();
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        Intent intent = new Intent();
+                        intent.setClass(me,KeynoteActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) { }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) { }
+                });
+                animator_achievement.setStartDelay(250);
+                animator_course.start();
                 break;
             case R.id.home_navigation_achievement:
-                intent.setClass(this,AchievementActivity.class);
-                startActivity(intent);
+                animator_course.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        animator_keynotes.start();
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        Intent intent = new Intent();
+                        intent.setClass(me,AchievementActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) { }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) { }
+                });
+                animator_keynotes.setStartDelay(250);
+                animator_course.start();
                 break;
         }
-        finish();
+//        finish();
     }
+
+
 
 
     // After Http request
@@ -351,6 +442,7 @@ public class MainActivity extends AppCompatActivity
         if (id != R.id.sidebar_home && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;
     }
+
 
 
     public class MyDatabaseUtil extends SQLiteOpenHelper{
