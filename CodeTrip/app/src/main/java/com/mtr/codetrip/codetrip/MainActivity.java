@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity
         request.delegate = this;
         request.execute();
 
-
         initHomeScreenButtonListener();
     }
 
@@ -120,6 +119,8 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
             case R.id.home_navigation_achievement:
+                intent.setClass(this,MilestoneActivity.class);
+                startActivity(intent);
                 break;
         }
         finish();
