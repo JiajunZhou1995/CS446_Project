@@ -36,7 +36,7 @@
           "print"
         ],
         "Choice": [],
-        "Hint": "Drag and drop [print] into [?]"
+        "Hint": "Drag and drop print into [?]"
       },
       {
         "Answer": "1",
@@ -113,7 +113,7 @@
           "Print words on paper",
           "Print words into console"
         ],
-        "Hint": "We don't use paper in programing"
+        "Hint": "We don't use paper in programming"
       }
     ]
   },
