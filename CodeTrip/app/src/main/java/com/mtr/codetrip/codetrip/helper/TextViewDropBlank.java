@@ -9,6 +9,8 @@ import com.mtr.codetrip.codetrip.Question;
 import com.mtr.codetrip.codetrip.QuestionDragAndDrop;
 import com.mtr.codetrip.codetrip.R;
 
+import java.util.List;
+
 /**
  * Created by Catrina on 25/02/2018.
  */
@@ -19,11 +21,17 @@ public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextVi
     private Question question;
     private Context context;
 
-    public TextViewDropBlank(Context context, int tag, Question question){
+
+    public int lineNumber;
+    public int linePosition;
+
+
+    public TextViewDropBlank(Context context, int lineNumber, int linePosition, Question question){
         super(context);
+        this.lineNumber = lineNumber;
+        this.linePosition = linePosition;
         this.question = question;
         this.context = context;
-        this.setTag(tag);
         this.setPadding(DensityUtil.dip2px(context,20),DensityUtil.dip2px(context,5),DensityUtil.dip2px(context,20),DensityUtil.dip2px(context,5));
         this.setBackgroundColor(context.getColor(R.color.colorWhite));
         this.setTextSize(DensityUtil.dip2px(context,14));
@@ -51,7 +59,7 @@ public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextVi
 
     @Override
     public void onClick(View v) {
-        ((QuestionDragAndDrop)question).dropReceiveBlank.restore((TextViewDropBlank) v);
+        ((QuestionDragAndDrop)question).dropReceiveBlank.restore((TextViewDropBlank)v);
     }
 
 
@@ -75,7 +83,7 @@ public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextVi
             case DragEvent.ACTION_DROP:
                 textView.updateDropState(TextViewDropBlank.DropState.DROPPED);
                 textView.setText(((QuestionDragAndDrop)question).currentOnDragButtonText);
-                ((QuestionDragAndDrop)question).dropReceiveBlank.updateFillIn((int)v.getTag(),((QuestionDragAndDrop)question).currenOnDragButton);
+                ((QuestionDragAndDrop)question).dropReceiveBlank.updateFillIn((TextViewDropBlank)v,((QuestionDragAndDrop)question).currenOnDragButton);
                 break;
         }
         return true;
