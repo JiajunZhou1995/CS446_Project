@@ -120,20 +120,4 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         consoleTV.setText(output);
     }
 
-    private String prependArrow(String output){
-        String[] lines = output.split("\n");
-        String[] consoleOutput = new String[lines.length];
-        int i = 0;
-        for (String l : lines){
-            consoleOutput[i++] =  "> " + l;
-        }
-        StringBuilder builder = new StringBuilder();
-        for(String s : consoleOutput) {
-            builder.append(s);
-            builder.append("\n");
-        }
-        String str = builder.toString();
-
-        return str;
-    }
 }

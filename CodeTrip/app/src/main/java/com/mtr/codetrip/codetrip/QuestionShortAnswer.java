@@ -2,14 +2,11 @@ package com.mtr.codetrip.codetrip;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,6 +15,7 @@ import com.mtr.codetrip.codetrip.helper.DropReceiveBlank;
 import com.mtr.codetrip.codetrip.helper.EditTextInsert;
 import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
 import com.mtr.codetrip.codetrip.helper.LayoutUtil;
+import com.mtr.codetrip.codetrip.helper.RunButton;
 import com.mtr.codetrip.codetrip.helper.TextViewDropBlank;
 import com.mtr.codetrip.codetrip.helper.TextViewLineNumber;
 import com.mtr.codetrip.codetrip.helper.TextViewNormalCode;
@@ -36,6 +34,9 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
     protected List<EditTextInsert> editTextInsertList;
     private DropReceiveBlank receiveBlank;
     private QuestionShortAnswer thisQuestionView;
+    private String codeString;
+    RunButton doitButon;
+
 
 
 
@@ -43,42 +44,10 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
     public QuestionShortAnswer(ViewGroup viewGroup){
         super(viewGroup);
         thisQuestionView = this;
+        codeString = "";
         normalCode = new ArrayList<>();
         editTextInsertList = new ArrayList<EditTextInsert>();
-        Button doitButon = rootView.findViewById(R.id.doit);
-        doitButon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DropReceiveBlank.DoItButtonState state = receiveBlank.doitButtonState;
-                switch (state){
-                    case INVALID:
-                        break;
-                    case RUN:
-                        String codeString = "";
-                        for (EditTextInsert editTextInsert: editTextInsertList){
-                            editTextInsert.setEnabled(false);
-                        }
-                        int index = 0;
-                        for (TextView tv : normalCode){
-                            codeString +=tv.getText();
-                            if (index<normalCode.size()-1) codeString+=editTextInsertList.get(index).getText().toString();
-                            index++;
-                        }
-
-                        console.setText(codeString);
-
-                        HttpPostAsyncTask request = new HttpPostAsyncTask(codeString);
-                        request.delegate = thisQuestionView;
-                        request.execute();
-                        receiveBlank.updateDoItButtonState(DropReceiveBlank.DoItButtonState.CONTINUE);
-                        break;
-                    case CONTINUE:
-                        break;
-                    case BACKTOCURRENT:
-                        break;
-                }
-            }
-        });
+        doitButon = rootView.findViewById(R.id.doit);
         receiveBlank = new DropReceiveBlank(context, doitButon);
 
     }
@@ -146,12 +115,48 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
             String editText = editTextInsert.getText().toString();
             if (editText.equals(null) || editText.equals("")) return;
         }
-        receiveBlank.updateDoItButtonState(DropReceiveBlank.DoItButtonState.RUN);
+        doitButon.updateDoItButtonState(RunButton.RunButtonState.RUN);
     }
 
     @Override
     public void processFinish(String output) {
         Log.d("out put",output);
-        console.setText(output);
+        updateConsole(output);
+    }
+
+    private void updateConsole(String output){
+        TextView consoleTV = rootView.findViewById(R.id.console);
+        output = prependArrow(output);
+        consoleTV.setText(output);
+    }
+
+    @Override
+    public void runAction(){
+//        for (List<TextViewDropBlank> dropBlankList: textViewDropBlankList){
+//            for (TextViewDropBlank textViewDropBlank : dropBlankList){
+//                textViewDropBlank.setClickable(false);
+//            }
+//        }
+//        for (Button b : codeBlockButtonList){
+//            b.setEnabled(false);
+//        }
+//
+//        for (int listIndex = 0; listIndex < normalCode.size(); listIndex++){
+//            int index = 0;
+//            List<TextView> normalCodeLine = normalCode.get(listIndex);
+//            List<Button> dropReceiveBlanksLine = dropReceiveBlank.getBlankSpaceListSingleLine(listIndex);
+//            for (TextView tv : normalCodeLine){
+//                codeString +=tv.getText();
+//                if (index<=normalCode.size()-1) codeString+=dropReceiveBlanksLine.get(index).getText();
+//                index++;
+//            }
+//            codeString += "\n";
+//        }
+//
+////                        console.setText(codeString);
+//
+//        HttpPostAsyncTask request = new HttpPostAsyncTask(codeString);
+//        request.delegate = thisQuestionView;
+//        request.execute();
     }
 }

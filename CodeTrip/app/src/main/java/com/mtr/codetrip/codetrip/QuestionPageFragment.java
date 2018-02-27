@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.mtr.codetrip.codetrip.helper.RunButton;
+
 import java.util.List;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
@@ -35,7 +37,7 @@ public class QuestionPageFragment extends Fragment {
     private int questionID;
     private int courseID;
 
-    private Question currentQ;
+    private Question currentQuestion;
 
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -55,7 +57,7 @@ public class QuestionPageFragment extends Fragment {
         super.onCreate(savedInstanceState);
         questionID = getArguments().getInt(ARG_PAGE);
         courseID = getArguments().getInt(COURSE_ID);
-        currentQ = null;
+        currentQuestion = null;
     }
 
     @Override
@@ -71,6 +73,9 @@ public class QuestionPageFragment extends Fragment {
         }
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_content,container,false);
+//        RunButton runButton = new RunButton(rootView.getContext());
+//        rootView.addView(runButton);
+
         // Inflate the layout containing a title and body text.
         Question question = null;
         switch (questionType){
@@ -91,10 +96,14 @@ public class QuestionPageFragment extends Fragment {
                 break;
         }
 
+
+
         if (question != null){
             question.populateFromDB(cursor);
             question.inflateContent(rootView);
-            currentQ = question;
+            currentQuestion = question;
+            RunButton runButton = rootView.findViewById(R.id.doit);
+            runButton.setQuestion(currentQuestion);
         }
         return rootView;
     }
@@ -107,6 +116,6 @@ public class QuestionPageFragment extends Fragment {
     }
 
     public Question getCurrentQuestion(){
-        return currentQ;
+        return currentQuestion;
     }
 }

@@ -18,7 +18,7 @@ import java.util.List;
  * Created by j66zhu on 2018-02-23.
  */
 
-public class Question {
+public abstract class Question {
     protected Context context;
     protected ViewGroup rootView;
     protected String knowledge;
@@ -77,6 +77,32 @@ public class Question {
 
     public String getHint(){
         return hint;
+    }
+
+
+
+    protected String prependArrow(String output){
+        String[] lines = output.split("\n");
+        String[] consoleOutput = new String[lines.length];
+        int i = 0;
+        for (String l : lines){
+            consoleOutput[i++] =  "> " + l;
+        }
+        StringBuilder builder = new StringBuilder();
+
+        for(int index = 0; index < consoleOutput.length; index++){
+            String s = consoleOutput[index];
+            builder.append(s);
+            if (index < consoleOutput.length -1)builder.append("\n");
+        }
+        String str = builder.toString();
+
+        return str;
+    }
+
+
+    public void runAction(){
+
     }
 
 //    protected void setUpView(View view,int width,int height, int marginLeft, int marginTop, int marginRight, int marginBottom){
