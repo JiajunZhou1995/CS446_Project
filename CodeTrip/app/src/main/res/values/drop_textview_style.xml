@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="my_text_view">
-        <attr name="text_size" format="float"></attr>
-        <attr name="text_color" format="color"></attr>
-        <attr name="text_back_ground" format="color|reference"></attr>
-
-    </declare-styleable>
-</resources>
