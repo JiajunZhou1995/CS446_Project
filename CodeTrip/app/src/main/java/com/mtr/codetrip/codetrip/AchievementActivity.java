@@ -19,7 +19,10 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by Catrina on 27/02/2018.
@@ -74,10 +77,25 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
         androidGridView = (GridView) findViewById(R.id.gridview_android_example);
         androidGridView.setAdapter(new AchievementActivity.ImageAdapterGridView(this));
 
+
+
         androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent,
                                     View v, int position, long id) {
-                Toast.makeText(getBaseContext(), "Grid Item " + (position + 1) + " Selected", Toast.LENGTH_LONG).show();
+                ArrayList<String> reward = new ArrayList<String>();
+                reward.add("Beginner on the road");
+                reward.add("Collected 10 stars");
+                reward.add("Collected 50 stars");
+                reward.add("Collected 100 stars");
+                reward.add("Traveler");
+                reward.add("One week goal");
+                reward.add("Learning streak");
+                reward.add("Brave Traveler");
+                reward.add("Traveler");
+                reward.add("Tourism Expert");
+                reward.add("Python Diploma");
+                reward.add("Python King");
+                Toast.makeText(getBaseContext(), reward.get(position), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -139,9 +157,12 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
 
             if (convertView == null) {
                 mImageView = new ImageView(mContext);
-                mImageView.setLayoutParams(new GridView.LayoutParams(130, 130));
-                mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                mImageView.setPadding(16, 16, 16, 16);
+                mImageView.setLayoutParams(new GridView.LayoutParams(350, 350));
+                mImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                mImageView.setPadding(70,70,70,70);
+//                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//                lp.setMargins(10,0,10,0);
+//                mImageView.setLayoutParams(lp);
             } else {
                 mImageView = (ImageView) convertView;
             }
