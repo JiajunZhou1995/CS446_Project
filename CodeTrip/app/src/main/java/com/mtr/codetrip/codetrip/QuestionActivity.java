@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -85,6 +86,12 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
         progressBar.setMax(NUM_PAGES);
         progressBar.setProgress(0);
+        progressBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ControlScrollViewPager) findViewById(R.id.questionPager);
