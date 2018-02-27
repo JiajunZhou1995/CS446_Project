@@ -29,7 +29,7 @@
             android:progressTint="#4ab655"
             android:indeterminate="false"
             android:max="100"
-            android:clickable="false"/>
+            android:clickable="false"
             android:thumb="@mipmap/seekbar_camper"/>
 
         <Button
