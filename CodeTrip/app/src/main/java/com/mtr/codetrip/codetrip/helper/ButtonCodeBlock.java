@@ -26,7 +26,8 @@ public class ButtonCodeBlock extends AppCompatButton implements View.OnTouchList
         this.setTag(tag);
         this.question = question;
         this.setText(codeBlock);
-        this.setMinWidth(DensityUtil.dip2px(context,45));
+        this.setMinWidth(DensityUtil.dip2px(context,25));
+        this.setMinimumWidth(DensityUtil.dip2px(context,25));
         this.setPadding(DensityUtil.dip2px(context,20),0,DensityUtil.dip2px(context,20),0);
         this.setAllCaps(false);
         this.setBackground(context.getDrawable(R.drawable.drop_block_round_enabled));

@@ -23,5 +23,6 @@ public class TextViewNormalCode extends AppCompatTextView {
         this.setTextAppearance(R.style.FontStyle_NormalCode);
         this.setTypeface(this.getTypeface(), Typeface.BOLD);
         this.setText(normalCode);
+        this.setMaxLines(1);
     }
 }

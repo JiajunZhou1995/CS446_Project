@@ -93,7 +93,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse{
     }
 
     @Override
-    protected void populateFromDB(Cursor c){
+    public void populateFromDB(Cursor c){
         super.populateFromDB(c);
 
         codeArea =  getArrayFromDB(c, "code");
@@ -123,13 +123,13 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse{
             int index = 0, blankIndex= 0;
             for (String s :code){
                 TextViewNormalCode normalTextView = new TextViewNormalCode(currentContext, s);
-                LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, normalTextView, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
+                LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, normalTextView, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,2,0,2,0);
                 singleLine.addView(normalTextView);
                 normalCode.add(normalTextView);
 
                 if (index++ < code.length -1){
                     TextViewDropBlank textViewDropBlank = new TextViewDropBlank(context, blankIndex,this);
-                    LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, textViewDropBlank, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,5,0,5,0);
+                    LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, textViewDropBlank, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
                     textViewDropBlank.updateDropState(TextViewDropBlank.DropState.DEFAULT);
                     dropReceiveBlank.addEntry();
                     textViewDropBlankList.add(textViewDropBlank);
