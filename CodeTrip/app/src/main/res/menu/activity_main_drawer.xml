@@ -7,29 +7,29 @@
         <item
             android:id="@+id/sidebar_home"
             android:icon="@mipmap/sidebar_home"
-            android:title="@string/sidebar_home" />
+            android:title="@string/navigation_home" />
         <item
             android:id="@+id/sidebar_course"
             android:icon="@mipmap/sidebar_course"
-            android:title="@string/sidebar_course" />
+            android:title="@string/navigation_course" />
         <item
             android:id="@+id/sidebar_favorite"
             android:icon="@mipmap/sidebar_favorite"
-            android:title="@string/sidebar_favorite" />
+            android:title="@string/navigation_keynotes" />
         <item
             android:id="@+id/sidebar_achievement"
             android:icon="@mipmap/sidebar_achievement"
-            android:title="@string/sidebar_achievement" />
+            android:title="@string/navigation_achievement" />
 
         <item
             android:id="@+id/sidebar_setting"
             android:icon="@mipmap/sidebar_setting"
-            android:title="@string/sidebar_setting" />
+            android:title="@string/navigation_settings" />
 
         <item
             android:id="@+id/sidebar_about_us"
             android:icon="@mipmap/sidebar_about_us"
-            android:title="@string/sidebar_about_us" />
+            android:title="@string/navigation_about_us" />
     </group>
 
     <item android:title="Communicate">

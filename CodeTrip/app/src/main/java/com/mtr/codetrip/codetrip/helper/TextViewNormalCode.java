@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.AppCompatTextView;
 
-import com.mtr.codetrip.codetrip.DensityUtil;
 import com.mtr.codetrip.codetrip.R;
 
 /**

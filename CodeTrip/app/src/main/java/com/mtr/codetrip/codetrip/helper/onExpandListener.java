@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip;
+package com.mtr.codetrip.codetrip.helper;
 
 /**
  * Created by Yolo on 2018-02-24.

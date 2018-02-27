@@ -1,12 +1,7 @@
 package com.mtr.codetrip.codetrip;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -15,25 +10,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.helper.MultipleClickUtility;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static java.lang.Math.floor;
 
 /**
  * Created by Catrina on 2/3/2018.
@@ -100,13 +84,13 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = new Intent();
 
         if (id == R.id.sidebar_home) {
-            intent.setClass(this,HomeActivity.class);
+            intent.setClass(this,MainActivity.class);
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.sidebar_course) {
 
         } else if (id == R.id.sidebar_favorite) {
-            intent.setClass(this,FavoriteActivity.class);
+            intent.setClass(this,KeynoteActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_achievement) {
 

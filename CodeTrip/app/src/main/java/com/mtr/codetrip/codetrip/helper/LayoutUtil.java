@@ -33,10 +33,10 @@ public class LayoutUtil {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 (width==ParamType.MATCH_PARENT)? ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT,
                 (height==ParamType.MATCH_PARENT)?ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,marginLeft),
-                com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,marginTop),
-                com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,marginRight),
-                com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,marginBottom));
+        layoutParams.setMargins(DensityUtil.dip2px(context,marginLeft),
+                DensityUtil.dip2px(context,marginTop),
+                DensityUtil.dip2px(context,marginRight),
+                DensityUtil.dip2px(context,marginBottom));
         targetView.setLayoutParams(layoutParams);
     }
 
@@ -44,10 +44,10 @@ public class LayoutUtil {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 (width==ParamType.MATCH_PARENT)? ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT,
                 (height==ParamType.MATCH_PARENT)?ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,marginLeft),
-                com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,marginTop),
-                com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,marginRight),
-                com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,marginBottom));
+        layoutParams.setMargins(DensityUtil.dip2px(context,marginLeft),
+                DensityUtil.dip2px(context,marginTop),
+                DensityUtil.dip2px(context,marginRight),
+                DensityUtil.dip2px(context,marginBottom));
         targetView.setLayoutParams(layoutParams);
     }
 }

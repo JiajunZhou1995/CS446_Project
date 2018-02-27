@@ -20,10 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".HomeActivity" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CourseActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FavoriteActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".KeynoteActivity" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".QuestionActivity" android:theme="@style/AppTheme.Question"/>
     </application>
 

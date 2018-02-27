@@ -5,7 +5,6 @@ import android.graphics.Paint;
 import android.view.DragEvent;
 import android.view.View;
 
-import com.mtr.codetrip.codetrip.DensityUtil;
 import com.mtr.codetrip.codetrip.Question;
 import com.mtr.codetrip.codetrip.QuestionDragAndDrop;
 import com.mtr.codetrip.codetrip.R;

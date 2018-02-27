@@ -30,9 +30,9 @@ public class EditTextInsert extends android.support.v7.widget.AppCompatEditText 
         super(context);
         this.context = context;
         this.question = question;
-        this.setPadding(com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,20), com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,5), com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,20), com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,5));
+        this.setPadding(DensityUtil.dip2px(context,20), DensityUtil.dip2px(context,5), DensityUtil.dip2px(context,20), DensityUtil.dip2px(context,5));
         this.setBackground(context.getDrawable(R.drawable.drop_block_round_enabled));
-        this.setTextSize(com.mtr.codetrip.codetrip.DensityUtil.dip2px(context,14));
+        this.setTextSize(DensityUtil.dip2px(context,14));
         this.setTextAppearance(R.style.FontStyle_DropBlank);
         this.setHint("?");
         this.setSelectAllOnFocus(true);

@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
@@ -16,7 +17,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
 import org.json.JSONObject;
 import com.mtr.codetrip.codetrip.helper.AsyncResponse;
 import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
@@ -31,7 +36,7 @@ import java.io.InputStreamReader;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, AsyncResponse {
+        implements NavigationView.OnNavigationItemSelectedListener, AsyncResponse, View.OnClickListener {
 
 
     public static double ScreenWidthRatio;
@@ -71,15 +76,55 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
 
-        System.out.println("before creating.....");
+
+        CoordinatorLayout container = (CoordinatorLayout) findViewById(R.id.app_bar_main);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View child = layoutInflater.inflate(R.layout.content_home,null);
+        container.addView(child);
+
         initDB();
 
         // Make Http request
         HttpPostAsyncTask request = new HttpPostAsyncTask("print(\"Hello World\")");
         request.delegate = this;
         request.execute();
+
+
+        initHomeScreenButtonListener();
     }
+
+    private void initHomeScreenButtonListener(){
+        Button course_button = (Button) findViewById(R.id.home_navigation_course);
+        course_button.setOnClickListener(this);
+        Button keynotes_button = (Button) findViewById(R.id.home_navigation_keynotes);
+        keynotes_button.setOnClickListener(this);
+        Button achievement_button = (Button) findViewById(R.id.home_navigation_achievement);
+        achievement_button.setOnClickListener(this);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        Intent intent = new Intent();
+
+        switch (id){
+            case R.id.home_navigation_course:
+                intent.setClass(this,CourseActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.home_navigation_keynotes:
+                intent.setClass(this,KeynoteActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.home_navigation_achievement:
+                break;
+        }
+        finish();
+    }
+
 
     // After Http request
     @Override
@@ -136,26 +181,8 @@ public class MainActivity extends AppCompatActivity
         c.moveToFirst();
         while(!c.isAfterLast()){
             int index = c.getColumnIndex("courseid");
-//            Log.d("!!!!!!!!!!SQLite", c.getString(index));
-//            System.out.println("!!!!!!!!!" + c.getString(index));
             c.moveToNext();
         }
-
-        /*更新数据库*/
-//        ContentValues values =new ContentValues();
-//        values.put("name", "wxl");
-//        myDB.update("person", values, "_id=1", null);
-//        myDB.update("person", values, "_id=?", new String[]{"5"});
-//
-//        /*查询数据*/
-//        Cursor c = myDB.query("person", null, null, null, null, null, null);
-//        c.moveToFirst();
-//        while(!c.isAfterLast()){
-//            int index = c.getColumnIndex("name");
-//            Log.d("SQLite", c.getString(index));
-//            c.moveToNext();
-//        }
-
 
     }
 
@@ -200,8 +227,6 @@ public class MainActivity extends AppCompatActivity
                 courseValues.put("unit", unit);
 
                 db.insert("course", null, courseValues);
-
-//                Log.d("+++++", "Inserted Successfully " + courseValues );
 
                 JSONArray questionArray = new JSONArray(courseObject.getString("Question"));
 
@@ -295,28 +320,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -327,13 +330,11 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.sidebar_home) {
 
-            intent.setClass(this,HomeActivity.class);
-            startActivity(intent);
         } else if (id == R.id.sidebar_course) {
             intent.setClass(this,CourseActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_favorite) {
-            intent.setClass(this,FavoriteActivity.class);
+            intent.setClass(this,KeynoteActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_achievement) {
 
@@ -345,9 +346,10 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
-//        if (id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
+        if (id != R.id.sidebar_home && id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;
     }
+
 
     public class MyDatabaseUtil extends SQLiteOpenHelper{
         public MyDatabaseUtil(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){

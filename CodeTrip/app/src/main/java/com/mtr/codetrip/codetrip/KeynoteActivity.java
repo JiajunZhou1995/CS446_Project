@@ -2,41 +2,32 @@ package com.mtr.codetrip.codetrip;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.res.TypedArrayUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.Toast;
+
 import java.util.*;
 
-import com.mtr.codetrip.codetrip.R;
-
-import javax.crypto.spec.DESKeySpec;
+import com.mtr.codetrip.codetrip.helper.ExpandAdapter;
+import com.mtr.codetrip.codetrip.helper.onExpandListener;
 
 
 /**
  * Created by Catrina on 2/3/2018.
  */
 
-public class FavoriteActivity extends MainActivity{
+public class KeynoteActivity extends MainActivity{
 
 
 
@@ -84,7 +75,7 @@ public class FavoriteActivity extends MainActivity{
         initdata();
 
         mListView = (ExpandableListView) findViewById(R.id.list);
-        mAdapter = new ArrayAdapter(FavoriteActivity.this, android.R.layout.simple_list_item_1,titles);
+        mAdapter = new ArrayAdapter(KeynoteActivity.this, android.R.layout.simple_list_item_1,titles);
 
         eAdapter = new ExpandAdapter(titles,knowledges);
 
@@ -106,7 +97,7 @@ public class FavoriteActivity extends MainActivity{
         /*mListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(FavoriteActivity.this, knowledges[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
+                Toast.makeText(KeynoteActivity.this, knowledges[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
                 return true;
             }
         });*/
@@ -175,7 +166,7 @@ public class FavoriteActivity extends MainActivity{
         Intent intent = new Intent();
 
         if (id == R.id.sidebar_home) {
-            intent.setClass(this,HomeActivity.class);
+            intent.setClass(this,MainActivity.class);
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.sidebar_course) {
