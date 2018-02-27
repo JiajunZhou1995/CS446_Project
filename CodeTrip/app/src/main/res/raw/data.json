@@ -4,7 +4,7 @@
     "Unit": "1",
     "Type": "Lecture",
     "Title": "Print",
-    "Total": "7",
+    "Total": "8",
     "Position": "0L0",
     "Question": [
       {
@@ -25,8 +25,8 @@
       {
         "Answer": "Hello World\n",
         "Type": "Drag&Drop",
-        "Knowledge": "Function will have a function name follow by (), and whatever in the () will be passed as parameter.",
-        "Instruction": "Let’s drag and drop a code block into the code.",
+        "Knowledge": "Functions will have a function name follow by (), and whatever in the () will be passed as parameter.",
+        "Instruction": "Let’s drag and drop a function name into the code.",
         "Code": [
           "[?](\"Hello World\")"
         ],
@@ -50,14 +50,15 @@
         "CodeBlock": [],
         "Choice": [
           "Hi",
-          "Hello"
+          "Hello",
+          "This App is awesome"
         ],
         "Hint": "What's in the function? "
       },
       {
         "Answer": "Hello There\n",
         "Type": "Drag&Drop",
-        "Knowledge": "Print function will print words into the console. ",
+        "Knowledge": "Print function will print words into the console.",
         "Instruction": "Let’s drag and drop a code block into the code so it will print Hello There.",
         "Code": [
           "print([?])"
@@ -72,34 +73,33 @@
       },
       {
         "Answer": null,
-        "Type": "Drag&Drop",
+        "Type": "ShortAnswer",
         "Knowledge": "You can have multiple print function at once. ",
-        "Instruction": "Let’s drag and drop a code block into the code.",
+        "Instruction": "Try to type in some numbers.",
         "Code": [
           "print(\"Hi\")",
           "print([?])"
         ],
         "Console": "2",
-        "CodeBlock": [
-          "\"I’m a dog person\"",
-          "\"I’m a cat person\""
-        ],
+        "CodeBlock": [],
         "Choice": [],
-        "Hint": "Drag and drop any block into [?]"
+        "Hint": "Type anything into the [?] block"
       },
       {
         "Answer": "Code\nTrip\n",
         "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Rearrange following code to make it print \"Code\" before \"Trip\".",
+        "Knowledge": "The order of print matters.",
+        "Instruction": "Rearrange following code to make it print Code Trip is Awesome.",
         "Code": [
           "print(\"Trip\")",
-          "print(\"Code\")"
+          "print(\"Code\")",
+          "print(\"Awesome\")",
+          "print(\"is\")"
         ],
-        "Console": "2",
+        "Console": "4",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Rearrange Code before Trip."
+        "Hint": "Rearrange \"Code\" before \"Trip\", \"is\" before \"Awesome\"."
       },
       {
         "Answer": "2",
@@ -114,6 +114,20 @@
           "Print words into console"
         ],
         "Hint": "We don't use paper in programming"
+      },
+      {
+        "Answer": "2",
+        "Type": "MultipleChoice",
+        "Knowledge": null,
+        "Instruction": "The order of print matters",
+        "Code": [],
+        "Console": "0",
+        "CodeBlock": [],
+        "Choice": [
+          "True",
+          "False"
+        ],
+        "Hint": "We talked about this 3 questions ago"
       }
     ]
   },
@@ -336,7 +350,7 @@
     "Available": "false",
     "Unit": "1",
     "Type": "Lecture",
-    "Title": "Modulus",
+    "Title": "Boolean",
     "Total": "5",
     "Position": "2L2",
     "Question": [
@@ -432,7 +446,7 @@
     "Available": "false",
     "Unit": "1",
     "Type": "Lecture",
-    "Title": "Boolean",
+    "Title": "Expression",
     "Total": "7",
     "Position": "3R2",
     "Question": [
