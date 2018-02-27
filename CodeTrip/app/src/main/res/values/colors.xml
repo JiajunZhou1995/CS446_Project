@@ -12,6 +12,9 @@
     <color name="colorOrange">#FFA500</color>
     <color name="colorAquaMarine">#458b74</color>
     <color name="colorFireBrick">#ff3030</color>
+    <color name="colorLime100">#F0F4C3</color>
+    <color name="colorLightGreen200">#9bf03a</color>
+    <color name="colorBlueGrey200">#B0BEC5</color>
 
     <color name="colorCourseBackground1">#a5b9d6</color>
     <color name="colorCourseBackground2">#dfdfdf</color>

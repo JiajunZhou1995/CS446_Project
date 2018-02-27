@@ -15,9 +15,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hint: This is a hint."
+        android:textSize="16sp"
         android:layout_centerInParent="true"
-        android:padding="25sp"
+        android:padding="25dp"
         android:background="#80FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
 </RelativeLayout>

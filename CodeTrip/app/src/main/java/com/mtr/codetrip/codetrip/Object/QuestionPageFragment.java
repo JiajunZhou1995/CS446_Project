@@ -99,7 +99,12 @@ public class QuestionPageFragment extends Fragment {
             currentQuestion = question;
             RunButton runButton = rootView.findViewById(R.id.doit);
             runButton.setQuestion(currentQuestion);
-            runButton.updateDoItButtonState(RunButton.RunButtonState.INVALID);
+            if (question instanceof QuestionRearrange){
+                runButton.updateDoItButtonState(RunButton.RunButtonState.RUN);
+            }
+            else{
+                runButton.updateDoItButtonState(RunButton.RunButtonState.INVALID);
+            }
         }
         return rootView;
     }

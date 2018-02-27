@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
 import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.LayoutUtil;
 import com.mtr.codetrip.codetrip.CostumWidgets.TextViewLineNumber;
@@ -28,6 +29,7 @@ public class QuestionMultipleChoice extends Question {
     private int currentSelection;
     private List<FrameLayout> choiceViews;
     private int answer;
+    private RunButton doIt;
 
 
     public QuestionMultipleChoice(ViewGroup viewGroup){
@@ -35,6 +37,7 @@ public class QuestionMultipleChoice extends Question {
         codeIns = new ArrayList<String>();
         choices = new ArrayList<String>();
         choiceViews = new ArrayList<FrameLayout>();
+        doIt = rootView.findViewById(R.id.doit);
     }
 
     @Override
@@ -106,48 +109,59 @@ public class QuestionMultipleChoice extends Question {
                     TextView tv = v.findViewById(R.id.mc_item_text);
                     tv.setTextColor(context.getColor(R.color.colorWhite));
                     v.setBackground(context.getDrawable(R.drawable.code_area_round_highlight));
-                    status = RUN_BUTTON_STATUS.RUN;
-                    updateButton();
+                    doIt.updateDoItButtonState(RunButton.RunButtonState.RUN);
+                    doIt.setText("Check");
+//                    status = RUN_BUTTON_STATUS.RUN;
+//                    updateButton();
                 }
             });
             choiceViews.add(choiceView);
             choiceArea.addView(choiceView);
         }
-        Button doIt = rootView.findViewById(R.id.doit);
-        doIt.setClickable(true);
-        doIt.setBackground(context.getDrawable(R.drawable.doit_button_invalid));
-        doIt.setText(context.getString(R.string.question_action_run));
-        doIt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentSelection + 1 == answer){ //off by 1
-                    status = RUN_BUTTON_STATUS.CONTINUE;
-                    TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
-                    updateButton();
-                }
-            }
-        });
+//        Button doIt = rootView.findViewById(R.id.doit);
+//        doIt.setClickable(true);
+//        doIt.setBackground(context.getDrawable(R.drawable.doit_button_invalid));
+//        doIt.setText(context.getString(R.string.question_action_run));
+//        doIt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (currentSelection + 1 == answer){ //off by 1
+//                    status = RUN_BUTTON_STATUS.CONTINUE;
+//                    TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
+//                    updateButton();
+//                }
+//            }
+//        });
     }
 
 
 
-    private void updateButton(){
-        Button doIt = rootView.findViewById(R.id.doit);
-        if (status == RUN_BUTTON_STATUS.CONTINUE){
-            doIt.setClickable(true);
-            doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
-            doIt.setText(context.getString(R.string.question_action_continue));
-        }
-        else if (status == RUN_BUTTON_STATUS.RUN){
-            doIt.setClickable(true);
-            doIt.setBackground(context.getDrawable(R.drawable.doit_button_run));
-            doIt.setText(context.getString(R.string.question_action_check));
-        }
+//    private void updateButton(){
+//        Button doIt = rootView.findViewById(R.id.doit);
+//        if (status == RUN_BUTTON_STATUS.CONTINUE){
+//            doIt.setClickable(true);
+//            doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
+//            doIt.setText(context.getString(R.string.question_action_continue));
+//        }
+//        else if (status == RUN_BUTTON_STATUS.RUN){
+//            doIt.setClickable(true);
+//            doIt.setBackground(context.getDrawable(R.drawable.doit_button_run));
+//            doIt.setText(context.getString(R.string.question_action_check));
+//        }
+//
+//        else{
+//            doIt.setClickable(true);
+//            doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
+//            doIt.setText(context.getString(R.string.question_action_continue));
+//        }
+//    }
 
-        else{
-            doIt.setClickable(true);
-            doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
-            doIt.setText(context.getString(R.string.question_action_continue));
+    @Override
+    public void runAction(){
+        if (currentSelection + 1 == answer){ //off by 1
+            doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
+//            TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
+//            updateButton();
         }
     }
 }

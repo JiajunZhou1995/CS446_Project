@@ -29,13 +29,14 @@
             android:progressTint="#4ab655"
             android:indeterminate="false"
             android:max="100"
+            android:clickable="false"/>
             android:thumb="@mipmap/seekbar_camper"/>
 
         <Button
             android:id="@+id/hint_button"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@mipmap/question_hint"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/help"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
 
     </LinearLayout>

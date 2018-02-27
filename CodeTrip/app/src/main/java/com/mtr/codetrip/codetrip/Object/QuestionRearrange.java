@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
 import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
 import com.mtr.codetrip.codetrip.Utility.HttpPostAsyncTask;
@@ -29,6 +30,9 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
     private ItemTouchHelper mItemTouchHelper;
     private List<String> codeIns;
     private String answer;
+    private RunButton doIt;
+    private RecyclerListAdapter adapter;
+
 
     QuestionRearrange(ViewGroup view){
         super(view);
@@ -40,6 +44,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
 
         codeIns = getArrayFromDB(c, "code");
         answer = c.getString(c.getColumnIndex("answer"));
+        doIt = rootView.findViewById(R.id.doit);
     }
 
     @Override
@@ -51,9 +56,9 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         View rearrange = layoutInflater.inflate(R.layout.question_rearrange,null);
         questionContent.addView(rearrange);
 
-        final RecyclerListAdapter adapter = new RecyclerListAdapter(rootView.getContext(), this, codeIns);
+        adapter = new RecyclerListAdapter(rootView.getContext(), this, codeIns);
 
-        final RecyclerView recyclerView = rootView.findViewById(R.id.rearrange_view);
+        RecyclerView recyclerView = rootView.findViewById(R.id.rearrange_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
@@ -62,16 +67,16 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(recyclerView);
 
-        Button doIt = rootView.findViewById(R.id.doit);
-        doIt.setClickable(true);
-        doIt.setBackground(context.getDrawable(R.drawable.doit_button_run));
-        doIt.setText(context.getString(R.string.question_action_run));
-        doIt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RUN_BUTTON_STATUS status = updateAnswer(adapter);
-            }
-        });
+        //Button doIt = rootView.findViewById(R.id.doit);
+//        doIt.setClickable(true);
+//        doIt.setBackground(context.getDrawable(R.drawable.doit_button_run));
+//        doIt.setText(context.getString(R.string.question_action_run));
+//        doIt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                RUN_BUTTON_STATUS status = updateAnswer(adapter);
+//            }
+//        });
     }
 
     @Override
@@ -79,7 +84,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         mItemTouchHelper.startDrag(viewHolder);
     }
 
-    private RUN_BUTTON_STATUS updateAnswer(RecyclerListAdapter adapter){
+    private void updateAnswer(){
         String currentOrder = adapter.getItems().toString();
         currentOrder = currentOrder.replaceAll(", ", "\n");
         currentOrder = currentOrder.substring(1, currentOrder.length()-1);
@@ -89,30 +94,33 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         asyncTask.delegate = this;
         asyncTask.execute();
 
-        return RUN_BUTTON_STATUS.RUN;
+        //return RUN_BUTTON_STATUS.RUN;
     }
 
     public void processFinish(String output){
         if (output.equals(answer)){
             //Log.d("jasmine", "correct!");
+            doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
+
+            //updateButton();
         }
 
-        status = RUN_BUTTON_STATUS.CONTINUE;
-        updateButton();
         updateConsole(output);
+
+        //status = RUN_BUTTON_STATUS.CONTINUE;
     }
 
-    private void updateButton(){
-        Button doIt = rootView.findViewById(R.id.doit);
-        if (status == RUN_BUTTON_STATUS.CONTINUE){
-        }
-        else {
-        }
-
-        doIt.setClickable(true);
-        doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
-        doIt.setText(context.getString(R.string.question_action_continue));
-    }
+//    private void updateButton(){
+//        Button doIt = rootView.findViewById(R.id.doit);
+//        if (status == RUN_BUTTON_STATUS.CONTINUE){
+//        }
+//        else {
+//        }
+//
+//        doIt.setClickable(true);
+//        doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
+//        doIt.setText(context.getString(R.string.question_action_continue));
+//    }
 
     private void updateConsole(String output){
         TextView consoleTV = rootView.findViewById(R.id.console);
@@ -120,4 +128,8 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         consoleTV.setText(output);
     }
 
+    @Override
+    public void runAction(){
+        updateAnswer();
+    }
 }
