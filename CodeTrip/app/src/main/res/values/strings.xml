@@ -20,10 +20,11 @@
     <string name="count_star">5</string>
 
     <!--Question Page Run Button Action-->
-    <string name="question_action_doit">Do it!</string>
+    <string name="question_action_doit">Fill in the blank</string>
     <string name="question_action_run">Run</string>
-    <string name="question_action_continue">continue</string>
-    <string name="question_action_backtocurrent">Back to Current Question</string>
+    <string name="question_action_check">Check</string>
+    <string name="question_action_continue">Continue</string>
+    <string name="question_action_backtocurrent">Back to current question</string>
 
     <string name="question_title">Title</string>
     <string name="question_instruction">\nSample Instruction\nVaribale are an integeral element in Python\nThey can hold all sorts of stuff\n\nSome basic types of variables:\nInteger, Float, Boolean, String\n\nLet\'s try assigning some numbers to variables</string>

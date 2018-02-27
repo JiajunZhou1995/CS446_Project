@@ -104,6 +104,7 @@
         <item name="android:background">@drawable/doit_button_invalid</item>
         <item name="android:text">@string/question_action_doit</item>
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 

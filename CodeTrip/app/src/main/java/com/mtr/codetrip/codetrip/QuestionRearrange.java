@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.helper.AsyncResponse;
 import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
@@ -17,6 +18,7 @@ import com.mtr.codetrip.codetrip.helper.OnStartDragListener;
 import com.mtr.codetrip.codetrip.helper.RecyclerListAdapter;
 import com.mtr.codetrip.codetrip.helper.SimpleItemTouchHelperCallback;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 /**
@@ -62,6 +64,8 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
 
         Button doIt = rootView.findViewById(R.id.doit);
         doIt.setClickable(true);
+        doIt.setBackground(context.getDrawable(R.drawable.doit_button_run));
+        doIt.setText(context.getString(R.string.question_action_run));
         doIt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +93,47 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
     }
 
     public void processFinish(String output){
-        if (output == answer){
-            Log.d("jasmine", "correct!");
+        if (output.equals(answer)){
+            //Log.d("jasmine", "correct!");
         }
+
+        status = RUN_BUTTON_STATUS.CONTINUE;
+        updateButton();
+        updateConsole(output);
+    }
+
+    private void updateButton(){
+        Button doIt = rootView.findViewById(R.id.doit);
+        if (status == RUN_BUTTON_STATUS.CONTINUE){
+        }
+        else {
+        }
+
+        doIt.setClickable(true);
+        doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
+        doIt.setText(context.getString(R.string.question_action_continue));
+    }
+
+    private void updateConsole(String output){
+        TextView consoleTV = rootView.findViewById(R.id.console);
+        output = prependArrow(output);
+        consoleTV.setText(output);
+    }
+
+    private String prependArrow(String output){
+        String[] lines = output.split("\n");
+        String[] consoleOutput = new String[lines.length];
+        int i = 0;
+        for (String l : lines){
+            consoleOutput[i++] =  "> " + l;
+        }
+        StringBuilder builder = new StringBuilder();
+        for(String s : consoleOutput) {
+            builder.append(s);
+            builder.append("\n");
+        }
+        String str = builder.toString();
+
+        return str;
     }
 }

@@ -1,6 +1,7 @@
 package com.mtr.codetrip.codetrip;
 
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,9 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.helper.HttpPostAsyncTask;
 import com.mtr.codetrip.codetrip.helper.LayoutUtil;
+import com.mtr.codetrip.codetrip.helper.RecyclerListAdapter;
 import com.mtr.codetrip.codetrip.helper.TextViewLineNumber;
 import com.mtr.codetrip.codetrip.helper.TextViewNormalCode;
 
@@ -22,12 +25,13 @@ import java.util.List;
  * Created by Catrina on 24/02/2018.
  */
 
-public class QuestionMultipleChoice extends Question implements AsyncResponse{
+public class QuestionMultipleChoice extends Question{
 
     private List<String> codeIns;
     private List<String> choices;
     private int currentSelection;
     private List<FrameLayout> choiceViews;
+    private int answer;
 
 
     public QuestionMultipleChoice(ViewGroup viewGroup){
@@ -42,6 +46,7 @@ public class QuestionMultipleChoice extends Question implements AsyncResponse{
         super.populateFromDB(c);
         codeIns =  getArrayFromDB(c, "code");
         choices = getArrayFromDB(c, "choice");
+        answer = c.getInt(c.getColumnIndex("answer"));
     }
 
 
@@ -49,6 +54,8 @@ public class QuestionMultipleChoice extends Question implements AsyncResponse{
         int lastSelection = currentSelection;
         currentSelection = newSelection;
         if (lastSelection != currentSelection){
+            TextView tv = choiceViews.get(lastSelection).findViewById(R.id.mc_item_text);
+            tv.setTextColor(context.getColor(R.color.colorBlack));
             choiceViews.get(lastSelection).setBackground(context.getDrawable(R.drawable.code_area_round));
         }
     }
@@ -100,15 +107,51 @@ public class QuestionMultipleChoice extends Question implements AsyncResponse{
                 @Override
                 public void onClick(View v) {
                     updateSelection(choiceIndex);
+                    TextView tv = v.findViewById(R.id.mc_item_text);
+                    tv.setTextColor(context.getColor(R.color.colorWhite));
                     v.setBackground(context.getDrawable(R.drawable.code_area_round_highlight));
+                    status = RUN_BUTTON_STATUS.RUN;
+                    updateButton();
                 }
             });
             choiceViews.add(choiceView);
             choiceArea.addView(choiceView);
         }
+        Button doIt = rootView.findViewById(R.id.doit);
+        doIt.setClickable(true);
+        doIt.setBackground(context.getDrawable(R.drawable.doit_button_invalid));
+        doIt.setText(context.getString(R.string.question_action_run));
+        doIt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentSelection + 1 == answer){ //off by 1
+                    status = RUN_BUTTON_STATUS.CONTINUE;
+                    TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
+                    updateButton();
+                }
+            }
+        });
     }
 
-    public void processFinish(String output){
 
+
+    private void updateButton(){
+        Button doIt = rootView.findViewById(R.id.doit);
+        if (status == RUN_BUTTON_STATUS.CONTINUE){
+            doIt.setClickable(true);
+            doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
+            doIt.setText(context.getString(R.string.question_action_continue));
+        }
+        else if (status == RUN_BUTTON_STATUS.RUN){
+            doIt.setClickable(true);
+            doIt.setBackground(context.getDrawable(R.drawable.doit_button_run));
+            doIt.setText(context.getString(R.string.question_action_check));
+        }
+
+        else{
+            doIt.setClickable(true);
+            doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
+            doIt.setText(context.getString(R.string.question_action_continue));
+        }
     }
 }

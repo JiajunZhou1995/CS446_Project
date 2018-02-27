@@ -19,14 +19,17 @@
             android:background="@mipmap/question_return"
             android:layout_marginLeft="@dimen/activity_horizontal_margin" />
 
-        <ProgressBar
+        <SeekBar
             android:id="@+id/question_progressbar"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_weight="1"
             android:layout_margin="20dp"
             style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-            android:indeterminate="false" />
+            android:progressTint="#4ab655"
+            android:indeterminate="false"
+            android:max="100"
+            android:thumb="@mipmap/camper"/>
 
         <Button
             android:id="@+id/hint_button"

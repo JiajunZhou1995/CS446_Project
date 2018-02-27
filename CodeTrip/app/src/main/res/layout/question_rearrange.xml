@@ -10,15 +10,10 @@
         android:id="@+id/rearrange_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:layout_marginVertical="5dp">
+        android:background="@drawable/code_area_round"
+        android:layout_marginVertical="5dp"
+        android:padding="5dp">
     </android.support.v7.widget.RecyclerView>
 
-    <TextView
-        android:id="@+id/console"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/colorBlack"
-        android:textColor="@color/colorWhite"
-        android:layout_marginTop="10dp"/>
+    <include layout="@layout/question_console"/>
 </LinearLayout>

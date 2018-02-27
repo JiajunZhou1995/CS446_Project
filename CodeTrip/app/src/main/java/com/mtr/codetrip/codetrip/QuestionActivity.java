@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 /**
@@ -59,7 +60,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private LinearLayout mLinearLayout;
     Button mButton;
     Button returnButton;
-    ProgressBar progressBar;
+    SeekBar progressBar;
 
     private PopupWindow mPopupWindow;
 
@@ -82,7 +83,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         Cursor c = MainActivity.myDB.rawQuery(sql,null);
         c.moveToFirst();
         NUM_PAGES = c.getInt(c.getColumnIndex("total"));
-        progressBar = (ProgressBar) findViewById(R.id.question_progressbar);
+        progressBar = findViewById(R.id.question_progressbar);
+
         progressBar.setMax(NUM_PAGES);
         progressBar.setProgress(0);
 

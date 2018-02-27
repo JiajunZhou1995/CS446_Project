@@ -20,11 +20,11 @@
                 android:id="@+id/question_knowledge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textColor="@color/colorBlack"/>
             <TextView
                 android:id="@+id/question_instruction"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlack"/>
@@ -36,5 +36,6 @@
     <Button
         android:id="@+id/doit"
         style="@style/question_button.doit"
+        android:textAllCaps="false"
         android:layout_height="wrap_content" />
 </LinearLayout>
