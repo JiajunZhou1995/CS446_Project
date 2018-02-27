@@ -206,7 +206,7 @@
     "Position": "1R1",
     "Question": [
       {
-        "Answer": [],
+        "Answer": null,
         "Type": "Drag&Drop",
         "Knowledge": "Arithmetic operators in python are +, - , * ,/, which has the same meaning as in math expressions.",
         "Instruction": "Let's put different operator into block and see what happened?",
@@ -341,7 +341,7 @@
     "Position": "2L2",
     "Question": [
       {
-        "Answer": [],
+        "Answer": null,
         "Type": "ShortAnswer",
         "Knowledge": "Modulus(%) is used to calculate the remainder.",
         "Instruction": "When we use operator %,  it means we want to do a remainder calculation, type in different numbers to see the difference!",
@@ -451,7 +451,7 @@
         "Hint": "Boolean expression only have two options."
       },
       {
-        "Answer": [],
+        "Answer": null,
         "Type": "Drag&Drop",
         "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
         "Instruction": "Look at the code below and play with it, see what will be result will we get? Is there only two out comes for the following code?",
