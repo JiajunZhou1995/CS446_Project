@@ -59,8 +59,10 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
             case CONTINUE:
                 QuestionActivity.onQuestionFragmentSwipe(1);
                 updateDoItButtonState(RunButtonState.BACKTOCURRENT);
+                QuestionActivity.currentProgress += 1;
                 break;
             case BACKTOCURRENT:
+                QuestionActivity.backtocurrent();
                 break;
         }
     }

@@ -8,9 +8,15 @@
 
     <include layout="@layout/app_bar_question"/>
 
-    <android.support.v4.view.ViewPager
+    <com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager
         android:id="@+id/questionPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/questionPager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
 
 </LinearLayout>

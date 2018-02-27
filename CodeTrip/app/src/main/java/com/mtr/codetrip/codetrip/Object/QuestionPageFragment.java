@@ -99,6 +99,7 @@ public class QuestionPageFragment extends Fragment {
             currentQuestion = question;
             RunButton runButton = rootView.findViewById(R.id.doit);
             runButton.setQuestion(currentQuestion);
+            runButton.updateDoItButtonState(RunButton.RunButtonState.INVALID);
         }
         return rootView;
     }

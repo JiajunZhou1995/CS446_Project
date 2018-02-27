@@ -27,6 +27,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.Object.QuestionPageFragment;
+import com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager;
 
 /**
  * Created by Catrina on 2/4/2018.
@@ -36,13 +37,14 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
 
-    private int NUM_PAGES = 0;
+    private int NUM_PAGES;
+    public static int currentProgress;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
      */
-    private static ViewPager mPager;
+    public static ControlScrollViewPager mPager;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
@@ -67,6 +69,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        currentProgress = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
@@ -84,20 +87,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         progressBar.setProgress(0);
 
         // Instantiate a ViewPager and a PagerAdapter.
-        mPager = (ViewPager) findViewById(R.id.questionPager);
+        mPager = (ControlScrollViewPager) findViewById(R.id.questionPager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(NUM_PAGES);
-        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                // When changing pages, reset the action bar actions since they are dependent
-                // on which page is currently active. An alternative approach is to have each
-                // fragment expose actions itself (rather than the activity exposing actions),
-                // but for simplicity, the activity provides the actions in this sample.
-                invalidateOptionsMenu();
-            }
-        });
 
 
         // Get the activity
@@ -113,6 +106,12 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
     public static void onQuestionFragmentSwipe(int swipeGesture){
         mPager.setCurrentItem(mPager.getCurrentItem() + swipeGesture);
+    }
+
+
+
+    public static void backtocurrent(){
+        mPager.setCurrentItem(currentProgress);
     }
     /**
      * A simple pager adapter that represents 5 {@link QuestionPageFragment} objects, in
@@ -131,7 +130,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         @Override
         public void setPrimaryItem(ViewGroup container, final int position, Object object) {
             super.setPrimaryItem(container,position,object);
-            progressBar.setProgress(position);
+            progressBar.setProgress(currentProgress);
         }
 
         @Override
@@ -157,7 +156,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             progressBar.setProgress((int) (progress+0.5f));
         }
     }
-
 
     @Override
     public void onClick(View v) {
@@ -223,8 +221,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             // Finally, show the popup window at the center location of root relative layout
             mPopupWindow.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
         }
-
-
     }
 
 }
