@@ -6,13 +6,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.CostumWidgets.TextViewDropBlank;
 import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
 import com.mtr.codetrip.codetrip.Utility.DropReceiveBlank;
 import com.mtr.codetrip.codetrip.CostumWidgets.EditTextInsert;
+import com.mtr.codetrip.codetrip.Utility.HttpPostAsyncTask;
 import com.mtr.codetrip.codetrip.Utility.LayoutUtil;
 import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
 import com.mtr.codetrip.codetrip.CostumWidgets.TextViewLineNumber;
@@ -28,8 +31,8 @@ import java.util.List;
 public class QuestionShortAnswer extends Question implements AsyncResponse {
     private List<String> codeArea;
     private TextView console;
-    private List<TextView> normalCode;
-    protected List<EditTextInsert> editTextInsertList;
+    private List<List<TextView>> normalCode;
+    protected List<List<EditTextInsert>> editTextInsertList;
     private DropReceiveBlank receiveBlank;
     private QuestionShortAnswer thisQuestionView;
     private String codeString;
@@ -44,7 +47,7 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
         thisQuestionView = this;
         codeString = "";
         normalCode = new ArrayList<>();
-        editTextInsertList = new ArrayList<EditTextInsert>();
+        editTextInsertList = new ArrayList<>();
         doitButon = rootView.findViewById(R.id.doit);
         receiveBlank = new DropReceiveBlank(context, doitButon);
 
@@ -74,9 +77,13 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
         LayoutInflater layoutInflater = LayoutInflater.from(currentContext);
 
         LinearLayout codeAreaLinearLayout = shortAnswerContent.findViewById(R.id.question_code_area);
-        LinearLayout singleLine = null;
+        LinearLayout singleLine;
+        List<TextView>normalCodeSingleLine;
+        List<EditTextInsert>editTextInsertSingleLine;
         int lineIndex = 1;
         for (String codeLine : codeArea){
+            normalCodeSingleLine = new ArrayList<>();
+            editTextInsertSingleLine = new ArrayList<>();
             String[] code = codeLine.split("(\\[\\?\\])");
             singleLine = new LinearLayout(currentContext);
             singleLine.setOrientation(LinearLayout.HORIZONTAL);
@@ -93,25 +100,29 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
                 TextViewNormalCode normalTextView = new TextViewNormalCode(currentContext, s);
                 LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, normalTextView, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
                 singleLine.addView(normalTextView);
-                normalCode.add(normalTextView);
+                normalCodeSingleLine.add(normalTextView);
 
                 if (index++ < code.length -1){
                     EditTextInsert editTextInsert = new EditTextInsert(context,this);
                     LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, editTextInsert, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,5,0,5,0);
                     singleLine.addView(editTextInsert);
-                    editTextInsertList.add(editTextInsert);
+                    editTextInsertSingleLine.add(editTextInsert);
                     blankIndex++;
                 }
             }
+            editTextInsertList.add(editTextInsertSingleLine);
+            normalCode.add(normalCodeSingleLine);
             codeAreaLinearLayout.addView(singleLine);
             lineIndex++;
         }
     }
 
     public void checkEditInsertList(){
-        for (EditTextInsert editTextInsert : editTextInsertList){
-            String editText = editTextInsert.getText().toString();
-            if (editText.equals(null) || editText.equals("")) return;
+        for (List<EditTextInsert> editTextInsertList : editTextInsertList){
+            for (EditTextInsert editTextInsert : editTextInsertList){
+                if (editTextInsert.equals(null) || editTextInsert.equals("")) return;
+
+            }
         }
         doitButon.updateDoItButtonState(RunButton.RunButtonState.RUN);
     }
@@ -130,31 +141,28 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
 
     @Override
     public void runAction(){
-//        for (List<TextViewDropBlank> dropBlankList: textViewDropBlankList){
-//            for (TextViewDropBlank textViewDropBlank : dropBlankList){
-//                textViewDropBlank.setClickable(false);
-//            }
-//        }
-//        for (Button b : codeBlockButtonList){
-//            b.setEnabled(false);
-//        }
-//
-//        for (int listIndex = 0; listIndex < normalCode.size(); listIndex++){
-//            int index = 0;
-//            List<TextView> normalCodeLine = normalCode.get(listIndex);
-//            List<Button> dropReceiveBlanksLine = dropReceiveBlank.getBlankSpaceListSingleLine(listIndex);
-//            for (TextView tv : normalCodeLine){
-//                codeString +=tv.getText();
-//                if (index<=normalCode.size()-1) codeString+=dropReceiveBlanksLine.get(index).getText();
-//                index++;
-//            }
-//            codeString += "\n";
-//        }
-//
-////                        console.setText(codeString);
-//
-//        HttpPostAsyncTask request = new HttpPostAsyncTask(codeString);
-//        request.delegate = thisQuestionView;
-//        request.execute();
+        for (List<EditTextInsert> editTextInserts: editTextInsertList){
+            for (EditTextInsert editTextInsert : editTextInserts){
+                editTextInsert.setClickable(false);
+            }
+        }
+
+        for (int listIndex = 0; listIndex < normalCode.size(); listIndex++){
+            int index = 0;
+            List<TextView> normalCodeLine = normalCode.get(listIndex);
+            List<EditTextInsert> editTextInserts = editTextInsertList.get(listIndex);
+            for (TextView tv : normalCodeLine){
+                codeString +=tv.getText();
+                if (index<editTextInserts.size()) codeString+=editTextInserts.get(index).getText();
+                index++;
+            }
+            codeString += "\n";
+        }
+
+//                        console.setText(codeString);
+
+        HttpPostAsyncTask request = new HttpPostAsyncTask(codeString);
+        request.delegate = thisQuestionView;
+        request.execute();
     }
 }

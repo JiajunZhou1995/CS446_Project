@@ -35,13 +35,13 @@ public class EditTextInsert extends android.support.v7.widget.AppCompatEditText 
         this.setTextAppearance(R.style.FontStyle_DropBlank);
         this.setHint("?");
         this.setSelectAllOnFocus(true);
-        this.setInputType(InputType.TYPE_CLASS_NUMBER);
+        this.setInputType(InputType.TYPE_CLASS_TEXT);
         this.setSingleLine(true);
         this.setImeOptions(EditorInfo.IME_ACTION_DONE);
         this.setCursorVisible(false);
 
 
-        InputFilter[] filters = {new InputFilter.LengthFilter(4)};
+        InputFilter[] filters = {new InputFilter.LengthFilter(20)};
         this.setFilters(filters);
 
         this.setOnEditorActionListener(this);

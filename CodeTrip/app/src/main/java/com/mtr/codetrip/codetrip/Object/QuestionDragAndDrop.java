@@ -75,11 +75,11 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
         LinearLayout singleLine;
         List<TextView>normalCodeSingleLine;
         List<TextViewDropBlank>dropReceviveBlankSingLine;
-        List<Button> dropReceiveBlankSingleLine;
+        List<Button> dropReceiveRecordSingleLine;
         int lineIndex = 0;
         for (String codeLine : codeArea){
             normalCodeSingleLine = new ArrayList<>();
-            dropReceiveBlankSingleLine = new ArrayList<>();
+            dropReceiveRecordSingleLine = new ArrayList<>();
             dropReceviveBlankSingLine = new ArrayList<>();
             String[] code = codeLine.split("(\\[\\?\\])");
             singleLine = new LinearLayout(currentContext);
@@ -103,13 +103,13 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
                     TextViewDropBlank textViewDropBlank = new TextViewDropBlank(context, lineIndex, blankIndex,this);
                     LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, textViewDropBlank, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
                     textViewDropBlank.updateDropState(TextViewDropBlank.DropState.DEFAULT);
-                    dropReceiveBlankSingleLine.add(null);
+                    dropReceiveRecordSingleLine.add(null);
                     dropReceviveBlankSingLine.add(textViewDropBlank);
                     singleLine.addView(textViewDropBlank);
                     blankIndex++;
                 }
             }
-            dropReceiveBlank.addEntry(dropReceiveBlankSingleLine);
+            dropReceiveBlank.addEntry(dropReceiveRecordSingleLine);
             textViewDropBlankList.add(dropReceviveBlankSingLine);
             normalCode.add(normalCodeSingleLine);
             codeAreaLinearLayout.addView(singleLine);
@@ -183,7 +183,6 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
             codeString += "\n";
         }
 
-//                        console.setText(codeString);
 
         HttpPostAsyncTask request = new HttpPostAsyncTask(codeString);
         request.delegate = thisQuestionView;
