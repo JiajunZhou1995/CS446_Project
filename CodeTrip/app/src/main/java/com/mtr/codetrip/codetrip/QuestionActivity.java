@@ -45,7 +45,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     public static int NUM_PAGES;
     public static int currentProgress;
     private static Context currentContext;
-    private static QuestionActivity currentQuestionActivity;
+    public static QuestionActivity currentQuestionActivity;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous

@@ -2,9 +2,11 @@ package com.mtr.codetrip.codetrip.CostumWidgets;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.mtr.codetrip.codetrip.DemoActivity;
 import com.mtr.codetrip.codetrip.Object.Question;
 import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
@@ -59,7 +61,11 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
                 break;
             case CONTINUE:
                 if (QuestionActivity.currentProgress == QuestionActivity.NUM_PAGES-1){
-                    QuestionActivity.inflateCompletionPage();
+                    Intent intent = new Intent();
+                    intent.setClass(QuestionActivity.currentQuestionActivity,DemoActivity.class);
+                    QuestionActivity.currentQuestionActivity.startActivity(intent);
+
+//                    QuestionActivity.inflateCompletionPage();
                     break;
                 }
                 QuestionActivity.onQuestionFragmentSwipe(1);
