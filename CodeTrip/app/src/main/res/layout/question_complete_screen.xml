@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:layout_marginBottom="100dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -11,17 +12,18 @@
         android:background="@color/colorWhite">
 
 
-        <android.support.v7.widget.AppCompatSeekBar
+        <ProgressBar
             android:layout_width="300dp"
             android:layout_height="300dp"
-            style="@style/Base.Widget.AppCompat.SeekBar"
+            style="@style/Base.Widget.AppCompat.ProgressBar"
             android:progress="30"
             android:max="100"/>
-        <ImageView
-            android:layout_width="360dp"
-            android:layout_height="360dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/complete_fake"/>
+
+        <!--<ImageView-->
+            <!--android:layout_width="360dp"-->
+            <!--android:layout_height="360dp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:src="@mipmap/complete_fake"/>-->
     </LinearLayout>
     <Button
         android:id="@+id/question_complete_review_button"

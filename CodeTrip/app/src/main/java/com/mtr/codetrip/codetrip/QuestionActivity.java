@@ -58,8 +58,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
      */
     private ScreenSlidePagerAdapter mPagerAdapter;
 
-    private Context mContext;
-    private Activity mActivity;
+//    private Context mContext;
+//    private Activity mActivity;
 
     private LinearLayout mLinearLayout;
     Button mButton;
@@ -76,9 +76,19 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     public static void inflateCompletionPage(){
         LayoutInflater inflater = LayoutInflater.from(currentContext);
         LinearLayout completionPage = (LinearLayout) inflater.inflate(R.layout.question_complete_screen,null);
-//        View rootView = currentContext.
-        ViewGroup root = (ViewGroup) currentQuestionActivity.getWindow().getDecorView().getRootView();
-        root.addView(completionPage);
+
+        PopupWindow hi = new PopupWindow(
+                completionPage,
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT
+        );
+
+        LinearLayout mLinearLayout = (LinearLayout) currentQuestionActivity.findViewById(R.id.question_page_toolbar);
+
+
+        hi.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
+
+
 
         // review button
 
@@ -133,7 +143,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
         // Get the activity
-        mActivity = QuestionActivity.this;
+//        mActivity = QuestionActivity.this;
 
         // Get the widgets reference from XML layout
         mLinearLayout = (LinearLayout) findViewById(R.id.question_page_toolbar);
@@ -169,11 +179,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         @Override
         public void setPrimaryItem(ViewGroup container, final int position, Object object) {
             super.setPrimaryItem(container,position,object);
-//            ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar,"progress",(currentProgress-1)*1000000,currentProgress*1000000);
-//            progressAnimator.setDuration(1000);
-//            progressAnimator.start();
-//            progressBar.incrementProgressBy(1);
-//            progressBar.setProgress(currentProgress);
         }
 
         @Override
@@ -204,9 +209,14 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.retrun_button || id == R.id.question_complete_return_button){
+        if (id == R.id.retrun_button){
+//            if (id == R.id.retrun_button || id == R.id.question_complete_return_button){
             // save state
             this.finish();
+        }else if (id == R.id.question_complete_return_button){
+            Intent intent = new Intent();
+            intent.setClass(this,DemoActivity.class);
+            startActivity(intent);
         }else if(id == R.id.hint_button){
             // Initialize a new instance of LayoutInflater service
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -225,7 +235,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             // Inflate the custom layout/view
             View customDimView = inflater.inflate(R.layout.question_hint_overlay,null);
 
-            ViewGroup root = (ViewGroup) getWindow().getDecorView().getRootView();
+//            ViewGroup root = (ViewGroup) getWindow().getDecorView().getRootView();
             // Initialize a new instance of question_hint_overlay window
             mPopupdim = new PopupWindow(
                     customDimView,
