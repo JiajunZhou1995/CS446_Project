@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip.CostumWidgets;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -64,6 +65,11 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
                 QuestionActivity.onQuestionFragmentSwipe(1);
                 updateDoItButtonState(RunButtonState.BACKTOCURRENT);
                 QuestionActivity.currentProgress += 1;
+                ObjectAnimator progressAnimator = ObjectAnimator.ofInt(QuestionActivity.progressBar,"progress",(QuestionActivity.currentProgress-1)*1000000,QuestionActivity.currentProgress*1000000);
+                progressAnimator.setStartDelay(200);
+                progressAnimator.setDuration(1000);
+                progressAnimator.start();
+//                QuestionActivity.progressBar.incrementProgressBy(1);
                 break;
             case BACKTOCURRENT:
                 QuestionActivity.backtocurrent();

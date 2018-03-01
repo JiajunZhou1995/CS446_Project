@@ -1,5 +1,7 @@
 package com.mtr.codetrip.codetrip;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -62,7 +64,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private LinearLayout mLinearLayout;
     Button mButton;
     Button returnButton;
-    SeekBar progressBar;
+    public  static SeekBar progressBar;
 
     private PopupWindow mPopupWindow;
 
@@ -78,8 +80,14 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         ViewGroup root = (ViewGroup) currentQuestionActivity.getWindow().getDecorView().getRootView();
         root.addView(completionPage);
 
+        // review button
+
+
         Button returnButton = (Button) completionPage.findViewById(R.id.question_complete_return_button);
         returnButton.setOnClickListener((View.OnClickListener) currentContext);
+
+        // change database for right answered question
+        // update stars / achievement
     }
 
     @Override
@@ -97,10 +105,18 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         String sql = "SELECT * FROM course WHERE courseid =" + Integer.toString(courseID);
         Cursor c = MainActivity.myDB.rawQuery(sql,null);
         c.moveToFirst();
+
+
+//        NUM_PAGES=1;
+
+
         NUM_PAGES = c.getInt(c.getColumnIndex("total"));
         progressBar = findViewById(R.id.question_progressbar);
 
-        progressBar.setMax(NUM_PAGES);
+        progressBar.setMax(NUM_PAGES*1000000);
+//        progressBar.setMax(1000000);
+
+
         progressBar.setProgress(0);
         progressBar.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -153,7 +169,11 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         @Override
         public void setPrimaryItem(ViewGroup container, final int position, Object object) {
             super.setPrimaryItem(container,position,object);
-            progressBar.setProgress(currentProgress);
+//            ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar,"progress",(currentProgress-1)*1000000,currentProgress*1000000);
+//            progressAnimator.setDuration(1000);
+//            progressAnimator.start();
+//            progressBar.incrementProgressBy(1);
+//            progressBar.setProgress(currentProgress);
         }
 
         @Override
@@ -167,16 +187,17 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         private ProgressBar progressBar;
         private  float from;
         private  float to;
-        private ProgressBarAnimation(ProgressBar progressBar, float from, float to){
+        private ProgressBarAnimation(SeekBar progressBar, float from, float to){
             super();
             this.progressBar = progressBar;
             this.from = from;
             this.to = to;
         }
+        @Override
         protected void applyTransformation(float interpolatedTime, Transformation transformation){
             super.applyTransformation(interpolatedTime,transformation);
             float progress = from + (to - from) * interpolatedTime;
-            progressBar.setProgress((int) (progress+0.5f));
+            progressBar.setProgress((int) (progress));
         }
     }
 
