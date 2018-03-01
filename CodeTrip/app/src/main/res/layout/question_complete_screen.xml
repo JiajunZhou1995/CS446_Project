@@ -19,12 +19,12 @@
             android:src="@mipmap/complete_fake"/>
     </LinearLayout>
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/question_complete_review_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Review"/>
     <Button
-        android:id="@+id/button"
+        android:id="@+id/question_complete_return_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Return" />

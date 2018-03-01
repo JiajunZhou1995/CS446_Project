@@ -57,6 +57,10 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
                 updateDoItButtonState(RunButtonState.CONTINUE);
                 break;
             case CONTINUE:
+                if (QuestionActivity.currentProgress == QuestionActivity.NUM_PAGES-1){
+                    QuestionActivity.inflateCompletionPage();
+                    break;
+                }
                 QuestionActivity.onQuestionFragmentSwipe(1);
                 updateDoItButtonState(RunButtonState.BACKTOCURRENT);
                 QuestionActivity.currentProgress += 1;

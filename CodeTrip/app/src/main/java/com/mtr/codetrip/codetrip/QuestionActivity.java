@@ -30,6 +30,8 @@ import android.widget.TextView;
 import com.mtr.codetrip.codetrip.Object.QuestionPageFragment;
 import com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager;
 
+import java.util.zip.Inflater;
+
 /**
  * Created by Catrina on 2/4/2018.
  */
@@ -38,8 +40,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
 
-    private int NUM_PAGES;
+    public static int NUM_PAGES;
     public static int currentProgress;
+    private static Context currentContext;
+    private static QuestionActivity currentQuestionActivity;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -67,12 +71,24 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 //    private List<Question> listofQuestion;
 
+    public static void inflateCompletionPage(){
+        LayoutInflater inflater = LayoutInflater.from(currentContext);
+        LinearLayout completionPage = (LinearLayout) inflater.inflate(R.layout.question_complete_screen,null);
+//        View rootView = currentContext.
+        ViewGroup root = (ViewGroup) currentQuestionActivity.getWindow().getDecorView().getRootView();
+        root.addView(completionPage);
+
+        Button returnButton = (Button) completionPage.findViewById(R.id.question_complete_return_button);
+        returnButton.setOnClickListener((View.OnClickListener) currentContext);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         currentProgress = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+        currentContext = this;
+        currentQuestionActivity = this;
 
         Intent intent = getIntent();
         courseID = intent.getIntExtra("courseID",0);
@@ -167,7 +183,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.retrun_button){
+        if (id == R.id.retrun_button || id == R.id.question_complete_return_button){
             // save state
             this.finish();
         }else if(id == R.id.hint_button){
