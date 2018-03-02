@@ -69,7 +69,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
 
         //Button doIt = rootView.findViewById(R.id.doit);
 //        doIt.setClickable(true);
-//        doIt.setBackground(context.getDrawable(R.drawable.doit_button_run));
+//        doIt.setBackground(context.getDrawable(R.drawable.run_button_run));
 //        doIt.setText(context.getString(R.string.question_action_run));
 //        doIt.setOnClickListener(new View.OnClickListener() {
 //            @Override

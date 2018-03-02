@@ -34,7 +34,5 @@
 
     <com.mtr.codetrip.codetrip.CostumWidgets.RunButton
         android:id="@+id/doit"
-        style="@style/question_button.doit"
-        android:textAllCaps="false"
-        android:layout_height="wrap_content" />
+        style="@style/question_button.invalid"/>
 </LinearLayout>

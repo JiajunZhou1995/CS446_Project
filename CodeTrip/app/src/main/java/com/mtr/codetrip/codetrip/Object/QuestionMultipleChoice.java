@@ -145,7 +145,7 @@ public class QuestionMultipleChoice extends Question {
 //        }
 //        else if (status == RUN_BUTTON_STATUS.RUN){
 //            doIt.setClickable(true);
-//            doIt.setBackground(context.getDrawable(R.drawable.doit_button_run));
+//            doIt.setBackground(context.getDrawable(R.drawable.run_button_run));
 //            doIt.setText(context.getString(R.string.question_action_check));
 //        }
 //

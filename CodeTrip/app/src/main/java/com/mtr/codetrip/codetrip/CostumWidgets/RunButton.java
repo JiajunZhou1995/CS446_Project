@@ -1,12 +1,9 @@
 package com.mtr.codetrip.codetrip.CostumWidgets;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.mtr.codetrip.codetrip.DemoActivity;
 import com.mtr.codetrip.codetrip.Object.Question;
 import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
@@ -25,10 +22,13 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
     private Context context;
     private Question currentQuestion;
 
+    private RunButton thisButton;
+
     public RunButton(Context context) {
         super(context);
         this.context = context;
         this.setOnClickListener(this);
+        thisButton = this;
     }
 
 
@@ -60,10 +60,6 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
                 updateDoItButtonState(RunButtonState.CONTINUE);
                 break;
             case CONTINUE:
-                if (QuestionActivity.isLastQuestion()){
-                    QuestionActivity.updateProgressBar(QuestionActivity.NUM_PAGES);
-                    break;
-                }
                 QuestionActivity.onQuestionContinue();
                 updateDoItButtonState(RunButtonState.BACKTOCURRENT);
                 break;
@@ -78,22 +74,22 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
         switch(newState){
             case INVALID:
                 setClickable(false);
-                setBackground(context.getDrawable(R.drawable.doit_button_invalid));
+                setBackground(context.getDrawable(R.drawable.run_button_invalid));
                 setText(context.getString(R.string.question_action_doit));
                 break;
             case RUN:
                 setClickable(true);
-                setBackground(context.getDrawable(R.drawable.doit_button_run));
+                setBackground(context.getDrawable(R.drawable.run_button_run));
                 setText(context.getString(R.string.question_action_run));
                 break;
             case CONTINUE:
                 setClickable(true);
-                setBackground(context.getDrawable(R.drawable.doit_button_continue));
+                setBackground(context.getDrawable(R.drawable.run_button_continue));
                 setText(context.getString(R.string.question_action_continue));
                 break;
             case BACKTOCURRENT:
                 setClickable(true);
-                setBackground(context.getDrawable(R.drawable.doit_button_backtocurrent));
+                setBackground(context.getDrawable(R.drawable.run_button_backtocurrent));
                 setText(context.getString(R.string.question_action_backtocurrent));
                 break;
         }

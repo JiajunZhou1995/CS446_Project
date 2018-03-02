@@ -43,7 +43,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
+            android:id="@+id/start_anim"
             android:text="start"
             />
         <com.mtr.codetrip.codetrip.ColorArcProgressBar
@@ -59,13 +59,35 @@
             app:back_width="2dp"
             app:front_width="10dp"
             app:total_engle="270"
-            app:is_need_unit="true"
-            app:string_unit="步"
-            app:is_need_title="true"
+            app:is_need_unit="false"
+            app:string_unit="%"
+            app:is_need_title="false"
             app:string_title="截止当前已走"
             app:back_color="@android:color/darker_gray"
-            android:layout_marginBottom="150dp"
+            android:layout_marginBottom="-30dp"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="You completed"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="50sp"
+            android:textColor="@color/colorOrange"
+            android:text="Variables"/>
+
+        <Button
+            style="@style/question_button.complete_review"
+            android:id="@+id/question_complete_review_button" />
+
+        <Button
+            style="@style/question_button.complete_return"
+            android:id="@+id/question_complete_return_button" />
 
         <!--<Button-->
             <!--android:layout_width="wrap_content"-->

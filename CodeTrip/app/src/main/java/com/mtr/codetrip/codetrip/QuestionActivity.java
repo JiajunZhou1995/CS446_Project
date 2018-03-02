@@ -48,6 +48,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private static Context currentContext;
     public static QuestionActivity currentQuestionActivity;
 
+    private static ColorArcProgressBar bar2;
+
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
@@ -93,14 +95,11 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
 //        NUM_PAGES=1;
-
-
         NUM_PAGES = c.getInt(c.getColumnIndex("total"));
         progressBar = findViewById(R.id.question_progressbar);
 
         progressBar.setMax(NUM_PAGES*1000000);
 //        progressBar.setMax(1000000);
-
 
         progressBar.setProgress(0);
         progressBar.setOnTouchListener(new View.OnTouchListener() {
@@ -125,8 +124,11 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
     
     public static void inflateCompletionPage(){
+
+        // save to database
+
         LayoutInflater inflater = LayoutInflater.from(currentContext);
-        ScrollView completionPage = (ScrollView) inflater.inflate(R.layout.activity_demo,null);
+        LinearLayout completionPage = (LinearLayout) inflater.inflate(R.layout.question_complete_screen,null);
 
         PopupWindow hi = new PopupWindow(
                 completionPage,
@@ -135,6 +137,21 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         );
 
         hi.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
+
+//        Button start_button = (Button) completionPage.findViewById(R.id.start_anim);
+        bar2 = (ColorArcProgressBar) completionPage.findViewById(R.id.bar2);
+
+        bar2.setCurrentValues(88.52f);
+//        start_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                bar2.setCurrentValues(88.52f);
+//            }
+//        });
+
+        Button return_button = (Button) completionPage.findViewById(R.id.question_complete_return_button);
+        return_button.setOnClickListener(currentQuestionActivity);
+
     }
 
     public static boolean isLastQuestion(){
@@ -148,31 +165,30 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         progressAnimator.setDuration(1000);
         progressAnimator.start();
         
-        if (progress == NUM_PAGES){
-            progressAnimator.addListener(new Animator.AnimatorListener() {
-                @Override
-                public void onAnimationStart(Animator animation) {}
-                @Override
-                public void onAnimationEnd(Animator animation) { inflateCompletionPage(); }
-                @Override
-                public void onAnimationCancel(Animator animation) {}
-                @Override
-                public void onAnimationRepeat(Animator animation) {}
-            });
-        }
+//        if (progress == NUM_PAGES){
+//            progressAnimator.addListener(new Animator.AnimatorListener() {
+//                @Override
+//                public void onAnimationStart(Animator animation) {}
+//                @Override
+//                public void onAnimationEnd(Animator animation) { inflateCompletionPage(); }
+//                @Override
+//                public void onAnimationCancel(Animator animation) {}
+//                @Override
+//                public void onAnimationRepeat(Animator animation) {}
+//            });
+//        }
 
     }
 
 
     public static void onQuestionContinue(){
-        currentProgress++;
+        if (currentProgress++ == NUM_PAGES - 1){
+            inflateCompletionPage();
+            updateProgressBar(currentProgress);
+            return;
+        }
         mPager.setCurrentItem(currentProgress);
         updateProgressBar(currentProgress);
-//
-//        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(QuestionActivity.progressBar,"progress",(QuestionActivity.currentProgress-1)*1000000,QuestionActivity.currentProgress*1000000);
-//        progressAnimator.setStartDelay(200);
-//        progressAnimator.setDuration(1000);
-//        progressAnimator.start();
     }
 
 
@@ -205,25 +221,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         }
     }
 
-
-//    private class ProgressBarAnimation extends Animation {
-//        private ProgressBar progressBar;
-//        private  float from;
-//        private  float to;
-//        private ProgressBarAnimation(SeekBar progressBar, float from, float to){
-//            super();
-//            this.progressBar = progressBar;
-//            this.from = from;
-//            this.to = to;
-//        }
-//        @Override
-//        protected void applyTransformation(float interpolatedTime, Transformation transformation){
-//            super.applyTransformation(interpolatedTime,transformation);
-//            float progress = from + (to - from) * interpolatedTime;
-//            progressBar.setProgress((int) (progress));
-//        }
-//    }
-
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -232,9 +229,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             // save state
             this.finish();
         }else if (id == R.id.question_complete_return_button){
-            Intent intent = new Intent();
-            intent.setClass(this,DemoActivity.class);
-            startActivity(intent);
+            this.finish();
         }else if(id == R.id.hint_button){
             // Initialize a new instance of LayoutInflater service
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);

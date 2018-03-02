@@ -1,38 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorWhite"
-    android:layout_marginBottom="100dp">
+    android:layout_height="match_parent"
+    android:paddingTop="80dp"
+    android:background="@color/colorWhite">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+    <com.mtr.codetrip.codetrip.ColorArcProgressBar
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/bar2"
+        app:is_need_content="true"
+        app:front_color1="#69cbd2"
+        app:front_color2="#7eb6e2"
+        app:front_color3="#989df7"
+        app:max_value="100"
+        app:back_width="2dp"
+        app:front_width="10dp"
+        app:total_engle="270"
+        app:is_need_unit="false"
+        app:string_unit="%"
+        app:is_need_title="false"
+        app:string_title="截止当前已走"
+        app:back_color="@android:color/darker_gray"
+        android:layout_marginBottom="0dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite">
+        android:layout_gravity="center_horizontal"
+        android:text="You completed"
+        android:textSize="25sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="50sp"
+        android:textColor="@color/colorOrange"
+        android:text="Variables"
+        android:layout_weight="1"/>
 
-
-        <ProgressBar
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            style="@style/Base.Widget.AppCompat.ProgressBar"
-            android:progress="30"
-            android:max="100"/>
-
-        <!--<ImageView-->
-            <!--android:layout_width="360dp"-->
-            <!--android:layout_height="360dp"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:src="@mipmap/complete_fake"/>-->
-    </LinearLayout>
     <Button
-        android:id="@+id/question_complete_review_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Review"/>
+        style="@style/question_button.complete_review"
+        android:id="@+id/question_complete_review_button" />
+
     <Button
-        android:id="@+id/question_complete_return_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Return" />
+        style="@style/question_button.complete_return"
+        android:id="@+id/question_complete_return_button" />
+        <!--android:text="Return" />-->
 </LinearLayout>
