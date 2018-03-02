@@ -26,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -58,12 +59,11 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
      */
     private ScreenSlidePagerAdapter mPagerAdapter;
 
-//    private Context mContext;
-//    private Activity mActivity;
-
-    private LinearLayout mLinearLayout;
+    private static LinearLayout mLinearLayout;
     Button mButton;
     Button returnButton;
+
+
     public  static SeekBar progressBar;
 
     private PopupWindow mPopupWindow;
@@ -73,32 +73,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 //    private List<Question> listofQuestion;
 
-    public static void inflateCompletionPage(){
-        LayoutInflater inflater = LayoutInflater.from(currentContext);
-        LinearLayout completionPage = (LinearLayout) inflater.inflate(R.layout.question_complete_screen,null);
 
-        PopupWindow hi = new PopupWindow(
-                completionPage,
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.MATCH_PARENT
-        );
-
-        LinearLayout mLinearLayout = (LinearLayout) currentQuestionActivity.findViewById(R.id.question_page_toolbar);
-
-
-        hi.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
-
-
-
-        // review button
-
-
-        Button returnButton = (Button) completionPage.findViewById(R.id.question_complete_return_button);
-        returnButton.setOnClickListener((View.OnClickListener) currentContext);
-
-        // change database for right answered question
-        // update stars / achievement
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,11 +116,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(NUM_PAGES);
 
-
-        // Get the activity
-//        mActivity = QuestionActivity.this;
-
-        // Get the widgets reference from XML layout
         mLinearLayout = (LinearLayout) findViewById(R.id.question_page_toolbar);
         returnButton = (Button) findViewById(R.id.retrun_button);
         returnButton.setOnClickListener(this);
@@ -153,8 +123,56 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         mButton.setOnClickListener(this);
     }
 
-    public static void onQuestionFragmentSwipe(int swipeGesture){
-        mPager.setCurrentItem(mPager.getCurrentItem() + swipeGesture);
+    
+    public static void inflateCompletionPage(){
+        LayoutInflater inflater = LayoutInflater.from(currentContext);
+        ScrollView completionPage = (ScrollView) inflater.inflate(R.layout.activity_demo,null);
+
+        PopupWindow hi = new PopupWindow(
+                completionPage,
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT
+        );
+
+        hi.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
+    }
+
+    public static boolean isLastQuestion(){
+        return currentProgress == NUM_PAGES - 1;
+    }
+
+    
+    public static void updateProgressBar(int progress){
+        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(QuestionActivity.progressBar,"progress",(progress-1)*1000000,progress*1000000);
+        progressAnimator.setStartDelay(200);
+        progressAnimator.setDuration(1000);
+        progressAnimator.start();
+        
+        if (progress == NUM_PAGES){
+            progressAnimator.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {}
+                @Override
+                public void onAnimationEnd(Animator animation) { inflateCompletionPage(); }
+                @Override
+                public void onAnimationCancel(Animator animation) {}
+                @Override
+                public void onAnimationRepeat(Animator animation) {}
+            });
+        }
+
+    }
+
+
+    public static void onQuestionContinue(){
+        currentProgress++;
+        mPager.setCurrentItem(currentProgress);
+        updateProgressBar(currentProgress);
+//
+//        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(QuestionActivity.progressBar,"progress",(QuestionActivity.currentProgress-1)*1000000,QuestionActivity.currentProgress*1000000);
+//        progressAnimator.setStartDelay(200);
+//        progressAnimator.setDuration(1000);
+//        progressAnimator.start();
     }
 
 
@@ -188,23 +206,23 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     }
 
 
-    private class ProgressBarAnimation extends Animation {
-        private ProgressBar progressBar;
-        private  float from;
-        private  float to;
-        private ProgressBarAnimation(SeekBar progressBar, float from, float to){
-            super();
-            this.progressBar = progressBar;
-            this.from = from;
-            this.to = to;
-        }
-        @Override
-        protected void applyTransformation(float interpolatedTime, Transformation transformation){
-            super.applyTransformation(interpolatedTime,transformation);
-            float progress = from + (to - from) * interpolatedTime;
-            progressBar.setProgress((int) (progress));
-        }
-    }
+//    private class ProgressBarAnimation extends Animation {
+//        private ProgressBar progressBar;
+//        private  float from;
+//        private  float to;
+//        private ProgressBarAnimation(SeekBar progressBar, float from, float to){
+//            super();
+//            this.progressBar = progressBar;
+//            this.from = from;
+//            this.to = to;
+//        }
+//        @Override
+//        protected void applyTransformation(float interpolatedTime, Transformation transformation){
+//            super.applyTransformation(interpolatedTime,transformation);
+//            float progress = from + (to - from) * interpolatedTime;
+//            progressBar.setProgress((int) (progress));
+//        }
+//    }
 
     @Override
     public void onClick(View v) {
@@ -235,7 +253,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             // Inflate the custom layout/view
             View customDimView = inflater.inflate(R.layout.question_hint_overlay,null);
 
-//            ViewGroup root = (ViewGroup) getWindow().getDecorView().getRootView();
             // Initialize a new instance of question_hint_overlay window
             mPopupdim = new PopupWindow(
                     customDimView,
