@@ -51,10 +51,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
 
-    public static int NUM_PAGES;
-    public static int currentProgress;
-    private static Context currentContext;
-    public static QuestionActivity currentQuestionActivity;
+    public  int NUM_PAGES;
+    public  int currentProgress;
+    private  Context currentContext;
+    public  QuestionActivity currentQuestionActivity;
 
     private static ColorArcProgressBar bar2;
 
@@ -132,6 +132,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ControlScrollViewPager) findViewById(R.id.questionPager);
+        mPager.setBoundedQuestionActivity(currentQuestionActivity);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
         mPager.setOffscreenPageLimit(NUM_PAGES);
@@ -144,7 +145,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     }
 
     
-    public static void inflateCompletionPage(){
+    private void inflateCompletionPage(){
 
         // save to database
 
@@ -186,12 +187,12 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
     }
 
-    public static boolean isLastQuestion(){
-        return currentProgress == NUM_PAGES - 1;
-    }
+//    public static boolean isLastQuestion(){
+//        return currentProgress == NUM_PAGES - 1;
+//    }
 
     
-    public static void updateProgressBar(int progress){
+    private void updateProgressBar(int progress){
         ObjectAnimator progressAnimator = ObjectAnimator.ofInt(QuestionActivity.progressBar,"progress",(progress-1)*1000000,progress*1000000);
         progressAnimator.setStartDelay(200);
         progressAnimator.setDuration(1000);
@@ -213,7 +214,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     }
 
 
-    public static void onQuestionContinue(){
+    public void onQuestionContinue(){
         if (currentProgress++ == NUM_PAGES - 1){
             inflateCompletionPage();
             updateProgressBar(currentProgress);
@@ -225,7 +226,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
 
-    public static void backtocurrent(){
+    public void backtocurrent(){
         mPager.setCurrentItem(currentProgress);
     }
     /**
@@ -239,8 +240,13 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
         @Override
         public android.support.v4.app.Fragment getItem(int currentQuestion) {
-            if(isReview) return QuestionPageFragment.create(courseID,incorrectQuestionList.get(currentQuestion));
-            else return QuestionPageFragment.create(courseID,currentQuestion);
+
+            QuestionPageFragment questionPageFragment = null;
+
+            if(isReview) questionPageFragment = QuestionPageFragment.create(courseID,incorrectQuestionList.get(currentQuestion));
+            else questionPageFragment = QuestionPageFragment.create(courseID,currentQuestion);
+            questionPageFragment.setCurrentQuestionActivity(currentQuestionActivity);
+            return questionPageFragment;
         }
 
         @Override

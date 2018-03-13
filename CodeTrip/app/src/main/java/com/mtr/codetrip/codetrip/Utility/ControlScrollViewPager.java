@@ -18,6 +18,7 @@ public class ControlScrollViewPager extends ViewPager {
      * 上一次x坐标
      */
     private float beforeX;
+    private QuestionActivity questionActivity = null;
 
 
 
@@ -57,11 +58,13 @@ public class ControlScrollViewPager extends ViewPager {
 
 //-------------------------------------------
 
-
+    public void setBoundedQuestionActivity(QuestionActivity questionActivity){
+        this.questionActivity = questionActivity;
+    }
     //-----禁止左滑-------左滑：上一次坐标 > 当前坐标
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if(this.getCurrentItem()<QuestionActivity.currentProgress){
+        if(this.getCurrentItem()<questionActivity.currentProgress){
             return super.dispatchTouchEvent(ev);
         }else  {
             switch (ev.getAction()) {

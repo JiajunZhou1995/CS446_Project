@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
 import com.mtr.codetrip.codetrip.MainActivity;
+import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
@@ -33,6 +34,9 @@ public class QuestionPageFragment extends Fragment {
     private int courseID;
 
     private Question currentQuestion;
+    private QuestionActivity questionActivity;
+
+//    private RunButton runButton;
 
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -53,6 +57,10 @@ public class QuestionPageFragment extends Fragment {
         questionID = getArguments().getInt(ARG_PAGE);
         courseID = getArguments().getInt(COURSE_ID);
         currentQuestion = null;
+    }
+
+    public void setCurrentQuestionActivity(QuestionActivity questionActivity){
+        this.questionActivity = questionActivity;
     }
 
     @Override
@@ -87,7 +95,7 @@ public class QuestionPageFragment extends Fragment {
                 question = new QuestionDragAndDrop(rootView);
                 break;
             default:
-                rootView = null;
+                question = null;
                 break;
         }
 
@@ -99,6 +107,7 @@ public class QuestionPageFragment extends Fragment {
             currentQuestion = question;
             RunButton runButton = rootView.findViewById(R.id.doit);
             runButton.setQuestion(currentQuestion);
+            runButton.setBoundedQuestionActivity(questionActivity);
             if (question instanceof QuestionRearrange){
                 runButton.updateDoItButtonState(RunButton.RunButtonState.RUN);
             }
@@ -108,6 +117,10 @@ public class QuestionPageFragment extends Fragment {
         }
         return rootView;
     }
+
+//    public void setBoundedQuestionActivity(QuestionActivity questionActivity){
+//        runButton.setBoundedQuestionActivity(questionActivity);
+//    }
 
     /**
      * Returns the page number represented by this fragment object.
