@@ -105,8 +105,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         c.moveToFirst();
 
 
-        NUM_PAGES=1;
-//        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
+//        NUM_PAGES=1;
+        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
         progressBar = findViewById(R.id.question_progressbar);
 
         progressBar.setMax(NUM_PAGES*1000000);
@@ -139,24 +139,22 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         // save to database
 
         LayoutInflater inflater = LayoutInflater.from(currentContext);
-        LinearLayout completionPage = (LinearLayout) inflater.inflate(R.layout.question_complete_screen,null);
+        RelativeLayout completionPage = (RelativeLayout) inflater.inflate(R.layout.question_complete_screen,null);
 
-        PopupWindow hi = new PopupWindow(
+        PopupWindow completePopView = new PopupWindow(
                 completionPage,
                 RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT
         );
 
-        hi.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
+        completePopView.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
 
-//        Button start_button = (Button) completionPage.findViewById(R.id.start_anim);
         bar2 = (ColorArcProgressBar) completionPage.findViewById(R.id.bar2);
-
         bar2.setCurrentValues(88.52f);
 
 
 
-        final KonfettiView konfettiView = (KonfettiView) completionPage.findViewById(R.id.kongfetti);
+        KonfettiView konfettiView = (KonfettiView) completionPage.findViewById(R.id.kongfetti);
         konfettiView.build()
                 .addColors(currentContext.getColor(R.color.colorLightBlue),
                         currentContext.getColor(R.color.colorLightGreen),
