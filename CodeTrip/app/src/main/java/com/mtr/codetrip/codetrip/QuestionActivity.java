@@ -31,9 +31,12 @@ import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.Object.Question;
 import com.mtr.codetrip.codetrip.Object.QuestionPageFragment;
 import com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 import nl.dionsegijn.konfetti.KonfettiView;
@@ -79,6 +82,9 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private PopupWindow mPopupdim;
 
     private static int screenWidth;
+    public static float grade;
+    private boolean isReview;
+    private List<Integer> incorrectQuestionList;
 
 //    private List<Question> listofQuestion;
 
@@ -87,6 +93,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         currentProgress = 0;
+        grade = 0;
+        isReview = false;
+        incorrectQuestionList = new ArrayList<>();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
         currentContext = this;
@@ -150,7 +160,9 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         completePopView.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
 
         bar2 = (ColorArcProgressBar) completionPage.findViewById(R.id.bar2);
-        bar2.setCurrentValues(88.52f);
+        grade = grade * 100 /NUM_PAGES;
+
+        bar2.setCurrentValues(grade);
 
 
 
@@ -227,7 +239,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
         @Override
         public android.support.v4.app.Fragment getItem(int currentQuestion) {
-            return QuestionPageFragment.create(courseID,currentQuestion);
+            if(isReview) return QuestionPageFragment.create(courseID,incorrectQuestionList.get(currentQuestion));
+            else return QuestionPageFragment.create(courseID,currentQuestion);
         }
 
         @Override

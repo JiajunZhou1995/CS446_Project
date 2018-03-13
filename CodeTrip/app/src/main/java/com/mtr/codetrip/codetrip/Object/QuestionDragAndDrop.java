@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
 import com.mtr.codetrip.codetrip.CostumWidgets.ButtonCodeBlock;
@@ -150,7 +151,17 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     public void processFinish(String output) {
         Log.d("out put",output);
         updateConsole(output);
-//        console.setText(output);
+        checkAnswer(output);
+    }
+
+    @Override
+    protected void checkAnswer(String output){
+        String answer = "";
+        if(answer.equals(output)){
+            increaseGrade();
+        }else{
+//            QuestionActivity.addToIncorrectList(questionID);
+        }
     }
 
     private void updateConsole(String output){

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 
 import org.json.JSONArray;
@@ -102,6 +103,13 @@ public abstract class Question {
         return str;
     }
 
+    protected void increaseGrade(){
+        QuestionActivity.grade += 1;
+    }
+
+    protected void checkAnswer(String output){
+
+    }
 
     public void runAction(){
 
