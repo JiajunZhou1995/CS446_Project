@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -34,6 +35,10 @@ import com.mtr.codetrip.codetrip.Object.QuestionPageFragment;
 import com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager;
 
 import java.util.zip.Inflater;
+
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
 
 /**
  * Created by Catrina on 2/4/2018.
@@ -73,6 +78,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private int courseID;
     private PopupWindow mPopupdim;
 
+    private static int screenWidth;
+
 //    private List<Question> listofQuestion;
 
 
@@ -85,6 +92,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         currentContext = this;
         currentQuestionActivity = this;
 
+        DisplayMetrics metric = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metric);
+        screenWidth = metric.widthPixels;
+
         Intent intent = getIntent();
         courseID = intent.getIntExtra("courseID",0);
         Log.d("courseID", Integer.toString(courseID));
@@ -94,8 +105,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         c.moveToFirst();
 
 
-//        NUM_PAGES=1;
-        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
+        NUM_PAGES=1;
+//        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
         progressBar = findViewById(R.id.question_progressbar);
 
         progressBar.setMax(NUM_PAGES*1000000);
@@ -142,12 +153,23 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         bar2 = (ColorArcProgressBar) completionPage.findViewById(R.id.bar2);
 
         bar2.setCurrentValues(88.52f);
-//        start_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                bar2.setCurrentValues(88.52f);
-//            }
-//        });
+
+
+
+        final KonfettiView konfettiView = (KonfettiView) completionPage.findViewById(R.id.kongfetti);
+        konfettiView.build()
+                .addColors(currentContext.getColor(R.color.colorLightBlue),
+                        currentContext.getColor(R.color.colorLightGreen),
+                        currentContext.getColor(R.color.colorLime100))
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(1000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(new Size(8, 5f))
+                .setPosition(-50f, screenWidth+50f, -50f, -50f)
+                .stream(300, 100000L);
+
 
         Button return_button = (Button) completionPage.findViewById(R.id.question_complete_return_button);
         return_button.setOnClickListener(currentQuestionActivity);
