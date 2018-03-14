@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -24,23 +25,21 @@ import com.mtr.codetrip.codetrip.Utility.onExpandListener;
 
 
 /**
- * Created by Catrina on 2/3/2018.
+ * Created by Catrina on 2/3/2018 at 12:39 AM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class KeynoteActivity extends MainActivity{
 
 
-
-    private SearchView mSearchView;
     private ExpandableListView mListView;
-    private ArrayAdapter mAdapter;
-    private ExpandAdapter eAdapter;
+    private ArrayAdapter<String> mAdapter;
 
     String sql;
     Cursor courseCursor;
     Cursor questionCursor;
-    ArrayList<String> courseTitleArray = new ArrayList<String>();
-    ArrayList<ArrayList<String>> knowledgeArray = new ArrayList<ArrayList<String>>();
+    ArrayList<String> courseTitleArray = new ArrayList<>();
+    ArrayList<ArrayList<String>> knowledgeArray = new ArrayList<>();
 
     private String[] titles;
     private String[][] knowledges;
@@ -51,22 +50,22 @@ public class KeynoteActivity extends MainActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(2).setChecked(true);
 
-        CoordinatorLayout container = (CoordinatorLayout) findViewById(R.id.app_bar_main);
+        CoordinatorLayout container = findViewById(R.id.app_bar_main);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View child = layoutInflater.inflate(R.layout.content_favorite,null);
+        @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_favorite,null);
         container.addView(child);
 
 
@@ -74,15 +73,15 @@ public class KeynoteActivity extends MainActivity{
 
         initdata();
 
-        mListView = (ExpandableListView) findViewById(R.id.list);
-        mAdapter = new ArrayAdapter(KeynoteActivity.this, android.R.layout.simple_list_item_1,titles);
+        mListView = findViewById(R.id.list);
+        mAdapter = new ArrayAdapter<>(KeynoteActivity.this, android.R.layout.simple_list_item_1,titles);
 
-        eAdapter = new ExpandAdapter(titles,knowledges);
+        ExpandAdapter eAdapter = new ExpandAdapter(titles, knowledges);
 
         eAdapter.setOnGroupExpandedListener(new onExpandListener() {
             @Override
-            public void onExpandListener(int groupPosition) {
-                expandone(groupPosition);
+            public void setOnExpandListener(int groupPosition) {
+                expandOne(groupPosition);
             }
         });
 
@@ -106,7 +105,7 @@ public class KeynoteActivity extends MainActivity{
         mListView.setAdapter(eAdapter);
         mListView.setTextFilterEnabled(true);
 
-        mSearchView = (SearchView) findViewById(R.id.search);
+        SearchView mSearchView = findViewById(R.id.search);
         mSearchView.setSubmitButtonEnabled(true);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -135,7 +134,7 @@ public class KeynoteActivity extends MainActivity{
 
 
 
-    private boolean expandone(int expandedPosition) {
+    private Boolean expandOne(int expandedPosition) {
         boolean result = true;
         int groupLength = mListView.getExpandableListAdapter().getGroupCount();
         for (int i = 0; i < groupLength; i++) {
@@ -149,7 +148,7 @@ public class KeynoteActivity extends MainActivity{
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -177,13 +176,15 @@ public class KeynoteActivity extends MainActivity{
         } else if (id == R.id.sidebar_achievement) {
             intent.setClass(this,AchievementActivity.class);
             startActivity(intent);
-        } else if (id == R.id.sidebar_setting) {
-
-        } else if (id == R.id.sidebar_about_us) {
-
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+//        else if (id == R.id.sidebar_setting) {
+//
+//        } else if (id == R.id.sidebar_about_us) {
+//
+//        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
         if (id != R.id.sidebar_favorite && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;
@@ -196,7 +197,7 @@ public class KeynoteActivity extends MainActivity{
         courseCursor.moveToFirst();
         while(!courseCursor.isAfterLast()) {
 
-            courseTitleArray = new ArrayList<String>();
+            courseTitleArray = new ArrayList<>();
             int courseId = courseCursor.getInt(0);
             Log.d("courseId:", String.valueOf(courseId));
             String courseTitle = courseCursor.getString(1);

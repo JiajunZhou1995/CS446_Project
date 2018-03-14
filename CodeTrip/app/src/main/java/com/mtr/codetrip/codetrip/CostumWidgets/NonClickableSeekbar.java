@@ -1,8 +1,8 @@
 package com.mtr.codetrip.codetrip.CostumWidgets;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.SeekBar;
 
 /**
  * Created by Catrina on 3/13/2018 at 11:21 PM.
@@ -24,6 +24,7 @@ public class NonClickableSeekbar extends android.support.v7.widget.AppCompatSeek
         super(context, attrs, defStyleAttr);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean performClick() {
         // do what you want

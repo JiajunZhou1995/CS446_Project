@@ -1,22 +1,13 @@
 package com.mtr.codetrip.codetrip.Object;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,11 +18,12 @@ import com.mtr.codetrip.codetrip.R;
 
 
 /**
- * Created by Catrina on 2/3/2018.
+ * Created by Catrina on 2/3/2018 at 11:41 PM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 
-public class Course extends Object  {
+public class Course {
 
     public enum CourseType{LECTURE, PROJECT, QUIZ}
     public enum CourseStatus{AVAILABLE, UNAVAILABLE}
@@ -42,12 +34,13 @@ public class Course extends Object  {
     public Button boundBtn;
     public RelativeLayout.LayoutParams buttonLayoutParams;
     public RelativeLayout.LayoutParams titleLayoutParams;
-    Drawable background;
+    private Drawable background;
     private int defaultMarginTop;
     public TextView courseTitle;
 
 
 
+    @SuppressLint("InflateParams")
     public Course(Context context, Cursor cursor, int margin_top){
 
         defaultMarginTop = margin_top;
@@ -88,14 +81,14 @@ public class Course extends Object  {
         buttonLayoutParams = setUpLayout(context,tmp);
     }
 
-    public void printCourse(){
-        if (courseType==CourseType.LECTURE) Log.d("type","lecture");
-        if (courseType==CourseType.QUIZ) Log.d("type","quiz");
-        if (courseType==CourseType.PROJECT) Log.d("type","project");
-        Log.d("nothing","happened");
-    }
+//    public void printCourse(){
+//        if (courseType==CourseType.LECTURE) Log.d("type","lecture");
+//        if (courseType==CourseType.QUIZ) Log.d("type","quiz");
+//        if (courseType==CourseType.PROJECT) Log.d("type","project");
+//        Log.d("nothing","happened");
+//    }
 
-    public void updateBtn(Context context){
+    public void updateBtn(){
         Drawable backgroundImg = boundBtn.getBackground();
 
         if (courseStatus==CourseStatus.AVAILABLE){
@@ -142,7 +135,7 @@ public class Course extends Object  {
         String[] rowColNum = position.split("\\D");
         String direction = position.replaceAll("[0-9]","");
 
-        double x = 0, y;
+        double x, y;
         if (courseType != CourseType.QUIZ){
             x = Integer.parseInt(rowColNum[1]) * (context.getResources().getInteger(R.integer.non_quiz_horizontal_space) +
                     context.getResources().getInteger(R.integer.non_quiz_width));
@@ -172,14 +165,14 @@ public class Course extends Object  {
 
 
 
-    protected void updateCourseBtn(Context context){
-        if(courseStatus==CourseStatus.AVAILABLE){
-            setGrayscale(background,false);
-            boundBtn.setBackground(background);
-        }
-    }
+//    protected void updateCourseBtn(Context context){
+//        if(courseStatus==CourseStatus.AVAILABLE){
+//            setGrayscale(background,false);
+//            boundBtn.setBackground(background);
+//        }
+//    }
 
-    public static Drawable setGrayscale(Drawable drawable, boolean bool) {
+    private static void setGrayscale(Drawable drawable, boolean bool) {
         if (bool){
             ColorMatrix matrix = new ColorMatrix();
             matrix.setSaturation(0);
@@ -188,11 +181,9 @@ public class Course extends Object  {
 
             drawable.setColorFilter(filter);
 
-            return drawable;
         }
         else{
             drawable.setColorFilter(null);
-            return drawable;
         }
     }
 }

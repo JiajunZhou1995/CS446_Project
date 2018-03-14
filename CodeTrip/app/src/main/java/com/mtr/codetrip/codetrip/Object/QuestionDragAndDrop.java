@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
 import com.mtr.codetrip.codetrip.CostumWidgets.ButtonCodeBlock;
@@ -27,7 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Catrina on 24/02/2018.
+ * Created by Catrina on 24/02/2018 at 11:46 PM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class QuestionDragAndDrop extends Question implements AsyncResponse {
@@ -35,7 +35,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     private List<String> codeBlocks;
 
     public String currentOnDragButtonText;
-    public Button currenOnDragButton;
+    public Button currentOnDragButton;
 
     private List<Button> codeBlockButtonList;
     public DropReceiveBlank dropReceiveBlank;
@@ -52,8 +52,8 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
         normalCode = new ArrayList<>();
         codeBlockButtonList = new ArrayList<>();
         textViewDropBlankList = new ArrayList<>();
-        RunButton doitButon = rootView.findViewById(R.id.doit);
-        dropReceiveBlank = new DropReceiveBlank(context,doitButon);
+        RunButton runButton = rootView.findViewById(R.id.doit);
+        dropReceiveBlank = new DropReceiveBlank(runButton);
     }
 
 
@@ -70,19 +70,19 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
 
     private void inflateCodeArea(View dragAndDropContent){
         Context currentContext = dragAndDropContent.getContext();
-        LayoutInflater layoutInflater = LayoutInflater.from(currentContext);
+//        LayoutInflater layoutInflater = LayoutInflater.from(currentContext);
 
         LinearLayout codeAreaLinearLayout = dragAndDropContent.findViewById(R.id.question_code_area);
         LinearLayout singleLine;
         List<TextView>normalCodeSingleLine;
-        List<TextViewDropBlank>dropReceviveBlankSingLine;
+        List<TextViewDropBlank>dropReceiveBlankSingLine;
         List<Button> dropReceiveRecordSingleLine;
         int lineIndex = 0;
         for (String codeLine : codeArea){
             normalCodeSingleLine = new ArrayList<>();
             dropReceiveRecordSingleLine = new ArrayList<>();
-            dropReceviveBlankSingLine = new ArrayList<>();
-            String[] code = codeLine.split("(\\[\\?\\])");
+            dropReceiveBlankSingLine = new ArrayList<>();
+            String[] code = codeLine.split("(\\[\\?])");
             singleLine = new LinearLayout(currentContext);
             singleLine.setOrientation(LinearLayout.HORIZONTAL);
             LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR,singleLine, LayoutUtil.ParamType.MATCH_PARENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
@@ -105,13 +105,13 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
                     LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, textViewDropBlank, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
                     textViewDropBlank.updateDropState(TextViewDropBlank.DropState.DEFAULT);
                     dropReceiveRecordSingleLine.add(null);
-                    dropReceviveBlankSingLine.add(textViewDropBlank);
+                    dropReceiveBlankSingLine.add(textViewDropBlank);
                     singleLine.addView(textViewDropBlank);
                     blankIndex++;
                 }
             }
             dropReceiveBlank.addEntry(dropReceiveRecordSingleLine);
-            textViewDropBlankList.add(dropReceviveBlankSingLine);
+            textViewDropBlankList.add(dropReceiveBlankSingLine);
             normalCode.add(normalCodeSingleLine);
             codeAreaLinearLayout.addView(singleLine);
             lineIndex++;
@@ -120,7 +120,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
 
     private void inflateCodeBlocks(View dragAndDropContent){
         Context currentContext = dragAndDropContent.getContext();
-        LayoutInflater layoutInflater = LayoutInflater.from(currentContext);
+//        LayoutInflater layoutInflater = LayoutInflater.from(currentContext);
 
         int codeBlockIndex = 0;
         LinearLayout codeBlockArea = dragAndDropContent.findViewById(R.id.question_code_block_area);
@@ -140,7 +140,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
         super.inflateContent(rootView);
         LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
         LinearLayout questionBody = rootView.findViewById(R.id.question_body);
-        View dragAndDropContent = layoutInflater.inflate(R.layout.question_drag_and_drop,null);
+        @SuppressLint("InflateParams") View dragAndDropContent = layoutInflater.inflate(R.layout.question_drag_and_drop,null);
         questionBody.addView(dragAndDropContent);
         inflateCodeArea(dragAndDropContent);
         inflateCodeBlocks(dragAndDropContent);
@@ -160,6 +160,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
         if(answer.equals(output)){
             increaseGrade();
         }else{
+            System.out.print("add to incorrect list");
 //            QuestionActivity.addToIncorrectList(questionID);
         }
     }
@@ -187,11 +188,12 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
             List<TextView> normalCodeLine = normalCode.get(listIndex);
             List<Button> dropReceiveBlanksLine = dropReceiveBlank.getBlankSpaceListSingleLine(listIndex);
             for (TextView tv : normalCodeLine){
-                codeString +=tv.getText();
-                if (index<dropReceiveBlanksLine.size()) codeString+=dropReceiveBlanksLine.get(index).getText();
+                codeString = codeString + tv.getText();
+                if (index<dropReceiveBlanksLine.size())
+                    codeString = codeString + dropReceiveBlanksLine.get(index).getText();
                 index++;
             }
-            codeString += "\n";
+            codeString = String.format("%s\n", codeString);
         }
 
 

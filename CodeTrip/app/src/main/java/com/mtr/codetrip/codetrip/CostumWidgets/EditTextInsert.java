@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip.CostumWidgets;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -16,9 +17,11 @@ import com.mtr.codetrip.codetrip.Object.QuestionShortAnswer;
 import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 
 /**
- * Created by Catrina on 2/26/2018.
+ * Created by Catrina on 2/26/2018 at 11:32 PM.
+ * Within Package ${PACKAGE_NAME}
  */
 
+@SuppressLint("ViewConstructor")
 public class EditTextInsert extends android.support.v7.widget.AppCompatEditText implements TextWatcher, TextView.OnEditorActionListener {
 
 
@@ -66,8 +69,9 @@ public class EditTextInsert extends android.support.v7.widget.AppCompatEditText 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        assert inputMethodManager != null;
+        inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
         if (actionId == EditorInfo.IME_ACTION_DONE || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)){
             ((QuestionShortAnswer)question).checkEditInsertList();

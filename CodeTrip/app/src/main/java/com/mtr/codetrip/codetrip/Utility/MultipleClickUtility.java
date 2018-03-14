@@ -1,7 +1,8 @@
 package com.mtr.codetrip.codetrip.Utility;
 
 /**
- * Created by Catrina on 25/02/2018.
+ * Created by Catrina on 25/02/2018 at 12:26 AM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class MultipleClickUtility {

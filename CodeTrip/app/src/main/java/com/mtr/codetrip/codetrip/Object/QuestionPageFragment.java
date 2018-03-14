@@ -12,7 +12,6 @@ import com.mtr.codetrip.codetrip.MainActivity;
 import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 /**
  * Created by Catrina on 2/19/2018 at 10:18 PM.
@@ -36,7 +35,6 @@ public class QuestionPageFragment extends Fragment {
 
     private Question currentQuestion;
     private QuestionActivity currentQuestionActivity;
-    private RunButton runButton;
 
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -80,7 +78,7 @@ public class QuestionPageFragment extends Fragment {
 //        rootView.addView(runButton);
 
         // Inflate the layout containing a title and body text.
-        Question question = null;
+        Question question;
         switch (questionType){
             case "Rearrange":
                 question = new QuestionRearrange(rootView);
@@ -104,7 +102,7 @@ public class QuestionPageFragment extends Fragment {
             question.inflateContent(rootView);
             question.setCurrentQuestionActivity(currentQuestionActivity);
             currentQuestion = question;
-            runButton = rootView.findViewById(R.id.doit);
+            RunButton runButton = rootView.findViewById(R.id.doit);
             runButton.setCurrentQuestion(currentQuestion);
             runButton.setCurrentQuestionActivity(currentQuestionActivity);
             if (question instanceof QuestionRearrange){

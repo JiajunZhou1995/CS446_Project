@@ -14,12 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by jiajunzhou on 2018-02-26.
+ * Created by jiajunzhou on 2018-02-26 at 12:18 AM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
     // This is the JSON body of the post
-    JSONObject postData;
+    private JSONObject postData;
     public AsyncResponse delegate = null;
     // This is a constructor that allows you to pass in the JSON body
 
@@ -63,9 +64,9 @@ public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
             if (statusCode ==  200) {
                 BufferedReader br = new BufferedReader(
                         new InputStreamReader(urlConnection.getInputStream(), "utf-8"));
-                String line = null;
+                String line;
                 while ((line = br.readLine()) != null) {
-                    responseBuilder.append(line + "\n");
+                    responseBuilder.append(line).append("\n");
                 }
                 br.close();
                 response = responseBuilder.toString();

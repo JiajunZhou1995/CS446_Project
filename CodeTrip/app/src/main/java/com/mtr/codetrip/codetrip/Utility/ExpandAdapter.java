@@ -10,11 +10,12 @@ import com.mtr.codetrip.codetrip.R;
 
 
 /**
- * Created by Yolo on 2018-02-24.
+ * Created by Yolo on 2018-02-24 at 12:17 AM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class ExpandAdapter extends BaseExpandableListAdapter{
-    private static final String TAG = "NormalExpandableListAda";
+//    private static final String TAG = "NormalExpandableListAda";
     private String[] groupData;
     private String[][] childData;
     private onExpandListener mOnGroupExpandedListener;
@@ -76,7 +77,7 @@ public class ExpandAdapter extends BaseExpandableListAdapter{
         if (convertView == null) {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.expandlistview, parent, false);
             groupViewHolder = new GroupViewHolder();
-            groupViewHolder.tvTitle = (TextView) convertView.findViewById(R.id.label_group_normal);
+            groupViewHolder.tvTitle = convertView.findViewById(R.id.label_group_normal);
             convertView.setTag(groupViewHolder);
         } else {
             groupViewHolder = (GroupViewHolder) convertView.getTag();
@@ -92,7 +93,7 @@ public class ExpandAdapter extends BaseExpandableListAdapter{
         if (convertView == null) {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.childexpand, parent, false);
             childViewHolder = new ChildViewHolder();
-            childViewHolder.tvTitle = (TextView) convertView.findViewById(R.id.label_expand_child);
+            childViewHolder.tvTitle = convertView.findViewById(R.id.label_expand_child);
             convertView.setTag(childViewHolder);
         } else {
             childViewHolder = (ChildViewHolder) convertView.getTag();
@@ -112,7 +113,7 @@ public class ExpandAdapter extends BaseExpandableListAdapter{
     @Override
     public void onGroupExpanded(int groupPosition) {
         if (mOnGroupExpandedListener != null) {
-            mOnGroupExpandedListener.onExpandListener(groupPosition);
+            mOnGroupExpandedListener.setOnExpandListener(groupPosition);
         }
     }
 

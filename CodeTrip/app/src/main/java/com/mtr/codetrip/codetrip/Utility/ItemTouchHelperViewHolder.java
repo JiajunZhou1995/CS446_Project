@@ -1,9 +1,8 @@
 package com.mtr.codetrip.codetrip.Utility;
 
 import android.support.v7.widget.helper.ItemTouchHelper;
-/**
- * Created by j66zhu on 2018-02-24.
- */
+
+
 
 /**
  * Interface to notify an item ViewHolder of relevant callbacks from {@link

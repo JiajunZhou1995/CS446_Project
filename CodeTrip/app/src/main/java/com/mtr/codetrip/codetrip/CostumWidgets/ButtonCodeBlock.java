@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip.CostumWidgets;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
@@ -14,12 +15,15 @@ import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 
 /**
- * Created by Catrina on 2/26/2018.
+ * Created by Catrina on 2/26/2018 at 11:29 PM.
+ * Within Package ${PACKAGE_NAME}
  */
 
+@SuppressLint("ViewConstructor")
 public class ButtonCodeBlock extends AppCompatButton implements View.OnTouchListener, View.OnDragListener {
 
     private Question question;
+
     public ButtonCodeBlock(Context context, String codeBlock, int tag, Question question){
         super(context);
         this.setTag(tag);
@@ -48,7 +52,7 @@ public class ButtonCodeBlock extends AppCompatButton implements View.OnTouchList
         // 剪切板数据，可以在DragEvent.ACTION_DROP方法的时候获取。
         ClipData data = ClipData.newPlainText("dot", "Dot : " + view.toString());
         // 开始拖拽
-        ((QuestionDragAndDrop)question).currenOnDragButton = (Button)view;
+        ((QuestionDragAndDrop)question).currentOnDragButton = (Button)view;
         ((QuestionDragAndDrop)question).currentOnDragButtonText = (String) ((Button) view).getText();
         view.startDrag(data, builder, view, 0);
         return true;
@@ -60,7 +64,7 @@ public class ButtonCodeBlock extends AppCompatButton implements View.OnTouchList
         switch (action) {
             // 开始拖拽
             case DragEvent.ACTION_DRAG_STARTED:
-                if ((Button)view == ((QuestionDragAndDrop)question).currenOnDragButton) view.setVisibility(View.INVISIBLE);
+                if (view == ((QuestionDragAndDrop)question).currentOnDragButton) view.setVisibility(View.INVISIBLE);
                 break;
             // 结束拖拽
             case DragEvent.ACTION_DRAG_ENDED:

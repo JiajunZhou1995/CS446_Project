@@ -7,13 +7,16 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 /**
- * Created by Catrina on 2/26/2018.
+ * Created by Catrina on 2/26/2018 at 12:22 AM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class LayoutUtil {
 
-    public enum LayoutType{LINEAR, RELATIVE};
+    public enum LayoutType{LINEAR, RELATIVE}
+
     public enum ParamType{MATCH_PARENT, WRAP_CONTENT}
+
 
     public static void setup(Context context, LayoutType type, View targetView, ParamType width, ParamType height, int marginLeft, int marginTop, int marginRight, int marginBottom){
 

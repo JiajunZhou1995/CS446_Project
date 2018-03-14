@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip.CostumWidgets;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.DragEvent;
 import android.view.View;
@@ -10,19 +11,21 @@ import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 
 /**
- * Created by Catrina on 25/02/2018.
+ * Created by Catrina on 25/02/2018 at 11:38 PM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
+@SuppressLint("ViewConstructor")
 public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextView implements View.OnClickListener, View.OnDragListener {
 
-    public enum DropState{DEFAULT, ENABLED, DROPPED};
+    public enum DropState{DEFAULT, ENABLED, DROPPED}
+
     private Question question;
     private Context context;
 
 
     public int lineNumber;
     public int linePosition;
-
 
     public TextViewDropBlank(Context context, int lineNumber, int linePosition, Question question){
         super(context);
@@ -81,7 +84,7 @@ public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextVi
             case DragEvent.ACTION_DROP:
                 textView.updateDropState(TextViewDropBlank.DropState.DROPPED);
                 textView.setText(((QuestionDragAndDrop)question).currentOnDragButtonText);
-                ((QuestionDragAndDrop)question).dropReceiveBlank.updateFillIn((TextViewDropBlank)v,((QuestionDragAndDrop)question).currenOnDragButton);
+                ((QuestionDragAndDrop)question).dropReceiveBlank.updateFillIn((TextViewDropBlank)v,((QuestionDragAndDrop)question).currentOnDragButton);
                 break;
         }
         return true;

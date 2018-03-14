@@ -3,9 +3,11 @@ package com.mtr.codetrip.codetrip.Utility;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-/**
- * Created by j66zhu on 2018-02-24.
+/*
+ * Created by j66zhu on 2018-02-24 at 12:34 AM.
+ * Within Package: ${PACKAGE_NAME}
  */
+
 /**
  * An implementation of {@link ItemTouchHelper.Callback} that enables basic drag & drop and
  * swipe-to-dismiss. Drag events are automatically started by an item long-press.<br/>

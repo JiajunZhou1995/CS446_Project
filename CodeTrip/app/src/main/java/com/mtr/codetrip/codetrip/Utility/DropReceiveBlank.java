@@ -1,6 +1,5 @@
 package com.mtr.codetrip.codetrip.Utility;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,16 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Catrina on 25/02/2018.
+ * Created by Catrina on 25/02/2018 at 12:16 AM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class DropReceiveBlank {
 
-//    public enum DoItButtonState{INVALID,RUN,CONTINUE,BACKTOCURRENT}
-    private Context context;
     private RunButton doitButton;
-    public RunButton.RunButtonState runButtonState;
-    protected List<List<Button>> blankSpaceList;
+    private List<List<Button>> blankSpaceList;
 
     public void print(){
 
@@ -34,8 +31,7 @@ public class DropReceiveBlank {
         }
     }
 
-    public DropReceiveBlank(Context context, RunButton button){
-        this.context = context;
+    public DropReceiveBlank(RunButton button){
         this.doitButton = button;
 //        doitButton.updateDoItButtonState(RunButton.RunButtonState.INVALID);
         blankSpaceList = new ArrayList<>();

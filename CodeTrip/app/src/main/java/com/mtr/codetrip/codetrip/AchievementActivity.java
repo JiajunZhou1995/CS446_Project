@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +25,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Created by Catrina on 27/02/2018.
+ * Created by Catrina on 27/02/2018 at 12:34 AM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class AchievementActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,28 +54,28 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
 
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
 
 
         LayoutInflater layoutInflater = LayoutInflater.from(this);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(1).setChecked(true);
 
-        CoordinatorLayout container = (CoordinatorLayout) findViewById(R.id.app_bar_main);
-        View child = layoutInflater.inflate(R.layout.content_achievement,null);
+        CoordinatorLayout container = findViewById(R.id.app_bar_main);
+        @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_achievement,null);
         container.addView(child);
 
 
-        androidGridView = (GridView) findViewById(R.id.gridview_android_example);
+        androidGridView = findViewById(R.id.gridview_android_example);
         androidGridView.setAdapter(new AchievementActivity.ImageAdapterGridView(this));
 
 
@@ -81,7 +83,7 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
         androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent,
                                     View v, int position, long id) {
-                ArrayList<String> reward = new ArrayList<String>();
+                ArrayList<String> reward = new ArrayList<>();
                 reward.add("Beginner on the road");
                 reward.add("Collected 10 stars");
                 reward.add("Collected 50 stars");
@@ -116,15 +118,16 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
         } else if (id == R.id.sidebar_favorite) {
             intent.setClass(this,KeynoteActivity.class);
             startActivity(intent);
-        } else if (id == R.id.sidebar_achievement) {
-
-        } else if (id == R.id.sidebar_setting) {
-
-        } else if (id == R.id.sidebar_about_us) {
-
         }
+//        else if (id == R.id.sidebar_achievement) {
+//
+//        } else if (id == R.id.sidebar_setting) {
+//
+//        } else if (id == R.id.sidebar_about_us) {
+//
+//        }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
         if (id != R.id.sidebar_achievement  && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
 
@@ -135,7 +138,7 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
     public class ImageAdapterGridView extends BaseAdapter {
         private Context mContext;
 
-        public ImageAdapterGridView(Context c) {
+        ImageAdapterGridView(Context c) {
             mContext = c;
         }
 

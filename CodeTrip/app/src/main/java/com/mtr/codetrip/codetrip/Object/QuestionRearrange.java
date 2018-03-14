@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip.Object;
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,7 +23,8 @@ import com.mtr.codetrip.codetrip.Utility.SimpleItemTouchHelperCallback;
 import java.util.List;
 
 /**
- * Created by j66zhu on 2018-02-24.
+ * Created by j66zhu on 2018-02-24 at 11:58 PM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class QuestionRearrange extends Question implements OnStartDragListener, AsyncResponse{
@@ -53,7 +54,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
 
         LinearLayout questionContent = rootView.findViewById(R.id.question_body);
         LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
-        View rearrange = layoutInflater.inflate(R.layout.question_rearrange,null);
+        @SuppressLint("InflateParams") View rearrange = layoutInflater.inflate(R.layout.question_rearrange,null);
         questionContent.addView(rearrange);
 
         adapter = new RecyclerListAdapter(rootView.getContext(), this, codeIns);

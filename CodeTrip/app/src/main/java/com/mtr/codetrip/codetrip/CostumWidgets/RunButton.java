@@ -9,7 +9,8 @@ import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 
 /**
- * Created by Catrina on 26/02/2018.
+ * Created by Catrina on 26/02/2018 at 11:36 PM.
+ * Within Pacage: ${PACKAGE_NAME}
  */
 
 public class RunButton extends android.support.v7.widget.AppCompatButton implements View.OnClickListener {

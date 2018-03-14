@@ -1,10 +1,10 @@
 package com.mtr.codetrip.codetrip.Object;
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,7 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Catrina on 24/02/2018.
+ * Created by Catrina on 24/02/2018 at 11:55 PM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class QuestionMultipleChoice extends Question {
@@ -32,11 +33,11 @@ public class QuestionMultipleChoice extends Question {
     private RunButton doIt;
 
 
-    public QuestionMultipleChoice(ViewGroup viewGroup){
+    QuestionMultipleChoice(ViewGroup viewGroup){
         super(viewGroup);
-        codeIns = new ArrayList<String>();
-        choices = new ArrayList<String>();
-        choiceViews = new ArrayList<FrameLayout>();
+        codeIns = new ArrayList<>();
+        choices = new ArrayList<>();
+        choiceViews = new ArrayList<>();
         doIt = rootView.findViewById(R.id.doit);
     }
 
@@ -65,10 +66,10 @@ public class QuestionMultipleChoice extends Question {
 
         LinearLayout questionContent = rootView.findViewById(R.id.question_body);
         LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
-        View multiple_choice = layoutInflater.inflate(R.layout.question_multiple_choice,null);
+        @SuppressLint("InflateParams") View multiple_choice = layoutInflater.inflate(R.layout.question_multiple_choice,null);
         questionContent.addView(multiple_choice);
 
-        LinearLayout codeAreaLinearLayout = (LinearLayout) questionContent.findViewById(R.id.question_code_area);
+        LinearLayout codeAreaLinearLayout = questionContent.findViewById(R.id.question_code_area);
         LinearLayout singleLine;
         int lineIndex = 1;
         if (codeIns.size() == 0){
@@ -94,7 +95,7 @@ public class QuestionMultipleChoice extends Question {
         }
         for (String choice: choices){
             LinearLayout choiceArea = rootView.findViewById(R.id.question_choice_area);
-            FrameLayout choiceView = (FrameLayout) layoutInflater.inflate(R.layout.mc_item_layout, null);
+            @SuppressLint("InflateParams") FrameLayout choiceView = (FrameLayout) layoutInflater.inflate(R.layout.mc_item_layout, null);
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(5,10,5,10);
             choiceView.setLayoutParams(params);
@@ -110,7 +111,8 @@ public class QuestionMultipleChoice extends Question {
                     tv.setTextColor(context.getColor(R.color.colorWhite));
                     v.setBackground(context.getDrawable(R.drawable.code_area_round_highlight));
                     doIt.updateDoItButtonState(RunButton.RunButtonState.RUN);
-                    doIt.setText("Check");
+                    String newText = "Check";
+                    doIt.setText(newText);
 //                    status = RUN_BUTTON_STATUS.RUN;
 //                    updateButton();
                 }

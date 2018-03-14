@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip.CostumWidgets;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 
@@ -7,10 +8,13 @@ import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 
 /**
- * Created by Catrina on 2/26/2018.
+ * Created by Catrina on 2/26/2018 at 11:40 PM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
+@SuppressLint("ViewConstructor")
 public class TextViewLineNumber extends android.support.v7.widget.AppCompatTextView {
+
 
     public TextViewLineNumber(Context context, String lineNumber){
         super(context);

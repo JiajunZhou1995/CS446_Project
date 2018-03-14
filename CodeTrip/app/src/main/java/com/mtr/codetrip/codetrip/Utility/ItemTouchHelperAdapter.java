@@ -17,7 +17,7 @@ public interface ItemTouchHelperAdapter {
      * @see RecyclerView#getAdapterPositionFor(RecyclerView.ViewHolder)
      * @see RecyclerView.ViewHolder#getAdapterPosition()
      */
-    boolean onItemMove(int fromPosition, int toPosition);
+    void onItemMove(int fromPosition, int toPosition);
 
 
 //    /**

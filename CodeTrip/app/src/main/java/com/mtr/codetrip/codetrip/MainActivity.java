@@ -2,14 +2,15 @@ package com.mtr.codetrip.codetrip;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -22,7 +23,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.Button;
 
 import org.json.JSONObject;
@@ -45,10 +45,6 @@ public class MainActivity extends AppCompatActivity
     public static double ScreenWidthRatio;
     public static double ScreenHeightRatio;
 
-    private Button course_button;
-    private Button keynotes_button;
-    private Button achievement_button;
-
 
     ObjectAnimator animator_course;
     ObjectAnimator animator_keynotes;
@@ -57,9 +53,8 @@ public class MainActivity extends AppCompatActivity
     MainActivity me;
 
     public static SQLiteDatabase myDB;
-    private MyDatabaseUtil myDatabaseUtil;
-    private Resources mResources;
-    String APIrespones = "";
+//    private Resources mResources;
+//    String APIrespones = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,24 +76,24 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
 
 
-        CoordinatorLayout container = (CoordinatorLayout) findViewById(R.id.app_bar_main);
+        CoordinatorLayout container = findViewById(R.id.app_bar_main);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View child = layoutInflater.inflate(R.layout.content_home,null);
+        @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_home,null);
         container.addView(child);
 
         initDB();
@@ -114,13 +109,12 @@ public class MainActivity extends AppCompatActivity
     private void initHomeScreenButtonListener(){
 
 
-
-        course_button = (Button) findViewById(R.id.home_navigation_course);
+        Button course_button = findViewById(R.id.home_navigation_course);
         course_button.setOnClickListener(this);
 
-        keynotes_button = (Button) findViewById(R.id.home_navigation_keynotes);
+        Button keynotes_button = findViewById(R.id.home_navigation_keynotes);
         keynotes_button.setOnClickListener(this);
-        achievement_button = (Button) findViewById(R.id.home_navigation_achievement);
+        Button achievement_button = findViewById(R.id.home_navigation_achievement);
         achievement_button.setOnClickListener(this);
 
 
@@ -136,7 +130,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        Intent intent = new Intent();
+//        Intent intent = new Intent();
 
         switch (id){
             case R.id.home_navigation_course:
@@ -226,7 +220,7 @@ public class MainActivity extends AppCompatActivity
 
     public void initDB(){
         String course = "codetrip.db";
-        myDatabaseUtil = new MyDatabaseUtil(this, course,null,1);
+        MyDatabaseUtil myDatabaseUtil = new MyDatabaseUtil(this, course, null, 1);
         myDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
 
         myDB.execSQL("DROP TABLE IF EXISTS course");
@@ -262,13 +256,11 @@ public class MainActivity extends AppCompatActivity
 
         try {
             readDataToDb(myDB);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
 
-        Cursor c = myDB.rawQuery("select * from course", null);
+        @SuppressLint("Recycle") Cursor c = myDB.rawQuery("select * from course", null);
 
         c.moveToFirst();
         while(!c.isAfterLast()){
@@ -383,7 +375,7 @@ public class MainActivity extends AppCompatActivity
         StringBuilder builder = new StringBuilder();
 
         try {
-            String jsonDataString = null;
+            String jsonDataString;
             inputStream = getResources().openRawResource(
                     getResources().getIdentifier("data",
                             "raw", getPackageName()));
@@ -404,7 +396,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -414,7 +406,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -437,7 +429,7 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
         if (id != R.id.sidebar_home && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;

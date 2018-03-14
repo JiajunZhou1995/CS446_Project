@@ -8,7 +8,8 @@ import android.view.MotionEvent;
 import com.mtr.codetrip.codetrip.QuestionActivity;
 
 /**
- * Created by Catrina on 27/02/2018.
+ * Created by Catrina on 27/02/2018 at 12:15 AM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class ControlScrollViewPager extends ViewPager {
@@ -32,7 +33,7 @@ public class ControlScrollViewPager extends ViewPager {
         super(context);
     }
 
-    private boolean isCanScroll = true;
+//    private boolean isCanScroll = true;
 
     //----------禁止左右滑动------------------
 //    @Override

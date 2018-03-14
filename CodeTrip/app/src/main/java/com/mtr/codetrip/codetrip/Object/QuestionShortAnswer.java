@@ -1,19 +1,17 @@
 package com.mtr.codetrip.codetrip.Object;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mtr.codetrip.codetrip.CostumWidgets.TextViewDropBlank;
 import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
-import com.mtr.codetrip.codetrip.Utility.DropReceiveBlank;
 import com.mtr.codetrip.codetrip.CostumWidgets.EditTextInsert;
 import com.mtr.codetrip.codetrip.Utility.HttpPostAsyncTask;
 import com.mtr.codetrip.codetrip.Utility.LayoutUtil;
@@ -25,31 +23,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Catrina on 24/02/2018.
+ * Created by Catrina on 24/02/2018 at 11:58 PM.
+ * Within Package: ${PACKAGE_NAME}
  */
 
 public class QuestionShortAnswer extends Question implements AsyncResponse {
     private List<String> codeArea;
-    private TextView console;
     private List<List<TextView>> normalCode;
-    protected List<List<EditTextInsert>> editTextInsertList;
-    private DropReceiveBlank receiveBlank;
+    private List<List<EditTextInsert>> editTextInsertList;
     private QuestionShortAnswer thisQuestionView;
     private String codeString;
-    RunButton doitButon;
+    private RunButton runButton;
 
 
 
 
 
-    public QuestionShortAnswer(ViewGroup viewGroup){
+    QuestionShortAnswer(ViewGroup viewGroup){
         super(viewGroup);
         thisQuestionView = this;
         codeString = "";
         normalCode = new ArrayList<>();
         editTextInsertList = new ArrayList<>();
-        doitButon = rootView.findViewById(R.id.doit);
-        receiveBlank = new DropReceiveBlank(context, doitButon);
+        runButton = rootView.findViewById(R.id.doit);
+//        DropReceiveBlank receiveBlank = new DropReceiveBlank(context, runButton);
 
     }
 
@@ -63,10 +60,10 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
         super.inflateContent(rootView);
         LinearLayout questionBody = rootView.findViewById(R.id.question_body);
         LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
-        View shortAnswerContent = layoutInflater.inflate(R.layout.question_short_answer,null);
+        @SuppressLint("InflateParams") View shortAnswerContent = layoutInflater.inflate(R.layout.question_short_answer,null);
         questionBody.addView(shortAnswerContent);
 
-        console = rootView.findViewById(R.id.console);
+//        TextView console = rootView.findViewById(R.id.console);
 
         inflateCodeArea(shortAnswerContent);
     }
@@ -74,7 +71,7 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
 
     private void inflateCodeArea(View shortAnswerContent){
         Context currentContext = shortAnswerContent.getContext();
-        LayoutInflater layoutInflater = LayoutInflater.from(currentContext);
+//        LayoutInflater layoutInflater = LayoutInflater.from(currentContext);
 
         LinearLayout codeAreaLinearLayout = shortAnswerContent.findViewById(R.id.question_code_area);
         LinearLayout singleLine;
@@ -84,7 +81,7 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
         for (String codeLine : codeArea){
             normalCodeSingleLine = new ArrayList<>();
             editTextInsertSingleLine = new ArrayList<>();
-            String[] code = codeLine.split("(\\[\\?\\])");
+            String[] code = codeLine.split("(\\[\\?])");
             singleLine = new LinearLayout(currentContext);
             singleLine.setOrientation(LinearLayout.HORIZONTAL);
             LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR,singleLine, LayoutUtil.ParamType.MATCH_PARENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
@@ -95,7 +92,7 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
             singleLine.addView(textViewLineNumber);
 
 
-            int index = 0, blankIndex= 0;
+            int index = 0;
             for (String s :code){
                 TextViewNormalCode normalTextView = new TextViewNormalCode(currentContext, s);
                 LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, normalTextView, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
@@ -107,7 +104,6 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
                     LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, editTextInsert, LayoutUtil.ParamType.WRAP_CONTENT, LayoutUtil.ParamType.WRAP_CONTENT,5,0,5,0);
                     singleLine.addView(editTextInsert);
                     editTextInsertSingleLine.add(editTextInsert);
-                    blankIndex++;
                 }
             }
             editTextInsertList.add(editTextInsertSingleLine);
@@ -120,11 +116,14 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
     public void checkEditInsertList(){
         for (List<EditTextInsert> editTextInsertList : editTextInsertList){
             for (EditTextInsert editTextInsert : editTextInsertList){
-                if (editTextInsert.equals(null) || editTextInsert.equals("")) return;
+                if (editTextInsert==null || editTextInsert.getText().toString().equals("")) {
+                    runButton.updateDoItButtonState(RunButton.RunButtonState.INVALID);
+                    return;
+                }
 
             }
         }
-        doitButon.updateDoItButtonState(RunButton.RunButtonState.RUN);
+        runButton.updateDoItButtonState(RunButton.RunButtonState.RUN);
     }
 
     @Override
@@ -152,11 +151,12 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
             List<TextView> normalCodeLine = normalCode.get(listIndex);
             List<EditTextInsert> editTextInserts = editTextInsertList.get(listIndex);
             for (TextView tv : normalCodeLine){
-                codeString +=tv.getText();
-                if (index<editTextInserts.size()) codeString+=editTextInserts.get(index).getText();
+                codeString = codeString + tv.getText();
+                if (index<editTextInserts.size())
+                    codeString = codeString + editTextInserts.get(index).getText();
                 index++;
             }
-            codeString += "\n";
+            codeString = String.format("%s\n", codeString);
         }
 
 //                        console.setText(codeString);
