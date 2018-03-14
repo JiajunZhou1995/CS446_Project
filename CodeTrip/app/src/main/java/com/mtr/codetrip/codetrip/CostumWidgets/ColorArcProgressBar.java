@@ -1,4 +1,4 @@
-package com.mtr.codetrip.codetrip;
+package com.mtr.codetrip.codetrip.CostumWidgets;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -14,6 +14,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.mtr.codetrip.codetrip.R;
 
 /**
  * colorful arc progress bar

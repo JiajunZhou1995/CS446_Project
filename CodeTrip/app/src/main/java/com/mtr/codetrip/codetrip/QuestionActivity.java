@@ -23,6 +23,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.CostumWidgets.ColorArcProgressBar;
 import com.mtr.codetrip.codetrip.CostumWidgets.NonClickableSeekbar;
 import com.mtr.codetrip.codetrip.Object.Question;
 import com.mtr.codetrip.codetrip.Object.QuestionPageFragment;
