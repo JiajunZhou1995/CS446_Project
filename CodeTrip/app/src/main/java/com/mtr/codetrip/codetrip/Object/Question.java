@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.QuestionActivity;
@@ -18,24 +17,27 @@ import java.util.List;
 
 
 /**
- * Created by j66zhu on 2018-02-23.
+ * Created by j66zhu on 2018-02-23 at 10:16 PM at 10:16 PM at 10:16 PM.
+ * Within Package ${PACKAGE_NAME}
  */
 
 public abstract class Question {
     protected Context context;
-    protected ViewGroup rootView;
-    protected String knowledge;
-    protected String instruction;
-    protected String hint;
-    protected RUN_BUTTON_STATUS status;
+    ViewGroup rootView;
+    private String knowledge;
+    private String instruction;
+    private String hint;
+    private QuestionActivity currentQuestionActivity;
 
-
-    protected enum RUN_BUTTON_STATUS{FILL_IN_THE_BLANK, RUN, CONTINUE, BACK_TO_CURRENT};
 
 
     public Question(ViewGroup view){
         rootView = view;
         context = rootView.getContext();
+    }
+
+    void setCurrentQuestionActivity(QuestionActivity questionActivity){
+        this.currentQuestionActivity = questionActivity;
     }
 
     protected void populateFromDB(Cursor c){
@@ -45,7 +47,7 @@ public abstract class Question {
         hint = c.getString(c.getColumnIndex("hint"));
     }
 
-    protected List<String> getArrayFromDB(Cursor c, String columnName){
+    List<String> getArrayFromDB(Cursor c, String columnName){
         List<String> strings = new ArrayList<>();
         try{
             JSONArray jsArr = new JSONArray(c.getString(c.getColumnIndex(columnName)));
@@ -84,7 +86,7 @@ public abstract class Question {
 
 
 
-    protected String prependArrow(String output){
+    String prependArrow(String output){
         String[] lines = output.split("\n");
         String[] consoleOutput = new String[lines.length];
         int i = 0;
@@ -98,13 +100,12 @@ public abstract class Question {
             builder.append(s);
             if (index < consoleOutput.length -1)builder.append("\n");
         }
-        String str = builder.toString();
 
-        return str;
+        return builder.toString();
     }
 
-    protected void increaseGrade(){
-        QuestionActivity.grade += 1;
+    void increaseGrade(){
+        currentQuestionActivity.changeGrade();
     }
 
     protected void checkAnswer(String output){
@@ -114,17 +115,5 @@ public abstract class Question {
     public void runAction(){
 
     }
-
-//    protected void setUpView(View view,int width,int height, int marginLeft, int marginTop, int marginRight, int marginBottom){
-//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-//                (width==0)?ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT,
-//                (height==0)?ViewGroup.LayoutParams.MATCH_PARENT:ViewGroup.LayoutParams.WRAP_CONTENT);
-//        layoutParams.setMargins(DensityUtil.dip2px(context,marginLeft),
-//                DensityUtil.dip2px(context,marginTop),
-//                DensityUtil.dip2px(context,marginRight),
-//                DensityUtil.dip2px(context,marginBottom));
-//        view.setLayoutParams(layoutParams);
-//    }
-
 
 }

@@ -45,7 +45,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     private List<List<TextViewDropBlank>> textViewDropBlankList;
     private QuestionDragAndDrop thisQuestionView;
 
-    protected QuestionDragAndDrop(ViewGroup viewGroup){
+    QuestionDragAndDrop(ViewGroup viewGroup){
         super(viewGroup);
         thisQuestionView = this;
         codeString = "";

@@ -19,9 +19,9 @@
             android:background="@mipmap/question_return"
             android:layout_marginLeft="@dimen/activity_horizontal_margin" />
 
-        <SeekBar
+        <com.mtr.codetrip.codetrip.CostumWidgets.NonClickableSeekbar
             android:id="@+id/question_progressbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_weight="1"
             android:layout_margin="20dp"

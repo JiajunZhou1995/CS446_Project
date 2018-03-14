@@ -22,19 +22,16 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
     private Context context;
     private Question currentQuestion;
 
-    private RunButton thisButton;
-
-    private QuestionActivity questionActivity;
+    private QuestionActivity currentQuestionActivity;
 
     public RunButton(Context context) {
         super(context);
         this.context = context;
         this.setOnClickListener(this);
-        thisButton = this;
     }
 
-    public void setBoundedQuestionActivity(QuestionActivity questionActivity){
-        this.questionActivity = questionActivity;
+    public void setCurrentQuestionActivity(QuestionActivity questionActivity){
+        this.currentQuestionActivity = questionActivity;
     }
 
     public RunButton(Context context, AttributeSet attrs){
@@ -50,7 +47,7 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
     }
 
 
-    public void setQuestion(Question currentQuestion){
+    public void setCurrentQuestion(Question currentQuestion){
         this.currentQuestion = currentQuestion;
     }
 
@@ -65,11 +62,11 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
                 updateDoItButtonState(RunButtonState.CONTINUE);
                 break;
             case CONTINUE:
-                questionActivity.onQuestionContinue();
+                currentQuestionActivity.onQuestionContinue();
                 updateDoItButtonState(RunButtonState.BACKTOCURRENT);
                 break;
             case BACKTOCURRENT:
-                questionActivity.backtocurrent();
+                currentQuestionActivity.backtocurrent();
                 break;
         }
     }

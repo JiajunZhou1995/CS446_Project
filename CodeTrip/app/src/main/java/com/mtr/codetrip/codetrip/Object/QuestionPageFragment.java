@@ -15,7 +15,8 @@ import com.mtr.codetrip.codetrip.R;
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 /**
- * Created by Catrina on 2/19/2018.
+ * Created by Catrina on 2/19/2018 at 10:18 PM.
+ * Within Package ${PACKAGE_NAME}
  */
 
 public class QuestionPageFragment extends Fragment {
@@ -34,9 +35,8 @@ public class QuestionPageFragment extends Fragment {
     private int courseID;
 
     private Question currentQuestion;
-    private QuestionActivity questionActivity;
-
-//    private RunButton runButton;
+    private QuestionActivity currentQuestionActivity;
+    private RunButton runButton;
 
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -60,7 +60,7 @@ public class QuestionPageFragment extends Fragment {
     }
 
     public void setCurrentQuestionActivity(QuestionActivity questionActivity){
-        this.questionActivity = questionActivity;
+        this.currentQuestionActivity = questionActivity;
     }
 
     @Override
@@ -99,15 +99,14 @@ public class QuestionPageFragment extends Fragment {
                 break;
         }
 
-
-
         if (question != null){
             question.populateFromDB(cursor);
             question.inflateContent(rootView);
+            question.setCurrentQuestionActivity(currentQuestionActivity);
             currentQuestion = question;
-            RunButton runButton = rootView.findViewById(R.id.doit);
-            runButton.setQuestion(currentQuestion);
-            runButton.setBoundedQuestionActivity(questionActivity);
+            runButton = rootView.findViewById(R.id.doit);
+            runButton.setCurrentQuestion(currentQuestion);
+            runButton.setCurrentQuestionActivity(currentQuestionActivity);
             if (question instanceof QuestionRearrange){
                 runButton.updateDoItButtonState(RunButton.RunButtonState.RUN);
             }
@@ -125,10 +124,10 @@ public class QuestionPageFragment extends Fragment {
     /**
      * Returns the page number represented by this fragment object.
      */
-    public int getPageNumber() {
-        return questionID;
-    }
-
+//    public int getPageNumber() {
+//        return questionID;
+//    }
+//
     public Question getCurrentQuestion(){
         return currentQuestion;
     }
