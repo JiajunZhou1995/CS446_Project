@@ -29,7 +29,7 @@ public class Course {
     public enum CourseStatus{AVAILABLE, UNAVAILABLE}
 
     public int courseID;
-    public CourseType courseType;
+    private CourseType courseType;
     public CourseStatus courseStatus;
     public Button boundBtn;
     public RelativeLayout.LayoutParams buttonLayoutParams;
@@ -51,7 +51,7 @@ public class Course {
 
         courseTitle = (TextView) LayoutInflater.from(context).inflate(R.layout.course_title,null);
         courseTitle.setText(cursor.getString(cursor.getColumnIndex("title")));
-
+//        courseTitle.setClickable(false);
 
         String tmp = cursor.getString(cursor.getColumnIndex("type"));
         switch (tmp){
@@ -101,6 +101,8 @@ public class Course {
 
     private Button generateCourseButton(Context context){
         Button courseBtn = new Button(context);
+        courseBtn.setStateListAnimator(null);
+
         if (courseStatus==CourseStatus.AVAILABLE){
             courseBtn.setBackground(background);
         }else{
