@@ -27,7 +27,10 @@ public abstract class Question {
     private String knowledge;
     private String instruction;
     private String hint;
+    private String topic;
+    private String difficulty;
     private QuestionActivity currentQuestionActivity;
+    protected String answer;
 
 
 
@@ -45,6 +48,9 @@ public abstract class Question {
         knowledge = c.getString(c.getColumnIndex("knowledge"));
         instruction = c.getString(c.getColumnIndex("instruction"));
         hint = c.getString(c.getColumnIndex("hint"));
+        topic = c.getString(c.getColumnIndex("topic"));
+        difficulty = c.getString(c.getColumnIndex("difficulty"));
+        answer = c.getString(c.getColumnIndex("answer"));
     }
 
     List<String> getArrayFromDB(Cursor c, String columnName){
@@ -64,6 +70,18 @@ public abstract class Question {
     protected void inflateContent(ViewGroup rootView){
         TextView knowledgeTV = rootView.findViewById(R.id.question_knowledge);
         TextView instructionTV = rootView.findViewById(R.id.question_instruction);
+
+        TextView topicTV = rootView.findViewById(R.id.quesiton_topic);
+        TextView difficultyTV = rootView.findViewById(R.id.question_difficulty);
+        topicTV.setText(String.format("Topic: %s",topic));
+        difficultyTV.setText(String.format("Level: %s",difficulty));
+        if (difficulty.equals("Simple")){
+            difficultyTV.setTextColor(context.getColor(R.color.colorLightGreen));
+        }else if (difficulty.equals("Medium")){
+            difficultyTV.setTextColor(context.getColor(R.color.colorBluePurple));
+        }else{
+            difficultyTV.setTextColor(context.getColor(R.color.colorFireBrick));
+        }
 
         if (!knowledge.equals("null")){
             knowledgeTV.setText(knowledge);

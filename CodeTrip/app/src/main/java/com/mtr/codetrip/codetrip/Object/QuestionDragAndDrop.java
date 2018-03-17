@@ -33,6 +33,7 @@ import java.util.List;
 public class QuestionDragAndDrop extends Question implements AsyncResponse {
     private List<String> codeArea;
     private List<String> codeBlocks;
+//    private String answer;
 
     public String currentOnDragButtonText;
     public Button currentOnDragButton;
@@ -65,6 +66,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
 
         codeArea =  getArrayFromDB(c, "code");
         codeBlocks = getArrayFromDB(c, "codeblock");
+//        answer = c.getString(c.getColumnIndex("answer"));
     }
 
 
@@ -149,18 +151,20 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
 
     @Override
     public void processFinish(String output) {
-        Log.d("out put",output);
+//        Log.d("out put",output);
         updateConsole(output);
         checkAnswer(output);
     }
 
     @Override
     protected void checkAnswer(String output){
-        String answer = "";
-        if(answer.equals(output)){
+        if (answer.equals("")){
+            //arbitrary answer , check if error
+        }else if(answer.equals(output)){
+            Log.d("correct!!","increase score");
             increaseGrade();
         }else{
-            System.out.print("add to incorrect list");
+            Log.d("incorrect answer","add to incorrect list");
 //            QuestionActivity.addToIncorrectList(questionID);
         }
     }
@@ -173,7 +177,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
 
     @Override
     public void runAction(){
-        dropReceiveBlank.print();
+//        dropReceiveBlank.print();
         for (List<TextViewDropBlank> dropBlankList: textViewDropBlankList){
             for (TextViewDropBlank textViewDropBlank : dropBlankList){
                 textViewDropBlank.setClickable(false);
