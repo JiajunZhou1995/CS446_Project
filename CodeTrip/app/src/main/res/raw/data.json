@@ -4,13 +4,18 @@
     "Unit": "1",
     "Type": "Lecture",
     "Title": "Print",
-    "Total": "8",
+    "Total": "1",
     "Position": "0L0",
+    "Topics": [
+      "Introduction"
+    ],
     "Question": [
       {
+        "Difficulty": "Medium",
+        "Topic": "Introduction",
         "Answer": "Hello World\n",
         "Type": "Drag&Drop",
-        "Knowledge": "Print is a function in Python.",
+        "Knowledge": "Welcome to the CodeTrip! In this App you will be provided a full lesson of how to use python!",
         "Instruction": "Let’s drag and drop a code block into the code.",
         "Code": [
           "print([?])"
@@ -21,563 +26,138 @@
         ],
         "Choice": [],
         "Hint": "Drag and drop Hello World into [?]"
-      },
-      {
-        "Answer": "Hello World\n",
-        "Type": "Drag&Drop",
-        "Knowledge": "Functions will have a function name follow by (), and whatever in the () will be passed as parameter.",
-        "Instruction": "Let’s drag and drop a function name into the code.",
-        "Code": [
-          "[?](\"Hello World\")"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "print()",
-          "print"
-        ],
-        "Choice": [],
-        "Hint": "Drag and drop print into [?]"
-      },
-      {
-        "Answer": "1",
-        "Type": "MultipleChoice",
-        "Knowledge": null,
-        "Instruction": "Guess the output of this program",
-        "Code": [
-          "print(\"Hi\")"
-        ],
-        "Console": "0",
-        "CodeBlock": [],
-        "Choice": [
-          "Hi",
-          "Hello",
-          "This App is awesome"
-        ],
-        "Hint": "What's in the function? "
-      },
-      {
-        "Answer": "Hello There\n",
-        "Type": "Drag&Drop",
-        "Knowledge": "Print function will print words into the console.",
-        "Instruction": "Let’s drag and drop a code block into the code so it will print Hello There.",
-        "Code": [
-          "print([?])"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "\"Hello World\"",
-          "\"Hello There\""
-        ],
-        "Choice": [],
-        "Hint": " Drag and drop Hello There into [?]"
-      },
-      {
-        "Answer": null,
-        "Type": "ShortAnswer",
-        "Knowledge": "You can have multiple print function at once. ",
-        "Instruction": "Try to type in some numbers.",
-        "Code": [
-          "print(\"Hi\")",
-          "print([?])"
-        ],
-        "Console": "2",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "Type anything into the [?] block"
-      },
-      {
-        "Answer": "Code\nTrip\nis\nAwesome\n",
-        "Type": "Rearrange",
-        "Knowledge": "The order of print matters.",
-        "Instruction": "Rearrange following code to make it print Code Trip is Awesome.",
-        "Code": [
-          "print(\"Trip\")",
-          "print(\"Code\")",
-          "print(\"Awesome\")",
-          "print(\"is\")"
-        ],
-        "Console": "4",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "Rearrange \"Code\" before \"Trip\", \"is\" before \"Awesome\"."
-      },
-      {
-        "Answer": "2",
-        "Type": "MultipleChoice",
-        "Knowledge": null,
-        "Instruction": "What does print() do?",
-        "Code": [],
-        "Console": "0",
-        "CodeBlock": [],
-        "Choice": [
-          "Print words on paper",
-          "Print words into console"
-        ],
-        "Hint": "We don't use paper in programming"
-      },
-      {
-        "Answer": "2",
-        "Type": "MultipleChoice",
-        "Knowledge": null,
-        "Instruction": "The order of print matters",
-        "Code": [],
-        "Console": "0",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "We talked about this 3 questions ago"
       }
     ]
   },
   {
     "Available": "false",
-    "Unit": "1",
+    "Unit": "2",
     "Type": "Lecture",
-    "Title": "Variable",
-    "Total": "4",
+    "Title": "variables",
+    "Total": "21",
     "Position": "1R0",
+    "Topics": [
+      "define",
+      "assign",
+      "reassign"
+    ],
     "Question": [
       {
-        "Answer": "Apple\n",
-        "Type": "Drag&Drop",
-        "Knowledge": "You can print String which is a Variable.",
-        "Instruction": null,
-        "Code": [
-          "fruit = [?]",
-          "print([?])"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "\"Apple\"",
-          "fruit"
-        ],
-        "Choice": [],
-        "Hint": "Drag Apple then the fruit"
-      },
-      {
-        "Answer": "Eatapple\n",
-        "Type": "Drag&Drop",
-        "Knowledge": "You can have string concatenate together.",
-        "Instruction": null,
-        "Code": [
-          "action = \"Eat\"",
-          "fruit = \"apple\"",
-          "print(action [?] fruit)"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "+",
-          "-"
-        ],
-        "Choice": [],
-        "Hint": "We want then to add up"
-      },
-      {
-        "Answer": "apple\n",
-        "Type": "Drag&Drop",
-        "Knowledge": "You can only print the Variable you have defined.",
-        "Instruction": null,
-        "Code": [
-          "furit = \"apple\"",
-          "print([?])"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "animal",
-          "\"furit\""
-        ],
-        "Choice": [],
-        "Hint": "animal is not yet defined"
-      },
-      {
-        "Answer": "2",
+        "Difficulty": "Easy",
+        "Topic": "define",
+        "Answer": "All of above",
         "Type": "MultipleChoice",
-        "Knowledge": "Once you defined a Varibale, you can update it by assigne it with a new value",
-        "Instruction": "What will print out?",
-        "Code": [
-          "furit = apple",
-          "furit = banana",
-          "print(furit)"
-        ],
-        "Console": "0",
-        "CodeBlock": [],
-        "Choice": [
-          "apple",
-          "banana"
-        ],
-        "Hint": "I like banana more"
-      }
-    ]
-  },
-  {
-    "Available": "false",
-    "Unit": "1",
-    "Type": "Lecture",
-    "Title": "Arithmetic",
-    "Total": "7",
-    "Position": "1R1",
-    "Question": [
-      {
-        "Answer": null,
-        "Type": "Drag&Drop",
-        "Knowledge": "Arithmetic operators in python are +, - , * ,/, which has the same meaning as in math expressions.",
-        "Instruction": "Let's put different operator into block and see what happened?",
-        "Code": [
-          "x = 1",
-          "y = 2",
-          "z = x[?]y",
-          "print(z)"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "+",
-          "-",
-          "*",
-          "/"
-        ],
-        "Choice": [],
-        "Hint": "Play with it and see if there is any difference!"
-      },
-      {
-        "Answer": "2",
-        "Type": "MultipleChoice",
-        "Knowledge": null,
-        "Instruction": "Is expression 4 + 3 * 2 + 1 = 12 equal to be true?",
+        "Knowledge": "Every variable has a name.",
+        "Instruction": "Which one of the following could be used as the name of a variable?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [
-          "True",
-          "False"
+          "Love",
+          "Code",
+          "Trip",
+          "All of above"
         ],
-        "Hint": "Think about how will do it if you are taking a math class!"
+        "Hint": "Name of a variable is important"
       },
       {
-        "Answer": "2",
-        "Type": "MutipleChoice",
-        "Knowledge": "When we doing math in python, do we need to apply the same rule as we used in math?",
-        "Instruction": "Is there any difference between the following two expressions?",
-        "Code": [
-          "x = 3 + 2 * 5",
-          "y = (3 + 2) * 5"
-        ],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "Yes",
-          "No",
-          "I don't know",
-          "Take a guess"
-        ],
-        "Hint": "Same as the normal mathematical cal1culations."
-      },
-      {
-        "Answer": "14\n",
+        "Difficulty": "Easy",
+        "Topic": "define",
+        "Answer": "HelloCodeTrip",
         "Type": "Drag&Drop",
-        "Knowledge": "Parentheseses are used in python to decide the order of calculation.",
-        "Instruction": "If we want get 14 for the following expression, where should we put parentheseses?",
+        "Knowledge": null,
+        "Instruction": "If we want let the variable name to be 'HelloCodeTrip',which word should be put in the block?",
         "Code": [
-          "x = [?]4 * 3[?] + 2",
-          "print(x)"
+          "Hello[?]Trip"
         ],
         "Console": "1",
         "CodeBlock": [
-          "(",
-          ")"
+          "Code",
+          "Cade",
+          "HelloCodeTrip",
+          "Hello"
         ],
         "Choice": [],
-        "Hint": "Think about how we use parentheseses in math."
+        "Hint": "Think about how we define a variable"
       },
       {
-        "Answer": "16\n",
+        "Difficulty": "Easy",
+        "Topic": "define",
+        "Answer": "LoveCodeTrip",
         "Type": "ShortAnswer",
         "Knowledge": null,
-        "Instruction": "Look at the expression below, if we want to get 16, what numbers are you going to put into those blocks?",
+        "Instruction": "If we want let the variable name to be 'LoveCodeTrip',what should we fill in the bracket?",
         "Code": [
-          "x = [?] + [?]",
-          "y = [?] / [?]",
-          "z = x * y",
-          "print(z)"
+          "Lo[?]Trip"
         ],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "You can also put x and y in it, try it out!"
+        "Hint": "Think about the rule of naming a variable"
       },
       {
-        "Answer": null,
-        "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Order of calculation will have different outcomes, rearrange the code below and see what will happen!",
-        "Code": [
-          "x = 1 + 2 / 2",
-          "y = 1 * 2 * 3",
-          "z = 3 * 3",
-          "x = 4",
-          "y = 2",
-          "z = 11",
-          "print(x)",
-          "print(y)",
-          "print(z)"
-        ],
-        "Console": "3",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "There could be more than one order, find it out!."
-      },
-      {
-        "Answer": "40",
-        "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Think about what we learned in variable class, this time we have variale in the code, rearrange it with the right order and see the result!",
-        "Code": [
-          "x = 1 + 4",
-          "y = x * 2 * 3",
-          "x = 4 * x",
-          "y = 2 * x",
-          "print(y)"
-        ],
-        "Console": "3",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "Recall from variable class, we can not use an undefined variable!"
-      }
-    ]
-  },
-  {
-    "Available": "false",
-    "Unit": "1",
-    "Type": "Lecture",
-    "Title": "Boolean",
-    "Total": "5",
-    "Position": "2L2",
-    "Question": [
-      {
-        "Answer": null,
-        "Type": "ShortAnswer",
-        "Knowledge": "Modulus(%) is used to calculate the remainder.",
-        "Instruction": "When we use operator %,  it means we want to do a remainder calculation, type in different numbers to see the difference!",
-        "Code": [
-          "print([?] % [?])"
-        ],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "Think about how we calculate remainder in math!"
-      },
-      {
-        "Answer": "2",
+        "Difficulty": "Medium",
+        "Topic": "define",
+        "Answer": "1Apple",
         "Type": "MultipleChoice",
-        "Knowledge": "When we want do calculate the remainder for the negative number, it follows the same rule as we do for the possitive number",
-        "Instruction": "What's the result for 10 % 3?",
+        "Knowledge": "Variables names must start with a letter, and the rest of the variable name may consist of letters and numbers.",
+        "Instruction": "Which one of the following could not be used as the name of a variable?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [
+          "I",
+          "Had",
+          "1Apple",
+          "Now"
+        ],
+        "Hint": "Variable name must start with letters"
+      },
+      {
+        "Difficulty": "Medium",
+        "Topic": "define",
+        "Answer": "CodeTrip1",
+        "Type": "Drag&Drop",
+        "Knowledge": "Variable name could not contain the special characters(!,@,# ect).",
+        "Instruction": "If we want the following variable name to be correct, what should we fill in the blank?",
+        "Code": [
+          "[?]odeTrip1"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          "C",
           "1",
           "2",
-          "3",
-          "4"
-        ],
-        "Hint": "% follows the same rule for the positive and the negative number."
-      },
-      {
-        "Answer": "2",
-        "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Look at the code below, if we want to print '2', in which order we should arrange the following code?",
-        "Code": [
-          "x = 1",
-          "x = x - 1",
-          "x = x * 3",
-          "print(x)"
-        ],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "Think about what we learned in variable class."
-      },
-      {
-        "Answer": "0",
-        "Type": "Drag&Drop",
-        "Knowledge": null,
-        "Instruction": "Drag and drop code block into the right position to calculate 0",
-        "Code": [
-          " x = (7 [?] 4) [?] 2 [?] 3 [?] 5",
-          "print(x)"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "+",
-          "-",
-          "*",
-          "/",
-          "%"
+          "!"
         ],
         "Choice": [],
-        "Hint": "Can we do it without using '%'?."
+        "Hint": "Variable name must start with letters and it could not contain any special characters"
       },
       {
-        "Answer": "2",
-        "Type": "Drag&Drop",
+        "Difficulty": "Medium",
+        "Topic": "ILove",
+        "Answer": "",
+        "Type": "ShortAnswer",
         "Knowledge": null,
-        "Instruction": "This time we will try to use numbers.Drag and drop code block into the right position to calculate 2",
-        "Code": [
-          " x = [?] % ([?] + [?]) * ([?] % [?])",
-          "print(x)"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6"
-        ],
-        "Choice": [],
-        "Hint": "There could be different answers!"
-      }
-    ]
-  },
-  {
-    "Available": "false",
-    "Unit": "1",
-    "Type": "Lecture",
-    "Title": "Expression",
-    "Total": "7",
-    "Position": "3R2",
-    "Question": [
-      {
-        "Answer": "True",
-        "Type": "MultipleChoice",
-        "Knowledge": "Boolean in python are 'True' and 'False'",
-        "Instruction": "Is 3 equals to 3 evaluted to be True or False?",
+        "Instruction": "Which one of the following could not be used as the name of a variable?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [
-          "True",
-          "False"
+          "ILove",
+          "~Had",
+          "1Apple!",
+          "No#$w"
         ],
-        "Hint": "Boolean expression only have two options."
+        "Hint": "Variable name must start with letters and should not have any special characters"
       },
       {
-        "Answer": null,
-        "Type": "Drag&Drop",
-        "Knowledge": "'<','<=','>','>=','==','!=' are used to evalute if the expression is true or false.",
-        "Instruction": "Look at the code below and play with it, see what will be result will we get? Is there only two out comes for the following code?",
-        "Code": [
-          "x = 3 [?] 7",
-          "print(x)"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "<",
-          "<=",
-          ">",
-          ">=",
-          "==",
-          "!="
-        ],
-        "Choice": [],
-        "Hint": "Boolean expression could only be evaluted to be true or false."
-      },
-      {
-        "Answer": "True",
-        "Type": "Drag&Drop",
-        "Knowledge": "A < B means if A is less than B, A<= B means if A is less or equal to B, same for > and >. A == B means if A is equal to B and A != B means if A is not equal to B",
-        "Instruction": "If we want the following code evaluted to be true, what operator will we fill into the block?",
-        "Code": [
-          "x = 3 [?] 4",
-          "print(x)"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          ">",
-          ">=",
-          "<",
-          "<=",
-          "==",
-          "!="
-        ],
-        "Choice": [],
-        "Hint": "Use the principle of boolean expression to find the answer!"
-      },
-      {
-        "Answer": "True\nFalse",
-        "Type": "ShortAnswer",
-        "Knowledge": null,
-        "Instruction": "Fill out the blank below to let x evaluted to be false and y evaluted to vbe true",
-        "Code": [
-          "x = [?] >= [?]",
-          "y = [?] < [?]"
-        ],
-        "Console": "2",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "A >= B means if A is greater or equal to B and A < B means if A is less than B."
-      },
-      {
+        "Difficulty": "Hard",
+        "Topic": "define",
         "Answer": "False",
-        "Type": "MultipleChoice",
-        "Knowledge": null,
-        "Instruction": "What will be the result of 3 != 3?",
-        "Code": [],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "A != B means if A is not equal to B."
-      },
-      {
-        "Answer": "True",
         "Type": "ShortAnswer",
-        "Knowledge": null,
-        "Instruction": "Fill out the following blank to let x is evaluted to be true.",
-        "Code": [
-          "x = [?] == [?]",
-          "print(x)"
-        ],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "A == B means if A is equal to B"
-      },
-      {
-        "Answer": null,
-        "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Rearrange the following code and see the different results!",
-        "Code": [
-          "A = 2 > 3",
-          "A = 3 < 5",
-          "print(A)"
-        ],
-        "Console": "3",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "See how many possible answers are there!"
-      }
-    ]
-  },
-  {
-    "Available": "false",
-    "Unit": "1",
-    "Type": "Lecture",
-    "Title": "Logic",
-    "Total": "7",
-    "Position": "4L2",
-    "Question": [
-      {
-        "Answer": "2",
-        "Type": "MultipleChoice",
-        "Knowledge": "Logical expression in python are 'And', 'Or', 'Not' and they will only return 'True' or 'False'",
-        "Instruction": "What result will be given by expression 'True and False?'",
+        "Knowledge": "The name of a variable should be unique.",
+        "Instruction": "Two variables can have the same name",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
@@ -585,272 +165,265 @@
           "True",
           "False"
         ],
-        "Hint": "A and B is true if and only if both A and B are evaluated to be true."
+        "Hint": "No two variables should have the same name"
       },
       {
-        "Answer": "True",
-        "Type": "Drag&Drop",
-        "Knowledge": null,
-        "Instruction": "Fill the bland with right answer to let z evaluted to be True.",
+        "Difficulty": "Easy",
+        "Topic": "assign",
+        "Answer": "2",
+        "Type": "ShortAnswer",
+        "Knowledge": "A value could be assigned to a variable and the equal sign(=) is used to assign values to variables.",
+        "Instruction": "If we want to A to be 5, what value should we put into brackets?",
         "Code": [
-          "x = 3 [?] 2",
-          "y = 4 [?] 3",
-          "z = x [?] y",
-          "print(z)"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "<",
-          "<=",
-          ">",
-          ">=",
-          "==",
-          "!="
-        ],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "Use the knowlegde or Boolean expression and Logical expression to solve this problem!"
-      },
-      {
-        "Answer": "True",
-        "Type": "Drag&Drop",
-        "Knowledge": null,
-        "Instruction": "Drag and drop code block into right position to make A evaluated to be true",
-        "Code": [
-          "A = true",
-          "B = A or A",
-          "A = ([?] (A and B) [?] B)",
+          "A = [?]",
           "print(A)"
         ],
         "Console": "1",
-        "CodeBlock": [
-          "and",
-          "or",
-          "not"
-        ],
-        "Choice": [],
-        "Hint": "There should be more than 1 answer, try it out!"
-      },
-      {
-        "Answer": "False",
-        "Type": "ShortAnswer",
-        "Knowledge": null,
-        "Instruction": "Think about the code given below, find the answer that let B evaluted to be false.",
-        "Code": [
-          "A = [?] < [?]",
-          "B = [?] A",
-          "B = A [?] B",
-          "print(B)"
-        ],
-        "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "If A is true, then not A will be false."
+        "Hint": "Assignment 'A = 2' means that a value 2 is assigned to a variable A."
       },
       {
-        "Answer": "False",
-        "Type": "ShortAnswer",
-        "Knowledge": null,
-        "Instruction": "Think about the code given below, find the answer that let B evaluted to be false.",
+        "Difficulty": "Easy",
+        "Topic": "assign",
+        "Answer": "10",
+        "Type": "Rearrange",
+        "Knowledge": "When we want to use a variable, we should make sure that we have to define it before we use it",
+        "Instruction": "Rearrange the following code and let it print 10",
         "Code": [
-          "A = 3 [?] 4",
-          "B = 5 [?] 2",
-          "C = 2 [?] 2",
           "print(A)",
-          "print(B)",
-          "print(C)"
+          "A = 10"
         ],
-        "Console": "3",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "Try to solve it step by step!"
-      },
-      {
-        "Answer": "True",
-        "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Rearrange the following code and see the different results!",
-        "Code": [
-          "A = 2 > 3",
-          "B = 4 <= 2",
-          "C = 2 != 2",
-          "A = (C and B) or A",
-          "B = (C or B) and (A or C)",
-          "C = not A",
-          "print(C)"
-        ],
-        "Console": "3",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "See how many possible answers are there!"
-      },
-      {
-        "Answer": "False",
-        "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Rearrange the following code to see if you can make A, B, C all evaluted to be true !",
-        "Code": [
-          "A = 2 == 3",
-          "B = 3 != 2",
-          "C = 2 >= 1",
-          "A = (C and B) or A",
-          "B = (C or B) and (A or C)",
-          "C = not A",
-          "print(C)"
-        ],
-        "Console": "3",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "There might be more than one available answer!"
-      }
-    ]
-  },
-  {
-    "Available": "false",
-    "Unit": "1",
-    "Type": "Lecture",
-    "Title": "Array",
-    "Total": "3",
-    "Position": "5R1",
-    "Question": [
-      {
-        "Answer":"1",
-        "Type": "MultipleChoice",
-        "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
-        "Instruction": "What will be the index of '5' in array [5,1,3,4]?",
-        "Code": [],
         "Console": "1",
         "CodeBlock": [],
-        "Choice": [
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "Hint": "Array index start at 0"
+        "Choice": [],
+        "Hint": "Avoid use beofre name the variable."
       },
       {
-        "Answer": "[1,2,3,5,7,9]",
+        "Difficulty": "Easy",
+        "Topic": "assign",
+        "Answer": "No Answer",
         "Type": "Drag&Drop",
         "Knowledge": null,
-        "Instruction": "Drag the code block into the right place to achieve a sorted array.",
+        "Instruction": "Put different block in to the brackets and see what value will a get.",
         "Code": [
-          "x = [[?],[?],[?],[?],[?],[?]]",
-          "print(x)"
+          "A = I am a [?] person.",
+          "print(A)"
         ],
         "Console": "1",
         "CodeBlock": [
-          "5",
-          "7",
-          "1",
-          "9",
-          "2",
-          "3"
+          "bad",
+          "I dont Know",
+          "gat",
+          "great"
         ],
         "Choice": [],
-        "Hint": "Sorted array looks like [1,2,3,4,5]"
+        "Hint": "Try it yourself!"
       },
       {
-        "Answer": null,
-        "Type": "ShortAnswer",
-        "Knowledge": null,
-        "Instruction": "Put different numbers in the array and see what are the printed result.",
+        "Difficulty": "Medium",
+        "Topic": "assign",
+        "Answer": "True",
+        "Type": "MultipleChoice",
+        "Knowledge": "Different variables could have the same value.",
+        "Instruction": "Does A and C have the same value?",
         "Code": [
-          "x = [[?],[?],[?],[?],[?],[?]]",
-          "print(x)"
+          "A = 2",
+          "B = 4",
+          "C = 2",
+          "print(A == C)//'A==C' means if A is equal to C, we don't have to worry about it right now"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [
+          "True",
+          "False"
+        ],
+        "Hint": "Assignment 'A = 2' means that a value 2 is assigned to a variable A."
+      },
+      {
+        "Difficulty": "Medium",
+        "Topic": "assign",
+        "Answer": "No Answer",
+        "Type": "ShortAnswer",
+        "Knowledge": "Variables could have different type of value(numbers, characters, a word, a sequence of word), but the value of variables could not be the special characters.",
+        "Instruction": "Try to fill the blank below and see what value will A have",
+        "Code": [
+          "A = [?]",
+          "print(A)"
         ],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Play with the array and see the different outcomes."
-      }
-    ]
-  },
-  {
-    "Available": "false",
-    "Type": "Quiz",
-    "Unit": "1",
-    "Title": "Quiz",
-    "Total": "4",
-    "Position": "6R0",
-    "Question": [
+        "Hint": "Values that been assigned to a variable could have many different type."
+      },
       {
-        "Answer": "None",
+        "Difficulty": "Medium",
+        "Topic": "assign",
+        "Answer": "2",
+        "Type": "ShortAnswer",
+        "Knowledge": "We could assign a variable by using another variable",
+        "Instruction": "Filling the blank and see how will the value of A been changed",
+        "Code": [
+          "B = [?]",
+          "A = B",
+          "print(A)"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Try it yourself!"
+      },
+      {
+        "Difficulty": "Hard",
+        "Topic": "assign",
+        "Answer": "Talse",
         "Type": "MultipleChoice",
-        "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
-        "Instruction": "What will be the index of '1' in array [5,2,3,4]?",
-        "Code": [],
+        "Knowledge": "There is difference between numerical values and string values.",
+        "Instruction": "Variable A has the numerical value 12345, and B has the world character value '12345', are these two variables have the same value?",
+        "Code": [
+          "A = 12345",
+          "B = '12345'",
+          "print(A == B)//'A==C' means if A is equal to C, we don't have to worry about it right now"
+        ],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [
-          "0",
-          "1",
-          "2",
-          "None"
+          "True",
+          "False"
         ],
-        "Hint": "Array index start at 0"
+        "Hint": "Try it yourself!"
       },
       {
-        "Answer": "1",
-        "Type": "MultipleChoice",
-        "Knowledge": null,
-        "Instruction": "What's the result for (-10 + 20) /5 * 15 % 3?",
-        "Code": [],
+        "Difficulty": "Easy",
+        "Topic": "reassign",
+        "Answer": "No Answer",
+        "Type": "ShortAnswer",
+        "Knowledge": "We can change the value of a variable by reassign another value to it",
+        "Instruction": "Fill in the blank and see how will the value of A will be changed",
+        "Code": [
+          "A = 5",
+          "A = [?]",
+          "print(A)"
+        ],
         "Console": "1",
         "CodeBlock": [],
-        "Choice": [
-          "0",
-          "1",
-          "2",
-          "3"
-        ],
-        "Hint": "% follows the same rule for the positive and the negative number."
+        "Choice": [],
+        "Hint": "Try it yourself and see how will the value of A will be changed."
       },
       {
-        "Answer": "False",
+        "Difficulty": "Easy",
+        "Topic": "reassign",
+        "Answer": "5",
+        "Type": "ShortAnswer",
+        "Knowledge": "We could reassign the value of a variable by using another variable.",
+        "Instruction": "If we want to A to be 5, what value should we put into brackets?",
+        "Code": [
+          "A = 1",
+          "B = [?]",
+          "A = B",
+          "print(A)"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Think about the variable assignment!"
+      },
+      {
+        "Difficulty": "Easy",
+        "Topic": "reassign",
+        "Answer": "10",
+        "Type": "Rearrange",
+        "Knowledge": "The order of reassign is important",
+        "Instruction": "Rearrange the following code and let the value of A is equal to '10' after the code is been executed.",
+        "Code": [
+          "B = 10",
+          "A = 2",
+          "B = 666",
+          "print(A)"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Let’s try it out!"
+      },
+      {
+        "Difficulty": "Medium",
+        "Topic": "reassign",
+        "Answer": "a",
+        "Type": "ShortAnswer",
+        "Knowledge": "We could reassign a variable by different type of value",
+        "Instruction": "If we want to let A to be character 'b', what value should we fill?",
+        "Code": [
+          "A = 1",
+          "A = [?]",
+          "print(A)"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "Let’s try it out!"
+      },
+      {
+        "Difficulty": "Medium",
+        "Topic": "reassign",
+        "Answer": "2",
+        "Type": "Drag&Drop",
+        "Knowledge": "The value we reassigned to a variable could also have a type of a sequence of letters.",
+        "Instruction": "If we want to the value of A to be a sequence of letters, what should we put into the bracket?",
+        "Code": [
+          "A = 1",
+          "A = [?]",
+          "print(A)"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          "2",
+          "H",
+          "Hello, World",
+          "!@#"
+        ],
+        "Choice": [],
+        "Hint": "Try it yourself!"
+      },
+      {
+        "Difficulty": "Medium",
+        "Topic": "reassign",
+        "Answer": "a",
         "Type": "Rearrange",
         "Knowledge": null,
-        "Instruction": "Rearrange the following code to see if you can make A, B, C all evaluted to be true !",
+        "Instruction": "Rearrange the following code and let the value of B to be 'HelloCodeTrip'",
         "Code": [
-          "A = 3 != 3",
-          "B = 5 == 2",
-          "C = 2 >= 1",
-          "C = not C",
-          "C = B and (not C)",
-          "print(C)"
+          "A = B",
+          "A = 1",
+          "A = Hello",
+          "B = HelloCodeTrip",
+          "print(A)"
         ],
-        "Console": "3",
+        "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "There might be more than one available answer!"
+        "Hint": "Assignment 'A = a' means that a character 'a' is assigned to a variable A."
       },
       {
-        "Answer": "[2,8,10,12,15,7]",
-        "Type": "ShortAnswer",
+        "Difficulty": "Hard",
+        "Topic": "reassign",
+        "Answer": "True",
+        "Type": "Rearrange",
         "Knowledge": null,
-        "Instruction": "Put the answer for the array after we changed the value for it.",
+        "Instruction": "Rearrange the following code and let the value of A is equal to the value of B",
         "Code": [
-          "x = [1,3,6,4,5,2]",
-          "x[0] = 2",
-          "x[1] = 8",
-          "x[2] = 10",
-          "x[3] = 12",
-          "x[4] = 15",
-          "x[5] = 7",
-          "x = [[?],[?],[?],[?],[?],[?]]",
-          "print(x[0])",
-          "print(x[1])",
-          "print(x[2])",
-          "print(x[3])",
-          "print(x[4])",
-          "print(x[5])"
+          "A = B",
+          "A = 12345",
+          "B = '12345'",
+          "B = A",
+          "A = 4",
+          "print(A == B)//'A==C' means if A is equal to C, we don't have to worry about it right now"
         ],
-        "Console": "6",
+        "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Play with the array and see the different outcomes."
+        "Hint": "Try it yourself!"
       }
     ]
   }
