@@ -226,20 +226,24 @@ public class MainActivity extends AppCompatActivity
         myDB.execSQL("DROP TABLE IF EXISTS course");
 
         myDB.execSQL("CREATE TABLE IF NOT EXISTS course " +
-                    "(courseid integer primary key," +    //1
-                    "title text not null," +                            //print
+                    "(courseid integer primary key," +                  //1
+                    "available text not null," +                        //true
+                    "unit text not null," +                             //1
                     "type text not null," +                             //lecture
+                    "title text not null," +                            //print
                     "position text not null," +                         //L1 -> left 1
                     "complete integer not null," +                      //0 -> 0 question completed
-                    "total interger not null," +
-                    "available text not null," +
-                    "unit text not null)");                        //7 -> 7 question in this course
+                    "total interger not null," +                        //1
+                    "topics text not null)");                           //7 -> 7 question in this course
 
         myDB.execSQL("DROP TABLE IF EXISTS question");
 
         myDB.execSQL("CREATE TABLE IF NOT EXISTS question " +
                     "(questionid integer," +
                     "courseid interger," +
+                    "difficulty text," +
+                    "topic text," +
+                    "answer text," +
                     "type text," +
                     "knowledge text," +
                     "instruction text," +
@@ -248,11 +252,8 @@ public class MainActivity extends AppCompatActivity
                     "codeblock text," +
                     "choice text," +
                     "hint text," +
-                    "answer text," +
                     "FOREIGN KEY (courseid) REFERENCES course (courseid)," +
                     "PRIMARY KEY (questionid, courseid))");
-
-
 
         try {
             readDataToDb(myDB);
@@ -277,8 +278,9 @@ public class MainActivity extends AppCompatActivity
             JSONArray courseArray = new JSONArray(jsonDataString);
 
             int courseid = 0;
+            String topics;
             String title;
-            String type;
+            String coursetype;
             String position;
             int complete;
             int total;
@@ -290,31 +292,36 @@ public class MainActivity extends AppCompatActivity
 
                 JSONObject courseObject = courseArray.getJSONObject(i);
 
-                title = courseObject.getString("Title");
-                type = courseObject.getString("Type");
-                position = courseObject.getString("Position");
-                complete = 0;
-                total = courseObject.getInt("Total");
                 available = courseObject.getString("Available");
-
                 unit = courseObject.getString("Unit");
+                coursetype = courseObject.getString("Type");
+                title = courseObject.getString("Title");
+                total = courseObject.getInt("Total");
+                position = courseObject.getString("Position");
+                topics = courseObject.getJSONArray("Topics").toString();
+                complete = 0;
 
                 ContentValues courseValues = new ContentValues();
 
                 courseValues.put("courseid", courseid);
-                courseValues.put("title", title);
-                courseValues.put("type", type);
-                courseValues.put("position", position);
-                courseValues.put("complete", complete);
-                courseValues.put("total", total);
                 courseValues.put("available", available);
                 courseValues.put("unit", unit);
+                courseValues.put("type", coursetype);
+                courseValues.put("title", title);
+                courseValues.put("total", total);
+                courseValues.put("position", position);
+                courseValues.put("topics", topics);
+                courseValues.put("complete", complete);
 
                 db.insert("course", null, courseValues);
 
                 JSONArray questionArray = new JSONArray(courseObject.getString("Question"));
 
                 int questionid = 0;
+                String difficulty;
+                String topic;
+                String answer;
+                String questiontype;
                 String knowledge;
                 String instruction;
                 String code;
@@ -322,13 +329,15 @@ public class MainActivity extends AppCompatActivity
                 String codeblock;
                 String choice;
                 String hint;
-                String answer;
 
                 for (int j = 0; j < questionArray.length(); ++j) {
 
                     JSONObject question = questionArray.getJSONObject(j);
 
-                    type = question.getString("Type");
+                    difficulty = question.getString("Difficulty");
+                    topic = question.getString("Topic");
+                    answer = question.getString("Answer");
+                    questiontype = question.getString("Type");
                     knowledge = question.getString("Knowledge");
                     instruction = question.getString("Instruction");
                     code = question.getJSONArray("Code").toString();
@@ -336,13 +345,15 @@ public class MainActivity extends AppCompatActivity
                     codeblock = question.getJSONArray("CodeBlock").toString();
                     choice = question.getJSONArray("Choice").toString();
                     hint = question.getString("Hint");
-                    answer = question.getString("Answer");
 
                     ContentValues questionValues = new ContentValues();
 
                     questionValues.put("questionid", questionid);
                     questionValues.put("courseid", courseid);
-                    questionValues.put("type", type);
+                    questionValues.put("difficulty", difficulty);
+                    questionValues.put("topic", topic);
+                    questionValues.put("answer", answer);
+                    questionValues.put("type", questiontype);
                     questionValues.put("knowledge", knowledge);
                     questionValues.put("instruction", instruction);
                     questionValues.put("code", code);
@@ -350,7 +361,6 @@ public class MainActivity extends AppCompatActivity
                     questionValues.put("codeblock", codeblock);
                     questionValues.put("choice", choice);
                     questionValues.put("hint", hint);
-                    questionValues.put("answer", answer);
 
                     db.insert("question", null, questionValues);
 
