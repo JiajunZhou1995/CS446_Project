@@ -22,6 +22,8 @@ import com.mtr.codetrip.codetrip.Utility.SimpleItemTouchHelperCallback;
 
 import java.util.List;
 
+import static com.mtr.codetrip.codetrip.Utility.DataBaseUtility.getArrayFromDB;
+
 /**
  * Created by j66zhu on 2018-02-24 at 11:58 PM.
  * Within Package: ${PACKAGE_NAME}

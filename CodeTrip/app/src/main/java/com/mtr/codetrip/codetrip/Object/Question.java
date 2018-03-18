@@ -54,19 +54,19 @@ public abstract class Question {
         answer = c.getString(c.getColumnIndex("answer"));
     }
 
-    List<String> getArrayFromDB(Cursor c, String columnName){
-        List<String> strings = new ArrayList<>();
-        try{
-            JSONArray jsArr = new JSONArray(c.getString(c.getColumnIndex(columnName)));
-            for(int i = 0; i < jsArr.length(); i++){
-                strings.add(jsArr.getString(i));
-            }
-        }
-        catch (JSONException e){
-            e.printStackTrace();
-        }
-        return strings;
-    }
+//    List<String> getArrayFromDB(Cursor c, String columnName){
+//        List<String> strings = new ArrayList<>();
+//        try{
+//            JSONArray jsArr = new JSONArray(c.getString(c.getColumnIndex(columnName)));
+//            for(int i = 0; i < jsArr.length(); i++){
+//                strings.add(jsArr.getString(i));
+//            }
+//        }
+//        catch (JSONException e){
+//            e.printStackTrace();
+//        }
+//        return strings;
+//    }
 
     protected void inflateContent(ViewGroup rootView){
         TextView knowledgeTV = rootView.findViewById(R.id.question_knowledge);

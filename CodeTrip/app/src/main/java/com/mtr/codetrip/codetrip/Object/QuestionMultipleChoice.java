@@ -18,6 +18,8 @@ import com.mtr.codetrip.codetrip.CostumWidgets.TextViewNormalCode;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mtr.codetrip.codetrip.Utility.DataBaseUtility.getArrayFromDB;
+
 /**
  * Created by Catrina on 24/02/2018 at 11:55 PM.
  * Within Package: ${PACKAGE_NAME}

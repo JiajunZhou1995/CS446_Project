@@ -16,6 +16,7 @@ import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
 import com.mtr.codetrip.codetrip.CostumWidgets.ButtonCodeBlock;
 import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
 import com.mtr.codetrip.codetrip.CostumWidgets.TextViewDropBlank;
+import com.mtr.codetrip.codetrip.Utility.DataBaseUtility;
 import com.mtr.codetrip.codetrip.Utility.DropReceiveBlank;
 import com.mtr.codetrip.codetrip.Utility.HttpPostAsyncTask;
 import com.mtr.codetrip.codetrip.Utility.LayoutUtil;
@@ -24,6 +25,8 @@ import com.mtr.codetrip.codetrip.CostumWidgets.TextViewNormalCode;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.mtr.codetrip.codetrip.Utility.DataBaseUtility.getArrayFromDB;
 
 /**
  * Created by Catrina on 24/02/2018 at 11:46 PM.
@@ -64,8 +67,11 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     public void populateFromDB(Cursor c){
         super.populateFromDB(c);
 
-        codeArea =  getArrayFromDB(c, "code");
+        codeArea = getArrayFromDB(c,"code");
         codeBlocks = getArrayFromDB(c, "codeblock");
+
+//        codeArea =  getArrayFromDB(c, "code");
+//        codeBlocks = getArrayFromDB(c, "codeblock");
 //        answer = c.getString(c.getColumnIndex("answer"));
     }
 

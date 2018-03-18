@@ -259,7 +259,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         if (id == R.id.retrun_button){
             this.finish();
         }else if (id == question_complete_return_button){
-            CourseActivity.currentCourse+=1;
+            CourseActivity.currentCourse=courseID+1;
             CourseActivity.refreshCourseMAp();
             this.finish();
 //            completePopView.dismiss();
