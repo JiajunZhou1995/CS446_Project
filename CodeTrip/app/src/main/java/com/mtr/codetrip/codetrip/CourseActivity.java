@@ -29,12 +29,14 @@ import java.util.ArrayList;
 
 public class CourseActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
-    ArrayList<Course>courseList;
+    static ArrayList<Course>courseList;
     public static int marginTop;
+    public static int currentCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        currentCourse = 0;
 
 
         setContentView(R.layout.activity_main);
@@ -142,16 +144,24 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
-//    private void makeAvailable(int index){
-//        Course course = courseList.get(index);
-//        //should modify database
-//        course.courseStatus = Course.CourseStatus.AVAILABLE;
-//        updateCourseNode(index);
-//    }
+    private static void makeAvailable(int index){
+        Course course = courseList.get(index);
+        //should modify database
+        course.courseStatus = Course.CourseStatus.AVAILABLE;
+        updateCourseNode(index);
+    }
 
-//    private void updateCourseNode(int index){
-//        courseList.get(index).updateBtn();
-//    }
+    private static void updateCourseNode(int index){
+        courseList.get(index).updateBtn();
+    }
+
+    public static void refreshCourseMAp(){
+        int courseIndex = 0;
+        while(courseIndex <= currentCourse){
+            makeAvailable(courseIndex);
+            courseIndex++;
+        }
+    }
 
 
     @Override

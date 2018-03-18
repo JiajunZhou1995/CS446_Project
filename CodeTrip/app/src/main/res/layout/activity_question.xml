@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    android:id="@+id/question_root_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <include layout="@layout/app_bar_question"/>
-
-    <com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager
-        android:id="@+id/questionPager"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
 
-</LinearLayout>
+
+        <include layout="@layout/app_bar_question"/>
+
+        <com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager
+            android:id="@+id/questionPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="@color/colorPrimary">-->
+
+
+    <!--<include layout="@layout/app_bar_question"/>-->
+
+    <!--<com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager-->
+        <!--android:id="@+id/questionPager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
+<!--</LinearLayout>-->

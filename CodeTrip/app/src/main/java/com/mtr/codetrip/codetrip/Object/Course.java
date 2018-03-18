@@ -92,6 +92,7 @@ public class Course {
         Drawable backgroundImg = boundBtn.getBackground();
 
         if (courseStatus==CourseStatus.AVAILABLE){
+            setGrayscale(background, false);
             boundBtn.setBackground(backgroundImg);
         }else{
             setGrayscale(background, true);

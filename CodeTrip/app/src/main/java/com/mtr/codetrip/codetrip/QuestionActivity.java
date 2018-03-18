@@ -71,6 +71,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private float grade;
     private boolean isReview;
     private List<Integer> incorrectQuestionList;
+//    private PopupWindow completePopView;
 
 
 
@@ -132,13 +133,17 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         LayoutInflater inflater = LayoutInflater.from(getBaseContext());
         @SuppressLint("InflateParams") RelativeLayout completionPage = (RelativeLayout) inflater.inflate(R.layout.question_complete_screen,null);
 
-        PopupWindow completePopView = new PopupWindow(
-                completionPage,
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.MATCH_PARENT
-        );
 
-        completePopView.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
+        RelativeLayout container = findViewById(R.id.question_root_container);
+        container.addView(completionPage);
+
+//        completePopView = new PopupWindow(
+//                completionPage,
+//                RelativeLayout.LayoutParams.MATCH_PARENT,
+//                RelativeLayout.LayoutParams.MATCH_PARENT
+//        );
+//
+//        completePopView.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
 
         ColorArcProgressBar bar2 = completionPage.findViewById(R.id.bar2);
         grade = (grade * 100) / NUM_PAGES;
@@ -176,6 +181,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     public void changeGrade(){
         grade += 1;
     }
+
     private void updateProgressBar(int progress){
         ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar,"progress",(progress-1)*1000000,progress*1000000);
         progressAnimator.setStartDelay(200);
@@ -253,7 +259,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         if (id == R.id.retrun_button){
             this.finish();
         }else if (id == question_complete_return_button){
+            CourseActivity.currentCourse+=1;
+            CourseActivity.refreshCourseMAp();
             this.finish();
+//            completePopView.dismiss();
         }else if(id == R.id.hint_button) inflateHintPopView();
     }
 

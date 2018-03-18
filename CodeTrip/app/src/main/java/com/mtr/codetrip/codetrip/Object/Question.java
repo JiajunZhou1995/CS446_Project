@@ -45,6 +45,7 @@ public abstract class Question {
 
     protected void populateFromDB(Cursor c){
         //null check
+
         knowledge = c.getString(c.getColumnIndex("knowledge"));
         instruction = c.getString(c.getColumnIndex("instruction"));
         hint = c.getString(c.getColumnIndex("hint"));
@@ -75,8 +76,8 @@ public abstract class Question {
         TextView difficultyTV = rootView.findViewById(R.id.question_difficulty);
         topicTV.setText(String.format("Topic: %s",topic));
         difficultyTV.setText(String.format("Level: %s",difficulty));
-        if (difficulty.equals("Simple")){
-            difficultyTV.setTextColor(context.getColor(R.color.colorLightGreen));
+        if (difficulty.equals("Easy")){
+            difficultyTV.setTextColor(context.getColor(R.color.colorOrange));
         }else if (difficulty.equals("Medium")){
             difficultyTV.setTextColor(context.getColor(R.color.colorBluePurple));
         }else{
