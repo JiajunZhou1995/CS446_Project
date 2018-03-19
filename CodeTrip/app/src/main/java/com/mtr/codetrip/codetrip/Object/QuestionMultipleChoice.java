@@ -48,6 +48,12 @@ public class QuestionMultipleChoice extends Question {
         codeIns = new ArrayList<>();
         choices = new ArrayList<>();
         choiceViews = new ArrayList<>();
+//        doIt = rootView.findViewById(R.id.doit);
+    }
+
+    @Override
+    public void setRootView(ViewGroup viewGroup){
+        super.setRootView(viewGroup);
         doIt = rootView.findViewById(R.id.doit);
     }
 
@@ -123,8 +129,6 @@ public class QuestionMultipleChoice extends Question {
                     doIt.updateDoItButtonState(RunButton.RunButtonState.RUN);
                     String newText = "Check";
                     doIt.setText(newText);
-//                    status = RUN_BUTTON_STATUS.RUN;
-//                    updateButton();
                 }
             });
             choiceViews.add(choiceView);

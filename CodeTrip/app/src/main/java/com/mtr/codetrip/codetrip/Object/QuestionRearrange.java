@@ -49,6 +49,12 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
 
         codeIns = getStrArrayFromDB(c, "code");
         answer = c.getString(c.getColumnIndex("answer"));
+//        doIt = rootView.findViewById(R.id.doit);
+    }
+
+    @Override
+    public void setRootView(ViewGroup viewGroup){
+        super.setRootView(viewGroup);
         doIt = rootView.findViewById(R.id.doit);
     }
 

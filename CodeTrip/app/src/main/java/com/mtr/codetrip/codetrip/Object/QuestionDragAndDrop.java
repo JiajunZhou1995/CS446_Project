@@ -71,8 +71,8 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     }
 
     @Override
-    public void setRootView(ViewGroup rootView){
-        super.setRootView(rootView);
+    public void setRootView(ViewGroup viewGroup){
+        super.setRootView(viewGroup);
         RunButton runButton = rootView.findViewById(R.id.doit);
         dropReceiveBlank = new DropReceiveBlank(runButton);
     }

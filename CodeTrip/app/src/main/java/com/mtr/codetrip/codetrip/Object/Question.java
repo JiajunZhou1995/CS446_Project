@@ -35,7 +35,7 @@ public abstract class Question {
 
 
     public Question(ViewGroup view){
-        rootView = view;
+        this.rootView = view;
         context = rootView.getContext();
     }
 
@@ -44,7 +44,7 @@ public abstract class Question {
     }
 
     public void setRootView(ViewGroup rootView){
-        rootView = rootView;
+        this.rootView = rootView;
         context = rootView.getContext();
     }
 

@@ -54,6 +54,13 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
         codeString = "";
         normalCode = new ArrayList<>();
         editTextInsertList = new ArrayList<>();
+//        runButton = rootView.findViewById(R.id.doit);
+    }
+
+
+    @Override
+    public void setRootView(ViewGroup viewGroup){
+        super.setRootView(viewGroup);
         runButton = rootView.findViewById(R.id.doit);
     }
 
