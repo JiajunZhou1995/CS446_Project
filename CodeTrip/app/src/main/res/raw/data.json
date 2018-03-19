@@ -3,7 +3,7 @@
     "Available": "true",
     "Unit": "1",
     "Type": "Lecture",
-    "Title": "Print",
+    "Title": "Start",
     "Total": "1",
     "Position": "0L0",
     "Topics": [
@@ -33,7 +33,7 @@
     "Available": "false",
     "Unit": "2",
     "Type": "Lecture",
-    "Title": "variables",
+    "Title": "Variables",
     "Total": "24",
     "Position": "1R0",
     "Topics": [
