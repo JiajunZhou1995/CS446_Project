@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
 import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 
@@ -29,9 +30,17 @@ public abstract class Question {
     private String hint;
     private String topic;
     private String difficulty;
-    private QuestionActivity currentQuestionActivity;
+    protected QuestionActivity currentQuestionActivity;
     protected String answer;
 
+//    protected RunButton doIt;
+//
+//    public void setUpRunButton(){
+//        RunButton runButton = rootView.findViewById(R.id.doit);
+//        runButton.setCurrentQuestion(this);
+//        runButton.setCurrentQuestionActivity(currentQuestionActivity);
+//        doIt = runButton;
+//    }
 
 
     public Question(ViewGroup view){

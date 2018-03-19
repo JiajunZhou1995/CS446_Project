@@ -48,6 +48,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     private List<List<TextViewDropBlank>> textViewDropBlankList;
     private QuestionDragAndDrop thisQuestionView;
 
+
     QuestionDragAndDrop(ViewGroup viewGroup){
         super(viewGroup);
         thisQuestionView = this;
@@ -74,6 +75,8 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     public void setRootView(ViewGroup viewGroup){
         super.setRootView(viewGroup);
         RunButton runButton = rootView.findViewById(R.id.doit);
+        runButton.setCurrentQuestion(this);
+        runButton.setCurrentQuestionActivity(currentQuestionActivity);
         dropReceiveBlank = new DropReceiveBlank(runButton);
     }
 
@@ -186,9 +189,17 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
         }else if(answer.equals(output)){
             Log.d("correct!!","increase score");
             increaseGrade();
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
         }else{
             Log.d("incorrect answer","add to incorrect list");
 //            QuestionActivity.addToIncorrectList(questionID);
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+        }
+
+        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
+        if (newQuestion!=null){
+            currentQuestionActivity.NUM_PAGES++;
+            currentQuestionActivity.notifyChange();
         }
     }
 

@@ -43,7 +43,7 @@ public class QuestionPageFragment extends Fragment {
     private int questionID;
     private int courseID;
 
-    private static Question currentQuestion;
+    private Question currentQuestion;
     private QuestionActivity currentQuestionActivity;
 
     /**
@@ -59,9 +59,9 @@ public class QuestionPageFragment extends Fragment {
 //    }
 
 
-    public static QuestionPageFragment create(Question question) {
+    public static QuestionPageFragment create() {
         QuestionPageFragment fragment = new QuestionPageFragment();
-        currentQuestion = question;
+//        currentQuestion = question;
         return fragment;
     }
 
@@ -73,6 +73,10 @@ public class QuestionPageFragment extends Fragment {
 //        courseID = getArguments().getInt(COURSE_ID);
 //        currentQuestion = null;
 //    }
+
+    public void setCurrentQuestion(Question question){
+        currentQuestion = question;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,13 +95,16 @@ public class QuestionPageFragment extends Fragment {
 
 
         if (currentQuestion != null) {
-            currentQuestion.setRootView(rootView);
 //            currentQuestion.populateFromDB(cursor);
+            currentQuestion.setRootView(rootView);
             currentQuestion.inflateContent(rootView);
             currentQuestion.setCurrentQuestionActivity(currentQuestionActivity);
+
             RunButton runButton = rootView.findViewById(R.id.doit);
             runButton.setCurrentQuestion(currentQuestion);
             runButton.setCurrentQuestionActivity(currentQuestionActivity);
+
+//            currentQuestion.setUpRunButton();
             if (currentQuestion instanceof QuestionRearrange) {
                 runButton.updateDoItButtonState(RunButton.RunButtonState.RUN);
             } else {

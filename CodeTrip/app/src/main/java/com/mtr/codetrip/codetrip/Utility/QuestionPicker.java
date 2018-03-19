@@ -45,7 +45,8 @@ public class QuestionPicker {
     }
 
 
-    public Question getCuurrentQuestion(){
+    public Question getCurrentQuestion(){
+        if(currentQuestionTree==null) return null;
         return  currentQuestionTree.currentQuestion;
     }
 
@@ -197,16 +198,26 @@ public class QuestionPicker {
     }
 
     public void ganerateNextQuestion(boolean levelup){
-        // TODO - add round
 
         // change score
-//        changeEvaluationScore(levelup);
+        changeEvaluationScore(levelup);
 
         // if pass - next topic
         if (evaluationScore >= passScore){
             ++topicIndex;
-            // TODO - reset round
             // TODO - reset evaluation score
+        }else{
+
+            currentQuestionTree = currentQuestionTree.nextRightQuestion;
+        }
+
+
+        if (levelup){
+            currentQuestionTree = currentQuestionTree.nextRightQuestion;
+
+        }else{
+            currentQuestionTree = currentQuestionTree.nextWrongQuestion;
+
         }
 
         // else

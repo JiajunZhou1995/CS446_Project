@@ -26,7 +26,6 @@ import android.widget.TextView;
 import com.mtr.codetrip.codetrip.CostumWidgets.ColorArcProgressBar;
 import com.mtr.codetrip.codetrip.CostumWidgets.NonClickableSeekbar;
 import com.mtr.codetrip.codetrip.Object.Question;
-import com.mtr.codetrip.codetrip.Object.QuestionDragAndDrop;
 import com.mtr.codetrip.codetrip.Object.QuestionPageFragment;
 import com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager;
 import com.mtr.codetrip.codetrip.Utility.QuestionPicker;
@@ -49,7 +48,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
 
-    private int NUM_PAGES;
+    public int NUM_PAGES;
     public int currentProgress;
     private  QuestionActivity currentQuestionActivity;
 
@@ -74,7 +73,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private boolean isReview;
     private List<Integer> incorrectQuestionList;
 
-    private QuestionPicker questionPicker;
+    public QuestionPicker questionPicker;
 //    private PopupWindow completePopView;
 
 
@@ -103,8 +102,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         @SuppressLint("Recycle") Cursor c = MainActivity.myDB.rawQuery(sql,null);
         c.moveToFirst();
 
-//        NUM_PAGES=1;
-        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
+        NUM_PAGES=1;
+//        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
         progressBar = findViewById(R.id.question_progressbar);
 
         progressBar.setMax(NUM_PAGES*1000000);
@@ -197,13 +196,30 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         progressAnimator.start();
     }
 
-
+    public void notifyChange(){
+        mPagerAdapter.notifyDataSetChanged();
+    }
     public void onQuestionContinue(){
+//        NUM_PAGES++;
+//        currentProgress++;
+//        questionPicker.ganerateNextQuestion(true);
+//        Question currentSelectedQuestion = questionPicker.getCurrentQuestion();
+//
+//        if (currentSelectedQuestion==null){
+//            inflateCompletionPage();
+//            updateProgressBar(currentProgress);
+//            return;
+//        }
+//
+//        mPagerAdapter.notifyDataSetChanged();
+
         if (currentProgress++ == NUM_PAGES - 1){
             inflateCompletionPage();
             updateProgressBar(currentProgress);
             return;
         }
+//        NUM_PAGES++;
+
         mPager.setCurrentItem(currentProgress);
         updateProgressBar(currentProgress);
     }
@@ -240,8 +256,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         public android.support.v4.app.Fragment getItem(int currentQuestion) {
 
             QuestionPageFragment questionPageFragment;
-            Question currentSelectedQuestion = questionPicker.getCuurrentQuestion();
-            questionPageFragment = QuestionPageFragment.create(currentSelectedQuestion);
+            Question currentSelectedQuestion = questionPicker.getCurrentQuestion();
+
+            questionPageFragment = QuestionPageFragment.create();
+            questionPageFragment.setCurrentQuestion(currentSelectedQuestion);
 //            if(isReview) questionPageFragment = QuestionPageFragment.create(courseID,incorrectQuestionList.get(currentQuestion));
 //            else questionPageFragment = QuestionPageFragment.create(courseID,currentQuestion);
             questionPageFragment.setCurrentQuestionActivity(currentQuestionActivity);

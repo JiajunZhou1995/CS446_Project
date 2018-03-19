@@ -55,6 +55,9 @@ public class QuestionMultipleChoice extends Question {
     public void setRootView(ViewGroup viewGroup){
         super.setRootView(viewGroup);
         doIt = rootView.findViewById(R.id.doit);
+//        doIt.setCurrentQuestion(this);
+//        doIt.setCurrentQuestionActivity(currentQuestionActivity);
+//        doIt.updateDoItButtonState(RunButton.RunButtonState.INVALID);
     }
 
     @Override
