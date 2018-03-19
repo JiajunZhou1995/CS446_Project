@@ -26,8 +26,10 @@ import android.widget.TextView;
 import com.mtr.codetrip.codetrip.CostumWidgets.ColorArcProgressBar;
 import com.mtr.codetrip.codetrip.CostumWidgets.NonClickableSeekbar;
 import com.mtr.codetrip.codetrip.Object.Question;
+import com.mtr.codetrip.codetrip.Object.QuestionDragAndDrop;
 import com.mtr.codetrip.codetrip.Object.QuestionPageFragment;
 import com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager;
+import com.mtr.codetrip.codetrip.Utility.QuestionPicker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +73,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private float grade;
     private boolean isReview;
     private List<Integer> incorrectQuestionList;
+
+    private QuestionPicker questionPicker;
 //    private PopupWindow completePopView;
 
 
@@ -90,6 +94,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         Intent intent = getIntent();
         courseID = intent.getIntExtra("courseID",0);
         Log.d("courseID", Integer.toString(courseID));
+
+        questionPicker = new QuestionPicker(courseID);
+
+
 
         String sql = "SELECT * FROM course WHERE courseid =" + Integer.toString(courseID);
         @SuppressLint("Recycle") Cursor c = MainActivity.myDB.rawQuery(sql,null);
@@ -232,9 +240,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         public android.support.v4.app.Fragment getItem(int currentQuestion) {
 
             QuestionPageFragment questionPageFragment;
-
-            if(isReview) questionPageFragment = QuestionPageFragment.create(courseID,incorrectQuestionList.get(currentQuestion));
-            else questionPageFragment = QuestionPageFragment.create(courseID,currentQuestion);
+            Question currentSelectedQuestion = questionPicker.getCuurrentQuestion();
+            questionPageFragment = QuestionPageFragment.create(currentSelectedQuestion);
+//            if(isReview) questionPageFragment = QuestionPageFragment.create(courseID,incorrectQuestionList.get(currentQuestion));
+//            else questionPageFragment = QuestionPageFragment.create(courseID,currentQuestion);
             questionPageFragment.setCurrentQuestionActivity(currentQuestionActivity);
             return questionPageFragment;
         }

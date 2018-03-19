@@ -14,14 +14,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.SearchView;
-import android.widget.ArrayAdapter;
-
-import java.util.*;
 
 import com.mtr.codetrip.codetrip.Utility.ExpandAdapter;
 import com.mtr.codetrip.codetrip.Utility.onExpandListener;
+
+import java.util.ArrayList;
 
 
 /**
@@ -29,7 +29,7 @@ import com.mtr.codetrip.codetrip.Utility.onExpandListener;
  * Within Package: ${PACKAGE_NAME}
  */
 
-public class KeynoteActivity extends MainActivity{
+public class KeynoteActivity extends MainActivity {
 
 
     private ExpandableListView mListView;
@@ -43,7 +43,6 @@ public class KeynoteActivity extends MainActivity{
 
     private String[] titles;
     private String[][] knowledges;
-
 
 
     @Override
@@ -65,7 +64,7 @@ public class KeynoteActivity extends MainActivity{
 
         CoordinatorLayout container = findViewById(R.id.app_bar_main);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_favorite,null);
+        @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_favorite, null);
         container.addView(child);
 
 
@@ -74,7 +73,7 @@ public class KeynoteActivity extends MainActivity{
         initdata();
 
         mListView = findViewById(R.id.list);
-        mAdapter = new ArrayAdapter<>(KeynoteActivity.this, android.R.layout.simple_list_item_1,titles);
+        mAdapter = new ArrayAdapter<>(KeynoteActivity.this, android.R.layout.simple_list_item_1, titles);
 
         ExpandAdapter eAdapter = new ExpandAdapter(titles, knowledges);
 
@@ -131,9 +130,6 @@ public class KeynoteActivity extends MainActivity{
     }
 
 
-
-
-
     private Boolean expandOne(int expandedPosition) {
         boolean result = true;
         int groupLength = mListView.getExpandableListAdapter().getGroupCount();
@@ -165,16 +161,16 @@ public class KeynoteActivity extends MainActivity{
         Intent intent = new Intent();
 
         if (id == R.id.sidebar_home) {
-            intent.setClass(this,MainActivity.class);
+            intent.setClass(this, MainActivity.class);
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.sidebar_course) {
-            intent.setClass(this,CourseActivity.class);
+            intent.setClass(this, CourseActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_favorite) {
 
         } else if (id == R.id.sidebar_achievement) {
-            intent.setClass(this,AchievementActivity.class);
+            intent.setClass(this, AchievementActivity.class);
             startActivity(intent);
         }
 
@@ -186,16 +182,17 @@ public class KeynoteActivity extends MainActivity{
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
-        if (id != R.id.sidebar_favorite && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
+        if (id != R.id.sidebar_favorite && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)
+            finish();
         return true;
     }
 
-    public void initdata(){
+    public void initdata() {
         sql = "SELECT course.courseid, course.title FROM course ORDER BY course.courseid";
-        courseCursor = myDB.rawQuery(sql,null);
+        courseCursor = myDB.rawQuery(sql, null);
 
         courseCursor.moveToFirst();
-        while(!courseCursor.isAfterLast()) {
+        while (!courseCursor.isAfterLast()) {
 
             courseTitleArray = new ArrayList<>();
             int courseId = courseCursor.getInt(0);
@@ -230,26 +227,26 @@ public class KeynoteActivity extends MainActivity{
 //                Log.d("index:"+ Integer.toString(a) +"," + Integer.toString(b), tmp.get(b));
 //            }
 //        }
-        for(int a = 0; a < knowledgeArray.size(); ++a){
-            if(knowledgeArray.get(a).get(0).equals("Quiz")){
+        for (int a = 0; a < knowledgeArray.size(); ++a) {
+            if (knowledgeArray.get(a).get(0).equals("Quiz")) {
                 knowledgeArray.remove(a);
                 continue;
             }
             int b = 0;
-            while(b < knowledgeArray.get(a).size()){
-                if((knowledgeArray.get(a).get(b)).equals("null")){
+            while (b < knowledgeArray.get(a).size()) {
+                if ((knowledgeArray.get(a).get(b)).equals("null")) {
                     knowledgeArray.get(a).remove(b);
-                }else{
+                } else {
                     b++;
                 }
 
             }
 
         }
-        for(int a = 0; a < knowledgeArray.size(); ++a){
+        for (int a = 0; a < knowledgeArray.size(); ++a) {
             ArrayList<String> tmp = knowledgeArray.get(a);
-            for(int b = 0; b < tmp.size(); ++b){
-                Log.d("index1:"+ Integer.toString(a) +"," + Integer.toString(b), tmp.get(b));
+            for (int b = 0; b < tmp.size(); ++b) {
+                Log.d("index1:" + Integer.toString(a) + "," + Integer.toString(b), tmp.get(b));
             }
         }
 
@@ -258,16 +255,15 @@ public class KeynoteActivity extends MainActivity{
         knowledges = new String[knowledgeArray.size()][];
 
 
-
-        for(int a = 0; a < knowledgeArray.size(); ++a){
+        for (int a = 0; a < knowledgeArray.size(); ++a) {
             titles[a] = knowledgeArray.get(a).get(0);
             knowledgeArray.get(a).remove(0);
             knowledges[a] = knowledgeArray.get(a).toArray(new String[0]);
 
         }
-        for(int a = 0; a < knowledges.length; ++a){
-            for(int b = 0; b < knowledges[a].length; ++b){
-                Log.d("index:"+ Integer.toString(a) +"," + Integer.toString(b), knowledges[a][b]);
+        for (int a = 0; a < knowledges.length; ++a) {
+            for (int b = 0; b < knowledges[a].length; ++b) {
+                Log.d("index:" + Integer.toString(a) + "," + Integer.toString(b), knowledges[a][b]);
             }
         }
 

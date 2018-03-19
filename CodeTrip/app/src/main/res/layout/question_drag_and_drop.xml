@@ -13,11 +13,10 @@
         android:layout_marginTop="20dp"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:background="@drawable/code_area_round">
-    </LinearLayout>
+        android:background="@drawable/code_area_round"></LinearLayout>
 
 
-    <include layout="@layout/question_console"/>
+    <include layout="@layout/question_console" />
 
     <LinearLayout
         android:id="@+id/question_code_block_area"

@@ -24,8 +24,8 @@
     </style>
 
 
-     <!--Base application theme.-->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" >
+    <!--Base application theme.-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
 
         <!-- sidebar selected, action bar -->
@@ -37,7 +37,7 @@
     </style>
 
 
-    <style name="AppTheme.NoActionBar" >
+    <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -91,8 +91,8 @@
 
         <item name="android:taskToBackExitAnimation">@null</item>
     </style>
-    
-    
+
+
     <style name="question_button">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">@dimen/question_content_width</item>

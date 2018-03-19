@@ -7,9 +7,10 @@ package com.mtr.codetrip.codetrip.Utility;
 
 public class MultipleClickUtility {
     private static long lastClickTime;
+
     public static boolean isFastDoubleClick() {
         long time = System.currentTimeMillis();
-        if ( time - lastClickTime < 500) {
+        if (time - lastClickTime < 500) {
             return true;
         }
         lastClickTime = time;

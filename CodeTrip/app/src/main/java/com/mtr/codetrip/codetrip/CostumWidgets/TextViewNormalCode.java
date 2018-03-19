@@ -16,13 +16,13 @@ import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 @SuppressLint("ViewConstructor")
 public class TextViewNormalCode extends AppCompatTextView {
 
-    public TextViewNormalCode(Context context, String normalCode){
+    public TextViewNormalCode(Context context, String normalCode) {
         super(context);
 
-        this.setPadding(DensityUtil.dip2px(context,3),
-                DensityUtil.dip2px(context,5),
-                DensityUtil.dip2px(context,3),
-                DensityUtil.dip2px(context,5));
+        this.setPadding(DensityUtil.dip2px(context, 3),
+                DensityUtil.dip2px(context, 5),
+                DensityUtil.dip2px(context, 3),
+                DensityUtil.dip2px(context, 5));
         this.setTextAppearance(R.style.FontStyle_NormalCode);
         this.setTypeface(this.getTypeface(), Typeface.BOLD);
         this.setText(normalCode);

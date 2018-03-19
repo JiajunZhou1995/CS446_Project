@@ -11,9 +11,9 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
-import com.mtr.codetrip.codetrip.*;
 import com.mtr.codetrip.codetrip.Object.Question;
 import com.mtr.codetrip.codetrip.Object.QuestionShortAnswer;
+import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 
 /**
@@ -28,13 +28,13 @@ public class EditTextInsert extends android.support.v7.widget.AppCompatEditText 
     private Context context;
     private Question question;
 
-    public EditTextInsert(Context context, Question question){
+    public EditTextInsert(Context context, Question question) {
         super(context);
         this.context = context;
         this.question = question;
-        this.setPadding(DensityUtil.dip2px(context,20), DensityUtil.dip2px(context,5), DensityUtil.dip2px(context,20), DensityUtil.dip2px(context,5));
+        this.setPadding(DensityUtil.dip2px(context, 20), DensityUtil.dip2px(context, 5), DensityUtil.dip2px(context, 20), DensityUtil.dip2px(context, 5));
         this.setBackground(context.getDrawable(R.drawable.drop_block_round_enabled));
-        this.setTextSize(DensityUtil.dip2px(context,14));
+        this.setTextSize(DensityUtil.dip2px(context, 14));
         this.setTextAppearance(R.style.FontStyle_DropBlank);
         this.setHint("?");
         this.setSelectAllOnFocus(true);
@@ -73,9 +73,9 @@ public class EditTextInsert extends android.support.v7.widget.AppCompatEditText 
         assert inputMethodManager != null;
         inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
-        if (actionId == EditorInfo.IME_ACTION_DONE || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)){
-            ((QuestionShortAnswer)question).checkEditInsertList();
+        if (actionId == EditorInfo.IME_ACTION_DONE || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+            ((QuestionShortAnswer) question).checkEditInsertList();
         }
-        return  true;
+        return true;
     }
 }

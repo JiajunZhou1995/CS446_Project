@@ -22,14 +22,14 @@ import com.mtr.codetrip.codetrip.Utility.SimpleItemTouchHelperCallback;
 
 import java.util.List;
 
-import static com.mtr.codetrip.codetrip.Utility.DataBaseUtility.getArrayFromDB;
+import static com.mtr.codetrip.codetrip.Utility.DataBaseUtility.getStrArrayFromDB;
 
 /**
  * Created by j66zhu on 2018-02-24 at 11:58 PM.
  * Within Package: ${PACKAGE_NAME}
  */
 
-public class QuestionRearrange extends Question implements OnStartDragListener, AsyncResponse{
+public class QuestionRearrange extends Question implements OnStartDragListener, AsyncResponse {
     private ItemTouchHelper mItemTouchHelper;
     private List<String> codeIns;
     private String answer;
@@ -37,26 +37,28 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
     private RecyclerListAdapter adapter;
 
 
-    QuestionRearrange(ViewGroup view){
+    QuestionRearrange(ViewGroup view) {
         super(view);
     }
 
+    public QuestionRearrange(){super();}
+
     @Override
-    protected void populateFromDB(Cursor c){
+    public void populateFromDB(Cursor c) {
         super.populateFromDB(c);
 
-        codeIns = getArrayFromDB(c, "code");
+        codeIns = getStrArrayFromDB(c, "code");
         answer = c.getString(c.getColumnIndex("answer"));
         doIt = rootView.findViewById(R.id.doit);
     }
 
     @Override
-    protected void inflateContent(ViewGroup rootView){
+    protected void inflateContent(ViewGroup rootView) {
         super.inflateContent(rootView);
 
         LinearLayout questionContent = rootView.findViewById(R.id.question_body);
         LayoutInflater layoutInflater = LayoutInflater.from(rootView.getContext());
-        @SuppressLint("InflateParams") View rearrange = layoutInflater.inflate(R.layout.question_rearrange,null);
+        @SuppressLint("InflateParams") View rearrange = layoutInflater.inflate(R.layout.question_rearrange, null);
         questionContent.addView(rearrange);
 
         adapter = new RecyclerListAdapter(rootView.getContext(), this, codeIns);
@@ -87,10 +89,10 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         mItemTouchHelper.startDrag(viewHolder);
     }
 
-    private void updateAnswer(){
+    private void updateAnswer() {
         String currentOrder = adapter.getItems().toString();
         currentOrder = currentOrder.replaceAll(", ", "\n");
-        currentOrder = currentOrder.substring(1, currentOrder.length()-1);
+        currentOrder = currentOrder.substring(1, currentOrder.length() - 1);
         Log.d("jasmine", currentOrder);
 
         HttpPostAsyncTask asyncTask = new HttpPostAsyncTask(currentOrder);
@@ -100,8 +102,8 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         //return RUN_BUTTON_STATUS.RUN;
     }
 
-    public void processFinish(String output){
-        if (output.equals(answer)){
+    public void processFinish(String output) {
+        if (output.equals(answer)) {
             //Log.d("jasmine", "correct!");
             doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
 
@@ -125,14 +127,14 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
 //        doIt.setText(context.getString(R.string.question_action_continue));
 //    }
 
-    private void updateConsole(String output){
+    private void updateConsole(String output) {
         TextView consoleTV = rootView.findViewById(R.id.console);
         output = prependArrow(output);
         consoleTV.setText(output);
     }
 
     @Override
-    public void runAction(){
+    public void runAction() {
         updateAnswer();
     }
 }

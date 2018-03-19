@@ -18,7 +18,7 @@ import com.mtr.codetrip.codetrip.Utility.DensityUtil;
 @SuppressLint("ViewConstructor")
 public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextView implements View.OnClickListener, View.OnDragListener {
 
-    public enum DropState{DEFAULT, ENABLED, DROPPED}
+    public enum DropState {DEFAULT, ENABLED, DROPPED}
 
     private Question question;
     private Context context;
@@ -27,15 +27,15 @@ public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextVi
     public int lineNumber;
     public int linePosition;
 
-    public TextViewDropBlank(Context context, int lineNumber, int linePosition, Question question){
+    public TextViewDropBlank(Context context, int lineNumber, int linePosition, Question question) {
         super(context);
         this.lineNumber = lineNumber;
         this.linePosition = linePosition;
         this.question = question;
         this.context = context;
-        this.setPadding(DensityUtil.dip2px(context,20),DensityUtil.dip2px(context,5),DensityUtil.dip2px(context,20),DensityUtil.dip2px(context,5));
+        this.setPadding(DensityUtil.dip2px(context, 20), DensityUtil.dip2px(context, 5), DensityUtil.dip2px(context, 20), DensityUtil.dip2px(context, 5));
         this.setBackgroundColor(context.getColor(R.color.colorWhite));
-        this.setTextSize(DensityUtil.dip2px(context,14));
+        this.setTextSize(DensityUtil.dip2px(context, 14));
         this.setTextAppearance(R.style.FontStyle_DropBlank);
 
         this.setOnClickListener(this);
@@ -43,8 +43,8 @@ public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextVi
     }
 
 
-    public void updateDropState(DropState dropState){
-        switch (dropState){
+    public void updateDropState(DropState dropState) {
+        switch (dropState) {
             case DEFAULT:
                 this.setText("?");
                 this.setBackground(context.getDrawable(R.drawable.drop_block_round_default));
@@ -60,7 +60,7 @@ public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextVi
 
     @Override
     public void onClick(View v) {
-        ((QuestionDragAndDrop)question).dropReceiveBlank.restore((TextViewDropBlank)v);
+        ((QuestionDragAndDrop) question).dropReceiveBlank.restore((TextViewDropBlank) v);
     }
 
 
@@ -83,8 +83,8 @@ public class TextViewDropBlank extends android.support.v7.widget.AppCompatTextVi
                 break;
             case DragEvent.ACTION_DROP:
                 textView.updateDropState(TextViewDropBlank.DropState.DROPPED);
-                textView.setText(((QuestionDragAndDrop)question).currentOnDragButtonText);
-                ((QuestionDragAndDrop)question).dropReceiveBlank.updateFillIn((TextViewDropBlank)v,((QuestionDragAndDrop)question).currentOnDragButton);
+                textView.setText(((QuestionDragAndDrop) question).currentOnDragButtonText);
+                ((QuestionDragAndDrop) question).dropReceiveBlank.updateFillIn((TextViewDropBlank) v, ((QuestionDragAndDrop) question).currentOnDragButton);
                 break;
         }
         return true;

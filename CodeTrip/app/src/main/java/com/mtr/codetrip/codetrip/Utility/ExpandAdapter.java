@@ -14,12 +14,12 @@ import com.mtr.codetrip.codetrip.R;
  * Within Package: ${PACKAGE_NAME}
  */
 
-public class ExpandAdapter extends BaseExpandableListAdapter{
-//    private static final String TAG = "NormalExpandableListAda";
+public class ExpandAdapter extends BaseExpandableListAdapter {
+    //    private static final String TAG = "NormalExpandableListAda";
     private String[] groupData;
     private String[][] childData;
     private onExpandListener mOnGroupExpandedListener;
-    
+
 
     public ExpandAdapter(String[] groupData, String[][] childData) {
         this.groupData = groupData;
@@ -30,9 +30,6 @@ public class ExpandAdapter extends BaseExpandableListAdapter{
     public void setOnGroupExpandedListener(onExpandListener onGroupExpandedListener) {
         mOnGroupExpandedListener = onGroupExpandedListener;
     }
-
-
-
 
 
     @Override

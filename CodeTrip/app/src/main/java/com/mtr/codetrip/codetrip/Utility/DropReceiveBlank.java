@@ -20,38 +20,38 @@ public class DropReceiveBlank {
     private RunButton doitButton;
     private List<List<Button>> blankSpaceList;
 
-    public void print(){
+    public void print() {
 
-        for (int lineNumebr = 0; lineNumebr < blankSpaceList.size(); lineNumebr++){
+        for (int lineNumebr = 0; lineNumebr < blankSpaceList.size(); lineNumebr++) {
             List<Button> buttonList = blankSpaceList.get(lineNumebr);
-            for (int linePosition = 0; linePosition < buttonList.size(); linePosition++){
+            for (int linePosition = 0; linePosition < buttonList.size(); linePosition++) {
                 Button b = buttonList.get(linePosition);
-                Log.d(String.format("position: %d, %d",lineNumebr,linePosition), b.getText().toString());
+                Log.d(String.format("position: %d, %d", lineNumebr, linePosition), b.getText().toString());
             }
         }
     }
 
-    public DropReceiveBlank(RunButton button){
+    public DropReceiveBlank(RunButton button) {
         this.doitButton = button;
 //        doitButton.updateDoItButtonState(RunButton.RunButtonState.INVALID);
         blankSpaceList = new ArrayList<>();
     }
 
-    public List<Button> getBlankSpaceListSingleLine(int listIndex){
+    public List<Button> getBlankSpaceListSingleLine(int listIndex) {
         return blankSpaceList.get(listIndex);
     }
 
-    public void  restore(TextViewDropBlank currentTextView){
+    public void restore(TextViewDropBlank currentTextView) {
         int lineNumber = currentTextView.lineNumber;
         int linePosition = currentTextView.linePosition;
         Button currButton = blankSpaceList.get(lineNumber).get(linePosition);
-        if (currButton!=null) currButton.setVisibility(View.VISIBLE);
-        blankSpaceList.get(lineNumber).set(linePosition,null);
+        if (currButton != null) currButton.setVisibility(View.VISIBLE);
+        blankSpaceList.get(lineNumber).set(linePosition, null);
         //set textview to default
         currentTextView.updateDropState(TextViewDropBlank.DropState.DEFAULT);
 
         //update doit button
-        for (List<Button> buttonList : blankSpaceList){
+        for (List<Button> buttonList : blankSpaceList) {
             if (buttonList.contains(null)) {
                 doitButton.updateDoItButtonState(RunButton.RunButtonState.INVALID);
                 return;
@@ -60,21 +60,21 @@ public class DropReceiveBlank {
 
     }
 
-    public void addEntry(List<Button> dropBlankSingleLine){
+    public void addEntry(List<Button> dropBlankSingleLine) {
 
         blankSpaceList.add(dropBlankSingleLine);
     }
 
-    public void updateFillIn(TextViewDropBlank textViewDropBlank, Button newButton){
+    public void updateFillIn(TextViewDropBlank textViewDropBlank, Button newButton) {
         int lineNumber = textViewDropBlank.lineNumber;
         int linePosition = textViewDropBlank.linePosition;
         Button oldButton = blankSpaceList.get(lineNumber).get(linePosition);
-        if (oldButton!=null) oldButton.setVisibility(View.VISIBLE);
-        blankSpaceList.get(lineNumber).set(linePosition,newButton);
+        if (oldButton != null) oldButton.setVisibility(View.VISIBLE);
+        blankSpaceList.get(lineNumber).set(linePosition, newButton);
 
 
-        for (List<Button> buttonList: blankSpaceList){
-            if (buttonList.contains(null)){
+        for (List<Button> buttonList : blankSpaceList) {
+            if (buttonList.contains(null)) {
                 return;
 //            Log.d("++++++CAN","RUN");
             }
@@ -82,8 +82,8 @@ public class DropReceiveBlank {
         doitButton.updateDoItButtonState(RunButton.RunButtonState.RUN);
     }
 
-    public void checkContains(Button currButton){
-        for (List<Button> buttonList : blankSpaceList){
+    public void checkContains(Button currButton) {
+        for (List<Button> buttonList : blankSpaceList) {
             if (buttonList.contains(currButton)) return;
         }
         currButton.setVisibility(View.VISIBLE);

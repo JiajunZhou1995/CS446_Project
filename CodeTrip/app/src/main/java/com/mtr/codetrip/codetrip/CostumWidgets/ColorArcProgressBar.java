@@ -21,7 +21,7 @@ import com.mtr.codetrip.codetrip.R;
  * colorful arc progress bar
  * Created by shinelw on 12/4/15.
  */
-public class ColorArcProgressBar extends View{
+public class ColorArcProgressBar extends View {
 
     private int mWidth;
     private int mHeight;
@@ -95,6 +95,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 初始化布局配置
+     *
      * @param context
      * @param attrs
      */
@@ -125,7 +126,7 @@ public class ColorArcProgressBar extends View{
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = (int) (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE);
-        int height= (int) (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE);
+        int height = (int) (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE);
         setMeasuredDimension(width, height);
     }
 
@@ -134,14 +135,14 @@ public class ColorArcProgressBar extends View{
         diameter = 3 * getScreenWidth() / 5;
         //弧形的矩阵区域
         bgRect = new RectF();
-        bgRect.top = longdegree + progressWidth/2 + DEGREE_PROGRESS_DISTANCE;
-        bgRect.left = longdegree + progressWidth/2 + DEGREE_PROGRESS_DISTANCE;
-        bgRect.right = diameter + (longdegree + progressWidth/2 + DEGREE_PROGRESS_DISTANCE);
-        bgRect.bottom = diameter + (longdegree + progressWidth/2 + DEGREE_PROGRESS_DISTANCE);
+        bgRect.top = longdegree + progressWidth / 2 + DEGREE_PROGRESS_DISTANCE;
+        bgRect.left = longdegree + progressWidth / 2 + DEGREE_PROGRESS_DISTANCE;
+        bgRect.right = diameter + (longdegree + progressWidth / 2 + DEGREE_PROGRESS_DISTANCE);
+        bgRect.bottom = diameter + (longdegree + progressWidth / 2 + DEGREE_PROGRESS_DISTANCE);
 
         //圆心
-        centerX = (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE)/2;
-        centerY = (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE)/2;
+        centerX = (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE) / 2;
+        centerY = (2 * longdegree + progressWidth + diameter + 2 * DEGREE_PROGRESS_DISTANCE) / 2;
 
         //外部刻度线
         degreePaint = new Paint();
@@ -227,7 +228,7 @@ public class ColorArcProgressBar extends View{
         canvas.drawArc(bgRect, startAngle, currentAngle, false, progressPaint);
 
         if (isNeedContent) {
-            canvas.drawText(String.format("%.1f", curValues)+"%", centerX, centerY + textSize / 3, vTextPaint);
+            canvas.drawText(String.format("%.1f", curValues) + "%", centerX, centerY + textSize / 3, vTextPaint);
         }
         if (isNeedUnit) {
             canvas.drawText(hintString, centerX, centerY + 2 * textSize / 3, hintPaint);
@@ -242,15 +243,17 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置最大值
+     *
      * @param maxValues
      */
     public void setMaxValues(float maxValues) {
         this.maxValues = maxValues;
-        k = sweepAngle/maxValues;
+        k = sweepAngle / maxValues;
     }
 
     /**
      * 设置当前值
+     *
      * @param currentValues
      */
     public void setCurrentValues(float currentValues) {
@@ -267,6 +270,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置整个圆弧宽度
+     *
      * @param bgArcWidth
      */
     public void setBgArcWidth(int bgArcWidth) {
@@ -275,6 +279,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置进度宽度
+     *
      * @param progressWidth
      */
     public void setProgressWidth(int progressWidth) {
@@ -283,6 +288,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置速度文字大小
+     *
      * @param textSize
      */
     public void setTextSize(int textSize) {
@@ -291,6 +297,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置单位文字大小
+     *
      * @param hintSize
      */
     public void setHintSize(int hintSize) {
@@ -299,6 +306,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置单位文字
+     *
      * @param hintString
      */
     public void setUnit(String hintString) {
@@ -308,6 +316,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置直径大小
+     *
      * @param diameter
      */
     public void setDiameter(int diameter) {
@@ -316,14 +325,16 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置标题
+     *
      * @param title
      */
-    private void setTitle(String title){
+    private void setTitle(String title) {
         this.titleString = title;
     }
 
     /**
      * 设置是否显示标题
+     *
      * @param isNeedTitle
      */
     private void setIsNeedTitle(boolean isNeedTitle) {
@@ -332,6 +343,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置是否显示单位文字
+     *
      * @param isNeedUnit
      */
     private void setIsNeedUnit(boolean isNeedUnit) {
@@ -340,6 +352,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 设置是否显示外部刻度盘
+     *
      * @param isNeedDial
      */
     private void setIsNeedDial(boolean isNeedDial) {
@@ -348,6 +361,7 @@ public class ColorArcProgressBar extends View{
 
     /**
      * 为进度设置动画
+     *
      * @param last
      * @param current
      */
@@ -359,8 +373,8 @@ public class ColorArcProgressBar extends View{
 
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                currentAngle= (float) animation.getAnimatedValue();
-                curValues = currentAngle/k;
+                currentAngle = (float) animation.getAnimatedValue();
+                curValues = currentAngle / k;
 
             }
         });
@@ -369,16 +383,18 @@ public class ColorArcProgressBar extends View{
 
     /**
      * dip 转换成px
+     *
      * @param dip
      * @return
      */
     private int dipToPx(float dip) {
         float density = getContext().getResources().getDisplayMetrics().density;
-        return (int)(dip * density + 0.5f * (dip >= 0 ? 1 : -1));
+        return (int) (dip * density + 0.5f * (dip >= 0 ? 1 : -1));
     }
 
     /**
      * 得到屏幕宽度
+     *
      * @return
      */
     private int getScreenWidth() {

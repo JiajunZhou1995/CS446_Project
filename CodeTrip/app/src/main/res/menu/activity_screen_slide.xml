@@ -18,7 +18,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Adds an item to the list. -->
-    <item android:id="@+id/action_previous"
+    <item
+        android:id="@+id/action_previous"
         android:title="Previous"
         app:showAsAction="ifRoom|withText" />
 

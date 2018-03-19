@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_home"
@@ -10,14 +9,13 @@
     tools:context="com.mtr.codetrip.codetrip.KeynoteActivity">
 
 
-
     <SearchView
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:iconifiedByDefault="true"
         android:layout_marginTop="60dp"
-        android:queryHint="Unit Name"/>
+        android:queryHint="Unit Name" />
 
     <ExpandableListView
         android:id="@+id/list"

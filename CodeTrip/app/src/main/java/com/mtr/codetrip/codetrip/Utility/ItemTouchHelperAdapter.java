@@ -1,6 +1,7 @@
 package com.mtr.codetrip.codetrip.Utility;
 
 import android.support.v7.widget.RecyclerView;
+
 /**
  * Interface to notify a {@link RecyclerView.Adapter} of moving and dismissal event from a {@link
  * android.support.v7.widget.helper.ItemTouchHelper.Callback}.

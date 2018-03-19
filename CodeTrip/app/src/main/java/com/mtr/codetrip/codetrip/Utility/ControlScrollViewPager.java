@@ -22,7 +22,6 @@ public class ControlScrollViewPager extends ViewPager {
     private QuestionActivity questionActivity = null;
 
 
-
     public ControlScrollViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         // TODO Auto-generated constructor stub
@@ -59,15 +58,16 @@ public class ControlScrollViewPager extends ViewPager {
 
 //-------------------------------------------
 
-    public void setBoundedQuestionActivity(QuestionActivity questionActivity){
+    public void setBoundedQuestionActivity(QuestionActivity questionActivity) {
         this.questionActivity = questionActivity;
     }
+
     //-----禁止左滑-------左滑：上一次坐标 > 当前坐标
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if(this.getCurrentItem()<questionActivity.currentProgress){
+        if (this.getCurrentItem() < questionActivity.currentProgress) {
             return super.dispatchTouchEvent(ev);
-        }else  {
+        } else {
             switch (ev.getAction()) {
                 case MotionEvent.ACTION_DOWN://按下如果‘仅’作为‘上次坐标’，不妥，因为可能存在左滑，motionValue大于0的情况（来回滑，只要停止坐标在按下坐标的右边，左滑仍然能滑过去）
                     beforeX = ev.getX();

@@ -16,8 +16,7 @@ import com.mtr.codetrip.codetrip.R;
 public class RunButton extends android.support.v7.widget.AppCompatButton implements View.OnClickListener {
 
 
-
-    public enum RunButtonState{INVALID,RUN,CONTINUE,BACKTOCURRENT}
+    public enum RunButtonState {INVALID, RUN, CONTINUE, BACKTOCURRENT}
 
     private RunButtonState buttonState;
     private Context context;
@@ -31,31 +30,31 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
         this.setOnClickListener(this);
     }
 
-    public void setCurrentQuestionActivity(QuestionActivity questionActivity){
+    public void setCurrentQuestionActivity(QuestionActivity questionActivity) {
         this.currentQuestionActivity = questionActivity;
     }
 
-    public RunButton(Context context, AttributeSet attrs){
+    public RunButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         this.setOnClickListener(this);
     }
 
-    public RunButton(Context context, AttributeSet attrs, int defStyle){
+    public RunButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.context = context;
         this.setOnClickListener(this);
     }
 
 
-    public void setCurrentQuestion(Question currentQuestion){
+    public void setCurrentQuestion(Question currentQuestion) {
         this.currentQuestion = currentQuestion;
     }
 
 
     @Override
     public void onClick(View v) {
-        switch (buttonState){
+        switch (buttonState) {
             case INVALID:
                 break;
             case RUN:
@@ -72,9 +71,9 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
         }
     }
 
-    public void updateDoItButtonState(RunButton.RunButtonState newState){
+    public void updateDoItButtonState(RunButton.RunButtonState newState) {
         buttonState = newState;
-        switch(newState){
+        switch (newState) {
             case INVALID:
                 setClickable(false);
                 setBackground(context.getDrawable(R.drawable.run_button_invalid));

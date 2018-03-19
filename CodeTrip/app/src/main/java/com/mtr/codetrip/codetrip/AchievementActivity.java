@@ -57,7 +57,6 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
         Toolbar toolbar = findViewById(R.id.toolbar);
 
 
-
         LayoutInflater layoutInflater = LayoutInflater.from(this);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
@@ -71,13 +70,12 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
         navigationView.getMenu().getItem(1).setChecked(true);
 
         CoordinatorLayout container = findViewById(R.id.app_bar_main);
-        @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_achievement,null);
+        @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_achievement, null);
         container.addView(child);
 
 
         androidGridView = findViewById(R.id.gridview_android_example);
         androidGridView.setAdapter(new AchievementActivity.ImageAdapterGridView(this));
-
 
 
         androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -109,14 +107,14 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
         Intent intent = new Intent();
 
         if (id == R.id.sidebar_home) {
-            intent.setClass(this,MainActivity.class);
+            intent.setClass(this, MainActivity.class);
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.sidebar_course) {
-            intent.setClass(this,CourseActivity.class);
+            intent.setClass(this, CourseActivity.class);
             startActivity(intent);
         } else if (id == R.id.sidebar_favorite) {
-            intent.setClass(this,KeynoteActivity.class);
+            intent.setClass(this, KeynoteActivity.class);
             startActivity(intent);
         }
 //        else if (id == R.id.sidebar_achievement) {
@@ -129,7 +127,8 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START);
-        if (id != R.id.sidebar_achievement  && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
+        if (id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)
+            finish();
 
         return true;
     }
@@ -161,7 +160,7 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
                 mImageView = new ImageView(mContext);
                 mImageView.setLayoutParams(new GridView.LayoutParams(350, 350));
                 mImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-                mImageView.setPadding(90,70,90,70);
+                mImageView.setPadding(90, 70, 90, 70);
 //                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 //                lp.setMargins(10,0,10,0);
 //                mImageView.setLayoutParams(lp);

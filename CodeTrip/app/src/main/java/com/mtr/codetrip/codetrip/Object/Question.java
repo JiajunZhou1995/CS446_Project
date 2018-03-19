@@ -39,11 +39,20 @@ public abstract class Question {
         context = rootView.getContext();
     }
 
+    public Question(){
+
+    }
+
+    public void setRootView(ViewGroup rootView){
+        rootView = rootView;
+        context = rootView.getContext();
+    }
+
     void setCurrentQuestionActivity(QuestionActivity questionActivity){
         this.currentQuestionActivity = questionActivity;
     }
 
-    protected void populateFromDB(Cursor c){
+    public void populateFromDB(Cursor c){
         //null check
 
         knowledge = c.getString(c.getColumnIndex("knowledge"));
@@ -54,7 +63,7 @@ public abstract class Question {
         answer = c.getString(c.getColumnIndex("answer"));
     }
 
-//    List<String> getArrayFromDB(Cursor c, String columnName){
+//    List<String> getStrArrayFromDB(Cursor c, String columnName){
 //        List<String> strings = new ArrayList<>();
 //        try{
 //            JSONArray jsArr = new JSONArray(c.getString(c.getColumnIndex(columnName)));

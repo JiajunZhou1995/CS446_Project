@@ -16,9 +16,6 @@ package com.mtr.codetrip.codetrip.Utility;
  * limitations under the License.
  */
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.view.MotionEventCompat;
@@ -27,6 +24,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.R;
 
@@ -80,7 +79,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
 //        notifyItemRemoved(position);
 //    }
 
-    public List<String> getItems(){
+    public List<String> getItems() {
         return mItems;
     }
 

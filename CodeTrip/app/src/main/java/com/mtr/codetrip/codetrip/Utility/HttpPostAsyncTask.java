@@ -61,7 +61,7 @@ public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
 
             int statusCode = urlConnection.getResponseCode();
 
-            if (statusCode ==  200) {
+            if (statusCode == 200) {
                 BufferedReader br = new BufferedReader(
                         new InputStreamReader(urlConnection.getInputStream(), "utf-8"));
                 String line;
