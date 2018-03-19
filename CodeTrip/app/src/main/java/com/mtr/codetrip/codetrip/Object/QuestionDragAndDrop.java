@@ -186,6 +186,8 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     protected void checkAnswer(String output){
         if (answer.equals("")){
             //arbitrary answer , check if error
+            Log.d("answer","is empty");
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
         }else if(answer.equals(output)){
             Log.d("correct!!","increase score");
             increaseGrade();
