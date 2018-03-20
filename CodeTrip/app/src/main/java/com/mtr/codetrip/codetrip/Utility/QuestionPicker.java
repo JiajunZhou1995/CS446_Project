@@ -79,6 +79,7 @@ public class QuestionPicker {
         }
 
         public  Difficulty changeLevel( boolean upgrade){
+            if(value==1&& !upgrade) return Difficulty.EASY;
             int numLevelChange = upgrade? 1 : -1;
             return  fromInteger(getScore() + numLevelChange);
         }
@@ -97,6 +98,15 @@ public class QuestionPicker {
         }
     }
 
+    private Map<Difficulty,List<Question>> deepCopyDictionary(Map<Difficulty,List<Question>> dict){
+        Map<Difficulty,List<Question>> newMap = new HashMap<>();
+        for (Difficulty key : dict.keySet()){
+            List<Question> tmpList = new ArrayList<>(dict.get(key));
+            newMap.put(key,tmpList);
+        }
+        return newMap;
+    }
+
 
     public class QuestionTree {
         private Question currentQuestion;
@@ -104,14 +114,14 @@ public class QuestionPicker {
         private QuestionTree nextWrongQuestion;
 
         public QuestionTree(Difficulty difficulty, Map<Difficulty,List<Question>>topicDict) {
-            Map<Difficulty, List<Question>> currentTopicDic = topicDict;
-//            List<Question> questionList = currentTopicDic.
+            Map<Difficulty, List<Question>> currentTopicDic = deepCopyDictionary(topicDict);
             if (difficulty==null || topicDict==null || currentTopicDic.get(difficulty) == null || currentTopicDic.get(difficulty).size()==0){
                 currentQuestion = null;
             }else{
                 currentQuestion = currentTopicDic.get(difficulty).remove(0);
-                Log.d("medium list", Integer.toString(currentTopicDic.get(Difficulty.MEDIUM).size()));
+
                 addNextRight(difficulty.changeLevel(true), currentTopicDic);
+
                 addNextWrong(difficulty.changeLevel(false), currentTopicDic);
             }
         }
@@ -187,35 +197,35 @@ public class QuestionPicker {
     }
 
 
-    public void changeEvaluationScore(boolean correctAnswer){
-        // TODO remove from map
-        if (correctAnswer){
-            // TODO - add score
-        }else {
-            // TODO - add to incorrect list
-        }
-        // TODO nagerateNextQuestion
-    }
+//    public void changeEvaluationScore(boolean correctAnswer){
+//        // TODO remove from map
+//        if (correctAnswer){
+//            // TODO - add score
+//        }else {
+//        }
+//        // TODO nagerateNextQuestion
+//    }
 
     public void ganerateNextQuestion(boolean levelup){
 
         // change score
-        changeEvaluationScore(levelup);
+//        changeEvaluationScore(levelup);
 
         // if pass - next topic
-        if (evaluationScore >= passScore){
-            ++topicIndex;
-            // TODO - reset evaluation score
-        }else{
-
-            currentQuestionTree = currentQuestionTree.nextRightQuestion;
-        }
+//        if (evaluationScore >= passScore){
+//            ++topicIndex;
+//            // TODO - reset evaluation score
+//        }else{
+//
+//            currentQuestionTree = currentQuestionTree.nextRightQuestion;
+//        }
 
 
         if (levelup){
             currentQuestionTree = currentQuestionTree.nextRightQuestion;
 
         }else{
+            //  TODO - add to incorrect list
             currentQuestionTree = currentQuestionTree.nextWrongQuestion;
 
         }

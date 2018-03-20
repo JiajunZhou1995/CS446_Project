@@ -2,6 +2,7 @@ package com.mtr.codetrip.codetrip.Object;
 
 import android.annotation.SuppressLint;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -174,12 +175,35 @@ public class QuestionMultipleChoice extends Question {
 //        }
 //    }
 
+//    @Override
+//    public void runAction() {
+//        if (currentSelection + 1 == answer) { //off by 1
+//            doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
+////            TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
+////            updateButton();
+//        }
+//    }
+
     @Override
     public void runAction() {
         if (currentSelection + 1 == answer) { //off by 1
-            doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
 //            TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
 //            updateButton();
+            Log.d("correct!!","increase score");
+            increaseGrade();
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+        }else{
+            Log.d("incorrect answer","add to incorrect list");
+//            QuestionActivity.addToIncorrectList(questionID);
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+
         }
+
+        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
+        if (newQuestion!=null){
+            currentQuestionActivity.NUM_PAGES++;
+            currentQuestionActivity.notifyChange();
+        }
+        doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
     }
 }
