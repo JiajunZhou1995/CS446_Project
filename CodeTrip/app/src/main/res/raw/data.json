@@ -141,7 +141,7 @@
       {
         "Difficulty": "Hard",
         "Topic": "assign",
-        "Answer": "False",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": "There is difference between numerical values and string values.",
         "Instruction": "Variable A has the numerical value 12345, and B has the world character value '12345', are these two variables have the same value?",
@@ -182,7 +182,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "define",
-        "Answer": "True",
+        "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "Variable's name should closely related to it's value.",
@@ -219,7 +219,7 @@
       {
         "Difficulty": "Medium",
         "Topic": "define",
-        "Answer": "1Apple",
+        "Answer": "2",
         "Type": "MultipleChoice",
         "Knowledge": "Variables names must start with a letter, and the rest of the variable name may consist of letters and numbers, and it should not contain any special characters.",
         "Instruction": "Which one of the following could not be used as the name of a variable?",
@@ -257,7 +257,7 @@
       {
         "Difficulty": "Hard",
         "Topic": "define",
-        "Answer": "False",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": "The name of a variable should be unique.",
         "Instruction": "Two variables can have the same name",
@@ -307,7 +307,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "assign1",
-        "Answer": "False",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "The following code is correct",
@@ -326,7 +326,7 @@
       {
         "Difficulty": "Medium",
         "Topic": "assign1",
-        "Answer": "True",
+        "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": "Different variables could have the same value.",
         "Instruction": "Does A and C have the same value?",
@@ -364,7 +364,7 @@
       {
         "Difficulty": "Hard",
         "Topic": "assign1",
-        "Answer": "False",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": "There is difference between numerical values and string values.",
         "Instruction": "Variable A has the numerical value 12345, and B has the world character value '12345', are these two variables have the same value?",
