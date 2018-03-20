@@ -186,7 +186,7 @@ public class QuestionMultipleChoice extends Question {
 
     @Override
     public void runAction() {
-        if (currentSelection + 1 == answer) { //off by 1
+        if (currentSelection == answer) { //off by 1
 //            TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
 //            updateButton();
             Log.d("correct!!","increase score");
