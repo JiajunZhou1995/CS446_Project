@@ -220,14 +220,27 @@ public class QuestionPicker {
 //            currentQuestionTree = currentQuestionTree.nextRightQuestion;
 //        }
 
+        QuestionTree newQuestionNode;
 
         if (levelup){
-            currentQuestionTree = currentQuestionTree.nextRightQuestion;
+            newQuestionNode = currentQuestionTree.nextRightQuestion;
 
         }else{
             //  TODO - add to incorrect list
-            currentQuestionTree = currentQuestionTree.nextWrongQuestion;
+            newQuestionNode = currentQuestionTree.nextWrongQuestion;
 
+        }
+
+        if (newQuestionNode.currentQuestion==null){
+            if (topicIndex<topicList.size()-1){
+                topicIndex++;
+                initQuestionTree();
+            }else{
+                // no more question
+                currentQuestionTree = null;
+            }
+        }else{
+            currentQuestionTree = newQuestionNode;
         }
 
         // else

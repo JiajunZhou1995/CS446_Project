@@ -145,6 +145,30 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
     public void processFinish(String output) {
         Log.d("out put", output);
         updateConsole(output);
+        checkAnswer(output);
+    }
+
+    @Override
+    protected void checkAnswer(String output){
+        if (answer.equals("")){
+            //arbitrary answer , check if error
+            Log.d("answer","is empty");
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+        }else if(answer.equals(output)){
+            Log.d("correct!!","increase score");
+            increaseGrade();
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+        }else{
+            Log.d("incorrect answer","add to incorrect list");
+//            QuestionActivity.addToIncorrectList(questionID);
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+        }
+
+        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
+        if (newQuestion!=null){
+            currentQuestionActivity.NUM_PAGES++;
+            currentQuestionActivity.notifyChange();
+        }
     }
 
     private void updateConsole(String output) {
