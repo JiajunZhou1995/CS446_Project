@@ -2,7 +2,6 @@ package com.mtr.codetrip.codetrip.Utility;
 
 import android.database.Cursor;
 import android.util.Log;
-import android.view.ViewGroup;
 
 import com.mtr.codetrip.codetrip.MainActivity;
 import com.mtr.codetrip.codetrip.Object.Question;
@@ -10,7 +9,6 @@ import com.mtr.codetrip.codetrip.Object.QuestionDragAndDrop;
 import com.mtr.codetrip.codetrip.Object.QuestionMultipleChoice;
 import com.mtr.codetrip.codetrip.Object.QuestionRearrange;
 import com.mtr.codetrip.codetrip.Object.QuestionShortAnswer;
-import com.mtr.codetrip.codetrip.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.mtr.codetrip.codetrip.Utility.DataBaseUtility.getStrArrayFromDB;
-import static com.mtr.codetrip.codetrip.Utility.DataBaseUtility.getIntArrayFromDB;
 
 /**
  * Created by catrina on 2018-03-17.
@@ -138,7 +135,7 @@ public class QuestionPicker {
     public void generateQuestionMap(int courseID){
         this.courseID = courseID;
         String sql = String.format("SELECT * FROM course WHERE courseid=%d",courseID);
-        Cursor cursor = MainActivity.myDB.rawQuery(sql, null);
+        Cursor cursor = MainActivity.appDB.rawQuery(sql, null);
         cursor.moveToFirst();
 
         topicList = getStrArrayFromDB(cursor, "topics");
@@ -159,7 +156,7 @@ public class QuestionPicker {
             QuestionTree questionTreeRoot;
             for(Difficulty difficulty : difficultyList){
                 String sql = String.format("SELECT * FROM question WHERE courseid=%d AND topic=\"%s\" AND difficulty=\"%s\"",courseID,topicString,difficulty.toString());
-                Cursor cursor = MainActivity.myDB.rawQuery(sql,null);
+                Cursor cursor = MainActivity.appDB.rawQuery(sql,null);
                 cursor.moveToFirst();
                 List<Question> difficultyQuesionList = new ArrayList<>();
 

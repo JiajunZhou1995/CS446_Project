@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
 
     MainActivity me;
 
-    public static SQLiteDatabase myDB;
+    public static SQLiteDatabase appDB;
 //    private Resources mResources;
 //    String APIrespones = "";
 
@@ -221,11 +221,11 @@ public class MainActivity extends AppCompatActivity
     public void initDB(){
         String course = "codetrip.db";
         MyDatabaseUtil myDatabaseUtil = new MyDatabaseUtil(this, course, null, 1);
-        myDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
+        appDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
 
-        myDB.execSQL("DROP TABLE IF EXISTS course");
+        appDB.execSQL("DROP TABLE IF EXISTS course");
 
-        myDB.execSQL("CREATE TABLE IF NOT EXISTS course " +
+        appDB.execSQL("CREATE TABLE IF NOT EXISTS course " +
                     "(courseid integer primary key," +                  //1
                     "available text not null," +                        //true
                     "unit text not null," +                             //1
@@ -236,9 +236,9 @@ public class MainActivity extends AppCompatActivity
                     "total interger not null," +                        //1
                     "topics text not null)");                           //7 -> 7 question in this course
 
-        myDB.execSQL("DROP TABLE IF EXISTS question");
+        appDB.execSQL("DROP TABLE IF EXISTS question");
 
-        myDB.execSQL("CREATE TABLE IF NOT EXISTS question " +
+        appDB.execSQL("CREATE TABLE IF NOT EXISTS question " +
                     "(questionid integer," +
                     "courseid interger," +
                     "difficulty text," +
@@ -256,18 +256,18 @@ public class MainActivity extends AppCompatActivity
                     "PRIMARY KEY (questionid, courseid))");
 
         try {
-            readDataToDb(myDB);
+            readDataToDb(appDB);
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
 
-        @SuppressLint("Recycle") Cursor c = myDB.rawQuery("select * from course", null);
+//        @SuppressLint("Recycle") Cursor c = appDB.rawQuery("select * from course", null);
 
-        c.moveToFirst();
-        while(!c.isAfterLast()){
-            int index = c.getColumnIndex("courseid");
-            c.moveToNext();
-        }
+//        c.moveToFirst();
+//        while(!c.isAfterLast()){
+//            int index = c.getColumnIndex("courseid");
+//            c.moveToNext();
+//        }
 
     }
 

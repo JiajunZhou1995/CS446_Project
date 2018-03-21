@@ -118,7 +118,7 @@ public class QuestionPageFragment extends Fragment {
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 //                             Bundle savedInstanceState) {
 //        String sql = "SELECT * FROM question WHERE courseid =" + Integer.toString(courseID) + " AND questionid =" + Integer.toString(questionID);
-//        Cursor cursor = MainActivity.myDB.rawQuery(sql, null);
+//        Cursor cursor = MainActivity.appDB.rawQuery(sql, null);
 //
 //        String questionType = "";
 //        cursor.moveToFirst();

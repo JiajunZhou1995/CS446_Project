@@ -45,7 +45,7 @@ public class DataBaseUtility {
 //    }
 
     static List<Integer> getIntArrayFromDB(String constrain, String columnName){
-        Cursor cursor = MainActivity.myDB.rawQuery(constrain,null);
+        Cursor cursor = MainActivity.appDB.rawQuery(constrain,null);
         cursor.moveToFirst();
         List<Integer> integers = new ArrayList<>();
         try{

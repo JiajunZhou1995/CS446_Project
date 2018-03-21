@@ -189,7 +189,7 @@ public class KeynoteActivity extends MainActivity {
 
     public void initdata() {
         sql = "SELECT course.courseid, course.title FROM course ORDER BY course.courseid";
-        courseCursor = myDB.rawQuery(sql, null);
+        courseCursor = appDB.rawQuery(sql, null);
 
         courseCursor.moveToFirst();
         while (!courseCursor.isAfterLast()) {
@@ -203,7 +203,7 @@ public class KeynoteActivity extends MainActivity {
             sql = "SELECT question.knowledge FROM question "
                     + "WHERE courseid="
                     + Integer.toString(courseId);
-            questionCursor = myDB.rawQuery(sql, null);
+            questionCursor = appDB.rawQuery(sql, null);
 
             questionCursor.moveToFirst();
             while (!questionCursor.isAfterLast()) {

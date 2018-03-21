@@ -118,7 +118,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     private void generateCourses(){
         courseList = new ArrayList<>();
 
-        @SuppressLint("Recycle") Cursor c = MainActivity.myDB.query("course", null, null, null, null, null, null);
+        @SuppressLint("Recycle") Cursor c = MainActivity.appDB.query("course", null, null, null, null, null, null);
         c.moveToFirst();
 
         RelativeLayout relativeLayout = findViewById(R.id.course_content_page);

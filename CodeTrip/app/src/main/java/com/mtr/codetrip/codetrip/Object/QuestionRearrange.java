@@ -108,30 +108,28 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         //return RUN_BUTTON_STATUS.RUN;
     }
 
-    public void processFinish(String output) {
-        if (output.equals(answer)) {
-            //Log.d("jasmine", "correct!");
-            doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
-
-            //updateButton();
+    protected void checkAnswer(String output){
+        if(output.equals(answer)){
+            Log.d("correct!!","increase score");
+            increaseGrade();
+        }else{
+            Log.d("incorrect answer","add to incorrect list");
+//            QuestionActivity.addToIncorrectList(questionID);
         }
+    }
+
+
+
+    public void processFinish(String output) {
+//        if (output.equals(answer)) {
+//            //Log.d("jasmine", "correct!");
+//            doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
+//        }
+        checkAnswer(output);
 
         updateConsole(output);
 
-        //status = RUN_BUTTON_STATUS.CONTINUE;
     }
-
-//    private void updateButton(){
-//        Button doIt = rootView.findViewById(R.id.doit);
-//        if (status == RUN_BUTTON_STATUS.CONTINUE){
-//        }
-//        else {
-//        }
-//
-//        doIt.setClickable(true);
-//        doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
-//        doIt.setText(context.getString(R.string.question_action_continue));
-//    }
 
     private void updateConsole(String output) {
         TextView consoleTV = rootView.findViewById(R.id.console);

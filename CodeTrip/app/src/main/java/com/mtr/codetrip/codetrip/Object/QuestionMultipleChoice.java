@@ -49,7 +49,6 @@ public class QuestionMultipleChoice extends Question {
         codeIns = new ArrayList<>();
         choices = new ArrayList<>();
         choiceViews = new ArrayList<>();
-//        doIt = rootView.findViewById(R.id.doit);
     }
 
     @Override
@@ -138,55 +137,12 @@ public class QuestionMultipleChoice extends Question {
             choiceViews.add(choiceView);
             choiceArea.addView(choiceView);
         }
-//        Button doIt = rootView.findViewById(R.id.doit);
-//        doIt.setClickable(true);
-//        doIt.setBackground(context.getDrawable(R.drawable.doit_button_invalid));
-//        doIt.setText(context.getString(R.string.question_action_run));
-//        doIt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (currentSelection + 1 == answer){ //off by 1
-//                    status = RUN_BUTTON_STATUS.CONTINUE;
-//                    TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
-//                    updateButton();
-//                }
-//            }
-//        });
     }
 
 
-//    private void updateButton(){
-//        Button doIt = rootView.findViewById(R.id.doit);
-//        if (status == RUN_BUTTON_STATUS.CONTINUE){
-//            doIt.setClickable(true);
-//            doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
-//            doIt.setText(context.getString(R.string.question_action_continue));
-//        }
-//        else if (status == RUN_BUTTON_STATUS.RUN){
-//            doIt.setClickable(true);
-//            doIt.setBackground(context.getDrawable(R.drawable.run_button_run));
-//            doIt.setText(context.getString(R.string.question_action_check));
-//        }
-//
-//        else{
-//            doIt.setClickable(true);
-//            doIt.setBackground(context.getDrawable(R.drawable.doit_button_continue));
-//            doIt.setText(context.getString(R.string.question_action_continue));
-//        }
-//    }
-
-//    @Override
-//    public void runAction() {
-//        if (currentSelection + 1 == answer) { //off by 1
-//            doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
-////            TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
-////            updateButton();
-//        }
-//    }
-
     @Override
     public void runAction() {
-        if (currentSelection == answer) { //off by 1
+        if (currentSelection == answer) {
 //            TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
 //            updateButton();
             Log.d("correct!!","increase score");

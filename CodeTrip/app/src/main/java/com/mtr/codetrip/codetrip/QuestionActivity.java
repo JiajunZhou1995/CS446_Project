@@ -99,7 +99,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
         String sql = "SELECT * FROM course WHERE courseid =" + Integer.toString(courseID);
-        @SuppressLint("Recycle") Cursor c = MainActivity.myDB.rawQuery(sql,null);
+        @SuppressLint("Recycle") Cursor c = MainActivity.appDB.rawQuery(sql,null);
         c.moveToFirst();
 
         NUM_PAGES=1;
