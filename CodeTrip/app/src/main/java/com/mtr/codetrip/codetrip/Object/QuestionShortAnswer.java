@@ -187,7 +187,8 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
     public void runAction() {
         for (List<EditTextInsert> editTextInserts : editTextInsertList) {
             for (EditTextInsert editTextInsert : editTextInserts) {
-                editTextInsert.setClickable(false);
+//                editTextInsert.setClickable(false);
+                editTextInsert.setFocusable(false);
             }
         }
 
