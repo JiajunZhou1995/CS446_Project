@@ -2,6 +2,7 @@ package com.mtr.codetrip.codetrip.Object;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -146,7 +147,32 @@ public abstract class Question {
     }
 
     protected void checkAnswer(String output){
+        if (answer.equals("No Answer")){
+            //arbitrary answer , check if error
+            Log.d("answer","is empty");
+            Log.i("answer",answer);
+            Log.i("output", output);
+            increaseGrade();
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+        }else if(answer.equals(output)){
+            Log.d("correct!!","increase score");
+            Log.i("answer",answer);
+            Log.i("output", output);
+            increaseGrade();
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+        }else{
+            Log.d("incorrect answer","add to incorrect list");
+            Log.i("answer",answer);
+            Log.i("output", output);
+//            QuestionActivity.addToIncorrectList(questionID);
+            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+        }
 
+        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
+        if (newQuestion!=null){
+            currentQuestionActivity.NUM_PAGES++;
+            currentQuestionActivity.notifyChange();
+        }
     }
 
     public void runAction(){
