@@ -357,10 +357,10 @@
       {
         "Difficulty": "Hard",
         "Topic": "assign1",
-        "Answer": "0",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": "There is difference between numerical values and string values.",
-        "Instruction": "Variable A has the numerical value 12345, and B has the world character value '12345', are these two variables have the same value?",
+        "Instruction": "What is the output of this program?",
         "Code": [
           "A = 12345",
           "B = '12345'",
