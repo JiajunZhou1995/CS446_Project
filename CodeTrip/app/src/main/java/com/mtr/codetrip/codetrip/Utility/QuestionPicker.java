@@ -1,6 +1,8 @@
 package com.mtr.codetrip.codetrip.Utility;
 
+import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.mtr.codetrip.codetrip.MainActivity;
 import com.mtr.codetrip.codetrip.Object.Question;
@@ -8,6 +10,7 @@ import com.mtr.codetrip.codetrip.Object.QuestionDragAndDrop;
 import com.mtr.codetrip.codetrip.Object.QuestionMultipleChoice;
 import com.mtr.codetrip.codetrip.Object.QuestionRearrange;
 import com.mtr.codetrip.codetrip.Object.QuestionShortAnswer;
+import com.mtr.codetrip.codetrip.QuestionActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,13 +34,15 @@ public class QuestionPicker {
     public int currentProgress;
     public int lastProgress;
     private int MAX_DEPTH;
+    private Context mContext;
 
 
     private List<Integer> incorrectList;
     int topicIndex;
     QuestionTree currentQuestionTree;
 
-    public QuestionPicker(int courseID, int max_depth){
+    public QuestionPicker(Context context,int courseID, int max_depth){
+        mContext = context;
         MAX_DEPTH = max_depth;
         currentProgress = 0;
         generateQuestionMap(courseID);
@@ -139,11 +144,17 @@ public class QuestionPicker {
 
     public void generateQuestionMap(int courseID){
         this.courseID = courseID;
+
+        String course = "codetrip.db";
+        SQLiteDatabase appDB = mContext.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
+
         String sql = String.format("SELECT * FROM course WHERE courseid=%d",courseID);
-        Cursor cursor = MainActivity.appDB.rawQuery(sql, null);
+        Cursor cursor = appDB.rawQuery(sql, null);
         cursor.moveToFirst();
 
         topicList = getStrArrayFromDB(cursor, "topics");
+        cursor.close();
+        appDB.close();
 
         difficultyList = new ArrayList<>();
         difficultyList.add(Difficulty.EASY);
@@ -156,12 +167,17 @@ public class QuestionPicker {
 
     public void initTopicDictionary(){
         questionMap = new HashMap<>();
+        String course = "codetrip.db";
+        SQLiteDatabase appDB = mContext.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
+
         for (String topicString : topicList){
             Map<Difficulty,List<Question>>topicDict = new HashMap<>();
             QuestionTree questionTreeRoot;
             for(Difficulty difficulty : difficultyList){
+
                 String sql = String.format("SELECT * FROM question WHERE courseid=%d AND topic=\"%s\" AND difficulty=\"%s\"",courseID,topicString,difficulty.toString());
-                Cursor cursor = MainActivity.appDB.rawQuery(sql,null);
+                Cursor cursor = appDB.rawQuery(sql,null);
+
                 cursor.moveToFirst();
                 List<Question> difficultyQuesionList = new ArrayList<>();
 
@@ -191,11 +207,13 @@ public class QuestionPicker {
                     difficultyQuesionList.add(question);
                     cursor.moveToNext();
                 }
+                cursor.close();
                 topicDict.put(difficulty,difficultyQuesionList);
             }
             questionTreeRoot = new QuestionTree(Difficulty.MEDIUM, topicDict,MAX_DEPTH);
             questionMap.put(topicString,questionTreeRoot);
         }
+        appDB.close();
     }
 
 

@@ -52,12 +52,26 @@ public class MainActivity extends AppCompatActivity
 
     MainActivity me;
 
-    public static SQLiteDatabase appDB;
+//    public static SQLiteDatabase appDB;
 //    private Resources mResources;
 //    String APIrespones = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Runnable mRunnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    initDB();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        Thread thread = new Thread(mRunnable);
+        thread.run();
+
+
         me = this;
 
 
@@ -96,12 +110,13 @@ public class MainActivity extends AppCompatActivity
         @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_home,null);
         container.addView(child);
 
-        initDB();
+
+//        initDB();
 
         // Make Http request
-        HttpPostAsyncTask request = new HttpPostAsyncTask("print(\"Hello World\")");
-        request.delegate = this;
-        request.execute();
+//        HttpPostAsyncTask request = new HttpPostAsyncTask("print(\"Hello World\")");
+//        request.delegate = this;
+//        request.execute();
 
         initHomeScreenButtonListener();
     }
@@ -221,9 +236,9 @@ public class MainActivity extends AppCompatActivity
     public void initDB(){
         String course = "codetrip.db";
         MyDatabaseUtil myDatabaseUtil = new MyDatabaseUtil(this, course, null, 1);
-        appDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
+        SQLiteDatabase appDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
 
-        appDB.execSQL("DROP TABLE IF EXISTS course");
+//        appDB.execSQL("DROP TABLE IF EXISTS course");
 
         appDB.execSQL("CREATE TABLE IF NOT EXISTS course " +
                     "(courseid integer primary key," +                  //1
@@ -236,7 +251,7 @@ public class MainActivity extends AppCompatActivity
                     "total interger not null," +                        //1
                     "topics text not null)");                           //7 -> 7 question in this course
 
-        appDB.execSQL("DROP TABLE IF EXISTS question");
+//        appDB.execSQL("DROP TABLE IF EXISTS question");
 
         appDB.execSQL("CREATE TABLE IF NOT EXISTS question " +
                     "(questionid integer," +
@@ -256,7 +271,10 @@ public class MainActivity extends AppCompatActivity
                     "PRIMARY KEY (questionid, courseid))");
 
         try {
-            readDataToDb(appDB);
+            if (!myDatabaseUtil.tableIsExist("course") || !myDatabaseUtil.tableIsExist("question")){
+                readDataToDb(appDB);
+            }
+
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
@@ -268,7 +286,7 @@ public class MainActivity extends AppCompatActivity
 //            int index = c.getColumnIndex("courseid");
 //            c.moveToNext();
 //        }
-
+        appDB.close();
     }
 
     private void readDataToDb(SQLiteDatabase db) throws IOException, JSONException {
@@ -414,6 +432,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -440,7 +459,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.START,true);
         if (id != R.id.sidebar_home && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;
     }
@@ -476,8 +495,13 @@ public class MainActivity extends AppCompatActivity
                     if (count > 0) result = true;
                 }
             }catch (Exception e){
-
+                e.printStackTrace();
+            }finally {
+                if (cursor!=null){
+                    cursor.close();
+                }
             }
+            db.close();
             return result;
         }
     }

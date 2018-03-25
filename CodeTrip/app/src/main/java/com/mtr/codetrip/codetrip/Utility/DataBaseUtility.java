@@ -1,6 +1,8 @@
 package com.mtr.codetrip.codetrip.Utility;
 
+import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.mtr.codetrip.codetrip.MainActivity;
 
@@ -44,12 +46,17 @@ public class DataBaseUtility {
 //        return integers;
 //    }
 
-    static List<Integer> getIntArrayFromDB(String constrain, String columnName){
-        Cursor cursor = MainActivity.appDB.rawQuery(constrain,null);
+    static List<Integer> getIntArrayFromDB(Context context, String constrain, String columnName){
+
+        String course = "codetrip.db";
+        SQLiteDatabase appDB = context.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
+
+        Cursor cursor = appDB.rawQuery(constrain,null);
         cursor.moveToFirst();
         List<Integer> integers = new ArrayList<>();
         try{
             JSONArray jsArr = new JSONArray(cursor.getInt(cursor.getColumnIndex(columnName)));
+            cursor.close();
             for(int i = 0; i < jsArr.length(); i++){
                 integers.add(jsArr.getInt(i));
             }
@@ -57,6 +64,7 @@ public class DataBaseUtility {
         catch (JSONException e){
             e.printStackTrace();
         }
+        appDB.close();
         return integers;
     }
 }

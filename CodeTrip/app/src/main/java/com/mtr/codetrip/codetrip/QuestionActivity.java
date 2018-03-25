@@ -2,8 +2,10 @@ package com.mtr.codetrip.codetrip;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -100,14 +102,20 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         courseID = intent.getIntExtra("courseID",0);
         Log.d("courseID", Integer.toString(courseID));
 
-        questionPicker = new QuestionPicker(courseID,maxNumberOfQuetionPerTopic);
+        questionPicker = new QuestionPicker(this,courseID,maxNumberOfQuetionPerTopic);
+
+        String course = "codetrip.db";
+        SQLiteDatabase appDB = this.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
 
 
         String sql = String.format("SELECT * FROM course WHERE courseid=%d",courseID);
-        Cursor cursor = MainActivity.appDB.rawQuery(sql, null);
+        Cursor cursor = appDB.rawQuery(sql, null);
         cursor.moveToFirst();
 
         topicList = getStrArrayFromDB(cursor, "topics");
+        cursor.close();
+        appDB.close();
+
         MAX_PAGES = topicList.size() * 4;
 
 

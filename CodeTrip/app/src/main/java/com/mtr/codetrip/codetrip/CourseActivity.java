@@ -1,8 +1,10 @@
 package com.mtr.codetrip.codetrip;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -42,12 +44,28 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
+        Runnable mRunnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    generateCourses();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
 
-//        LinearLayout toolbar_right_corner = (LinearLayout) findViewById(R.id.toobar_right_corner);
+
+
+
 
         LayoutInflater layoutInflater = LayoutInflater.from(this);
+        CoordinatorLayout container = findViewById(R.id.app_bar_main);
+        @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_course,null);
+        container.addView(child);
+        Thread thread = new Thread(mRunnable);
+        thread.run();
         @SuppressLint("InflateParams") View action_menu = layoutInflater.inflate(R.layout.stars_indicator,null);
-//        toolbar_right_corner.addView(action_menu);
         toolbar.addView(action_menu);
         setSupportActionBar(toolbar);
 
@@ -62,13 +80,10 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(1).setChecked(true);
 
-        CoordinatorLayout container = findViewById(R.id.app_bar_main);
-        @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_course,null);
-        container.addView(child);
 
-        generateCourses();
-        //should be commented
-//        makeAvailable(3);
+
+
+//        generateCourses();
 
     }
 
@@ -107,7 +122,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.START,true);
         if (id != R.id.sidebar_course  && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
 
         return true;
@@ -117,8 +132,10 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
     private void generateCourses(){
         courseList = new ArrayList<>();
+        String course = "codetrip.db";
+        SQLiteDatabase appDB = this.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
 
-        @SuppressLint("Recycle") Cursor c = MainActivity.appDB.query("course", null, null, null, null, null, null);
+        @SuppressLint("Recycle") Cursor c = appDB.query("course", null, null, null, null, null, null);
         c.moveToFirst();
 
         RelativeLayout relativeLayout = findViewById(R.id.course_content_page);
@@ -140,6 +157,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
             c.moveToNext();
         }
+        appDB.close();
     }
 
 

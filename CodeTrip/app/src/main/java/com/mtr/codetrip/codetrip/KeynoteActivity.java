@@ -1,8 +1,10 @@
 package com.mtr.codetrip.codetrip;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -188,6 +190,9 @@ public class KeynoteActivity extends MainActivity {
     }
 
     public void initdata() {
+        String course = "codetrip.db";
+        SQLiteDatabase appDB = this.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
+
         sql = "SELECT course.courseid, course.title FROM course ORDER BY course.courseid";
         courseCursor = appDB.rawQuery(sql, null);
 
@@ -219,6 +224,9 @@ public class KeynoteActivity extends MainActivity {
             knowledgeArray.add(courseTitleArray);
             courseCursor.moveToNext();
         }
+        questionCursor.close();
+        courseCursor.close();
+        appDB.close();
 
 
 //        for(int a = 0; a < knowledgeArray.size(); ++a){
