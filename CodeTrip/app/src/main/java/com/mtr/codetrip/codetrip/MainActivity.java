@@ -442,16 +442,18 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent();
 
         if (id == R.id.sidebar_home) {
-
+            DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
+            drawer.closeDrawer(GravityCompat.START,true);
+            return true;
         } else if (id == R.id.sidebar_course) {
             intent.setClass(this,CourseActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
         } else if (id == R.id.sidebar_favorite) {
             intent.setClass(this,KeynoteActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
         } else if (id == R.id.sidebar_achievement) {
             intent.setClass(this,AchievementActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
         } else if (id == R.id.sidebar_setting) {
 
         } else if (id == R.id.sidebar_about_us) {
@@ -460,6 +462,8 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START,true);
+        startActivity(intent);
+
         if (id != R.id.sidebar_home && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
         return true;
     }

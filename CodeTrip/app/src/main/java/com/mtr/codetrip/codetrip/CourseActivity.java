@@ -104,15 +104,17 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
         if (id == R.id.sidebar_home) {
             intent.setClass(this,MainActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
         } else if (id == R.id.sidebar_course) {
-
+            DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
+            drawer.closeDrawer(GravityCompat.START,true);
+            return true;
         } else if (id == R.id.sidebar_favorite) {
             intent.setClass(this,KeynoteActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
         } else if (id == R.id.sidebar_achievement) {
             intent.setClass(this,AchievementActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
         } else if (id == R.id.sidebar_setting) {
 
         } else if (id == R.id.sidebar_about_us) {
@@ -121,6 +123,8 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START,true);
+        startActivity(intent);
+
         if (id != R.id.sidebar_course  && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
 
         return true;
