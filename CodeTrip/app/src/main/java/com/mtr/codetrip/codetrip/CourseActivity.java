@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.MessageQueue;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -14,10 +16,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.mtr.codetrip.codetrip.Object.Course;
 import com.mtr.codetrip.codetrip.Utility.MultipleClickUtility;
@@ -55,16 +59,15 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             }
         };
 
-
-
-
-
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
         CoordinatorLayout container = findViewById(R.id.app_bar_main);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
         @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_course,null);
+
         container.addView(child);
+
         Thread thread = new Thread(mRunnable);
         thread.run();
+
         @SuppressLint("InflateParams") View action_menu = layoutInflater.inflate(R.layout.stars_indicator,null);
         toolbar.addView(action_menu);
         setSupportActionBar(toolbar);
@@ -79,11 +82,6 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(1).setChecked(true);
-
-
-
-
-//        generateCourses();
 
     }
 
