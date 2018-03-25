@@ -450,7 +450,7 @@
       {
         "Difficulty": "Medium",
         "Topic": "reassign",
-        "Answer": "HelloCodeTrip",
+        "Answer": "HelloCodeTrip\n",
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange the following code and let the value of A to be 'HelloCodeTrip'",
@@ -468,7 +468,7 @@
       {
         "Difficulty": "Hard",
         "Topic": "reassign",
-        "Answer": "True",
+        "Answer": "True\n",
         "Type": "Rearrange",
         "Knowledge": "We could reassign the value of a variable by using another variable, and we could also do this when we define a new variable.",
         "Instruction": "Rearrange the following code and let the value of A is equal to the value of B",
