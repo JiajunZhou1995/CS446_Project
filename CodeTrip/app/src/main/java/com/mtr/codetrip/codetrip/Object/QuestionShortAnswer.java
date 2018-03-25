@@ -96,7 +96,7 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
         for (String codeLine : codeArea) {
             normalCodeSingleLine = new ArrayList<>();
             editTextInsertSingleLine = new ArrayList<>();
-            String[] code = codeLine.split("(\\[\\?])");
+            String[] code = codeLine.split("( \\[\\?]|\\[\\?] )");
             singleLine = new LinearLayout(currentContext);
             singleLine.setOrientation(LinearLayout.HORIZONTAL);
             LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR, singleLine, LayoutUtil.ParamType.MATCH_PARENT, LayoutUtil.ParamType.WRAP_CONTENT, 0, 0, 0, 0);
@@ -201,7 +201,7 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
                     codeString = codeString + editTextInserts.get(index).getText();
                 index++;
             }
-            codeString = String.format("%s\n", codeString);
+            codeString = String.format("%s\n", codeString.trim());
         }
 
 //                        console.setText(codeString);

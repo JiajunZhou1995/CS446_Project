@@ -15,8 +15,8 @@
         "Topic": "Introduction",
         "Answer": "Hello World\n",
         "Type": "Drag&Drop",
-        "Knowledge": "Welcome to the CodeTrip! In this App you will be provided a full lesson of how to use python!",
-        "Instruction": "Let’s drag and drop a code block into the code.",
+        "Knowledge": "Welcome to CodeTrip! ",
+        "Instruction": "Drag and drop a code block into the ? area.",
         "Code": [
           "print([?])"
         ],
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "Available": "false",
+    "Available": "true",
     "Unit": "2",
     "Type": "Lecture",
     "Title": "Variables",
@@ -48,16 +48,16 @@
         "Topic": "assign",
         "Answer": "5",
         "Type": "ShortAnswer",
-        "Knowledge": "A value could be assigned to a variable and the equal sign(=) is used to assign values to variables.",
-        "Instruction": "If we want to A to be 5, what value should we put into brackets?",
+        "Knowledge": "A value can be assigned to a variable using the = operator.",
+        "Instruction": "Assign A to 5.",
         "Code": [
-          "A = ([?])",
+          "A = [?] ",
           "print(A)"
         ],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Assignment 'A = 5' means that a value 5 is assigned to a variable A."
+        "Hint": "Assignment 'A = 5' assigns 5 to variable A."
       },
       {
         "Difficulty": "Easy",
@@ -65,9 +65,9 @@
         "Answer": "23",
         "Type": "Drag&Drop",
         "Knowledge": null,
-        "Instruction": "Fill the blank with the odd number.",
+        "Instruction": "Fill the blank with an odd number.",
         "Code": [
-          "A = ([?])",
+          "A = [?] ",
           "print(A)"
         ],
         "Console": "1",
@@ -86,9 +86,9 @@
         "Answer": "12",
         "Type": "Drag&Drop",
         "Knowledge": null,
-        "Instruction": "Fill the blank with the even number.",
+        "Instruction": "Fill the blank with an even number.",
         "Code": [
-          "A = ([?])",
+          "A = [?] ",
           "print(A)"
         ],
         "Console": "1",
@@ -106,49 +106,47 @@
         "Topic": "assign",
         "Answer": "No Answer",
         "Type": "ShortAnswer",
-        "Knowledge": "Variables could have different type of value(numbers, characters, a sequence of word(String)), but the value of variables could not be the special characters.",
-        "Instruction": "Try to fill the blank below and see what value will A have",
+        "Knowledge": "Variables can represent numbers, characters, a sequence of characters(Strings) and many more!",
+        "Instruction": "Fill in the blank below and hit Run",
         "Code": [
-          "A = ([?])",
+          "A = [?] ",
           "print(A)"
         ],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Values that been assigned to a variable could have many different type."
+        "Hint": ""
       },
       {
         "Difficulty": "Medium",
         "Topic": "assign",
         "Answer": "No Answer",
         "Type": "Drag&Drop",
-        "Knowledge": null,
+        "Knowledge": "A String is a sequence of characters wrapped in quotes ('' or \"\")",
         "Instruction": "If we want to the value of A to be a String, what should we fill in the blank?",
         "Code": [
-          "A = ([?])",
+          "A = [?] ",
           "print(A)"
         ],
         "Console": "1",
         "CodeBlock": [
-          "!Hello, CodeTrip",
-          "666",
-          "L",
-          "Hello,CodeTrip"
+          "\"Hello, CodeTrip\"",
+          "Hello, CodeTrip"
         ],
         "Choice": [],
-        "Hint": "Values that been assigned to a variable could have many different type."
+        "Hint": "Strings have to be wrapped in quotes!"
       },
       {
         "Difficulty": "Hard",
         "Topic": "assign",
-        "Answer": "1",
+        "Answer": "False",
         "Type": "MultipleChoice",
-        "Knowledge": "There is difference between numerical values and string values.",
-        "Instruction": "Variable A has the numerical value 12345, and B has the world character value '12345', are these two variables have the same value?",
+        "Knowledge": "A number as a string is treated as an array of characters and not a numerical value.",
+        "Instruction": "Are variables A and B equal?",
         "Code": [
           "A = 12345",
           "B = '12345'",
-          "print(A == B)//'A==C' means if A is equal to C, we don't have to worry about it right now"
+          "print(A == B)"
         ],
         "Console": "1",
         "CodeBlock": [],
@@ -163,18 +161,17 @@
         "Topic": "define",
         "Answer": "Blue",
         "Type": "Drag&Drop",
-        "Knowledge": "Variable name should be meaningfull and related to it's value.",
-        "Instruction": "Think about the following name, which one is an appropriate value for the variable?",
+        "Knowledge": "Variable name should be meaningful and related to it's value.",
+        "Instruction": "Which String is an appropriate value for the variable?",
         "Code": [
-          "MyfavouriteColor = ([?])",
-          "print(MyfavouriteColor)"
+          "myFavouriteColor = [?] ",
+          "print(myFavouriteColor)"
         ],
         "Console": "1",
         "CodeBlock": [
-          "Blue",
-          "Cat",
-          "Sky",
-          "Game"
+          "\"Blue\"",
+          "\"Cat\"",
+          "\"Sky\""
         ],
         "Choice": [],
         "Hint": "Name of a variable is important"
@@ -182,10 +179,10 @@
       {
         "Difficulty": "Easy",
         "Topic": "define",
-        "Answer": "0",
+        "Answer": "True",
         "Type": "MultipleChoice",
         "Knowledge": null,
-        "Instruction": "Variable's name should closely related to it's value.",
+        "Instruction": "A variable's name should be closely related to it's value.",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
@@ -201,17 +198,16 @@
         "Answer": "Cat",
         "Type": "Drag&Drop",
         "Knowledge": null,
-        "Instruction": "Think about the following name, which one is an appropriate value for the variable?",
+        "Instruction": "Which String is an appropriate value for the variable?",
         "Code": [
-          "MyfavouriteAnimal = ([?])",
-          "print(MyfavouriteAnimal)"
+          "myFavouriteAnimal = ([?])",
+          "print(myFavouriteAnimal)"
         ],
         "Console": "1",
         "CodeBlock": [
-          "Blue",
-          "Cat",
-          "Sky",
-          "Game"
+          "\"Blue\"",
+          "\"Cat\"",
+          "\"Sky\""
         ],
         "Choice": [],
         "Hint": "What's your favourite animal?"
@@ -219,45 +215,44 @@
       {
         "Difficulty": "Medium",
         "Topic": "define",
-        "Answer": "2",
+        "Answer": "1Apple",
         "Type": "MultipleChoice",
-        "Knowledge": "Variables names must start with a letter, and the rest of the variable name may consist of letters and numbers, and it should not contain any special characters.",
-        "Instruction": "Which one of the following could not be used as the name of a variable?",
+        "Knowledge": "Variables names must start with a letter. The rest of the variable name may consist of letters and numbers, and it should not contain any special characters.",
+        "Instruction": "Which one of the following can not be used as the name of a variable?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [
-          "I",
-          "Have",
-          "1Apple",
-          "Now"
+          "myString",
+          "myBoolean",
+          "1myNumber"
         ],
         "Hint": "Variable name must start with letters"
       },
       {
         "Difficulty": "Medium",
         "Topic": "define",
-        "Answer": "CodeTrip1",
+        "Answer": "my",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "If we want the following variable name to be correct, what should we fill in the blank?",
         "Code": [
-          "([?])odeTrip1 = 1"
+          " [?]Number = 1"
         ],
         "Console": "1",
         "CodeBlock": [
-          "C",
-          "1",
-          "2",
-          "!"
+          "my*",
+          "my",
+          "1my",
+          "my!"
         ],
         "Choice": [],
-        "Hint": "Variable name must start with letters and it could not contain any special characters"
+        "Hint": "Variable name must start with letters and it can not contain any special characters"
       },
       {
         "Difficulty": "Hard",
         "Topic": "define",
-        "Answer": "1",
+        "Answer": "False",
         "Type": "MultipleChoice",
         "Knowledge": "The name of a variable should be unique.",
         "Instruction": "Two variables can have the same name",
@@ -275,8 +270,8 @@
         "Topic": "assign1",
         "Answer": "10",
         "Type": "Rearrange",
-        "Knowledge": "When we want to use a variable, we should make sure that we have to define it before we use it",
-        "Instruction": "Rearrange the following code and let it print 10",
+        "Knowledge": "When we want to use a variable, we should make sure that we have defined it before we use it",
+        "Instruction": "Rearrange the following code to print 10",
         "Code": [
           "print(A)",
           "A = 10"
@@ -284,7 +279,7 @@
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Avoid use beofre name the variable."
+        "Hint": "Avoid use before naming the variable."
       },
       {
         "Difficulty": "Easy",
@@ -307,7 +302,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "assign1",
-        "Answer": "1",
+        "Answer": "False",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "The following code is correct",
@@ -326,7 +321,7 @@
       {
         "Difficulty": "Medium",
         "Topic": "assign1",
-        "Answer": "0",
+        "Answer": "True",
         "Type": "MultipleChoice",
         "Knowledge": "Different variables could have the same value.",
         "Instruction": "Does A and C have the same value?",
@@ -334,7 +329,7 @@
           "A = 2",
           "B = 4",
           "C = 2",
-          "print(A == C)//'A==C' means if A is equal to C, we don't have to worry about it right now"
+          "print(A == C)"
         ],
         "Console": "1",
         "CodeBlock": [],
@@ -352,9 +347,9 @@
         "Knowledge": null,
         "Instruction": "What should we fill in the blank if we want A and B have the same value?",
         "Code": [
-          "A = ([?])",
-          "B = ([?])",
-          "print(A == B)//'A==B' means if A is equal to B, we don't have to worry about it right now"
+          "A = [?] ",
+          "B = [?] ",
+          "print(A == B)"
         ],
         "Console": "1",
         "CodeBlock": [],
@@ -364,14 +359,14 @@
       {
         "Difficulty": "Hard",
         "Topic": "assign1",
-        "Answer": "1",
+        "Answer": "False",
         "Type": "MultipleChoice",
         "Knowledge": "There is difference between numerical values and string values.",
         "Instruction": "Variable A has the numerical value 12345, and B has the world character value '12345', are these two variables have the same value?",
         "Code": [
           "A = 12345",
           "B = '12345'",
-          "print(A == B)//'A==C' means if A is equal to C, we don't have to worry about it right now"
+          "print(A == B)"
         ],
         "Console": "1",
         "CodeBlock": [],
@@ -390,13 +385,13 @@
         "Instruction": "Fill in the blank and see how will the value of A will be changed",
         "Code": [
           "A = 5",
-          "A = ([?])",
+          "A = [?] ",
           "print(A)"
         ],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Try it yourself and see how will the value of A will be changed."
+        "Hint": "Try it yourself and see how the value of A will be changed."
       },
       {
         "Difficulty": "Easy",
@@ -407,7 +402,7 @@
         "Instruction": "If we want to let A to be character 'b', what value should we fill?",
         "Code": [
           "A = 1",
-          "A = ([?])",
+          "A = [?] ",
           "print(A)"
         ],
         "Console": "1",
@@ -421,17 +416,17 @@
         "Answer": "Hello,World",
         "Type": "Drag&Drop",
         "Knowledge": null,
-        "Instruction": "If we want to the value of A to be a string, what should we put into the bracket?",
+        "Instruction": "If we want the value of A to be a string, what should we put into the bracket?",
         "Code": [
           "A = 1",
-          "A = ([?])",
+          "A = [?] ",
           "print(A)"
         ],
         "Console": "1",
         "CodeBlock": [
           "2",
           "H",
-          "Hello, World",
+          "\"Hello, World\"",
           "!@#"
         ],
         "Choice": [],
@@ -464,8 +459,8 @@
         "Instruction": "Rearrange the following code and let the value of B to be 'HelloCodeTrip'",
         "Code": [
           "A = 1",
-          "A = Hello",
-          "B = HelloCodeTrip",
+          "A = \"Hello\"",
+          "B = \"HelloCodeTrip\"",
           "print(A)"
         ],
         "Console": "1",
@@ -486,7 +481,7 @@
           "B = '12345'",
           "B = A",
           "A = 4",
-          "print(A == B)//'A==C' means if A is equal to C, we don't have to worry about it right now"
+          "print(A == B)"
         ],
         "Console": "1",
         "CodeBlock": [],
