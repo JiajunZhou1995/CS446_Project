@@ -215,7 +215,7 @@
       {
         "Difficulty": "Medium",
         "Topic": "define",
-        "Answer": "1Apple",
+        "Answer": "1myNumber",
         "Type": "MultipleChoice",
         "Knowledge": "Variables names must start with a letter. The rest of the variable name may consist of letters and numbers, and it should not contain any special characters.",
         "Instruction": "Which one of the following can not be used as the name of a variable?",
