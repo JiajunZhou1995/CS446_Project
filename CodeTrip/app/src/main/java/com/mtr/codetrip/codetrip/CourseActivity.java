@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -59,7 +60,8 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             }
         };
 
-        CoordinatorLayout container = findViewById(R.id.app_bar_main);
+//        CoordinatorLayout container = findViewById(R.id.app_bar_main);
+        LinearLayout container = findViewById(R.id.activity_content);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_course,null);
 
@@ -118,14 +120,14 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         } else if (id == R.id.sidebar_setting) {
 
         } else if (id == R.id.sidebar_about_us) {
-
+            intent.setClass(this,AboutUsActivity.class);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START,true);
         startActivity(intent);
 
-        if (id != R.id.sidebar_course  && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
+        if (id != R.id.sidebar_setting )finish();
 
         return true;
     }

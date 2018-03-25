@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/course_map_element_bear"
-                android:layout_marginTop="400dp"
+                android:layout_marginTop="330dp"
                 android:layout_marginLeft="40dp"
                 android:id="@+id/imageView2" />
 

@@ -3,7 +3,7 @@
     <integer name="slide_animation_duration">300</integer>
 
     <!--UI-->
-    <integer name="unit_marginTop">440</integer>
+    <integer name="unit_marginTop">200</integer>
     <integer name="non_quiz_flag_y">180</integer>
     <integer name="non_quiz_flag_height">90</integer>
     <integer name="non_quiz_width">320</integer>

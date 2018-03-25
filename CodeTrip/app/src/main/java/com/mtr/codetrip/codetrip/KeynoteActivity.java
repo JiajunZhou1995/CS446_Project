@@ -187,20 +187,17 @@ public class KeynoteActivity extends MainActivity {
         } else if (id == R.id.sidebar_achievement) {
             intent.setClass(this, AchievementActivity.class);
 //            startActivity(intent);
-        }
+        } else if (id == R.id.sidebar_setting) {
 
-//        else if (id == R.id.sidebar_setting) {
-//
-//        } else if (id == R.id.sidebar_about_us) {
-//
-//        }
+        } else if (id == R.id.sidebar_about_us) {
+            intent.setClass(this,AboutUsActivity.class);
+        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START,true);
         startActivity(intent);
 
-        if (id != R.id.sidebar_favorite && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)
-            finish();
+        if (id != R.id.sidebar_setting )finish();
         return true;
     }
 

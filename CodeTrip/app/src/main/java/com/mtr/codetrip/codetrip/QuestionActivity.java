@@ -175,6 +175,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
         ColorArcProgressBar bar2 = completionPage.findViewById(R.id.bar2);
         grade = (grade * 100) / NUM_PAGES;
+        Log.i("grade",Float.toString(grade));
+        Log.i("totoal",Integer.toString(NUM_PAGES));
 
         bar2.setCurrentValues(grade);
 

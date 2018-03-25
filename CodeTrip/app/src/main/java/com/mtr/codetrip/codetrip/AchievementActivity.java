@@ -120,19 +120,18 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
             DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
             drawer.closeDrawer(GravityCompat.START,true);
             return true;
+        }else if (id == R.id.sidebar_setting) {
+
+        }else if (id == R.id.sidebar_about_us) {
+            intent.setClass(this,AboutUsActivity.class);
+
         }
-//       else if (id == R.id.sidebar_setting) {
-//
-//        } else if (id == R.id.sidebar_about_us) {
-//
-//        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START,true);
         startActivity(intent);
 
-        if (id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)
-            finish();
+        if (id != R.id.sidebar_setting )finish();
 
         return true;
     }

@@ -34,6 +34,9 @@
         <activity
             android:name=".QuestionActivity"
             android:theme="@style/AppTheme.Question" />
+
+        <activity android:name=".AboutUsActivity"
+            android:theme="@style/AppTheme.YesActionBar"/>
         <!--<activity android:name=".DemoActivity" android:theme="@style/AppTheme.NoActionBar"/>-->
     </application>
 

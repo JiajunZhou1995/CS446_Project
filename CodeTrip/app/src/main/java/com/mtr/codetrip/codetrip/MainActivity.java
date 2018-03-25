@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import org.json.JSONObject;
 import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.getMenu().getItem(0).setChecked(true);
 
 
-        CoordinatorLayout container = findViewById(R.id.app_bar_main);
+        LinearLayout container = findViewById(R.id.activity_content);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_home,null);
         container.addView(child);
@@ -457,6 +458,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.sidebar_setting) {
 
         } else if (id == R.id.sidebar_about_us) {
+            intent.setClass(this,AboutUsActivity.class);
 
         }
 
@@ -464,7 +466,7 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START,true);
         startActivity(intent);
 
-        if (id != R.id.sidebar_home && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)finish();
+        if (id != R.id.sidebar_setting )finish();
         return true;
     }
 
