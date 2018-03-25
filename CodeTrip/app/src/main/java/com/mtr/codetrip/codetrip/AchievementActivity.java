@@ -108,25 +108,27 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
 
         if (id == R.id.sidebar_home) {
             intent.setClass(this, MainActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.sidebar_course) {
             intent.setClass(this, CourseActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
         } else if (id == R.id.sidebar_favorite) {
             intent.setClass(this, KeynoteActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
+        }else if (id == R.id.sidebar_achievement) {
+            DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
+            drawer.closeDrawer(GravityCompat.START,true);
+            return true;
         }
-//        else if (id == R.id.sidebar_achievement) {
-//
-//        } else if (id == R.id.sidebar_setting) {
+//       else if (id == R.id.sidebar_setting) {
 //
 //        } else if (id == R.id.sidebar_about_us) {
 //
 //        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.START,true);
         if (id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)
             finish();
 

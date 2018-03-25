@@ -164,16 +164,17 @@ public class KeynoteActivity extends MainActivity {
 
         if (id == R.id.sidebar_home) {
             intent.setClass(this, MainActivity.class);
-            startActivity(intent);
-            // Handle the camera action
+//            startActivity(intent);
         } else if (id == R.id.sidebar_course) {
             intent.setClass(this, CourseActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
         } else if (id == R.id.sidebar_favorite) {
-
+            DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
+            drawer.closeDrawer(GravityCompat.START,true);
+            return true;
         } else if (id == R.id.sidebar_achievement) {
             intent.setClass(this, AchievementActivity.class);
-            startActivity(intent);
+//            startActivity(intent);
         }
 
 //        else if (id == R.id.sidebar_setting) {
@@ -183,7 +184,9 @@ public class KeynoteActivity extends MainActivity {
 //        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.START,true);
+        startActivity(intent);
+
         if (id != R.id.sidebar_favorite && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)
             finish();
         return true;
