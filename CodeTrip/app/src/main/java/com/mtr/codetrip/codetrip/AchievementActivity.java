@@ -67,7 +67,7 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(1).setChecked(true);
+        navigationView.getMenu().getItem(3).setChecked(true);
 
         CoordinatorLayout container = findViewById(R.id.app_bar_main);
         @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_achievement, null);
@@ -129,6 +129,8 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         drawer.closeDrawer(GravityCompat.START,true);
+        startActivity(intent);
+
         if (id != R.id.sidebar_achievement && id != R.id.sidebar_setting && id != R.id.sidebar_about_us)
             finish();
 

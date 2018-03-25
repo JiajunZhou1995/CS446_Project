@@ -71,8 +71,20 @@ public class KeynoteActivity extends MainActivity {
 
 
         //Change list
+        Runnable mRunnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    initdata();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
 
-        initdata();
+        Thread thread = new Thread(mRunnable);
+        thread.run();
+//        initdata();
 
         mListView = findViewById(R.id.list);
         mAdapter = new ArrayAdapter<>(KeynoteActivity.this, android.R.layout.simple_list_item_1, titles);
@@ -204,7 +216,7 @@ public class KeynoteActivity extends MainActivity {
 
             courseTitleArray = new ArrayList<>();
             int courseId = courseCursor.getInt(0);
-            Log.d("courseId:", String.valueOf(courseId));
+//            Log.d("courseId:", String.valueOf(courseId));
             String courseTitle = courseCursor.getString(1);
             courseTitleArray.add(courseTitle);
 
@@ -257,7 +269,7 @@ public class KeynoteActivity extends MainActivity {
         for (int a = 0; a < knowledgeArray.size(); ++a) {
             ArrayList<String> tmp = knowledgeArray.get(a);
             for (int b = 0; b < tmp.size(); ++b) {
-                Log.d("index1:" + Integer.toString(a) + "," + Integer.toString(b), tmp.get(b));
+//                Log.d("index1:" + Integer.toString(a) + "," + Integer.toString(b), tmp.get(b));
             }
         }
 
@@ -274,7 +286,7 @@ public class KeynoteActivity extends MainActivity {
         }
         for (int a = 0; a < knowledges.length; ++a) {
             for (int b = 0; b < knowledges[a].length; ++b) {
-                Log.d("index:" + Integer.toString(a) + "," + Integer.toString(b), knowledges[a][b]);
+//                Log.d("index:" + Integer.toString(a) + "," + Integer.toString(b), knowledges[a][b]);
             }
         }
 
