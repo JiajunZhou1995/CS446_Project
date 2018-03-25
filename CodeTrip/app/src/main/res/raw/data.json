@@ -139,7 +139,7 @@
       {
         "Difficulty": "Hard",
         "Topic": "assign",
-        "Answer": "False",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": "A number as a string is treated as an array of characters and not a numerical value.",
         "Instruction": "Are variables A and B equal?",
@@ -179,7 +179,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "define",
-        "Answer": "True",
+        "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "A variable's name should be closely related to it's value.",
@@ -215,7 +215,7 @@
       {
         "Difficulty": "Medium",
         "Topic": "define",
-        "Answer": "1myNumber",
+        "Answer": "2",
         "Type": "MultipleChoice",
         "Knowledge": "Variables names must start with a letter. The rest of the variable name may consist of letters and numbers, and it should not contain any special characters.",
         "Instruction": "Which one of the following can not be used as the name of a variable?",
@@ -237,7 +237,7 @@
         "Knowledge": null,
         "Instruction": "If we want the following variable name to be correct, what should we fill in the blank?",
         "Code": [
-          " [?]Number = 1"
+          " [?]Number = 1",
         ],
         "Console": "1",
         "CodeBlock": [
@@ -252,7 +252,7 @@
       {
         "Difficulty": "Hard",
         "Topic": "define",
-        "Answer": "False",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": "The name of a variable should be unique.",
         "Instruction": "Two variables can have the same name",
@@ -284,25 +284,23 @@
       {
         "Difficulty": "Easy",
         "Topic": "assign1",
-        "Answer": "10",
+        "Answer": "Love",
         "Type": "Rearrange",
         "Knowledge": null,
-        "Instruction": "Rearrange the following code and let it print 'Love'.",
+        "Instruction": "Rearrange the following code so that it prints 'Love'.",
         "Code": [
           "print(C)",
-          "A = 10",
-          "B = L",
-          "C = Love"
+          "C = \"Love\""
         ],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Avoid use beofre name the variable."
+        "Hint": "Avoid use before name the variable."
       },
       {
         "Difficulty": "Easy",
         "Topic": "assign1",
-        "Answer": "False",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "The following code is correct",
@@ -316,15 +314,15 @@
           "False"
         ],
         "Choice": [],
-        "Hint": "Avoid use beofre name the variable."
+        "Hint": "Avoid use before name the variable."
       },
       {
         "Difficulty": "Medium",
         "Topic": "assign1",
-        "Answer": "True",
+        "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": "Different variables could have the same value.",
-        "Instruction": "Does A and C have the same value?",
+        "Instruction": "Do A and C have the same value?",
         "Code": [
           "A = 2",
           "B = 4",
@@ -342,7 +340,7 @@
       {
         "Difficulty": "Medium",
         "Topic": "assign1",
-        "Answer": "True",
+        "Answer": "True\n",
         "Type": "ShortAnswer",
         "Knowledge": null,
         "Instruction": "What should we fill in the blank if we want A and B have the same value?",
@@ -359,7 +357,7 @@
       {
         "Difficulty": "Hard",
         "Topic": "assign1",
-        "Answer": "False",
+        "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": "There is difference between numerical values and string values.",
         "Instruction": "Variable A has the numerical value 12345, and B has the world character value '12345', are these two variables have the same value?",
@@ -437,12 +435,11 @@
         "Topic": "reassign",
         "Answer": "10",
         "Type": "Rearrange",
-        "Knowledge": "The order of reassign is important",
-        "Instruction": "Rearrange the following code and let the value of A is equal to '10' after the code is been executed.",
+        "Knowledge": "The value of a variable is equal to the last value that it has been assigned to.",
+        "Instruction": "Rearrange to make the value of A equal to '10' after the code has been executed.",
         "Code": [
-          "B = 10",
+          "A = 10",
           "A = 2",
-          "B = 666",
           "print(A)"
         ],
         "Console": "1",
@@ -456,9 +453,9 @@
         "Answer": "HelloCodeTrip",
         "Type": "Rearrange",
         "Knowledge": null,
-        "Instruction": "Rearrange the following code and let the value of B to be 'HelloCodeTrip'",
+        "Instruction": "Rearrange the following code and let the value of A to be 'HelloCodeTrip'",
         "Code": [
-          "A = 1",
+          "A = B",
           "A = \"Hello\"",
           "B = \"HelloCodeTrip\"",
           "print(A)"

@@ -16,7 +16,7 @@ import com.mtr.codetrip.codetrip.R;
 public class RunButton extends android.support.v7.widget.AppCompatButton implements View.OnClickListener {
 
 
-    public enum RunButtonState {INVALID, RUN, CONTINUE, BACKTOCURRENT}
+    public enum RunButtonState {INVALID, RUN, CHECK, CONTINUE, BACKTOCURRENT}
 
     private RunButtonState buttonState;
     private Context context;
@@ -57,7 +57,7 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
         switch (buttonState) {
             case INVALID:
                 break;
-            case RUN:
+            case RUN: case CHECK:
                 currentQuestion.runAction();
                 updateDoItButtonState(RunButtonState.CONTINUE);
                 break;
@@ -83,6 +83,11 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
                 setClickable(true);
                 setBackground(context.getDrawable(R.drawable.run_button_run));
                 setText(context.getString(R.string.question_action_run));
+                break;
+            case CHECK:
+                setClickable(true);
+                setBackground(context.getDrawable(R.drawable.run_button_run));
+                setText(context.getString(R.string.question_action_check));
                 break;
             case CONTINUE:
                 setClickable(true);

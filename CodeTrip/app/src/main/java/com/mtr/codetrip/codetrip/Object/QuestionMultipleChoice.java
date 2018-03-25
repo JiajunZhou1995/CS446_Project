@@ -55,9 +55,6 @@ public class QuestionMultipleChoice extends Question {
     public void setRootView(ViewGroup viewGroup){
         super.setRootView(viewGroup);
         doIt = rootView.findViewById(R.id.doit);
-//        doIt.setCurrentQuestion(this);
-//        doIt.setCurrentQuestionActivity(currentQuestionActivity);
-//        doIt.updateDoItButtonState(RunButton.RunButtonState.INVALID);
     }
 
     @Override
@@ -66,17 +63,6 @@ public class QuestionMultipleChoice extends Question {
         codeIns = getStrArrayFromDB(c, "code");
         choices = getStrArrayFromDB(c, "choice");
         answer = c.getInt(c.getColumnIndex("answer"));
-    }
-
-
-    private void updateSelection(int newSelection) {
-        int lastSelection = currentSelection;
-        currentSelection = newSelection;
-        if (lastSelection != currentSelection) {
-            TextView tv = choiceViews.get(lastSelection).findViewById(R.id.mc_item_text);
-            tv.setTextColor(context.getColor(R.color.colorBlack));
-            choiceViews.get(lastSelection).setBackground(context.getDrawable(R.drawable.code_area_round));
-        }
     }
 
     @Override
@@ -126,12 +112,7 @@ public class QuestionMultipleChoice extends Question {
                 @Override
                 public void onClick(View v) {
                     updateSelection(choiceIndex);
-                    TextView tv = v.findViewById(R.id.mc_item_text);
-                    tv.setTextColor(context.getColor(R.color.colorWhite));
-                    v.setBackground(context.getDrawable(R.drawable.code_area_round_highlight));
-                    doIt.updateDoItButtonState(RunButton.RunButtonState.RUN);
-                    String newText = "Check";
-                    doIt.setText(newText);
+                    doIt.updateDoItButtonState(RunButton.RunButtonState.CHECK);
                 }
             });
             choiceViews.add(choiceView);
@@ -154,6 +135,7 @@ public class QuestionMultipleChoice extends Question {
             currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
 
         }
+        lockSelections();
 
         Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
         if (newQuestion!=null){
@@ -161,5 +143,26 @@ public class QuestionMultipleChoice extends Question {
             currentQuestionActivity.notifyChange();
         }
         doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
+    }
+
+
+    private void updateSelection(int newSelection) {
+        int lastSelection = currentSelection;
+        currentSelection = newSelection;
+        if (lastSelection != currentSelection) {
+            TextView tv = choiceViews.get(lastSelection).findViewById(R.id.mc_item_text);
+            tv.setTextColor(context.getColor(R.color.colorDarkGrey));
+            choiceViews.get(lastSelection).setBackground(context.getDrawable(R.drawable.code_area_round));
+        }
+
+        TextView tv = choiceViews.get(newSelection).findViewById(R.id.mc_item_text);
+        tv.setTextColor(context.getColor(R.color.colorWhite));
+        choiceViews.get(newSelection).setBackground(context.getDrawable(R.drawable.code_area_round_highlight));
+    }
+
+    private void lockSelections(){
+        for (View v : choiceViews){
+            v.setClickable(false);
+        }
     }
 }
