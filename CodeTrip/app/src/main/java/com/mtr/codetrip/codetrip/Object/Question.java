@@ -33,6 +33,8 @@ public abstract class Question {
     private String difficulty;
     protected QuestionActivity currentQuestionActivity;
     protected String answer;
+    final String nullAnswer = "No Answer";
+    final String errorString = "Error";
 
 //    protected RunButton doIt;
 //
@@ -147,13 +149,22 @@ public abstract class Question {
     }
 
     protected void checkAnswer(String output){
-        if (answer.equals("No Answer")){
+        if (answer.equals(nullAnswer)){
             //arbitrary answer , check if error
             Log.d("answer","is empty");
-            Log.i("answer",answer);
-            Log.i("output", output);
-            increaseGrade();
-            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+            String[] outputStrings = output.split("(\\()");
+            String checkError = outputStrings[0].substring(outputStrings[0].length()-5);
+
+            if (checkError.equals(errorString)){
+                Log.d("incorrect answer","add to incorrect list");
+                currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+            }else{
+                Log.d("correct!!","increase score");
+                increaseGrade();
+                currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+            }
+
+
         }else if(answer.equals(output)){
             Log.d("correct!!","increase score");
             Log.i("answer",answer);
