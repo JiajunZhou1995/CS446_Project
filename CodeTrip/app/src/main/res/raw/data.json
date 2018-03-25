@@ -436,7 +436,7 @@
         "Answer": "10\n",
         "Type": "Rearrange",
         "Knowledge": "The value of a variable is equal to the last value that it has been assigned to.",
-        "Instruction": "Rearrange to make the value of A equal to 10 after the code has been executed.",
+        "Instruction": "Rearrange to print 10.",
         "Code": [
           "A = 10",
           "A = 2",
@@ -453,7 +453,7 @@
         "Answer": "HelloCodeTrip\n",
         "Type": "Rearrange",
         "Knowledge": null,
-        "Instruction": "Rearrange the following code and let the value of A to be 'HelloCodeTrip'",
+        "Instruction": "Rearrange the following code to print 'HelloCodeTrip'",
         "Code": [
           "A = B",
           "A = \"Hello\"",
@@ -471,7 +471,7 @@
         "Answer": "True\n",
         "Type": "Rearrange",
         "Knowledge": "We could reassign the value of a variable by using another variable, and we could also do this when we define a new variable.",
-        "Instruction": "Rearrange the following code and let the value of A is equal to the value of B",
+        "Instruction": "Rearrange the following code to print True",
         "Code": [
           "A = B",
           "A = 12345",
