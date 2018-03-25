@@ -110,7 +110,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
             normalCodeSingleLine = new ArrayList<>();
             dropReceiveRecordSingleLine = new ArrayList<>();
             dropReceiveBlankSingLine = new ArrayList<>();
-            String[] code = codeLine.split("( \\[\\?]|\\[\\?] )");
+            String[] code = codeLine.split("\\[\\?]");
             singleLine = new LinearLayout(currentContext);
             singleLine.setOrientation(LinearLayout.HORIZONTAL);
             LayoutUtil.setup(currentContext, LayoutUtil.LayoutType.LINEAR,singleLine, LayoutUtil.ParamType.MATCH_PARENT, LayoutUtil.ParamType.WRAP_CONTENT,0,0,0,0);
