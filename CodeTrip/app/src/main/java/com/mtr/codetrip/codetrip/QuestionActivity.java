@@ -38,6 +38,7 @@ import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
 
 import static com.mtr.codetrip.codetrip.R.id.question_complete_return_button;
+import static com.mtr.codetrip.codetrip.Utility.DataBaseUtility.getStrArrayFromDB;
 
 /**
  * Created by Catrina on 2/4/2018 at 11:27 PM.
@@ -74,6 +75,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private List<Integer> incorrectQuestionList;
 
     public QuestionPicker questionPicker;
+
+    public List<String> topicList;
+    private int MAX_PAGES;
+
 //    private PopupWindow completePopView;
 
 
@@ -97,16 +102,23 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         questionPicker = new QuestionPicker(courseID);
 
 
+        String sql = String.format("SELECT * FROM course WHERE courseid=%d",courseID);
+        Cursor cursor = MainActivity.appDB.rawQuery(sql, null);
+        cursor.moveToFirst();
 
-        String sql = "SELECT * FROM course WHERE courseid =" + Integer.toString(courseID);
-        @SuppressLint("Recycle") Cursor c = MainActivity.appDB.rawQuery(sql,null);
-        c.moveToFirst();
+        topicList = getStrArrayFromDB(cursor, "topics");
+        MAX_PAGES = topicList.size() * 4;
+
+
+//        String sql = "SELECT * FROM course WHERE courseid =" + Integer.toString(courseID);
+//        @SuppressLint("Recycle") Cursor c = MainActivity.appDB.rawQuery(sql,null);
+//        c.moveToFirst();
 
         NUM_PAGES=1;
 //        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
         progressBar = findViewById(R.id.question_progressbar);
 
-        progressBar.setMax(NUM_PAGES*1000000);
+        progressBar.setMax(MAX_PAGES*1000000);
 
         progressBar.setProgress(0);
         progressBar.setOnTouchListener(new View.OnTouchListener() {
@@ -123,7 +135,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         mPager.setBoundedQuestionActivity(currentQuestionActivity);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-        mPager.setOffscreenPageLimit(NUM_PAGES);
+        mPager.setOffscreenPageLimit(MAX_PAGES);
 
         mLinearLayout = findViewById(R.id.question_page_toolbar);
         Button returnButton = findViewById(R.id.retrun_button);
@@ -199,6 +211,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     public void notifyChange(){
         mPagerAdapter.notifyDataSetChanged();
     }
+
     public void onQuestionContinue(){
 //        NUM_PAGES++;
 //        currentProgress++;
@@ -254,6 +267,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
         @Override
         public android.support.v4.app.Fragment getItem(int currentQuestion) {
+
+//            if (currentQuestion < NUM_PAGES && NUM_PAGES!=1){
+//                return this.setPrimaryItem();
+//            }
 
             QuestionPageFragment questionPageFragment;
             Question currentSelectedQuestion = questionPicker.getCurrentQuestion();

@@ -153,11 +153,16 @@ public abstract class Question {
             //arbitrary answer , check if error
             Log.d("answer","is empty");
             String[] outputStrings = output.split("(\\()");
-            String checkError = outputStrings[0].substring(outputStrings[0].length()-5);
-
-            if (checkError.equals(errorString)){
-                Log.d("incorrect answer","add to incorrect list");
-                currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+            if (outputStrings[0].length() >= 5){
+                String checkError = outputStrings[0].substring(outputStrings[0].length()-5);
+                if (checkError.equals(errorString)){
+                    Log.d("incorrect answer","add to incorrect list");
+                    currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+                }else{
+                    Log.d("correct!!","increase score");
+                    increaseGrade();
+                    currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+                }
             }else{
                 Log.d("correct!!","increase score");
                 increaseGrade();
