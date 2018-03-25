@@ -433,10 +433,10 @@
       {
         "Difficulty": "Medium",
         "Topic": "reassign",
-        "Answer": "10",
+        "Answer": "10\n",
         "Type": "Rearrange",
         "Knowledge": "The value of a variable is equal to the last value that it has been assigned to.",
-        "Instruction": "Rearrange to make the value of A equal to '10' after the code has been executed.",
+        "Instruction": "Rearrange to make the value of A equal to 10 after the code has been executed.",
         "Code": [
           "A = 10",
           "A = 2",
