@@ -1,7 +1,6 @@
 package com.mtr.codetrip.codetrip.Utility;
 
 import android.database.Cursor;
-import android.util.Log;
 
 import com.mtr.codetrip.codetrip.MainActivity;
 import com.mtr.codetrip.codetrip.Object.Question;
@@ -29,12 +28,18 @@ public class QuestionPicker {
     private int courseID;
     int evaluationScore;
     int passScore;
+    public int currentProgress;
+    public int lastProgress;
+    private int MAX_DEPTH;
+
 
     private List<Integer> incorrectList;
     int topicIndex;
     QuestionTree currentQuestionTree;
 
-    public QuestionPicker(int courseID){
+    public QuestionPicker(int courseID, int max_depth){
+        MAX_DEPTH = max_depth;
+        currentProgress = 0;
         generateQuestionMap(courseID);
         initTopicDictionary();
         topicIndex = 0;
@@ -110,25 +115,25 @@ public class QuestionPicker {
         private QuestionTree nextRightQuestion;
         private QuestionTree nextWrongQuestion;
 
-        public QuestionTree(Difficulty difficulty, Map<Difficulty,List<Question>>topicDict) {
+        public QuestionTree(Difficulty difficulty, Map<Difficulty,List<Question>>topicDict, int round) {
             Map<Difficulty, List<Question>> currentTopicDic = deepCopyDictionary(topicDict);
-            if (difficulty==null || topicDict==null || currentTopicDic.get(difficulty) == null || currentTopicDic.get(difficulty).size()==0){
+            if (round==0||difficulty==null || topicDict==null || currentTopicDic.get(difficulty) == null || currentTopicDic.get(difficulty).size()==0){
                 currentQuestion = null;
             }else{
                 currentQuestion = currentTopicDic.get(difficulty).remove(0);
 
-                addNextRight(difficulty.changeLevel(true), currentTopicDic);
+                addNextRight(difficulty.changeLevel(true), currentTopicDic,round-1);
 
-                addNextWrong(difficulty.changeLevel(false), currentTopicDic);
+                addNextWrong(difficulty.changeLevel(false), currentTopicDic,round-1);
             }
         }
 
-        public void addNextRight(Difficulty difficulty,Map<Difficulty,List<Question>>topicDict){
-            nextRightQuestion = new QuestionTree(difficulty, topicDict);
+        public void addNextRight(Difficulty difficulty,Map<Difficulty,List<Question>>topicDict, int round){
+            nextRightQuestion = new QuestionTree(difficulty, topicDict,round);
         }
 
-        public void addNextWrong(Difficulty difficulty,Map<Difficulty,List<Question>>topicDict){
-            nextWrongQuestion = new QuestionTree(difficulty, topicDict);
+        public void addNextWrong(Difficulty difficulty,Map<Difficulty,List<Question>>topicDict, int round){
+            nextWrongQuestion = new QuestionTree(difficulty, topicDict,round);
         }
     }
 
@@ -188,7 +193,7 @@ public class QuestionPicker {
                 }
                 topicDict.put(difficulty,difficultyQuesionList);
             }
-            questionTreeRoot = new QuestionTree(Difficulty.MEDIUM, topicDict);
+            questionTreeRoot = new QuestionTree(Difficulty.MEDIUM, topicDict,MAX_DEPTH);
             questionMap.put(topicString,questionTreeRoot);
         }
     }
@@ -228,15 +233,18 @@ public class QuestionPicker {
 
         }
 
+        lastProgress = currentProgress;
         if (newQuestionNode.currentQuestion==null){
             if (topicIndex<topicList.size()-1){
                 topicIndex++;
                 initQuestionTree();
+                currentProgress = topicIndex * 4;
             }else{
                 // no more question
                 currentQuestionTree = null;
             }
         }else{
+            currentProgress++;
             currentQuestionTree = newQuestionNode;
         }
 

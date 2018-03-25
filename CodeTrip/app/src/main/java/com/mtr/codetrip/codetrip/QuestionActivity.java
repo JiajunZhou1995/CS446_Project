@@ -78,6 +78,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
     public List<String> topicList;
     private int MAX_PAGES;
+    final int maxNumberOfQuetionPerTopic = 4;
 
 //    private PopupWindow completePopView;
 
@@ -99,7 +100,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         courseID = intent.getIntExtra("courseID",0);
         Log.d("courseID", Integer.toString(courseID));
 
-        questionPicker = new QuestionPicker(courseID);
+        questionPicker = new QuestionPicker(courseID,maxNumberOfQuetionPerTopic);
 
 
         String sql = String.format("SELECT * FROM course WHERE courseid=%d",courseID);
@@ -201,8 +202,11 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         grade += 1;
     }
 
-    private void updateProgressBar(int progress){
-        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar,"progress",(progress-1)*1000000,progress*1000000);
+    private void updateProgressBar(){
+        int currentProgress = questionPicker.currentProgress;
+        int lastProgress = questionPicker.lastProgress;
+//        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar,"progress",(progress-1)*1000000,progress*1000000);
+        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar,"progress",lastProgress*1000000,currentProgress*1000000);
         progressAnimator.setStartDelay(200);
         progressAnimator.setDuration(1000);
         progressAnimator.start();
@@ -225,16 +229,17 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 //        }
 //
 //        mPagerAdapter.notifyDataSetChanged();
+//        qustionProgress++;
 
         if (currentProgress++ == NUM_PAGES - 1){
             inflateCompletionPage();
-            updateProgressBar(currentProgress);
+//            updateProgressBar();
             return;
         }
 //        NUM_PAGES++;
 
         mPager.setCurrentItem(currentProgress);
-        updateProgressBar(currentProgress);
+        updateProgressBar();
     }
 
 
