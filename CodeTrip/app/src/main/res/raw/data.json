@@ -46,7 +46,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "assign",
-        "Answer": "5",
+        "Answer": "5\n",
         "Type": "ShortAnswer",
         "Knowledge": "A value can be assigned to a variable using the = operator.",
         "Instruction": "Assign A to 5.",
@@ -62,7 +62,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "assign",
-        "Answer": "23",
+        "Answer": "23\n",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "Fill the blank with an odd number.",
@@ -83,7 +83,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "assign",
-        "Answer": "12",
+        "Answer": "12\n",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "Fill the blank with an even number.",
@@ -159,7 +159,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "define",
-        "Answer": "Blue",
+        "Answer": "Blue\n",
         "Type": "Drag&Drop",
         "Knowledge": "Variable name should be meaningful and related to it's value.",
         "Instruction": "Which String is an appropriate value for the variable?",
@@ -195,7 +195,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "define",
-        "Answer": "Cat",
+        "Answer": "Cat\n",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "Which String is an appropriate value for the variable?",
@@ -268,7 +268,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "assign1",
-        "Answer": "10",
+        "Answer": "10\n",
         "Type": "Rearrange",
         "Knowledge": "When we want to use a variable, we should make sure that we have defined it before we use it",
         "Instruction": "Rearrange the following code to print 10",
@@ -284,7 +284,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "assign1",
-        "Answer": "Love",
+        "Answer": "Love\n",
         "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange the following code so that it prints 'Love'.",
@@ -394,7 +394,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "reassign",
-        "Answer": "a",
+        "Answer": "a\n",
         "Type": "ShortAnswer",
         "Knowledge": "We could reassign a variable by different type of value",
         "Instruction": "If we want to let A to be character 'b', what value should we fill?",
@@ -411,7 +411,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "reassign",
-        "Answer": "Hello,World",
+        "Answer": "Hello, World\n",
         "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "If we want the value of A to be a string, what should we put into the bracket?",
