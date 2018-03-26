@@ -330,8 +330,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 //            String sql = "SELETE * FROM course WHERE courseid="+Integer.toString(courseID);
 //            @SuppressLint("Recycle") Cursor c = appDB.query("course", null, null, null, null, null, null);
 //            c.moveToFirst();
-            CourseActivity.updateScore(grade);
-            CourseActivity.currentCourseID =courseID+1;
+            CourseActivity.updateScore(courseID,grade);
+            CourseActivity.currentCourseID = Math.max(courseID+1,CourseActivity.currentCourseID);
             CourseActivity.refreshCourseMAp();
 
             this.finish();

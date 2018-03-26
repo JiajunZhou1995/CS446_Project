@@ -185,8 +185,8 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    public static void updateScore(float newScore){
-        courseList.get(currentCourseID).updateScore(newScore);
+    public static void updateScore(int courseid, float newScore){
+        courseList.get(courseid).updateScore(newScore);
     }
 
 
