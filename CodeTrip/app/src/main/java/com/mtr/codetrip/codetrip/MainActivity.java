@@ -245,6 +245,7 @@ public class MainActivity extends AppCompatActivity
                     "(courseid integer primary key," +                  //1
                     "available text not null," +                        //true
                     "unit text not null," +                             //1
+                    "score real,"+                                      //
                     "type text not null," +                             //lecture
                     "title text not null," +                            //print
                     "position text not null," +                         //L1 -> left 1
@@ -304,8 +305,8 @@ public class MainActivity extends AppCompatActivity
             int complete;
             int total;
             String available;
-
             String unit;
+            float score;
 
             for (int i = 0; i < courseArray.length(); ++i) {
 
@@ -319,19 +320,20 @@ public class MainActivity extends AppCompatActivity
                 position = courseObject.getString("Position");
                 topics = courseObject.getJSONArray("Topics").toString();
                 complete = 0;
+                score = 0;
 
                 ContentValues courseValues = new ContentValues();
 
                 courseValues.put("courseid", courseid);
                 courseValues.put("available", available);
                 courseValues.put("unit", unit);
+                courseValues.put("score", score);
                 courseValues.put("type", coursetype);
                 courseValues.put("title", title);
                 courseValues.put("total", total);
                 courseValues.put("position", position);
                 courseValues.put("topics", topics);
                 courseValues.put("complete", complete);
-
                 db.insert("course", null, courseValues);
 
                 JSONArray questionArray = new JSONArray(courseObject.getString("Question"));
