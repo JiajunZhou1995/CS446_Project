@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity
 
         ScreenHeightRatio = height/uiScreenHeight;
 
+        setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
