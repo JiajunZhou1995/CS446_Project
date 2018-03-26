@@ -171,6 +171,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
+
     private static void makeAvailable(int index){
         Course course = courseList.get(index);
         //should modify database

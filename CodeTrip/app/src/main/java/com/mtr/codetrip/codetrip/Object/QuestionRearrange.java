@@ -114,19 +114,23 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
             Log.d("correct!!","increase score");
             increaseGrade();
             notifyObservers(true);
-            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+//            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+            currentQuestionActivity.generateNextQuestion(true);
+
         }else{
             Log.d("incorrect answer","add to incorrect list");
-            QuestionActivity.incorrectQuestionList.add(this);
+            QuestionActivity.incorrectQuestionList.add(questionID);
 //            QuestionActivity.addToIncorrectList(questionID);
             notifyObservers(false);
-            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+//            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+            currentQuestionActivity.generateNextQuestion(false);
+
         }
-        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
-        if (newQuestion!=null){
-            currentQuestionActivity.NUM_PAGES++;
-            currentQuestionActivity.notifyChange();
-        }
+//        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
+//        if (newQuestion!=null){
+//            currentQuestionActivity.NUM_PAGES++;
+//            currentQuestionActivity.notifyChange();
+//        }
     }
 
 

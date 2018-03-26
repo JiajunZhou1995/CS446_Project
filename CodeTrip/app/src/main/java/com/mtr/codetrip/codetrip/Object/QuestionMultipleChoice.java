@@ -131,22 +131,25 @@ public class QuestionMultipleChoice extends Question {
             Log.d("correct!!","increase score");
             notifyObservers(true);
             increaseGrade();
-            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+//            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+            currentQuestionActivity.generateNextQuestion(true);
+
         }else{
             Log.d("incorrect answer","add to incorrect list");
 //            QuestionActivity.addToIncorrectList(questionID);
-            QuestionActivity.incorrectQuestionList.add(this);
+            QuestionActivity.incorrectQuestionList.add(questionID);
             notifyObservers(false);
-            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+//            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+            currentQuestionActivity.generateNextQuestion(false);
 
         }
         lockSelections();
 
-        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
-        if (newQuestion!=null){
-            currentQuestionActivity.NUM_PAGES++;
-            currentQuestionActivity.notifyChange();
-        }
+//        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
+//        if (newQuestion!=null){
+//            currentQuestionActivity.NUM_PAGES++;
+//            currentQuestionActivity.notifyChange();
+//        }
         runButton.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
     }
 

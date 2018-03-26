@@ -99,8 +99,10 @@ public abstract class Question extends Observable{
         TextView knowledgeTV = rootView.findViewById(R.id.question_knowledge);
         TextView instructionTV = rootView.findViewById(R.id.question_instruction);
 
+        TextView questionIDTV = rootView.findViewById(R.id.question_id);
         TextView topicTV = rootView.findViewById(R.id.quesiton_topic);
         TextView difficultyTV = rootView.findViewById(R.id.question_difficulty);
+        questionIDTV.setText(String.format("Question Id: %d",questionID));
         topicTV.setText(String.format("Topic: %s",topic));
         difficultyTV.setText(String.format("Level: %s",difficulty));
         switch (difficulty) {
@@ -170,20 +172,26 @@ public abstract class Question extends Observable{
                 if (checkError.equals(errorString)){
                     Log.d("incorrect answer","add to incorrect list");
 //                    notifyObservers(outputStrings[0]);
-                    QuestionActivity.incorrectQuestionList.add(this);
+                    QuestionActivity.incorrectQuestionList.add(questionID);
                     notifyObservers(false);
-                    currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+                    currentQuestionActivity.generateNextQuestion(false);
+
+//                    currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
                 }else{
                     Log.d("correct!!","increase score");
                     increaseGrade();
                     notifyObservers(true);
-                    currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+                    currentQuestionActivity.generateNextQuestion(true);
+
+//                    currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
                 }
             }else{
                 Log.d("correct!!","increase score");
                 increaseGrade();
                 notifyObservers(true);
-                currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+//                currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+                currentQuestionActivity.generateNextQuestion(true);
+
             }
 
 
@@ -193,22 +201,25 @@ public abstract class Question extends Observable{
             Log.i("output", output);
             increaseGrade();
             notifyObservers(true);
-            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
+            currentQuestionActivity.generateNextQuestion(true);
+
+//            currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
         }else{
             Log.d("incorrect answer","add to incorrect list");
             Log.i("answer",answer);
             Log.i("output", output);
 //            QuestionActivity.addToIncorrectList(questionID);
-            QuestionActivity.incorrectQuestionList.add(this);
+            QuestionActivity.incorrectQuestionList.add(questionID);
             notifyObservers(false);
-            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
+            currentQuestionActivity.generateNextQuestion(false);
+//            currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
         }
 
-        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
-        if (newQuestion!=null){
-            currentQuestionActivity.NUM_PAGES++;
-            currentQuestionActivity.notifyChange();
-        }
+//        Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
+//        if (newQuestion!=null){
+//            currentQuestionActivity.NUM_PAGES++;
+//            currentQuestionActivity.notifyChange();
+//        }
     }
 
     public void runAction(){

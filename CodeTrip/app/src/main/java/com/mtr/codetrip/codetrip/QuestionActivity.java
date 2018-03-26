@@ -81,8 +81,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
     private float grade;
     private boolean isReview;
-    public static List<Question> incorrectQuestionList;
-    private List<Question> oldIncorrectQuestionList;
+    public static List<Integer> incorrectQuestionList;
+    private List<Integer> oldIncorrectQuestionList;
 
     public QuestionPicker questionPicker;
 
@@ -92,6 +92,9 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private String courseTitle;
     private RelativeLayout completionPage;
     private RelativeLayout container;
+
+    private int correctQuestionNum;
+    private int totalQuestionNum;
 
 //    private PopupWindow completePopView;
 
@@ -103,6 +106,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         isReview = false;
         currentProgress = 0;
         grade = 0;
+        correctQuestionNum = 0;
+        totalQuestionNum = 0;
         isReview = false;
         incorrectQuestionList = new ArrayList<>();
         oldIncorrectQuestionList = null;
@@ -140,6 +145,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 //        c.moveToFirst();
 
         NUM_PAGES=1;
+        totalQuestionNum = 1;
 //        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
         progressBar = findViewById(R.id.question_progressbar);
 
@@ -175,7 +181,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private void inflateCompletionPage(){
 
         // save to database
-
         LayoutInflater inflater = LayoutInflater.from(getBaseContext());
         completionPage = (RelativeLayout) inflater.inflate(R.layout.question_complete_screen,null);
 
@@ -192,9 +197,10 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 //        completePopView.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
 
         ColorArcProgressBar bar2 = completionPage.findViewById(R.id.bar2);
-        grade = (grade * 100) / NUM_PAGES;
-        Log.i("grade",Float.toString(grade));
-        Log.i("totoal",Integer.toString(NUM_PAGES));
+        Log.i("grade",Float.toString(correctQuestionNum));
+
+        grade = (correctQuestionNum * 100) / totalQuestionNum;
+        Log.i("totoal",Integer.toString(totalQuestionNum));
 
         bar2.setCurrentValues(grade);
 
@@ -238,12 +244,16 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
 
     public void changeGrade(){
-        grade += 1;
+        correctQuestionNum += 1;
     }
 
     private void updateProgressBar(){
         int currentProgress = questionPicker.currentProgress;
         int lastProgress = questionPicker.lastProgress;
+        if (isReview){
+            currentProgress = this.currentProgress;
+            lastProgress = this.currentProgress-1;
+        }
 //        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar,"progress",(progress-1)*1000000,progress*1000000);
         ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar,"progress",lastProgress*1000000,currentProgress*1000000);
         progressAnimator.setStartDelay(200);
@@ -321,17 +331,19 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
             if (isReview){
 
-                currentSelectedQuestion = oldIncorrectQuestionList.get(currentQuestion);
-                int questionID = currentSelectedQuestion.questionID;
+//                currentSelectedQuestion = oldIncorrectQuestionList.get(currentQuestion);
+//                int questionID = currentSelectedQuestion.questionID;
 
                 String course = "codetrip.db";
                 SQLiteDatabase appDB = openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
-                String sql = String.format("SELECT * FROM question WHERE questionid=%d",questionID);
+                String sql = String.format("SELECT * FROM question WHERE questionid=%d",oldIncorrectQuestionList.get(currentQuestion));
                 Cursor cursor = appDB.rawQuery(sql,null);
                 cursor.moveToFirst();
 
 
                 String questionType = cursor.getString(cursor.getColumnIndex("type"));
+
+
                 switch (questionType) {
                     case "Rearrange":
                         currentSelectedQuestion = new QuestionRearrange();
@@ -350,10 +362,13 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
                         break;
                 }
                 currentSelectedQuestion.populateFromDB(cursor);
+                cursor.close();
+                appDB.close();
             }else {
                 currentSelectedQuestion = questionPicker.getCurrentQuestion();
 
             }
+
 
             questionPageFragment = QuestionPageFragment.create();
             questionPageFragment.setCurrentQuestion(currentSelectedQuestion);
@@ -378,6 +393,18 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         }
     }
 
+    public void generateNextQuestion(boolean levelup){
+
+        if (!isReview){
+            questionPicker.ganerateNextQuestion(levelup);
+            Question newQuestion = questionPicker.getCurrentQuestion();
+            if (newQuestion!=null){
+                totalQuestionNum++;
+                NUM_PAGES++;
+                notifyChange();
+            }
+        }
+    }
     @Override
     public void onClick(View v) {
 
@@ -396,9 +423,13 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             this.finish();
 //            completePopView.dismiss();
         }else if(id == question_complete_review_button){
+
+            currentProgress = 0;
             oldIncorrectQuestionList = new ArrayList<>(incorrectQuestionList);
             incorrectQuestionList = new ArrayList<>();
             NUM_PAGES = oldIncorrectQuestionList.size();
+            progressBar.setMax(NUM_PAGES*1000000);
+            progressBar.setProgress(0);
             isReview = true;
             mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
             mPager.setAdapter(mPagerAdapter);
