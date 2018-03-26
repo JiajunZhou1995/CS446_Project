@@ -7,6 +7,7 @@ import android.view.View;
 import com.mtr.codetrip.codetrip.Object.Question;
 import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
+import com.mtr.codetrip.codetrip.Utility.MultipleClickUtility;
 
 /**
  * Created by Catrina on 26/02/2018 at 11:36 PM.
@@ -54,6 +55,9 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
 
     @Override
     public void onClick(View v) {
+        if (MultipleClickUtility.isFastDoubleClick()) {
+            return;
+        }
         switch (buttonState) {
             case INVALID:
                 break;

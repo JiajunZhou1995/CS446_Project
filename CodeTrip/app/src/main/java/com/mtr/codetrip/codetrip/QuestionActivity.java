@@ -30,6 +30,7 @@ import com.mtr.codetrip.codetrip.CostumWidgets.NonClickableSeekbar;
 import com.mtr.codetrip.codetrip.Object.Question;
 import com.mtr.codetrip.codetrip.Object.QuestionPageFragment;
 import com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager;
+import com.mtr.codetrip.codetrip.Utility.MultipleClickUtility;
 import com.mtr.codetrip.codetrip.Utility.QuestionPicker;
 
 import java.util.ArrayList;
@@ -75,7 +76,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
     private float grade;
     private boolean isReview;
-    private List<Integer> incorrectQuestionList;
+    public static List<Question> incorrectQuestionList;
+    private List<Question> oldIncorrectQuestionList;
 
     public QuestionPicker questionPicker;
 
@@ -83,6 +85,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     private int MAX_PAGES;
     final int maxNumberOfQuetionPerTopic = 4;
     private String courseTitle;
+    private RelativeLayout completionPage;
+    private RelativeLayout container;
 
 //    private PopupWindow completePopView;
 
@@ -91,10 +95,12 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        isReview = false;
         currentProgress = 0;
         grade = 0;
         isReview = false;
         incorrectQuestionList = new ArrayList<>();
+        oldIncorrectQuestionList = null;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
@@ -103,6 +109,8 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         Intent intent = getIntent();
         courseID = intent.getIntExtra("courseID",0);
         Log.d("courseID", Integer.toString(courseID));
+
+        container = findViewById(R.id.question_root_container);
 
         questionPicker = new QuestionPicker(this,courseID,maxNumberOfQuetionPerTopic);
 
@@ -156,17 +164,19 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         hintButton.setOnClickListener(this);
     }
 
+
+
     
     private void inflateCompletionPage(){
 
         // save to database
 
         LayoutInflater inflater = LayoutInflater.from(getBaseContext());
-        @SuppressLint("InflateParams") RelativeLayout completionPage = (RelativeLayout) inflater.inflate(R.layout.question_complete_screen,null);
+        completionPage = (RelativeLayout) inflater.inflate(R.layout.question_complete_screen,null);
 
 
-        RelativeLayout container = findViewById(R.id.question_root_container);
         container.addView(completionPage);
+
 
 //        completePopView = new PopupWindow(
 //                completionPage,
@@ -205,6 +215,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         title.setText(courseTitle);
 
         Button review_button = completionPage.findViewById(question_complete_review_button);
+        review_button.setOnClickListener(currentQuestionActivity);
         if (grade==100){
             review_button.setClickable(false);
             review_button.setBackground(this.getDrawable(R.drawable.run_button_invalid));
@@ -213,11 +224,13 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         Button return_button = completionPage.findViewById(question_complete_return_button);
         return_button.setOnClickListener(currentQuestionActivity);
 
+        CourseActivity.updateScore(courseID,grade);
+        CourseActivity.currentCourseID = Math.max(courseID+1,CourseActivity.currentCourseID);
+        CourseActivity.refreshCourseMap();
+
     }
 
-//    public static boolean isLastQuestion(){
-//        return currentProgress == NUM_PAGES - 1;
-//    }
+
 
     public void changeGrade(){
         grade += 1;
@@ -299,7 +312,15 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 //            }
 
             QuestionPageFragment questionPageFragment;
-            Question currentSelectedQuestion = questionPicker.getCurrentQuestion();
+            Question currentSelectedQuestion;
+
+            if (isReview){
+                currentSelectedQuestion = oldIncorrectQuestionList.get(currentQuestion);
+            }else {
+                currentSelectedQuestion = questionPicker.getCurrentQuestion();
+
+            }
+
 
             questionPageFragment = QuestionPageFragment.create();
             questionPageFragment.setCurrentQuestion(currentSelectedQuestion);
@@ -325,16 +346,35 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+
+        if (MultipleClickUtility.isFastDoubleClick()) {
+            return;
+        }
+
         int id = v.getId();
         if (id == R.id.return_button){
             this.finish();
         }else if (id == question_complete_return_button){
-            CourseActivity.updateScore(courseID,grade);
-            CourseActivity.currentCourseID = Math.max(courseID+1,CourseActivity.currentCourseID);
-            CourseActivity.refreshCourseMAp();
+//            CourseActivity.updateScore(courseID,grade);
+//            CourseActivity.currentCourseID = Math.max(courseID+1,CourseActivity.currentCourseID);
+//            CourseActivity.refreshCourseMap();
 
             this.finish();
 //            completePopView.dismiss();
+        }else if(id == question_complete_review_button){
+            oldIncorrectQuestionList = new ArrayList<>(incorrectQuestionList);
+            incorrectQuestionList = new ArrayList<>();
+            NUM_PAGES = oldIncorrectQuestionList.size();
+            isReview = true;
+            mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+            mPager.setAdapter(mPagerAdapter);
+            mPager.setOffscreenPageLimit(NUM_PAGES);
+
+
+            container = findViewById(R.id.question_root_container);
+            ((ViewGroup)container).removeView(completionPage);
+
+
         }else if(id == R.id.hint_button) inflateHintPopView();
     }
 

@@ -1,12 +1,14 @@
 package com.mtr.codetrip.codetrip.Object;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,6 +91,7 @@ public class Course {
         }
 
         course_score = cursor.getFloat(cursor.getColumnIndex("score"));
+//        Log.d("course"+Integer.toString(courseID) +" score",Float.toString(course_score));
 
         tmp = cursor.getString(cursor.getColumnIndex("position"));
         boundBtn = generateCourseButton(context);
@@ -136,8 +139,16 @@ public class Course {
             setStarsVisibility();
             String course = "codetrip.db";
             SQLiteDatabase appDB = mContext.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
-            String sql = "UPDATE course SET score="+Float.toString(course_score)+ " WHERE courseid=" + Integer.toString(courseID);
-            appDB.execSQL(sql);
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("score",course_score);
+            appDB.update("course",contentValues,"courseid="+Integer.toString(courseID),null);
+
+            String sql = "SELECT * FROM course WHERE courseid="+Integer.toString(courseID);
+            Cursor c = appDB.rawQuery(sql,null);
+            c.moveToFirst();
+            Log.i("course"+Integer.toString(courseID) +" score",Float.toString(c.getFloat(c.getColumnIndex("score"))));
+            c.close();
+            appDB.close();
         }
     }
 

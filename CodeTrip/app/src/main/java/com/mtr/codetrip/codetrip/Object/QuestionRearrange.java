@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
+import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.AsyncResponse;
 import com.mtr.codetrip.codetrip.Utility.HttpPostAsyncTask;
@@ -116,6 +117,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
             currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
         }else{
             Log.d("incorrect answer","add to incorrect list");
+            QuestionActivity.incorrectQuestionList.add(this);
 //            QuestionActivity.addToIncorrectList(questionID);
             notifyObservers(false);
             currentQuestionActivity.questionPicker.ganerateNextQuestion(false);

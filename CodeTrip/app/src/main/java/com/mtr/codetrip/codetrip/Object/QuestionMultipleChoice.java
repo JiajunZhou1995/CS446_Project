@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
 import com.mtr.codetrip.codetrip.CostumWidgets.TextViewLineNumber;
 import com.mtr.codetrip.codetrip.CostumWidgets.TextViewNormalCode;
+import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 import com.mtr.codetrip.codetrip.Utility.LayoutUtil;
 
@@ -134,6 +135,7 @@ public class QuestionMultipleChoice extends Question {
         }else{
             Log.d("incorrect answer","add to incorrect list");
 //            QuestionActivity.addToIncorrectList(questionID);
+            QuestionActivity.incorrectQuestionList.add(this);
             notifyObservers(false);
             currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
 

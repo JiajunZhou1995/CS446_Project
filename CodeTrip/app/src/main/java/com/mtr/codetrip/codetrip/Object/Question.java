@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
+import com.mtr.codetrip.codetrip.CourseActivity;
 import com.mtr.codetrip.codetrip.QuestionActivity;
 import com.mtr.codetrip.codetrip.R;
 
@@ -101,13 +102,19 @@ public abstract class Question extends Observable{
         TextView difficultyTV = rootView.findViewById(R.id.question_difficulty);
         topicTV.setText(String.format("Topic: %s",topic));
         difficultyTV.setText(String.format("Level: %s",difficulty));
-        if (difficulty.equals("Easy")){
-            difficultyTV.setTextColor(context.getColor(R.color.colorOrange));
-        }else if (difficulty.equals("Medium")){
-            difficultyTV.setTextColor(context.getColor(R.color.colorBluePurple));
-        }else{
-            difficultyTV.setTextColor(context.getColor(R.color.colorFireBrick));
+        switch (difficulty) {
+            case "Easy":
+                difficultyTV.setTextColor(context.getColor(R.color.colorOrange));
+                break;
+            case "Medium":
+                difficultyTV.setTextColor(context.getColor(R.color.colorBluePurple));
+                break;
+            default:
+                difficultyTV.setTextColor(context.getColor(R.color.colorFireBrick));
+                break;
         }
+
+
 
         if (!knowledge.equals("null")){
             knowledgeTV.setText(knowledge);
@@ -162,6 +169,7 @@ public abstract class Question extends Observable{
                 if (checkError.equals(errorString)){
                     Log.d("incorrect answer","add to incorrect list");
 //                    notifyObservers(outputStrings[0]);
+                    QuestionActivity.incorrectQuestionList.add(this);
                     notifyObservers(false);
                     currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
                 }else{
@@ -190,6 +198,7 @@ public abstract class Question extends Observable{
             Log.i("answer",answer);
             Log.i("output", output);
 //            QuestionActivity.addToIncorrectList(questionID);
+            QuestionActivity.incorrectQuestionList.add(this);
             notifyObservers(false);
             currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
         }

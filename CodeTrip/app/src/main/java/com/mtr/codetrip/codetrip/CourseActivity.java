@@ -182,7 +182,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         courseList.get(index).updateBtn();
     }
 
-    public static void refreshCourseMAp(){
+    public static void refreshCourseMap(){
         int courseIndex = 0;
         while(courseIndex <= currentCourseID && currentCourseID < courseList.size()){
             makeAvailable(courseIndex);
