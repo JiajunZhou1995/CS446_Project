@@ -28,6 +28,7 @@ import java.util.Observable;
 public abstract class Question extends Observable{
     protected Context context;
     ViewGroup rootView;
+    public int questionID;
     private String knowledge;
     private String instruction;
     private String hint;
@@ -71,7 +72,7 @@ public abstract class Question extends Observable{
 
     public void populateFromDB(Cursor c){
         //null check
-
+        questionID = c.getInt(c.getColumnIndex("questionid"));
         knowledge = c.getString(c.getColumnIndex("knowledge"));
         instruction = c.getString(c.getColumnIndex("instruction"));
         hint = c.getString(c.getColumnIndex("hint"));

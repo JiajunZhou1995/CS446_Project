@@ -27,8 +27,13 @@ import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.CostumWidgets.ColorArcProgressBar;
 import com.mtr.codetrip.codetrip.CostumWidgets.NonClickableSeekbar;
+import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
 import com.mtr.codetrip.codetrip.Object.Question;
+import com.mtr.codetrip.codetrip.Object.QuestionDragAndDrop;
+import com.mtr.codetrip.codetrip.Object.QuestionMultipleChoice;
 import com.mtr.codetrip.codetrip.Object.QuestionPageFragment;
+import com.mtr.codetrip.codetrip.Object.QuestionRearrange;
+import com.mtr.codetrip.codetrip.Object.QuestionShortAnswer;
 import com.mtr.codetrip.codetrip.Utility.ControlScrollViewPager;
 import com.mtr.codetrip.codetrip.Utility.MultipleClickUtility;
 import com.mtr.codetrip.codetrip.Utility.QuestionPicker;
@@ -315,15 +320,44 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             Question currentSelectedQuestion;
 
             if (isReview){
+
                 currentSelectedQuestion = oldIncorrectQuestionList.get(currentQuestion);
+                int questionID = currentSelectedQuestion.questionID;
+
+                String course = "codetrip.db";
+                SQLiteDatabase appDB = openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
+                String sql = String.format("SELECT * FROM question WHERE questionid=%d",questionID);
+                Cursor cursor = appDB.rawQuery(sql,null);
+                cursor.moveToFirst();
+
+
+                String questionType = cursor.getString(cursor.getColumnIndex("type"));
+                switch (questionType) {
+                    case "Rearrange":
+                        currentSelectedQuestion = new QuestionRearrange();
+                        break;
+                    case "MultipleChoice":
+                        currentSelectedQuestion = new QuestionMultipleChoice();
+                        break;
+                    case "ShortAnswer":
+                        currentSelectedQuestion = new QuestionShortAnswer();
+                        break;
+                    case "Drag&Drop":
+                        currentSelectedQuestion = new QuestionDragAndDrop();
+                        break;
+                    default:
+                        currentSelectedQuestion = null;
+                        break;
+                }
+                currentSelectedQuestion.populateFromDB(cursor);
             }else {
                 currentSelectedQuestion = questionPicker.getCurrentQuestion();
 
             }
 
-
             questionPageFragment = QuestionPageFragment.create();
             questionPageFragment.setCurrentQuestion(currentSelectedQuestion);
+
 //            if(isReview) questionPageFragment = QuestionPageFragment.create(courseID,incorrectQuestionList.get(currentQuestion));
 //            else questionPageFragment = QuestionPageFragment.create(courseID,currentQuestion);
             questionPageFragment.setCurrentQuestionActivity(currentQuestionActivity);
