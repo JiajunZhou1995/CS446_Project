@@ -32,7 +32,7 @@
                 android:textAlignment="viewEnd"
                 android:textStyle="bold"
                 android:textColor="@color/colorBluePurple"
-                android:text="Tianrui Ma (Catrina)\nUniversity of Waterloo, CS &amp; SE\nt33ma@edu.uwaterloo.ca"
+                android:text="Tianrui Ma (Catrina)\nUniversity of Waterloo, Computer Science\nt33ma@edu.uwaterloo.ca"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 
@@ -58,7 +58,7 @@
                 android:layout_width="140dp"
                 android:layout_height="80dp"
                 android:layout_gravity="end|center_vertical"
-                attr:gif_pic_name="aboutus_avatar_killua"/>
+                attr:gif_pic_name="aboutus_avatar_cute"/>
 
             <!--<ImageView-->
                 <!--android:layout_height="80dp"-->
