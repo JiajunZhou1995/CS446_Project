@@ -33,7 +33,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
     private ItemTouchHelper mItemTouchHelper;
     private List<String> codeIns;
     private String answer;
-    private RunButton doIt;
+//    private RunButton doIt;
     private RecyclerListAdapter adapter;
 
 
@@ -55,7 +55,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
     @Override
     public void setRootView(ViewGroup viewGroup){
         super.setRootView(viewGroup);
-        doIt = rootView.findViewById(R.id.doit);
+//        doIt = rootView.findViewById(R.id.doit);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         checkAnswer(output);
 
         updateConsole(output);
-
+        runButton.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
     }
 
     private void updateConsole(String output) {

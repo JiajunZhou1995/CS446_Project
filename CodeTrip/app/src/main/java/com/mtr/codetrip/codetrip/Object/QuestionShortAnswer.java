@@ -35,18 +35,18 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
     private List<List<EditTextInsert>> editTextInsertList;
     private QuestionShortAnswer thisQuestionView;
     private String codeString;
-    private RunButton runButton;
+//    private RunButton runButton;
 
 
-    QuestionShortAnswer(ViewGroup viewGroup) {
-        super(viewGroup);
-        thisQuestionView = this;
-        codeString = "";
-        normalCode = new ArrayList<>();
-        editTextInsertList = new ArrayList<>();
-        runButton = rootView.findViewById(R.id.doit);
-//        DropReceiveBlank receiveBlank = new DropReceiveBlank(context, runButton);
-    }
+//    QuestionShortAnswer(ViewGroup viewGroup) {
+//        super(viewGroup);
+//        thisQuestionView = this;
+//        codeString = "";
+//        normalCode = new ArrayList<>();
+//        editTextInsertList = new ArrayList<>();
+//        runButton = rootView.findViewById(R.id.doit);
+////        DropReceiveBlank receiveBlank = new DropReceiveBlank(context, runButton);
+//    }
 
     public QuestionShortAnswer(){
         super();
@@ -61,7 +61,7 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
     @Override
     public void setRootView(ViewGroup viewGroup){
         super.setRootView(viewGroup);
-        runButton = rootView.findViewById(R.id.doit);
+//        runButton = rootView.findViewById(R.id.doit);
     }
 
     @Override
@@ -146,6 +146,7 @@ public class QuestionShortAnswer extends Question implements AsyncResponse {
         Log.d("out put", output);
         updateConsole(output);
         checkAnswer(output);
+        runButton.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
     }
 
 //    @Override

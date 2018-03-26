@@ -59,7 +59,7 @@ public class RunButton extends android.support.v7.widget.AppCompatButton impleme
                 break;
             case RUN: case CHECK:
                 currentQuestion.runAction();
-                updateDoItButtonState(RunButtonState.CONTINUE);
+//                updateDoItButtonState(RunButtonState.CONTINUE);
                 break;
             case CONTINUE:
                 currentQuestionActivity.onQuestionContinue();

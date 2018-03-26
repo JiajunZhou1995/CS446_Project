@@ -33,16 +33,16 @@ public class QuestionMultipleChoice extends Question {
     private int currentSelection;
     private List<FrameLayout> choiceViews;
     private int answer;
-    private RunButton doIt;
+//    private RunButton doIt;
 
-
-    QuestionMultipleChoice(ViewGroup viewGroup) {
-        super(viewGroup);
-        codeIns = new ArrayList<>();
-        choices = new ArrayList<>();
-        choiceViews = new ArrayList<>();
-        doIt = rootView.findViewById(R.id.doit);
-    }
+//
+//    QuestionMultipleChoice(ViewGroup viewGroup) {
+//        super(viewGroup);
+//        codeIns = new ArrayList<>();
+//        choices = new ArrayList<>();
+//        choiceViews = new ArrayList<>();
+//        doIt = rootView.findViewById(R.id.doit);
+//    }
 
     public QuestionMultipleChoice(){
         super();
@@ -54,7 +54,7 @@ public class QuestionMultipleChoice extends Question {
     @Override
     public void setRootView(ViewGroup viewGroup){
         super.setRootView(viewGroup);
-        doIt = rootView.findViewById(R.id.doit);
+//        doIt = rootView.findViewById(R.id.doit);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class QuestionMultipleChoice extends Question {
                 @Override
                 public void onClick(View v) {
                     updateSelection(choiceIndex);
-                    doIt.updateDoItButtonState(RunButton.RunButtonState.CHECK);
+                    runButton.updateDoItButtonState(RunButton.RunButtonState.CHECK);
                 }
             });
             choiceViews.add(choiceView);
@@ -145,7 +145,7 @@ public class QuestionMultipleChoice extends Question {
             currentQuestionActivity.NUM_PAGES++;
             currentQuestionActivity.notifyChange();
         }
-        doIt.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
+        runButton.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
     }
 
 

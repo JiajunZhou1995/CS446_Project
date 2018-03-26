@@ -47,18 +47,19 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     //drop TextView List
     private List<List<TextViewDropBlank>> textViewDropBlankList;
     private QuestionDragAndDrop thisQuestionView;
+//    private RunButton runButton;
 
 
-    QuestionDragAndDrop(ViewGroup viewGroup){
-        super(viewGroup);
-        thisQuestionView = this;
-        codeString = "";
-        normalCode = new ArrayList<>();
-        codeBlockButtonList = new ArrayList<>();
-        textViewDropBlankList = new ArrayList<>();
-        RunButton runButton = rootView.findViewById(R.id.doit);
-        dropReceiveBlank = new DropReceiveBlank(runButton);
-    }
+//    QuestionDragAndDrop(ViewGroup viewGroup){
+//        super(viewGroup);
+//        thisQuestionView = this;
+//        codeString = "";
+//        normalCode = new ArrayList<>();
+//        codeBlockButtonList = new ArrayList<>();
+//        textViewDropBlankList = new ArrayList<>();
+//        runButton = rootView.findViewById(R.id.doit);
+//        dropReceiveBlank = new DropReceiveBlank(runButton);
+//    }
 
     public QuestionDragAndDrop(){
         super();
@@ -74,7 +75,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
     @Override
     public void setRootView(ViewGroup viewGroup){
         super.setRootView(viewGroup);
-        RunButton runButton = rootView.findViewById(R.id.doit);
+//        runButton = rootView.findViewById(R.id.doit);
         runButton.setCurrentQuestion(this);
         runButton.setCurrentQuestionActivity(currentQuestionActivity);
         dropReceiveBlank = new DropReceiveBlank(runButton);
@@ -180,6 +181,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
 //        Log.d("out put",output);
         updateConsole(output);
         checkAnswer(output);
+        runButton.updateDoItButtonState(RunButton.RunButtonState.CONTINUE);
     }
 
 //    @Override

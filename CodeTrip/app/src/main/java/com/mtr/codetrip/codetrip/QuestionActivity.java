@@ -324,12 +324,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         if (id == R.id.return_button){
             this.finish();
         }else if (id == question_complete_return_button){
-
-//            String course = "codetrip.db";
-//            SQLiteDatabase appDB = this.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
-//            String sql = "SELETE * FROM course WHERE courseid="+Integer.toString(courseID);
-//            @SuppressLint("Recycle") Cursor c = appDB.query("course", null, null, null, null, null, null);
-//            c.moveToFirst();
             CourseActivity.updateScore(courseID,grade);
             CourseActivity.currentCourseID = Math.max(courseID+1,CourseActivity.currentCourseID);
             CourseActivity.refreshCourseMAp();

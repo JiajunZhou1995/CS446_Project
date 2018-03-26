@@ -36,6 +36,7 @@ public abstract class Question extends Observable{
     protected String answer;
     final String nullAnswer = "No Answer";
     final String errorString = "Error";
+    public RunButton runButton;
 
 //    protected RunButton doIt;
 //
@@ -50,6 +51,7 @@ public abstract class Question extends Observable{
     public Question(ViewGroup view){
         this.rootView = view;
         context = rootView.getContext();
+//        runButton = rootView.findViewById(R.id.doit);
     }
 
     public Question(){
@@ -59,6 +61,7 @@ public abstract class Question extends Observable{
     public void setRootView(ViewGroup rootView){
         this.rootView = rootView;
         context = rootView.getContext();
+        runButton = rootView.findViewById(R.id.doit);
     }
 
     void setCurrentQuestionActivity(QuestionActivity questionActivity){
