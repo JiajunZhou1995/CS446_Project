@@ -97,11 +97,11 @@
 <!--</RelativeLayout>-->
 
 
-<RelativeLayout
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:attr="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -114,11 +114,19 @@
             android:orientation="horizontal"
             android:paddingHorizontal="30dp">
 
-            <ImageView
-                android:layout_height="80dp"
+            <com.mtr.codetrip.codetrip.CostumWidgets.GifImageView
                 android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_gravity="start|center_vertical"
-                android:src="@mipmap/avatar" />
+                attr:gif_pic_name="yinhun"/>
+                <!--android:src="@drawable/source"-->
+                <!--attr:auto_play="true"/>-->
+
+            <!--<ImageView-->
+                <!--android:layout_height="80dp"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_gravity="start|center_vertical"-->
+                <!--android:src="@mipmap/avatar" />-->
 
             <TextView
                 android:layout_weight="0.7"
@@ -126,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
                 android:textAlignment="viewEnd"
-                android:text="Tianrui Ma\nUniversity of Waterloo\nComputer Science"
+                android:text="Tianrui Ma (Catrina)\nUniversity of Waterloo, CS &amp; SE\nt33ma@edu.uwaterloo.ca"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 
@@ -145,11 +153,18 @@
                 android:textAlignment="viewStart"
                 android:text="Jiahua Zhu\nUniversity of Waterloo\nComputer Science"
                 tools:ignore="RtlCompat" />
-            <ImageView
-                android:layout_height="80dp"
-                android:layout_width="80dp"
+
+            <com.mtr.codetrip.codetrip.CostumWidgets.GifImageView
+                android:layout_width="140dp"
+                android:layout_height="100dp"
                 android:layout_gravity="end|center_vertical"
-                android:src="@mipmap/avatar" />
+                attr:gif_pic_name="shy"/>
+
+            <!--<ImageView-->
+                <!--android:layout_height="80dp"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_gravity="end|center_vertical"-->
+                <!--android:src="@mipmap/avatar" />-->
         </LinearLayout>
 
         <LinearLayout android:layout_weight="1"
