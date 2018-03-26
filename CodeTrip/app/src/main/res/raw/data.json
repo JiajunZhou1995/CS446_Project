@@ -309,11 +309,11 @@
           "B = CodeTrip"
         ],
         "Console": "1",
-        "CodeBlock": [
+        "CodeBlock": [],
+        "Choice": [
           "True",
           "False"
         ],
-        "Choice": [],
         "Hint": "Avoid use before name the variable."
       },
       {
