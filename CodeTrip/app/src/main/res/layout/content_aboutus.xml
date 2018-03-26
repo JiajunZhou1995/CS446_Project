@@ -22,7 +22,7 @@
                 android:layout_width="140dp"
                 android:layout_height="80dp"
                 android:layout_gravity="start|center_vertical"
-                attr:gif_pic_name="pikapika"/>
+                attr:gif_pic_name="aboutus_avatar_pika"/>
 
             <TextView
                 android:layout_weight="0.7"
@@ -58,7 +58,7 @@
                 android:layout_width="140dp"
                 android:layout_height="80dp"
                 android:layout_gravity="end|center_vertical"
-                attr:gif_pic_name="jasmine_avatar2"/>
+                attr:gif_pic_name="aboutus_avatar_shy"/>
 
             <!--<ImageView-->
                 <!--android:layout_height="80dp"-->
@@ -77,7 +77,7 @@
                 android:layout_width="140dp"
                 android:layout_height="80dp"
                 android:layout_gravity="start|center_vertical"
-                attr:gif_pic_name="damage"/>
+                attr:gif_pic_name="aboutus_avatar_eat"/>
             <TextView
                 android:layout_weight="0.7"
                 android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
                 android:layout_width="140dp"
                 android:layout_height="80dp"
                 android:layout_gravity="end|center_vertical"
-                attr:gif_pic_name="flyfly"/>
+                attr:gif_pic_name="aboutus_avatar_fly"/>
         </LinearLayout>
 
 

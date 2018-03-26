@@ -156,11 +156,18 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
             relativeLayout.addView(newCourse.boundBtn,newCourse.buttonLayoutParams);
             relativeLayout.addView(newCourse.courseTitle,newCourse.titleLayoutParams);
+            for (int starIndex = 0; starIndex < 3; starIndex++){
+                relativeLayout.addView(newCourse.stars.get(starIndex),newCourse.starsLayoutParams.get(starIndex));
+                newCourse.stars.get(starIndex).setTranslationZ(10);
+                newCourse.stars.get(starIndex).setVisibility(View.INVISIBLE);
+
+            }
             newCourse.boundBtn.setTranslationZ(0);
             newCourse.courseTitle.setTranslationZ(10);
 
             c.moveToNext();
         }
+        c.close();
         appDB.close();
     }
 

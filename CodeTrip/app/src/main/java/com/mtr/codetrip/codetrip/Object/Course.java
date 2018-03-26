@@ -9,12 +9,16 @@ import android.graphics.drawable.Drawable;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.CourseActivity;
 import com.mtr.codetrip.codetrip.MainActivity;
 import com.mtr.codetrip.codetrip.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -37,6 +41,8 @@ public class Course {
     private Drawable background;
     private int defaultMarginTop;
     public TextView courseTitle;
+    public List<ImageView> stars;
+    public List<RelativeLayout.LayoutParams> starsLayoutParams;
 
 
 
@@ -78,6 +84,7 @@ public class Course {
 
         tmp = cursor.getString(cursor.getColumnIndex("position"));
         boundBtn = generateCourseButton(context);
+        stars = generateStars(context);
         buttonLayoutParams = setUpLayout(context,tmp);
     }
 
@@ -87,6 +94,16 @@ public class Course {
 //        if (courseType==CourseType.PROJECT) Log.d("type","project");
 //        Log.d("nothing","happened");
 //    }
+
+    private List<ImageView> generateStars(Context context){
+        List<ImageView> starList = new ArrayList<>();
+        for (int starIndex = 0; starIndex < 3; ++starIndex){
+            ImageView star = new ImageView(context);
+            star.setImageResource(R.mipmap.course_star);
+            starList.add(star);
+        }
+        return starList;
+    }
 
     public void updateBtn(){
         Drawable backgroundImg = boundBtn.getBackground();
@@ -130,6 +147,15 @@ public class Course {
         rlp.setMargins(xyPosition.first,xyPosition.second + defaultMarginTop,0,0);
         titleLayoutParams = new RelativeLayout.LayoutParams(flag_width,flag_height);
         titleLayoutParams.setMargins(xyPosition.first + flag_x,xyPosition.second + defaultMarginTop + flag_y,0,0);
+
+        starsLayoutParams = new ArrayList<>();
+        for (int starLayoutParamsIndex = 0; starLayoutParamsIndex < 3; starLayoutParamsIndex++){
+            RelativeLayout.LayoutParams starLayoutParams = new RelativeLayout.LayoutParams((int)(unit_width*0.3+0.5f),(int)(unit_width*0.3+0.5f));
+            int x_offset = (starLayoutParamsIndex - 1)* (int)(unit_width*0.35+0.5f);
+            int y_offset = (starLayoutParamsIndex==1)? 0: (-1)*(int)(unit_width*0.12+0.5f);
+            starLayoutParams.setMargins(xyPosition.first + (int)(unit_width*0.35+0.5f) + x_offset, xyPosition.second + defaultMarginTop + (int)(unit_height*0.8+0.5f) + y_offset, 0,0);
+            starsLayoutParams.add(starLayoutParams);
+        }
         return rlp;
     }
 

@@ -40,6 +40,7 @@ import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
 
 import static com.mtr.codetrip.codetrip.R.id.question_complete_return_button;
+import static com.mtr.codetrip.codetrip.R.id.question_complete_review_button;
 import static com.mtr.codetrip.codetrip.Utility.DataBaseUtility.getStrArrayFromDB;
 
 /**
@@ -198,6 +199,11 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
                 .setPosition(-50f, screenWidth+50f, -50f, -50f)
                 .stream(300, 100000L);
 
+        Button review_button = completionPage.findViewById(question_complete_review_button);
+        if (grade==100){
+            review_button.setClickable(false);
+            review_button.setBackground(this.getDrawable(R.drawable.run_button_invalid));
+        }
 
         Button return_button = completionPage.findViewById(question_complete_return_button);
         return_button.setOnClickListener(currentQuestionActivity);
