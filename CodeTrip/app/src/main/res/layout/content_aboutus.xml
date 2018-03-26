@@ -32,7 +32,7 @@
                 android:textAlignment="viewEnd"
                 android:textStyle="bold"
                 android:textColor="@color/colorBluePurple"
-                android:text="Tianrui Ma (Catrina)\nUniversity of Waterloo, Computer Science\nt33ma@edu.uwaterloo.ca"
+                android:text="Tianrui Ma (Catrina)\nUniversity of Waterloo, CS\nt33ma@edu.uwaterloo.ca"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 
