@@ -155,7 +155,7 @@
                 tools:ignore="RtlCompat" />
 
             <com.mtr.codetrip.codetrip.CostumWidgets.GifImageView
-                android:layout_width="120dp"
+                android:layout_width="140dp"
                 android:layout_height="80dp"
                 android:layout_gravity="end|center_vertical"
                 attr:gif_pic_name="jasmine_avatar2"/>
