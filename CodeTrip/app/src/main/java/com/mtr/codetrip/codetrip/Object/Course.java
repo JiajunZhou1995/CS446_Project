@@ -3,11 +3,13 @@ package com.mtr.codetrip.codetrip.Object;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
 import android.util.Pair;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -43,11 +45,15 @@ public class Course {
     public TextView courseTitle;
     public List<ImageView> stars;
     public List<RelativeLayout.LayoutParams> starsLayoutParams;
+    public float course_score;
+    private Context mContext;
 
 
 
     @SuppressLint("InflateParams")
     public Course(Context context, Cursor cursor, int margin_top){
+
+        mContext = context;
 
         defaultMarginTop = margin_top;
 
@@ -82,9 +88,13 @@ public class Course {
             courseStatus = CourseStatus.UNAVAILABLE;
         }
 
+        course_score = cursor.getFloat(cursor.getColumnIndex("score"));
+
         tmp = cursor.getString(cursor.getColumnIndex("position"));
         boundBtn = generateCourseButton(context);
         stars = generateStars(context);
+
+        setStarsVisibility();
         buttonLayoutParams = setUpLayout(context,tmp);
     }
 
@@ -95,11 +105,37 @@ public class Course {
 //        Log.d("nothing","happened");
 //    }
 
+    private void setStarsVisibility(){
+        if (course_score>=100){
+            stars.get(2).setVisibility(View.VISIBLE);
+        }
+
+        if (course_score>=70){
+            stars.get(1).setVisibility(View.VISIBLE);
+        }
+
+        if (course_score>=50){
+            stars.get(0).setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void updateScore(float newScore){
+        if (newScore>course_score){
+            course_score = newScore;
+            setStarsVisibility();
+            String course = "codetrip.db";
+            SQLiteDatabase appDB = mContext.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
+            String sql = "UPDATE course SET score="+Float.toString(course_score)+ " WHERE courseid=" + Integer.toString(courseID);
+            appDB.execSQL(sql);
+        }
+    }
+
     private List<ImageView> generateStars(Context context){
         List<ImageView> starList = new ArrayList<>();
         for (int starIndex = 0; starIndex < 3; ++starIndex){
             ImageView star = new ImageView(context);
             star.setImageResource(R.mipmap.course_star);
+            star.setVisibility(View.INVISIBLE);
             starList.add(star);
         }
         return starList;

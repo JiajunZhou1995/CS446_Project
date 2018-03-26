@@ -6,23 +6,18 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Looper;
-import android.os.MessageQueue;
 import android.support.annotation.NonNull;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 
 import com.mtr.codetrip.codetrip.Object.Course;
 import com.mtr.codetrip.codetrip.Utility.MultipleClickUtility;
@@ -38,12 +33,12 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
     static ArrayList<Course>courseList;
     public static int marginTop;
-    public static int currentCourse;
+    public static int currentCourseID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        currentCourse = 0;
+        currentCourseID = 0;
 
 
         setContentView(R.layout.activity_main);
@@ -150,7 +145,6 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             // there should be a filter to filter the unit
             Course newCourse = new Course(this, c,marginTop);
             newCourse.boundBtn.setOnClickListener(this);
-            courseList.add(newCourse);
 
 //            newCourse.printCourse();
 
@@ -159,12 +153,11 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             for (int starIndex = 0; starIndex < 3; starIndex++){
                 relativeLayout.addView(newCourse.stars.get(starIndex),newCourse.starsLayoutParams.get(starIndex));
                 newCourse.stars.get(starIndex).setTranslationZ(10);
-                newCourse.stars.get(starIndex).setVisibility(View.INVISIBLE);
-
             }
             newCourse.boundBtn.setTranslationZ(0);
             newCourse.courseTitle.setTranslationZ(10);
 
+            courseList.add(newCourse);
             c.moveToNext();
         }
         c.close();
@@ -186,10 +179,14 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
     public static void refreshCourseMAp(){
         int courseIndex = 0;
-        while(courseIndex <= currentCourse){
+        while(courseIndex <= currentCourseID && currentCourseID < courseList.size()){
             makeAvailable(courseIndex);
             courseIndex++;
         }
+    }
+
+    public static void updateScore(float newScore){
+        courseList.get(currentCourseID).updateScore(newScore);
     }
 
 
@@ -201,7 +198,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         String courseIdString = (String)view.getTag();
         Course currentCourse = courseList.get(Integer.parseInt(courseIdString));
 
-//        Course.CourseType courseType  =  currentCourse.courseType;
+//        Course.CourseType courseType  =  currentCourseID.courseType;
         Course.CourseStatus courseStatus = currentCourse.courseStatus;
 
         if (courseStatus == Course.CourseStatus.AVAILABLE){

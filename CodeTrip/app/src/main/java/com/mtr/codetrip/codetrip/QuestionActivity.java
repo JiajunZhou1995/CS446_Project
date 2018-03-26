@@ -148,7 +148,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         mPager.setOffscreenPageLimit(MAX_PAGES);
 
         mLinearLayout = findViewById(R.id.question_page_toolbar);
-        Button returnButton = findViewById(R.id.retrun_button);
+        Button returnButton = findViewById(R.id.return_button);
         returnButton.setOnClickListener(this);
         Button hintButton = findViewById(R.id.hint_button);
         hintButton.setOnClickListener(this);
@@ -321,11 +321,19 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.retrun_button){
+        if (id == R.id.return_button){
             this.finish();
         }else if (id == question_complete_return_button){
-            CourseActivity.currentCourse=courseID+1;
+
+//            String course = "codetrip.db";
+//            SQLiteDatabase appDB = this.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
+//            String sql = "SELETE * FROM course WHERE courseid="+Integer.toString(courseID);
+//            @SuppressLint("Recycle") Cursor c = appDB.query("course", null, null, null, null, null, null);
+//            c.moveToFirst();
+            CourseActivity.updateScore(grade);
+            CourseActivity.currentCourseID =courseID+1;
             CourseActivity.refreshCourseMAp();
+
             this.finish();
 //            completePopView.dismiss();
         }else if(id == R.id.hint_button) inflateHintPopView();

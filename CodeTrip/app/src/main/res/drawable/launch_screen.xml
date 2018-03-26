@@ -9,7 +9,7 @@
     <!-- Your product logo - 144dp color version of your app icon -->
     <item>
         <bitmap
-            android:src="@drawable/cat"
+            android:src="@drawable/aboutus_avatar_cat"
             android:gravity="center" />
 
 
