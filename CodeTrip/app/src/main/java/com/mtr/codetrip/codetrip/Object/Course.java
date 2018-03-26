@@ -104,6 +104,17 @@ public class Course {
 //        if (courseType==CourseType.PROJECT) Log.d("type","project");
 //        Log.d("nothing","happened");
 //    }
+    public int getNumberOfStar(){
+        if (course_score>=100){
+            return 3;
+        }else if (course_score>=70){
+            return 2;
+        }else if (course_score>=50){
+            return 1;
+        }else {
+            return 0;
+        }
+    }
 
     private void setStarsVisibility(){
         if (course_score>=100){

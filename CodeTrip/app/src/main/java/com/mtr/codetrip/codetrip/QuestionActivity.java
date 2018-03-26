@@ -82,6 +82,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     public List<String> topicList;
     private int MAX_PAGES;
     final int maxNumberOfQuetionPerTopic = 4;
+    private String courseTitle;
 
 //    private PopupWindow completePopView;
 
@@ -113,6 +114,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         Cursor cursor = appDB.rawQuery(sql, null);
         cursor.moveToFirst();
 
+        courseTitle = cursor.getString(cursor.getColumnIndex("title"));
         topicList = getStrArrayFromDB(cursor, "topics");
         cursor.close();
         appDB.close();
@@ -198,6 +200,9 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
                 .addSizes(new Size(8, 5f))
                 .setPosition(-50f, screenWidth+50f, -50f, -50f)
                 .stream(300, 100000L);
+
+        TextView title = completionPage.findViewById(R.id.course_title);
+        title.setText(courseTitle);
 
         Button review_button = completionPage.findViewById(question_complete_review_button);
         if (grade==100){

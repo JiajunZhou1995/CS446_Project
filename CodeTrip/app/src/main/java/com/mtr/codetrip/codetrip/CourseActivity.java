@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.mtr.codetrip.codetrip.Object.Course;
 import com.mtr.codetrip.codetrip.Utility.MultipleClickUtility;
@@ -34,6 +35,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     static ArrayList<Course>courseList;
     public static int marginTop;
     public static int currentCourseID;
+    private static TextView totalStarCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,9 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(1).setChecked(true);
+
+        totalStarCount = findViewById(R.id.total_star_count);
+        updateStarCount();
 
     }
 
@@ -183,6 +188,16 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             makeAvailable(courseIndex);
             courseIndex++;
         }
+        updateStarCount();
+    }
+
+
+    public static void updateStarCount(){
+        int totalStars = 0;
+        for (Course course : courseList){
+            totalStars+=course.getNumberOfStar();
+        }
+        totalStarCount.setText(Integer.toString(totalStars));
     }
 
     public static void updateScore(int courseid, float newScore){
