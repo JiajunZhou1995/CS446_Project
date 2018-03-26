@@ -112,10 +112,12 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
         if(output.equals(answer)){
             Log.d("correct!!","increase score");
             increaseGrade();
+            notifyObservers(true);
             currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
         }else{
             Log.d("incorrect answer","add to incorrect list");
 //            QuestionActivity.addToIncorrectList(questionID);
+            notifyObservers(false);
             currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
         }
         Question newQuestion = currentQuestionActivity.questionPicker.getCurrentQuestion();
@@ -146,6 +148,7 @@ public class QuestionRearrange extends Question implements OnStartDragListener, 
 
     @Override
     public void runAction() {
+        super.runAction();
         updateAnswer();
     }
 }

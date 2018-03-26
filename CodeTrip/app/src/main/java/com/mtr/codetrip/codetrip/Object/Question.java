@@ -16,6 +16,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 
 /**
@@ -23,7 +24,7 @@ import java.util.List;
  * Within Package ${PACKAGE_NAME}
  */
 
-public abstract class Question {
+public abstract class Question extends Observable{
     protected Context context;
     ViewGroup rootView;
     private String knowledge;
@@ -157,15 +158,19 @@ public abstract class Question {
                 String checkError = outputStrings[0].substring(outputStrings[0].length()-5);
                 if (checkError.equals(errorString)){
                     Log.d("incorrect answer","add to incorrect list");
+//                    notifyObservers(outputStrings[0]);
+                    notifyObservers(false);
                     currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
                 }else{
                     Log.d("correct!!","increase score");
                     increaseGrade();
+                    notifyObservers(true);
                     currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
                 }
             }else{
                 Log.d("correct!!","increase score");
                 increaseGrade();
+                notifyObservers(true);
                 currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
             }
 
@@ -175,12 +180,14 @@ public abstract class Question {
             Log.i("answer",answer);
             Log.i("output", output);
             increaseGrade();
+            notifyObservers(true);
             currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
         }else{
             Log.d("incorrect answer","add to incorrect list");
             Log.i("answer",answer);
             Log.i("output", output);
 //            QuestionActivity.addToIncorrectList(questionID);
+            notifyObservers(false);
             currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
         }
 
@@ -192,7 +199,7 @@ public abstract class Question {
     }
 
     public void runAction(){
-
+        setChanged();
     }
 
 }

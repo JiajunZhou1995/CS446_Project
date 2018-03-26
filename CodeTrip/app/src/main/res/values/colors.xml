@@ -17,7 +17,9 @@
     <color name="colorBlueGrey">#B0BEC5</color>
     <color name="colorLightBlue">#a5b9d6</color>
     <color name="colorBluePurple">#6b6bb2</color>
-    <color name="colorDarkNavieBlue">#2a2a47</color>
+    <color name="colorDarkNavyBlue">#2a2a47</color>
+    <color name="colorGreen">#4ab655</color>
+    <color name="colorLightRed">#ff5459</color>
 </resources>
 
 

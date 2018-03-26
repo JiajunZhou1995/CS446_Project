@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 
 import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
 import com.mtr.codetrip.codetrip.MainActivity;
@@ -18,6 +21,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Observable;
+import java.util.Observer;
 
 
 /**
@@ -25,7 +30,7 @@ import java.io.ObjectOutputStream;
  * Within Package ${PACKAGE_NAME}
  */
 
-public class QuestionPageFragment extends Fragment {
+public class QuestionPageFragment extends Fragment implements Observer {
 
 //    enum
     /**
@@ -99,6 +104,7 @@ public class QuestionPageFragment extends Fragment {
             currentQuestion.setRootView(rootView);
             currentQuestion.inflateContent(rootView);
             currentQuestion.setCurrentQuestionActivity(currentQuestionActivity);
+            currentQuestion.addObserver(this);
 
             RunButton runButton = rootView.findViewById(R.id.doit);
             runButton.setCurrentQuestion(currentQuestion);
@@ -180,5 +186,33 @@ public class QuestionPageFragment extends Fragment {
 //
     public Question getCurrentQuestion() {
         return currentQuestion;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
+        Button flyInButton = currentQuestion.rootView.findViewById(R.id.flyInIndicator);
+        if (arg instanceof Boolean){
+            if ((Boolean)arg){
+                flyInButton.setText("Correct :)");
+                flyInButton.setBackgroundColor(getContext().getColor(R.color.colorGreen));
+            }
+            else{
+                flyInButton.setText("Wrong answer :(");
+                flyInButton.setBackgroundColor(getContext().getColor(R.color.colorLightRed));
+            }
+        }
+//        else if (arg instanceof String){
+//            switch ((String)arg){
+//                case "SyntaxError":
+//                    break;
+//
+//            }
+//
+//        }
+
+        flyInButton.setVisibility(View.VISIBLE);
+        Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.fly_in);
+        flyInButton.startAnimation(anim);
     }
 }

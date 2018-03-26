@@ -219,6 +219,7 @@ public class QuestionDragAndDrop extends Question implements AsyncResponse {
 
     @Override
     public void runAction(){
+        super.runAction();
 //        dropReceiveBlank.print();
         for (List<TextViewDropBlank> dropBlankList: textViewDropBlankList){
             for (TextViewDropBlank textViewDropBlank : dropBlankList){

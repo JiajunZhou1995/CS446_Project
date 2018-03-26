@@ -123,15 +123,18 @@ public class QuestionMultipleChoice extends Question {
 
     @Override
     public void runAction() {
+        super.runAction();
         if (currentSelection == answer) {
 //            TextView tv = choiceViews.get(currentSelection).findViewById(R.id.mc_item_text);
 //            updateButton();
             Log.d("correct!!","increase score");
+            notifyObservers(true);
             increaseGrade();
             currentQuestionActivity.questionPicker.ganerateNextQuestion(true);
         }else{
             Log.d("incorrect answer","add to incorrect list");
 //            QuestionActivity.addToIncorrectList(questionID);
+            notifyObservers(false);
             currentQuestionActivity.questionPicker.ganerateNextQuestion(false);
 
         }
