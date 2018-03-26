@@ -1,100 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<RelativeLayout xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android" >-->
-    <!--<TableLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:paddingVertical="50dp"-->
-        <!--xmlns:android="http://schemas.android.com/apk/res/android">-->
-
-        <!--<TableRow android:layout_weight="1"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:gravity="center_vertical|start"-->
-            <!--android:background="@color/colorBluePurple">-->
-            <!--<ImageView-->
-                <!--android:src="@mipmap/avatar"-->
-                <!--android:layout_width="80dp"-->
-                <!--android:layout_height="80dp"/>-->
-            <!--<TextView-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:text="Tianrui Ma\nUniversity of Waterloo\nComputer Science"/>-->
-        <!--</TableRow>-->
-
-        <!--<TableRow android:layout_weight="1"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:gravity="center_vertical|start"-->
-            <!--android:background="@color/colorOrange">-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal">-->
-
-                <!--<ImageView-->
-                    <!--android:layout_width="80dp"-->
-                    <!--android:layout_height="80dp"-->
-                    <!--android:src="@mipmap/avatar" />-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Tianrui Ma\nUniversity of Waterloo\nComputer Science" />-->
-
-            <!--</LinearLayout>-->
-        <!--</TableRow>-->
-
-        <!--<TableRow android:layout_weight="1"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:background="@color/colorAquaMarine">-->
-
-            <!--<ImageView-->
-                <!--android:layout_height="80dp"-->
-                <!--android:layout_width="80dp"-->
-                <!--android:background="@color/colorBlueGrey"-->
-                <!--android:layout_gravity="start|center_vertical"-->
-                <!--android:src="@mipmap/avatar" />-->
-
-            <!--<TextView-->
-                <!--android:layout_weight="0.7"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="right"-->
-                <!--android:textAlignment="viewEnd"-->
-                <!--android:background="@color/colorBlueGrey"-->
-                <!--android:text="Tianrui Ma"-->
-                <!--tools:ignore="RtlCompat" />-->
-        <!--</TableRow>-->
-
-        <!--<TableRow android:layout_weight="1"-->
-            <!--android:gravity="center_vertical|start"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:background="@color/colorAccent">-->
-            <!--<TextView-->
-                <!--android:padding="30dp"-->
-
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="start|center_vertical"-->
-                <!--android:text="Tianrui Ma" />-->
-
-            <!--<ImageView-->
-                <!--android:layout_width="80dp"-->
-                <!--android:layout_height="80dp"-->
-                <!--android:layout_gravity="end|center_vertical"-->
-                <!--android:src="@mipmap/avatar" />-->
-
-
-        <!--</TableRow>-->
-
-
-
-    <!--</TableLayout>-->
-
-<!--</RelativeLayout>-->
 
 
 <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
@@ -115,18 +19,10 @@
             android:paddingHorizontal="30dp">
 
             <com.mtr.codetrip.codetrip.CostumWidgets.GifImageView
-                android:layout_width="80dp"
+                android:layout_width="140dp"
                 android:layout_height="80dp"
                 android:layout_gravity="start|center_vertical"
-                attr:gif_pic_name="yinhun"/>
-                <!--android:src="@drawable/source"-->
-                <!--attr:auto_play="true"/>-->
-
-            <!--<ImageView-->
-                <!--android:layout_height="80dp"-->
-                <!--android:layout_width="80dp"-->
-                <!--android:layout_gravity="start|center_vertical"-->
-                <!--android:src="@mipmap/avatar" />-->
+                attr:gif_pic_name="pikapika"/>
 
             <TextView
                 android:layout_weight="0.7"
@@ -134,6 +30,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
                 android:textAlignment="viewEnd"
+                android:textStyle="bold"
+                android:textColor="@color/colorBluePurple"
                 android:text="Tianrui Ma (Catrina)\nUniversity of Waterloo, CS &amp; SE\nt33ma@edu.uwaterloo.ca"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
@@ -151,6 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:textAlignment="viewStart"
+                android:textStyle="bold"
+                android:textColor="@color/colorBluePurple"
                 android:text="Jiahua Zhu\nUniversity of Waterloo\nComputer Science"
                 tools:ignore="RtlCompat" />
 
@@ -173,18 +73,19 @@
             android:orientation="horizontal"
             android:paddingHorizontal="30dp">
 
-            <ImageView
+            <com.mtr.codetrip.codetrip.CostumWidgets.GifImageView
+                android:layout_width="140dp"
                 android:layout_height="80dp"
-                android:layout_width="80dp"
                 android:layout_gravity="start|center_vertical"
-                android:src="@mipmap/avatar" />
-
+                attr:gif_pic_name="damage"/>
             <TextView
                 android:layout_weight="0.7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
                 android:textAlignment="viewEnd"
+                android:textStyle="bold"
+                android:textColor="@color/colorBluePurple"
                 android:text="Jiajun Zhou\nUniversity of Waterloo\nComputer Science"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
@@ -202,13 +103,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:textAlignment="viewStart"
+                android:textStyle="bold"
+                android:textColor="@color/colorBluePurple"
                 android:text="Haolin Wu\nUniversity of Waterloo\nComputer Science"
                 tools:ignore="RtlCompat" />
-            <ImageView
+            <com.mtr.codetrip.codetrip.CostumWidgets.GifImageView
+                android:layout_width="140dp"
                 android:layout_height="80dp"
-                android:layout_width="80dp"
                 android:layout_gravity="end|center_vertical"
-                android:src="@mipmap/avatar" />
+                attr:gif_pic_name="flyfly"/>
         </LinearLayout>
 
 
