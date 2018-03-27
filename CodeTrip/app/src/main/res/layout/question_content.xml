@@ -20,15 +20,15 @@
                 android:id="@+id/question_knowledge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/colorBluePurple"/>
-            <TextView
-                android:id="@+id/question_instruction"
                 android:textSize="20sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textColor="@color/colorBlack"/>
+            <TextView
+                android:id="@+id/question_instruction"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBluePurple"/>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"

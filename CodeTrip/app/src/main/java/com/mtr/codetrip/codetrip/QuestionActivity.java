@@ -336,7 +336,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
                 String course = "codetrip.db";
                 SQLiteDatabase appDB = openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
-                String sql = String.format("SELECT * FROM question WHERE questionid=%d",oldIncorrectQuestionList.get(currentQuestion));
+                String sql = String.format("SELECT * FROM question WHERE questionid=%d AND courseid=%d",oldIncorrectQuestionList.get(currentQuestion),courseID);
                 Cursor cursor = appDB.rawQuery(sql,null);
                 cursor.moveToFirst();
 
