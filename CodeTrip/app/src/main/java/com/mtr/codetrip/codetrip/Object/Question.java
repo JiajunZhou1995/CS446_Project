@@ -2,6 +2,7 @@ package com.mtr.codetrip.codetrip.Object;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,14 +121,14 @@ public abstract class Question extends Observable{
 
 
         if (!knowledge.equals("null")){
-            knowledgeTV.setText(knowledge);
+            knowledgeTV.setText(Html.fromHtml(knowledge));
         }
         else {
             knowledgeTV.setVisibility(View.GONE);
         }
 
         if (!instruction.equals("null")){
-            instructionTV.setText(instruction);
+            instructionTV.setText(Html.fromHtml(instruction));
         }
         else {
             instructionTV.setVisibility(View.GONE);
