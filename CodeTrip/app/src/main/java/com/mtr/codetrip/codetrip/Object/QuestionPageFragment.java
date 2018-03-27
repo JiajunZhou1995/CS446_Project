@@ -1,5 +1,6 @@
 package com.mtr.codetrip.codetrip.Object;
 
+import android.animation.ObjectAnimator;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 
 import com.mtr.codetrip.codetrip.CostumWidgets.RunButton;
@@ -215,9 +217,11 @@ public class QuestionPageFragment extends Fragment implements Observer {
 //
 //        }
 
-//        flyInButton.setVisibility(View.VISIBLE);
-        Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.fly_in);
-        flyInButton.startAnimation(anim);
-        flyInButton.setTranslationX(0);
+//        Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.fly_in);
+//        flyInButton.startAnimation(anim);
+//        flyInButton.setTranslationX(0);
+
+        ObjectAnimator animator = ObjectAnimator.ofFloat(flyInButton, "translationX", 0.0f);
+        animator.setDuration(500).start();
     }
 }
