@@ -247,6 +247,7 @@ public class KeynoteActivity extends MainActivity {
 //                Log.d("index:"+ Integer.toString(a) +"," + Integer.toString(b), tmp.get(b));
 //            }
 //        }
+        knowledgeArray.remove(0);
         for (int a = 0; a < knowledgeArray.size(); ++a) {
             if (knowledgeArray.get(a).get(0).equals("Quiz")) {
                 knowledgeArray.remove(a);

@@ -114,6 +114,7 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
         }
     }
 
+
     @Override
     public void onGroupCollapsed(int groupPosition) {
     }

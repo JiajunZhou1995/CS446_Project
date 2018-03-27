@@ -83,36 +83,6 @@
     ]
   },
   {
-    "Available": "true",
-    "Unit": "1",
-    "Type": "Lecture",
-    "Title": "Start",
-    "Total": "1",
-    "Position": "0L0",
-    "Topics": [
-      "Introduction"
-    ],
-    "Question": [
-      {
-        "Difficulty": "Medium",
-        "Topic": "Introduction",
-        "Answer": "Hello World\n",
-        "Type": "Drag&Drop",
-        "Knowledge": "Welcome to CodeTrip!",
-        "Instruction": "Let’s drag and drop a code block into [?].",
-        "Code": [
-          "print([?])"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "\"Hello World\""
-        ],
-        "Choice": [],
-        "Hint": "Drag and drop Hello World into [?]"
-      }
-    ]
-  },
-  {
     "Available": "false",
     "Unit": "2",
     "Type": "Lecture",
@@ -121,8 +91,7 @@
     "Position": "1R0",
     "Topics": [
       "assign",
-      "reassign",
-      "reassign1"
+      "reassign"
     ],
     "Question": [
       {
@@ -130,7 +99,7 @@
         "Topic": "assign",
         "Answer": "5\n",
         "Type": "ShortAnswer",
-        "Knowledge": "We can assign a value to a variable by using '='.",
+        "Knowledge": null,
         "Instruction": "Type 5 into the ? area.",
         "Code": [
           "A = [?] ",
@@ -139,14 +108,14 @@
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Assignment 'A = 5' means that a value 5 is assigned to a variable A."
+        "Hint": "Assignment \"A = 5\" means that a value 5 is assigned to a variable A."
       },
       {
         "Difficulty": "Easy",
         "Topic": "assign",
         "Answer": "Blue\n",
         "Type": "Drag&Drop",
-        "Knowledge": "Variable name should be meaningfull and related to it's value.",
+        "Knowledge": "Variable name should be meaningfull and related to it\"s value.",
         "Instruction": "Which one is an appropriate value for the variable?",
         "Code": [
           "MyfavouriteColor = [?] ",
@@ -154,10 +123,10 @@
         ],
         "Console": "1",
         "CodeBlock": [
-          "'Blue'",
-          "'Cat'",
-          "'A'",
-          "'CS'"
+          "\"Blue\"",
+          "\"Cat\"",
+          "\"A\"",
+          "\"CS\""
         ],
         "Choice": [],
         "Hint": "Name of a variable is important"
@@ -167,7 +136,7 @@
         "Topic": "assign",
         "Answer": "1",
         "Type": "MultipleChoice",
-        "Knowledge": null,
+        "Knowledge": "Variables can represent numbers, characters, a sequence of characters wrapped in quotes ('' or \" \", called String) but not special characters(characters like !, @, #).",
         "Instruction": "Does variable A have a valid value?",
         "Code": [
           "A = !@#$",
@@ -186,7 +155,7 @@
         "Topic": "assign",
         "Answer": "7\n",
         "Type": "Drag&Drop",
-        "Knowledge": null,
+        "Knowledge": "We can assign a value to a variable by using \"=\", left side is the variable name and right side is the value.",
         "Instruction": "Set MyNumber equal to 7",
         "Code": [
           " [?] = [?] ",
@@ -198,14 +167,14 @@
           "7"
         ],
         "Choice": [],
-        "Hint": "Assignment 'A = 10' means that a value 10 is assigned to a variable A."
+        "Hint": "Assignment \"A = 10\" means that a value 10 is assigned to a variable A."
       },
       {
         "Difficulty": "Medium",
         "Topic": "assign",
         "Answer": "No Answer",
         "Type": "ShortAnswer",
-        "Knowledge": "Variables can represent numbers, characters, a sequence of characters wrapped in quotes (\' \' or \" \", called String) but not special characters(characters like !, @, #).",
+        "Knowledge": "Variables can represent numbers, characters, a sequence of characters wrapped in quotes ('' or \" \", called String) but not special characters(characters like !, @, #).",
         "Instruction": "Try to fill the blank below and see what value will A have",
         "Code": [
           "A = [?] ",
@@ -225,7 +194,7 @@
         "Instruction": "Are variables A and B equal?",
         "Code": [
           "A = 12345",
-          "B = '12345'"
+          "B = \"12345\""
         ],
         "Console": "1",
         "CodeBlock": [],
@@ -235,67 +204,10 @@
         ],
         "Hint": "A number as a string is treated as an array of characters and not a numerical value."
       },
-      {
-        "Difficulty": "Easy",
-        "Topic": "reassign",
-        "Answer": "Hello\n",
-        "Type": "Drag&Drop",
-        "Knowledge": null,
-        "Instruction": "If we want to the value of A to be a string, what should we put into the bracket?",
-        "Code": [
-          "A = 1",
-          "A = [?] ",
-          "print(A)"
-        ],
-        "Console": "1",
-        "CodeBlock": [
-          "2",
-          "'Hi'",
-          "'!@'"
-        ],
-        "Choice": [],
-        "Hint": "Try it yourself!"
-      },
-      {
-        "Difficulty": "Medium",
-        "Topic": "reassign",
-        "Answer": "No Answer",
-        "Type": "ShortAnswer",
-        "Knowledge": "We can change the value of a variable by reassign another value to it and the new value could have the different type from it's old value.",
-        "Instruction": "Fill in the blank and see how will the value of A will be changed",
-        "Code": [
-          "A = 5",
-          "A = [?] ",
-          "print(A)"
-        ],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "The reassign still followed the rule of assignment operation that we learned before."
-      },
 
       {
-        "Difficulty": "Hard",
-        "Topic": "reassign",
-        "Answer": "True\n",
-        "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Rearrange the following code and let the value of A is equal to the value of B, notice that A == B means if A is equal to B.",
-        "Code": [
-          "A = 12345",
-          "print(A == B)",
-          "B = 12345",
-          "A = 4",
-          "B = 5"
-        ],
-        "Console": "1",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": "Try it yourself!"
-      },
-      {
         "Difficulty": "Easy",
-        "Topic": "reassign1",
+        "Topic": "reassign",
         "Answer": "No Answer",
         "Type": "ShortAnswer",
         "Knowledge": null,
@@ -313,9 +225,67 @@
       },
 
       {
+        "Difficulty": "Easy",
+        "Topic": "reassign",
+        "Answer": "CodeTrip\n",
+        "Type": "Rearrange",
+        "Knowledge": "We could reassign the value of a variable by using another variable and the value type of these two variables could be different.",
+        "Instruction": "Rearrange the following code and let the value of A is equal to \"CodeTrip\".",
+        "Code": [
+          "A = B",
+          "A = 12345",
+          "B = \"CodeTrip\"",
+          "print(A)"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "We should follow the rule of assignment operation."
+      },
+
+      {
+        "Difficulty": "Easy",
+        "Topic": "reassign",
+        "Answer": "Hi\n",
+        "Type": "Drag&Drop",
+        "Knowledge": null,
+        "Instruction": "If we want to the value of A to be a string, what should we put into the bracket?",
+        "Code": [
+          "A = \"Hello\"",
+          "A = [?] ",
+          "print(A)"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          "2",
+          "\"Hi\"",
+          "\"!@\""
+        ],
+        "Choice": [],
+        "Hint": "String is a sequence of characters."
+      },
+
+      {
         "Difficulty": "Medium",
-        "Topic": "reassign1",
-        "Answer": "456\n",
+        "Topic": "reassign",
+        "Answer": "No Answer",
+        "Type": "ShortAnswer",
+        "Knowledge": "We can change the value of a variable by reassign another value to it and the new value could have the different type from it\"s old value.",
+        "Instruction": "Fill in the blank with different value other than 5.",
+        "Code": [
+          "A = 5",
+          "A = [?] ",
+          "print(A)"
+        ],
+        "Console": "1",
+        "CodeBlock": [],
+        "Choice": [],
+        "Hint": "The reassign still followed the rule of assignment operation that we learned before."
+      },
+      {
+        "Difficulty": "Medium",
+        "Topic": "reassign",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": "We could reassign the value of a variable by using another variable and the value type of these two variables could be different.",
         "Instruction": "What will be the value of A after the following code been executed.",
@@ -327,27 +297,35 @@
         ],
         "Console": "1",
         "CodeBlock": [],
-        "Choice": [],
+        "Choice": [
+          "123",
+          "456",
+          "B"
+        ],
         "Hint": "We could also use other variables to do reassignment."
       },
+
       {
-        "Difficulty": "Medium",
-        "Topic": "reassign1",
-        "Answer": "CodeTrip\n",
+        "Difficulty": "Hard",
+        "Topic": "reassign",
+        "Answer": "True\n",
         "Type": "Rearrange",
         "Knowledge": null,
-        "Instruction": "Rearrange the following code and let the value of A is equal to 'CodeTrip'.",
+        "Instruction": "Rearrange the following code and let the value of A is equal to the value of B, notice that A == B means if A is equal to B.",
         "Code": [
           "A = B",
-          "A = 12345",
-          "B = 'CodeTrip'",
-          "print(A)"
+          "print(A == B)",
+          "B = A",
+          "A = 4",
+          "B = 5",
+          "A = 12"
         ],
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "We should follow the rule of assignment operation."
+        "Hint": "Avoid use before define."
       }
+
     ]
   },
   {
@@ -866,7 +844,7 @@
         "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": null,
-        "Instruction": "Is statement 'String 'HelloCodeTrip' equals to String 'Hello'' evaluted to be True or False?",
+        "Instruction": "Is statement \"String \"HelloCodeTrip\" equals to String \"Hello\"\" evaluted to be True or False?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
@@ -898,7 +876,7 @@
         "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": "Boolean values are the two constant objects False and True. They are used to represent truth values.",
-        "Instruction": "Consider the following code, statment 'A is equal to B' is true or false?",
+        "Instruction": "Consider the following code, statment \"A is equal to B\" is true or false?",
         "Code": [
           "A = 3",
           "B = 3"
@@ -917,7 +895,7 @@
         "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": null,
-        "Instruction": "Consider the following code, statment 'A is equal to B' is true or false?",
+        "Instruction": "Consider the following code, statment \"A is equal to B\" is true or false?",
         "Code": [
           "A = HelloWorld",
           "B = HelloCodeTrip"
@@ -936,7 +914,7 @@
         "Answer": "False\n",
         "Type": "ShortAnswer",
         "Knowledge": null,
-        "Instruction": "Give A and B values in order to let statement'A is equal to B' to be false.",
+        "Instruction": "Give A and B values in order to let statement\"A is equal to B\" to be false.",
         "Code": [
           "A = [?] ",
           "B = [?] ",
@@ -1003,7 +981,7 @@
           "True",
           "False"
         ],
-        "Hint": "If '>=' is evaluted to be true then > must be true."
+        "Hint": "If \">=\" is evaluted to be true then > must be true."
       },
       {
         "Difficulty": "Medium",
@@ -1115,7 +1093,7 @@
           "True",
           "False"
         ],
-        "Hint": "If '<=' is evaluted to be true then < must be true."
+        "Hint": "If \"<=\" is evaluted to be true then < must be true."
       },
       {
         "Difficulty": "Medium",
@@ -1229,7 +1207,7 @@
           "True",
           "False"
         ],
-        "Hint": "If '!=' is evaluted to be true then == must be false."
+        "Hint": "If \"!=\" is evaluted to be true then == must be false."
       },
       {
         "Difficulty": "Medium",
@@ -1306,7 +1284,7 @@
         "Topic": "AndOr",
         "Answer": "No Answer",
         "Type": "Drag&Drop",
-        "Knowledge": "Logical expression in python are 'And', 'Or', 'Not' and they will only return 'True' or 'False'",
+        "Knowledge": "Logical expression in python are \"And\", \"Or\", \"Not\" and they will only return \"True\" or \"False\"",
         "Instruction": "Fill the blank with different numerical values to see how will the value of A and B been changed.",
         "Code": [
           "A = [?] and [?] ",
@@ -1368,7 +1346,7 @@
         "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": "Array is the collection of elements of any data type. Index of an array start at 0.",
-        "Instruction": "What will be the index of '5' in array [5,1,3,4]?",
+        "Instruction": "What will be the index of \"5\" in array [5,1,3,4]?",
         "Code": [],
         "Console": "1",
         "CodeBlock": [],
@@ -1469,7 +1447,7 @@
         "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": null,
-        "Instruction": "What's the result for the following expression.",
+        "Instruction": "What\"s the result for the following expression.",
         "Code": [
           "A = (20 - 10) / 5 * 15 % 3"
         ],
@@ -1512,7 +1490,7 @@
         "Instruction": "What is the output of this program?",
         "Code": [
           "A = 12345",
-          "B = '12345'",
+          "B = \"12345\"",
           "print(A == B)"
         ],
         "Console": "1",
