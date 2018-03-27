@@ -68,8 +68,7 @@
         android:textSize="18sp"
         android:textAllCaps="false"
         android:id="@+id/flyInIndicator"
-        android:textColor="@color/colorWhite"
-        android:visibility="gone"/>
+        android:textColor="@color/colorWhite"/>
 
     <com.mtr.codetrip.codetrip.CostumWidgets.RunButton
         android:id="@+id/doit"

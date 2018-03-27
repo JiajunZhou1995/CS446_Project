@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity
 
     public static double ScreenWidthRatio;
     public static double ScreenHeightRatio;
+    public static int screenWidth;
 
 
     ObjectAnimator animator_course;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity
 
         DisplayMetrics metric = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metric);
+        screenWidth = metric.widthPixels;
         int width = metric.widthPixels;     // 屏幕宽度（像素）
         int height = metric.heightPixels;   // 屏幕高度（像素）
         double ratioWidthHeight = width/(height+0.0);
