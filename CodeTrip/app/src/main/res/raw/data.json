@@ -191,7 +191,7 @@
         "Answer": "True\n",
         "Type": "ShortAnswer",
         "Knowledge": null,
-        "Instruction": "Type values for A and B to let them to be equal. 'A == B' means if A is equal to B.",
+        "Instruction": "Type values to let A equal to B. 'A == B' tests whether A is equal to B.",
         "Code": [
           "A = [?] ",
           "B = [?] ",
@@ -200,7 +200,7 @@
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Values could be numbers, characters and strings."
+        "Hint": "Values can be numbers, characters and strings."
       },
 
       {
