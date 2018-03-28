@@ -35,6 +35,7 @@
     <color name="colorLightYellow">#f9f4de</color>
     <color name="colorPinkGreen">#9ad4f1e1</color>
     <color name="colorLightPink">#bdf4dad6</color>
+    <color name="colorDefaultLight">#fafafa</color>
 </resources>
 
 
