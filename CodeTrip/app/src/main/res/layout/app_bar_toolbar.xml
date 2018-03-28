@@ -9,11 +9,13 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/colorWhite"
         android:layout_gravity="end"
+        android:elevation="4dp"
+        app:titleTextColor="@color/colorDarkGrey"
         app:title="@string/app_name"
         app:titleMarginStart="110dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay">
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     </android.support.v7.widget.Toolbar>
 

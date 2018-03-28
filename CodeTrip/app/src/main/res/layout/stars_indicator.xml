@@ -17,5 +17,6 @@
         android:layout_height="wrap_content"
         android:padding="3dp"
         android:textColor="@color/colorDarkGrey"
+        android:layout_marginLeft="5dp"
         android:textSize="@dimen/star_text_indicator" />
 </LinearLayout>
