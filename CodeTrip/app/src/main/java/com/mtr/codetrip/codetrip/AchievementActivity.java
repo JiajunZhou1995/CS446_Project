@@ -35,8 +35,8 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
 
     Integer[] imageIDs = {
             R.mipmap.achievement_beginner,
+            R.mipmap.achievement_stars3,
             R.mipmap.achievement_stars10,
-            R.mipmap.achievement_stars50,
             R.mipmap.achievement_stars100,
             R.mipmap.achievement_traveler,
             R.mipmap.achievement_oneweek,
@@ -52,10 +52,8 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-
 
         LayoutInflater layoutInflater = LayoutInflater.from(this);
 
@@ -73,18 +71,16 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
         @SuppressLint("InflateParams") View child = layoutInflater.inflate(R.layout.content_achievement, null);
         container.addView(child);
 
-
         androidGridView = findViewById(R.id.gridview_android_example);
         androidGridView.setAdapter(new AchievementActivity.ImageAdapterGridView(this));
-
 
         androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent,
                                     View v, int position, long id) {
                 ArrayList<String> reward = new ArrayList<>();
                 reward.add("Beginner on the road");
+                reward.add("Collected 3 stars");
                 reward.add("Collected 10 stars");
-                reward.add("Collected 50 stars");
                 reward.add("Collected 100 stars");
                 reward.add("Traveler");
                 reward.add("One week goal");
@@ -124,7 +120,6 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
 
         }else if (id == R.id.sidebar_about_us) {
             intent.setClass(this,AboutUsActivity.class);
-
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
