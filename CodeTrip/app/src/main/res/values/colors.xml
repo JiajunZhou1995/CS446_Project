@@ -6,6 +6,16 @@
 
 
     <color name="colorWhite">#FFFFFF</color>
+
+
+    <color name="colorTiff">#ccffff</color>
+    <color name="colorGrass">#ccffcc</color>
+    <color name="colorPineapple">#ffffcc</color>
+    <color name="colorChannel">#ffcccc</color>
+    <color name="colorPurple">#ffccff</color>
+    <color name="colorOcean">#ccccff</color>
+    
+    
     <color name="colorBlack">#000000</color>
     <color name="colorDarkGrey">#FF7B7B7B</color>
     <color name="colorLightGrey">#b6b5b5</color>

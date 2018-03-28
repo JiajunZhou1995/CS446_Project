@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+import android.graphics.Color;
 
 import com.mtr.codetrip.codetrip.R;
 
@@ -18,12 +19,22 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
     //    private static final String TAG = "NormalExpandableListAda";
     private String[] groupData;
     private String[][] childData;
+    private int[] colorArray;
     private onExpandListener mOnGroupExpandedListener;
+    private int colorindex = 0;
 
 
     public ExpandAdapter(String[] groupData, String[][] childData) {
         this.groupData = groupData;
         this.childData = childData;
+        colorArray = new int[6];
+        colorArray[0] = R.color.colorTiff;
+        colorArray[1] = R.color.colorGrass;
+        colorArray[2] = R.color.colorPineapple;
+        colorArray[3] = R.color.colorChannel;
+        colorArray[4] = R.color.colorPurple;
+        colorArray[5] = R.color.colorOcean;
+
     }
 
 
@@ -76,6 +87,9 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
             groupViewHolder = new GroupViewHolder();
             groupViewHolder.tvTitle = convertView.findViewById(R.id.label_group_normal);
             convertView.setTag(groupViewHolder);
+            convertView.setBackgroundResource(colorArray[colorindex]);
+            colorindex++;
+            colorindex = colorindex % 6;
         } else {
             groupViewHolder = (GroupViewHolder) convertView.getTag();
         }

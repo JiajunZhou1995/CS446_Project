@@ -175,7 +175,7 @@
         "Answer": "No Answer",
         "Type": "ShortAnswer",
         "Knowledge": "Variables can represent numbers, characters, a sequence of characters wrapped in quotes ('' or \" \", called String) but not special characters(characters like !, @, #).",
-        "Instruction": "Try to fill the blank below and see what value will A have",
+        "Instruction": "Type different value into ? area.",
         "Code": [
           "A = [?] ",
           "print(A)"
@@ -188,10 +188,10 @@
       {
         "Difficulty": "Hard",
         "Topic": "assign",
-        "Answer": "True/n",
-        "Type": "MultipleChoice",
+        "Answer": "True\n",
+        "Type": "ShortAnswer",
         "Knowledge": null,
-        "Instruction": "Type different value for A and B to let them to be equal. 'A == B' means if A is equal to B.",
+        "Instruction": "Type values for A and B to let them to be equal. 'A == B' means if A is equal to B.",
         "Code": [
           "A = [?] ",
           "B = [?] ",
@@ -209,7 +209,7 @@
         "Answer": "No Answer",
         "Type": "ShortAnswer",
         "Knowledge": null,
-        "Instruction": "Assign different value to B and see how will the value of A will be changed.",
+        "Instruction": "Type values into ? area and see how A will be changed.",
         "Code": [
           "A = 13",
           "B = [?] ",
@@ -247,7 +247,7 @@
         "Answer": "Hi\n",
         "Type": "Drag&Drop",
         "Knowledge": null,
-        "Instruction": "If we want to the value of A to be a string, what should we put into the bracket?",
+        "Instruction": "If we want to the value of A to be reassigned as a string, what should we put into the bracket?",
         "Code": [
           "A = \"Hello\"",
           "A = [?] ",
