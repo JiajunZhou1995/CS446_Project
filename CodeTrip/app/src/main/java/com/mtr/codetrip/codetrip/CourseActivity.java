@@ -3,6 +3,7 @@ package com.mtr.codetrip.codetrip;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     public static int marginTop;
     public static int currentCourseID;
     private static TextView totalStarCount;
+    private static SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +140,8 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         courseList = new ArrayList<>();
         String course = "codetrip.db";
         SQLiteDatabase appDB = this.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
+        prefs = this.getSharedPreferences(
+                getString(R.string.course_file_key), Context.MODE_PRIVATE);
 
         @SuppressLint("Recycle") Cursor c = appDB.query("course", null, null, null, null, null, null);
         c.moveToFirst();
@@ -148,9 +152,8 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
 
             // there should be a filter to filter the unit
-            Course newCourse = new Course(this, c,marginTop);
+            Course newCourse = new Course(this, c,marginTop, prefs);
             newCourse.boundBtn.setOnClickListener(this);
-
 //            newCourse.printCourse();
 
             relativeLayout.addView(newCourse.boundBtn,newCourse.buttonLayoutParams);
@@ -196,13 +199,16 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     public static void updateStarCount(){
         int totalStars = 0;
         for (Course course : courseList){
-            totalStars+=course.getNumberOfStar();
+            totalStars+=course.getStars(prefs);
         }
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("Total_Stars", totalStars);
+        editor.apply();
         totalStarCount.setText(Integer.toString(totalStars));
     }
 
     public static void updateScore(int courseid, float newScore){
-        courseList.get(courseid).updateScore(newScore);
+        courseList.get(courseid).updateScore(newScore, prefs);
     }
 
 

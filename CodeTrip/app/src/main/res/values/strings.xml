@@ -31,4 +31,7 @@
     <string name="question_instruction">\nSample Instruction\nVaribale are an integeral element in Python\nThey can hold all sorts of stuff\n\nSome basic types of variables:\nInteger, Float, Boolean, String\n\nLet\'s try assigning some numbers to variables</string>
     <string name="todo">TODO</string>
 
+    <!--Preference File Keys-->
+    <string name="course_file_key">CoursePrefsFile1</string>
+
 </resources>

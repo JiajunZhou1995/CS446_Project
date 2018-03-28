@@ -8,7 +8,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="95dp"
-        android:background="@mipmap/question_star"
+        android:background="@mipmap/course_star"
         android:layout_gravity="center" />
 
     <TextView
@@ -16,6 +16,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="3dp"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/colorDarkGrey"
         android:textSize="@dimen/star_text_indicator" />
 </LinearLayout>
