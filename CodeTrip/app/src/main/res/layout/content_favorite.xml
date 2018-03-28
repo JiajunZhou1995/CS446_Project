@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.mtr.codetrip.codetrip.KeynoteActivity">
+    tools:context="com.mtr.codetrip.codetrip.KeynoteActivity"
+    android:background="@color/colorLightGrey">
 
 
 
@@ -16,7 +17,8 @@
         android:layout_height="wrap_content"
         android:iconifiedByDefault="true"
         android:layout_marginTop="60dp"
-        android:queryHint="Unit Name" />
+        android:queryHint="Unit Name"
+        android:background="@color/colorWhite"/>
 
     <ExpandableListView
         android:id="@+id/list"

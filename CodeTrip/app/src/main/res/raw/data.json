@@ -136,7 +136,7 @@
         "Topic": "assign",
         "Answer": "1",
         "Type": "MultipleChoice",
-        "Knowledge": "Variables can represent numbers, characters, a sequence of characters wrapped in quotes ('' or \" \", called String) but not special characters(characters like !, @, #).",
+        "Knowledge": "Variables' value could not contain only special characters(characters like !, @, #,etc).",
         "Instruction": "Does variable A have a valid value?",
         "Code": [
           "A = !@#$",
@@ -174,7 +174,7 @@
         "Topic": "assign",
         "Answer": "No Answer",
         "Type": "ShortAnswer",
-        "Knowledge": "Variables can represent numbers, characters, a sequence of characters wrapped in quotes ('' or \" \", called String) but not special characters(characters like !, @, #).",
+        "Knowledge": "Variables can represent numbers, a sequence of characters wrapped in single or double quotes.",
         "Instruction": "Type different value into ? area.",
         "Code": [
           "A = [?] ",
