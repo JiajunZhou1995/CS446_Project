@@ -155,8 +155,8 @@
         "Topic": "assign",
         "Answer": "7\n",
         "Type": "Drag&Drop",
-        "Knowledge": "We can assign a value to a variable by using \"=\", left side is the variable name and right side is the value.",
-        "Instruction": "Set MyNumber equal to 7",
+        "Knowledge": "We can assign a value to a variable by using \"=\", lefthand side is the variable name and righthand side is the value.",
+        "Instruction": "Assign MyNumber to 7",
         "Code": [
           " [?] = [?] ",
           "print(MyNumber)"
@@ -188,21 +188,19 @@
       {
         "Difficulty": "Hard",
         "Topic": "assign",
-        "Answer": "1",
+        "Answer": "True/n",
         "Type": "MultipleChoice",
         "Knowledge": null,
-        "Instruction": "Are variables A and B equal?",
+        "Instruction": "Type different value for A and B to let them to be equal. 'A == B' means if A is equal to B.",
         "Code": [
-          "A = 12345",
-          "B = \"12345\""
+          "A = [?] ",
+          "B = [?] ",
+          "print(A == B)"
         ],
         "Console": "1",
         "CodeBlock": [],
-        "Choice": [
-          "True",
-          "False"
-        ],
-        "Hint": "A number as a string is treated as an array of characters and not a numerical value."
+        "Choice": [],
+        "Hint": "Values could be numbers, characters and strings."
       },
 
       {
