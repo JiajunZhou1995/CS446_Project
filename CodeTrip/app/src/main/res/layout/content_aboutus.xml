@@ -34,7 +34,7 @@
                 android:textAlignment="viewEnd"
                 android:textStyle="bold"
                 android:textColor="@color/colorBluePurple"
-                android:text="Catrina\nUniversity of Waterloo, CS\nt33ma@edu.uwaterloo.ca"
+                android:text="Catrina (Tianrui Ma)\nUniversity of Waterloo, CS\nt33ma@edu.uwaterloo.ca"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 
@@ -55,7 +55,7 @@
                 android:textAlignment="viewStart"
                 android:textStyle="bold"
                 android:textColor="@color/colorBluePurple"
-                android:text="Jasmine\nUniversity of Waterloo\nComputer Science"
+                android:text="Jasmine (Jiahua Zhu)\nUniversity of Waterloo\nComputer Science"
                 tools:ignore="RtlCompat" />
 
             <com.mtr.codetrip.codetrip.CostumWidgets.GifImageView
@@ -85,7 +85,7 @@
                 android:textAlignment="viewEnd"
                 android:textStyle="bold"
                 android:textColor="@color/colorBluePurple"
-                android:text="Jay\nUniversity of Waterloo\nComputer Science"
+                android:text="Jay (Jiajun Zhou)\nUniversity of Waterloo\nComputer Science"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 
@@ -105,7 +105,7 @@
                 android:textAlignment="viewStart"
                 android:textStyle="bold"
                 android:textColor="@color/colorBluePurple"
-                android:text="Anthony\nUniversity of Waterloo\nComputer Science"
+                android:text="Anthony (Haolin Wu)\nUniversity of Waterloo\nComputer Science"
                 tools:ignore="RtlCompat" />
             <com.mtr.codetrip.codetrip.CostumWidgets.GifImageView
                 android:layout_width="140dp"
