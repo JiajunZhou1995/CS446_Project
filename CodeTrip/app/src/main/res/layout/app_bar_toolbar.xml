@@ -12,7 +12,7 @@
         android:background="@color/colorWhite"
         android:layout_gravity="end"
         android:elevation="4dp"
-        app:titleTextColor="@color/colorDarkGrey"
+        app:titleTextColor="@color/colorBlack"
         app:title="@string/app_name"
         app:titleMarginStart="110dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">

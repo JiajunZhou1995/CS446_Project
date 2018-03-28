@@ -13,50 +13,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/home_background2"
+        android:background="@color/colorWhite"
         android:gravity="center"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/home_navigation_course"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/okok"
-            android:layout_marginHorizontal="20dp"
-            android:padding="50dp"
-            android:text="@string/navigation_course"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite" />
+            android:layout_width="350dp"
+            android:layout_height="140dp"
+            android:background="@mipmap/course_map_button"
+            android:layout_marginVertical="10dp"
+            android:elevation="5dp"/>
 
         <Button
             android:id="@+id/home_navigation_keynotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/jksdhhhh"
-            android:layout_marginHorizontal="20dp"
-
-            android:padding="50dp"
-            android:text="@string/navigation_keynotes"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite" />
+            android:layout_width="350dp"
+            android:layout_height="140dp"
+            android:background="@mipmap/keynotes_button"
+            android:layout_marginVertical="10dp"
+            android:elevation="5dp"/>
 
         <Button
             android:id="@+id/home_navigation_achievement"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/wwwewewe"
-            android:layout_marginHorizontal="20dp"
-
-            android:padding="50dp"
-            android:text="@string/navigation_achievement"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite" />
+            android:layout_width="350dp"
+            android:layout_height="140dp"
+            android:background="@mipmap/achievements_button"
+            android:layout_marginVertical="10dp"
+            android:elevation="5dp"
+            />
 
         <!--<Button-->
         <!--android:id="@+id/Settings_button"-->
