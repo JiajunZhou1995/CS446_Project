@@ -5,3 +5,5 @@ CodeTrip/.idea/misc.xml
 CodeTrip/.idea/misc.xml
 CodeTrip/.idea/misc.xml
 CodeTrip/app/.idea/*
+*.apk
+CodeTrip/app/release/output.json
