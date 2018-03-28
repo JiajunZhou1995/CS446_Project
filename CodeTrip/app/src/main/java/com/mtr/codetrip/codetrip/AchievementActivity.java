@@ -40,9 +40,9 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
             R.mipmap.achievement_stars100,
             R.mipmap.achievement_traveler,
             R.mipmap.achievement_oneweek,
+            R.mipmap.achievement_questions100,
             R.mipmap.achievement_learningstreak,
             R.mipmap.achievement_bravetraveler,
-            R.mipmap.achievement_traveler,
             R.mipmap.achievement_tourismexpert,
             R.mipmap.achievement_pythondiploma,
             R.mipmap.achievement_pythonking
@@ -84,9 +84,9 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
                 reward.add("Collected 100 stars");
                 reward.add("Traveler");
                 reward.add("One week goal");
+                reward.add("Answer 100 question");
                 reward.add("Learning streak");
                 reward.add("Brave Traveler");
-                reward.add("Traveler");
                 reward.add("Tourism Expert");
                 reward.add("Python Diploma");
                 reward.add("Python King");
