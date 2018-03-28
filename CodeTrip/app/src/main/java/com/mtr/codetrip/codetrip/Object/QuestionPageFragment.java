@@ -221,7 +221,7 @@ public class QuestionPageFragment extends Fragment implements Observer {
 //        flyInButton.startAnimation(anim);
 //        flyInButton.setTranslationX(0);
         flyInButton.setVisibility(View.VISIBLE);
-        ObjectAnimator animator = ObjectAnimator.ofFloat(flyInButton, "translationX", 0.0f);
-        animator.setDuration(500).start();
+        ObjectAnimator animator = ObjectAnimator.ofFloat(flyInButton, "translationX", flyInButton.getTranslationX(),50.0f,150.0f,100.0f);
+        animator.setDuration(800).start();
     }
 }

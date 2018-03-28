@@ -28,7 +28,7 @@
                 android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorBluePurple"/>
+                android:textColor="@color/colorDarkGrey"/>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -63,7 +63,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         android:textStyle="bold"
         android:textSize="18sp"
         android:textAllCaps="false"

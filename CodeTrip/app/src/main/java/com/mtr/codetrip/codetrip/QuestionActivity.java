@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -208,22 +209,30 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         getWindowManager().getDefaultDisplay().getMetrics(metric);
         int screenWidth = metric.widthPixels;
 
-        KonfettiView konfettiView = completionPage.findViewById(R.id.kongfetti);
-        konfettiView.build()
-                .addColors(getBaseContext().getColor(R.color.colorLightBlue),
-                        getBaseContext().getColor(R.color.colorLightGreen),
-                        getBaseContext().getColor(R.color.colorLime100))
-                .setDirection(0.0, 359.0)
-                .setSpeed(1f, 5f)
-                .setFadeOutEnabled(true)
-                .setTimeToLive(1000L)
-                .addShapes(Shape.RECT, Shape.CIRCLE)
-                .addSizes(new Size(8, 5f))
-                .setPosition(-50f, screenWidth+50f, -50f, -50f)
-                .stream(300, 100000L);
+
 
         TextView title = completionPage.findViewById(R.id.course_title);
         title.setText(courseTitle);
+
+        if(grade<50){
+            TextView indicator = completionPage.findViewById(R.id.complete_indicator);
+            indicator.setText(Html.fromHtml("Click <b>Review</b> to <br>correct your answers"));
+            title.setText("");
+        }else{
+            KonfettiView konfettiView = completionPage.findViewById(R.id.kongfetti);
+            konfettiView.build()
+                    .addColors(getBaseContext().getColor(R.color.colorLightBlue),
+                            getBaseContext().getColor(R.color.colorLightGreen),
+                            getBaseContext().getColor(R.color.colorLime100))
+                    .setDirection(0.0, 359.0)
+                    .setSpeed(1f, 5f)
+                    .setFadeOutEnabled(true)
+                    .setTimeToLive(1000L)
+                    .addShapes(Shape.RECT, Shape.CIRCLE)
+                    .addSizes(new Size(8, 5f))
+                    .setPosition(-50f, screenWidth+50f, -50f, -50f)
+                    .stream(300, 100000L);
+        }
 
         Button review_button = completionPage.findViewById(question_complete_review_button);
         review_button.setOnClickListener(currentQuestionActivity);

@@ -41,8 +41,8 @@
         "Console": "2",
         "CodeBlock": [
           "\"programmer\"",
-          "\"cat\"",
-          "\"dog\""
+          "\"boy\"",
+          "\"girl\""
         ],
         "Choice": [],
         "Hint": "Drag and drop any block into [?]"
