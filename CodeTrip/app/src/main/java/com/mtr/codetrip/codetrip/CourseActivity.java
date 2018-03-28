@@ -142,6 +142,9 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         SQLiteDatabase appDB = this.openOrCreateDatabase(course, Context.MODE_PRIVATE,null);
         prefs = this.getSharedPreferences(
                 getString(R.string.course_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(Integer.toString(0) + "Available", true);
+        editor.commit();
 
         @SuppressLint("Recycle") Cursor c = appDB.query("course", null, null, null, null, null, null);
         c.moveToFirst();

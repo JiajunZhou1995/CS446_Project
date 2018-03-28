@@ -32,6 +32,6 @@
     <string name="todo">TODO</string>
 
     <!--Preference File Keys-->
-    <string name="course_file_key">CoursePrefsFile1</string>
+    <string name="course_file_key">CoursePrefsFile2</string>
 
 </resources>

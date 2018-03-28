@@ -190,8 +190,8 @@
         "Topic": "assign",
         "Answer": "True\n",
         "Type": "ShortAnswer",
-        "Knowledge": null,
-        "Instruction": "Type values to let A equal to B. 'A == B' tests whether A is equal to B.",
+        "Knowledge": "'A == B' tests whether A is equal to B.",
+        "Instruction": "Type values to let A equal to B.",
         "Code": [
           "A = [?] ",
           "B = [?] ",

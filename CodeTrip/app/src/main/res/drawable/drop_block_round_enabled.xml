@@ -4,5 +4,5 @@
     <corners android:radius="@dimen/code_area_button_corner_radius" />
     <stroke
         android:width="2dip"
-        android:color="@color/colorDarkGrey" />
+        android:color="@color/colorLightGrey" />
 </shape>
