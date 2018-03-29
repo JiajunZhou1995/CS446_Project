@@ -160,8 +160,10 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
         RelativeLayout relativeLayout = findViewById(R.id.course_content_page);
         marginTop = (int) (getResources().getInteger(R.integer.unit_marginTop)* MainActivity.ScreenHeightRatio+0.5f);
-        while(!c.isAfterLast()){
 
+        while(!c.isAfterLast()){
+//            int unit  = c.getInt(c.getColumnIndex("unit"));
+//            if (unit != 0)  marginTop = 0;
 
             // there should be a filter to filter the unit
             Course newCourse = new Course(this, c,marginTop, prefs);

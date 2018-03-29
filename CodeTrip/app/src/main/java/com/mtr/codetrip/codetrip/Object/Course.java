@@ -232,9 +232,10 @@ public class Course {
 
         x = x * MainActivity.ScreenWidthRatio + 0.5f;
 
+        int height = 0;
         y = context.getResources().getInteger(R.integer.non_quiz_height)* MainActivity.ScreenHeightRatio * Integer.parseInt(rowColNum[0]) +0.5f;
         if (courseType == CourseType.QUIZ){
-            CourseActivity.marginTop = (int)y + context.getResources().getInteger(R.integer.quiz_height);
+            CourseActivity.marginTop += (int)((context.getResources().getInteger(R.integer.quiz_height)-context.getResources().getInteger(R.integer.non_quiz_height))* MainActivity.ScreenHeightRatio+0.5f) ;
         }
         return  new Pair<>((int)x,(int)y);
     }
