@@ -276,9 +276,9 @@ public class MainActivity extends AppCompatActivity
                     "PRIMARY KEY (questionid, courseid))");
 
         try {
-//            if (!myDatabaseUtil.tableIsExist("course") || !myDatabaseUtil.tableIsExist("question")){
+            if (!myDatabaseUtil.tableIsExist("course") || !myDatabaseUtil.tableIsExist("question")){
                 readDataToDb(appDB);
-//            }
+            }
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();
