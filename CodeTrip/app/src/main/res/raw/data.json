@@ -115,7 +115,7 @@
         "Topic": "Assign",
         "Answer": "Blue\n",
         "Type": "Drag&Drop",
-        "Knowledge": "Variable name should be meaningfull and related to it\"s value.",
+        "Knowledge": "Variable name should be meaningfull and related to it's value.",
         "Instruction": "Which one is an appropriate value for the variable?",
         "Code": [
           "MyfavouriteColor = [?] ",
@@ -1445,7 +1445,7 @@
         "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": null,
-        "Instruction": "What\"s the result for the following expression.",
+        "Instruction": "What's the result for the following expression.",
         "Code": [
           "A = (20 - 10) / 5 * 15 % 3"
         ],
