@@ -16,8 +16,7 @@
         android:layout_height="wrap_content"
         android:iconifiedByDefault="true"
         android:layout_marginTop="60dp"
-        android:queryHint="Unit Name"
-        android:focusedByDefault="true"
+        android:queryHint="Type Keyword"
         android:background="@color/colorWhite"/>
 
 
@@ -28,7 +27,9 @@
         android:layout_marginTop="105dp"
         android:layout_alignParentStart="true"
         android:layout_weight="1"
-        android:background="@color/colorBack"/>
+        android:background="@color/colorBack"
+        android:clickable="true"
+        android:focusableInTouchMode="true" />
 
 
 </RelativeLayout>

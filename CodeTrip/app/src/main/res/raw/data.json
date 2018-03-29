@@ -269,7 +269,7 @@
         "Answer": "No Answer",
         "Type": "ShortAnswer",
         "Knowledge": "We can change the value of a variable by reassign another value to it, and the new value can have the different type from it's old value.",
-        "Instruction": "Fill in the blank with different value.",
+        "Instruction": "Fill in the blank with a value.",
         "Code": [
           "A = 5",
           "A = [?] ",
@@ -483,7 +483,7 @@
       {
         "Difficulty": "Easy",
         "Topic": "TimeDivide",
-        "Answer": "10\n",
+        "Answer": "10.0\n",
         "Type": "ShortAnswer",
         "Knowledge": null,
         "Instruction": "Fill the blank with an appropriate value to let A print 10.",
@@ -1537,7 +1537,7 @@
     "Type": "Lecture",
     "Title": "IF",
     "Total": "1",
-    "Position": "8R1",
+    "Position": "7R1",
     "Topics": [
       "AndOr"
     ],

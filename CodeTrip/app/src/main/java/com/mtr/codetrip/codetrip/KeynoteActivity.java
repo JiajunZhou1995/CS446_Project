@@ -177,9 +177,21 @@ public class KeynoteActivity extends MainActivity {
 
 
 
-        SearchView mSearchView = findViewById(R.id.search);
+
+
+        final SearchView mSearchView = findViewById(R.id.search);
         mSearchView.setOnClickListener(this);
-        mSearchView.setSubmitButtonEnabled(true);
+        mSearchView.setOnClickListener(new SearchView.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.search:
+                        mSearchView.onActionViewExpanded();
+                        break;
+                }
+            }
+        });
+        mSearchView.setSubmitButtonEnabled(false);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -202,6 +214,8 @@ public class KeynoteActivity extends MainActivity {
                 return false;
             }
         });
+
+
 
 
         /*Button button11 = (Button) findViewById(R.id.course11);
