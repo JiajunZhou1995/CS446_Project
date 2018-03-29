@@ -244,41 +244,12 @@ public class MainActivity extends AppCompatActivity
 
 //        appDB.execSQL("DROP TABLE IF EXISTS course");
 
-        appDB.execSQL("CREATE TABLE IF NOT EXISTS course " +
-                    "(courseid integer primary key," +                  //1
-                    "available text not null," +                        //true
-                    "unit text not null," +                             //1
-                    "score real,"+                                      //
-                    "type text not null," +                             //lecture
-                    "title text not null," +                            //print
-                    "position text not null," +                         //L1 -> left 1
-                    "complete integer not null," +                      //0 -> 0 question completed
-                    "total interger not null," +                        //1
-                    "topics text not null)");                           //7 -> 7 question in this course
 
-//        appDB.execSQL("DROP TABLE IF EXISTS question");
-
-        appDB.execSQL("CREATE TABLE IF NOT EXISTS question " +
-                    "(questionid integer," +
-                    "courseid interger," +
-                    "difficulty text," +
-                    "topic text," +
-                    "answer text," +
-                    "type text," +
-                    "knowledge text," +
-                    "instruction text," +
-                    "code text," +
-                    "console integer," +
-                    "codeblock text," +
-                    "choice text," +
-                    "hint text," +
-                    "FOREIGN KEY (courseid) REFERENCES course (courseid)," +
-                    "PRIMARY KEY (questionid, courseid))");
 
         try {
-//            if (!myDatabaseUtil.tableIsExist("course") || !myDatabaseUtil.tableIsExist("question")){
+            if (!myDatabaseUtil.tableIsExist("course") || !myDatabaseUtil.tableIsExist("question")){
                 readDataToDb(appDB);
-//            }
+            }
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();
@@ -295,6 +266,36 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void readDataToDb(SQLiteDatabase db) throws IOException, JSONException {
+        db.execSQL("CREATE TABLE IF NOT EXISTS course " +
+                "(courseid integer primary key," +                  //1
+                "available text not null," +                        //true
+                "unit text not null," +                             //1
+                "score real,"+                                      //
+                "type text not null," +                             //lecture
+                "title text not null," +                            //print
+                "position text not null," +                         //L1 -> left 1
+                "complete integer not null," +                      //0 -> 0 question completed
+                "total interger not null," +                        //1
+                "topics text not null)");                           //7 -> 7 question in this course
+
+//        appDB.execSQL("DROP TABLE IF EXISTS question");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS question " +
+                "(questionid integer," +
+                "courseid interger," +
+                "difficulty text," +
+                "topic text," +
+                "answer text," +
+                "type text," +
+                "knowledge text," +
+                "instruction text," +
+                "code text," +
+                "console integer," +
+                "codeblock text," +
+                "choice text," +
+                "hint text," +
+                "FOREIGN KEY (courseid) REFERENCES course (courseid)," +
+                "PRIMARY KEY (questionid, courseid))");
 
         try {
             String jsonDataString = readJsonDataFromFile();
