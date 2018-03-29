@@ -35,7 +35,7 @@ public class Course {
     public enum CourseStatus{AVAILABLE, UNAVAILABLE}
 
     public int courseID;
-    private CourseType courseType;
+    public CourseType courseType;
     public CourseStatus courseStatus;
     public Button boundBtn;
     public RelativeLayout.LayoutParams buttonLayoutParams;

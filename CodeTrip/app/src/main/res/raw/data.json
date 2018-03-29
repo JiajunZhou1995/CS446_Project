@@ -1431,17 +1431,17 @@
     ]
   },
   {
-    "Available": "false",
+    "Available": "true",
     "Unit": "1",
     "Type": "Quiz",
-    "Title": "Quiz",
+    "Title": "Quiz #1",
     "Total": "24",
     "Position": "6R0",
-    "Topics": [],
+    "Topics": ["no"],
     "Question": [
       {
-        "Difficulty": null,
-        "Topic": null,
+        "Difficulty": "Medium",
+        "Topic": "no",
         "Answer": "0",
         "Type": "MultipleChoice",
         "Knowledge": null,
@@ -1460,8 +1460,8 @@
         "Hint": null
       },
       {
-        "Difficulty": null,
-        "Topic": null,
+        "Difficulty": "Medium",
+        "Topic": "no",
         "Answer": "False",
         "Type": "Rearrange",
         "Knowledge": null,
@@ -1480,8 +1480,8 @@
         "Hint": null
       },
       {
-        "Difficulty": null,
-        "Topic": null,
+        "Difficulty": "Medium",
+        "Topic": "no",
         "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": null,
@@ -1500,8 +1500,8 @@
         "Hint": null
       },
       {
-        "Difficulty": null,
-        "Topic": null,
+        "Difficulty": "Medium",
+        "Topic": "no",
         "Answer": "[2,8,10,12,15,7]\n",
         "Type": "ShortAnswer",
         "Knowledge": null,

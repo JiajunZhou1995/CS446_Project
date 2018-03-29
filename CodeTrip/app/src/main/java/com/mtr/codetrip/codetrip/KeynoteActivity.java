@@ -135,7 +135,7 @@ public class KeynoteActivity extends MainActivity {
 
 
 
-        /*Button button11 = (Button) findViewById(R.id.course11);
+        /*Button button11 = (Button) findViewById(R.id.course7);
         Drawable drawable = button11.getBackground();
         Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
         Bitmap bm = Course.toGrayscale(bitmap);

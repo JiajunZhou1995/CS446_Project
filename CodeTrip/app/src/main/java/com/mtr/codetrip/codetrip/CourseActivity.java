@@ -1,7 +1,9 @@
 package com.mtr.codetrip.codetrip;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -38,6 +40,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     public static int currentCourseID;
     private static TextView totalStarCount;
     private static SharedPreferences prefs;
+    public Course currentOnClickCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,6 +147,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
                 getString(R.string.course_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean(Integer.toString(0) + "Available", true);
+        editor.putBoolean(Integer.toString(7) + "Available", true);
         editor.commit();
 
         @SuppressLint("Recycle") Cursor c = appDB.query("course", null, null, null, null, null, null);
@@ -221,17 +225,56 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
         String courseIdString = (String)view.getTag();
-        Course currentCourse = courseList.get(Integer.parseInt(courseIdString));
+        currentOnClickCourse = courseList.get(Integer.parseInt(courseIdString));
 
-//        Course.CourseType courseType  =  currentCourseID.courseType;
-        Course.CourseStatus courseStatus = currentCourse.courseStatus;
+        Course.CourseType courseType  =  currentOnClickCourse.courseType;
+        Course.CourseStatus courseStatus = currentOnClickCourse.courseStatus;
 
         if (courseStatus == Course.CourseStatus.AVAILABLE){
 
-            Intent intent = new Intent();
-            intent.setClass(this,QuestionActivity.class);
-            intent.putExtra("courseID",currentCourse.courseID);
-            startActivity(intent);
+            if (courseType == Course.CourseType.LECTURE){
+//                Intent intent = new Intent();
+//                intent.setClass(this,QuestionActivity.class);
+//                intent.putExtra("courseID",currentCourse.courseID);
+//                startActivity(intent);
+                startQuestionActivity();
+
+            }else if(courseType == Course.CourseType.PROJECT){
+
+            }else{
+                // if Quiz
+                AlertDialog dialog = new AlertDialog.Builder(this).setTitle(currentOnClickCourse.courseTitle.getText())
+                        .setNegativeButton("Cancel", null).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //处理确认按钮的点击事件
+                                startQuestionActivity();
+
+                            }
+                        })
+                        .setMessage("Test out your Knowledge by taking this Quiz").create();
+                dialog.show();
+            }
+
+        }else{
+            if (courseType == Course.CourseType.LECTURE){
+
+            }else if(courseType == Course.CourseType.PROJECT){
+
+            }else{
+                // if Quiz
+                AlertDialog dialog = new AlertDialog.Builder(this).setTitle(currentOnClickCourse.courseTitle.getText())
+                        .setNegativeButton("Cancel", null).setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //处理确认按钮的点击事件
+                            }
+                        })
+                        .setMessage("Test out your Knowledge by taking this Quiz").create();
+                dialog.show();
+            }
         }
 
 //        else if (courseType == Course.CourseType.LECTURE){
@@ -241,6 +284,13 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 //        }else{
 //
 //        }
+    }
+
+    private void startQuestionActivity(){
+        Intent intent = new Intent();
+        intent.setClass(this,QuestionActivity.class);
+        intent.putExtra("courseID",currentOnClickCourse.courseID);
+        startActivity(intent);
     }
 
 
