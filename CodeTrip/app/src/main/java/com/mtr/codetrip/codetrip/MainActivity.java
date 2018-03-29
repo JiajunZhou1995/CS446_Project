@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity
         MyDatabaseUtil myDatabaseUtil = new MyDatabaseUtil(this, course, null, 1);
         SQLiteDatabase appDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
 
-        appDB.execSQL("DROP TABLE IF EXISTS course");
+//        appDB.execSQL("DROP TABLE IF EXISTS course");
 
         appDB.execSQL("CREATE TABLE IF NOT EXISTS course " +
                     "(courseid integer primary key," +                  //1
@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity
                     "total interger not null," +                        //1
                     "topics text not null)");                           //7 -> 7 question in this course
 
-        appDB.execSQL("DROP TABLE IF EXISTS question");
+//        appDB.execSQL("DROP TABLE IF EXISTS question");
 
         appDB.execSQL("CREATE TABLE IF NOT EXISTS question " +
                     "(questionid integer," +
@@ -275,14 +275,14 @@ public class MainActivity extends AppCompatActivity
                     "FOREIGN KEY (courseid) REFERENCES course (courseid)," +
                     "PRIMARY KEY (questionid, courseid))");
 
-        try {
-//            if (!myDatabaseUtil.tableIsExist("course") || !myDatabaseUtil.tableIsExist("question")){
-                readDataToDb(appDB);
-//            }
-
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+////            if (!myDatabaseUtil.tableIsExist("course") || !myDatabaseUtil.tableIsExist("question")){
+//                readDataToDb(appDB);
+////            }
+//
+//        } catch (IOException | JSONException e) {
+//            e.printStackTrace();
+//        }
 
 //        @SuppressLint("Recycle") Cursor c = appDB.rawQuery("select * from course", null);
 
