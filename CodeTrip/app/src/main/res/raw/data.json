@@ -268,7 +268,7 @@
         "Topic": "Reassign",
         "Answer": "No Answer",
         "Type": "ShortAnswer",
-        "Knowledge": "We can change the value of a variable by reassign another value to it and the new value can have the different type from it\"s old value.",
+        "Knowledge": "We can change the value of a variable by reassign another value to it, and the new value can have the different type from it's old value.",
         "Instruction": "Fill in the blank with different value.",
         "Code": [
           "A = 5",
