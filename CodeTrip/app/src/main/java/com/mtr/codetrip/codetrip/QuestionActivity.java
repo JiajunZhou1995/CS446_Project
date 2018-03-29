@@ -214,15 +214,6 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
         container.addView(completionPage);
 
-
-//        completePopView = new PopupWindow(
-//                completionPage,
-//                RelativeLayout.LayoutParams.MATCH_PARENT,
-//                RelativeLayout.LayoutParams.MATCH_PARENT
-//        );
-//
-//        completePopView.showAtLocation(mLinearLayout, Gravity.CENTER,0,0);
-
         ColorArcProgressBar bar2 = completionPage.findViewById(R.id.bar2);
         Log.i("grade",Float.toString(correctQuestionNum));
 
@@ -244,6 +235,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             TextView indicator = completionPage.findViewById(R.id.complete_indicator);
             indicator.setText(Html.fromHtml("Click <b>Review</b> to <br>correct your answers"));
             title.setText("");
+
         }else{
             KonfettiView konfettiView = completionPage.findViewById(R.id.kongfetti);
             konfettiView.build()
@@ -271,7 +263,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         return_button.setOnClickListener(currentQuestionActivity);
 
         CourseActivity.updateScore(courseID,grade);
-        CourseActivity.currentCourseID = Math.max(courseID+1,CourseActivity.currentCourseID);
+        CourseActivity.currentCourseID = Math.min(Math.max(courseID+1,CourseActivity.currentCourseID),CourseActivity.courseList.size()-1);
         CourseActivity.refreshCourseMap();
 
     }

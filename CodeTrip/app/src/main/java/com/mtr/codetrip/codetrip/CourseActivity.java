@@ -187,6 +187,10 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         //should modify database
         course.courseStatus = Course.CourseStatus.AVAILABLE;
         updateCourseNode(index);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(Integer.toString(index) + "Available", true);
+        editor.apply();
+
     }
 
     private static void updateCourseNode(int index){
@@ -195,7 +199,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
     public static void refreshCourseMap(){
         int courseIndex = 0;
-        while(courseIndex <= currentCourseID && currentCourseID < courseList.size()){
+        while(courseIndex <= currentCourseID){
             makeAvailable(courseIndex);
             courseIndex++;
         }
@@ -276,14 +280,6 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
                 dialog.show();
             }
         }
-
-//        else if (courseType == Course.CourseType.LECTURE){
-//
-//        }else if (courseType == Course.CourseType.PROJECT){
-//
-//        }else{
-//
-//        }
     }
 
     private void startQuestionActivity(){

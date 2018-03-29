@@ -135,7 +135,7 @@ public class Course {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putFloat(Integer.toString(courseID) + "Score", newScore);
             editor.putInt(Integer.toString(courseID) + "Star", calculateStars());
-            editor.putBoolean(Integer.toString(courseID + 1) + "Available", true);
+//            editor.putBoolean(Integer.toString(courseID + 1) + "Available", true);
             editor.apply();
 
         }
