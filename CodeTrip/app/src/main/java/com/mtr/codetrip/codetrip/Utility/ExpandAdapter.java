@@ -87,7 +87,7 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
             groupViewHolder = new GroupViewHolder();
             groupViewHolder.tvTitle = convertView.findViewById(R.id.label_group_normal);
             convertView.setTag(groupViewHolder);
-            convertView.setBackgroundResource(colorArray[colorindex]);
+            convertView.setBackgroundResource(R.color.colorWhite);
             colorindex++;
             colorindex = colorindex % 6;
         } else {

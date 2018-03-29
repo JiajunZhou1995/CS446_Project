@@ -20,6 +20,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.SearchView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.TextView;
+
+import com.mtr.codetrip.codetrip.Utility.AnimatedExpandableListView;
+import com.mtr.codetrip.codetrip.Utility.AnimatedExpandableListView.AnimatedExpandableListAdapter;
 import com.mtr.codetrip.codetrip.Utility.ExpandAdapter;
 import com.mtr.codetrip.codetrip.Utility.onExpandListener;
 
@@ -34,7 +50,7 @@ import java.util.ArrayList;
 public class KeynoteActivity extends MainActivity {
 
 
-    private ExpandableListView mListView;
+    private AnimatedExpandableListView mListView;
     private ArrayAdapter<String> mAdapter;
 
     String sql;
@@ -46,12 +62,35 @@ public class KeynoteActivity extends MainActivity {
     private String[] titles;
     private String[][] knowledges;
 
+    ExampleAdapter eAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        initdata();
+
+        List<GroupItem> items = new ArrayList<GroupItem>();
+
+        // Populate our list with groups and it's children
+        for(int i = 0; i < titles.length; i++) {
+            GroupItem item = new GroupItem();
+
+            item.title = titles[i];
+
+
+            for(int j = 0; j < knowledges[i].length;++j) {
+                ChildItem child = new ChildItem();
+                child.title = knowledges[i][j];
+                item.items.add(child);
+            }
+
+            items.add(item);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -85,25 +124,34 @@ public class KeynoteActivity extends MainActivity {
         thread.run();
 //        initdata();
 
-        mListView = findViewById(R.id.list);
+
         mAdapter = new ArrayAdapter<>(KeynoteActivity.this, android.R.layout.simple_list_item_1, titles);
 
-        ExpandAdapter eAdapter = new ExpandAdapter(titles, knowledges);
 
-        eAdapter.setOnGroupExpandedListener(new onExpandListener() {
-            @Override
-            public void setOnExpandListener(int groupPosition) {
-                expandOne(groupPosition);
-            }
-        });
+        mListView = (AnimatedExpandableListView)findViewById(R.id.list);
+        eAdapter = new ExampleAdapter(this);
+        eAdapter.setData(items);
 
-        mListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+        mListView.setAdapter(eAdapter);
+
+
+
+        mListView.setOnGroupClickListener(new OnGroupClickListener() {
+
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                return false;
+                // We call collapseGroupWithAnimation(int) and
+                // expandGroupWithAnimation(int) to animate group
+                // expansion/collapse.
+                if (mListView.isGroupExpanded(groupPosition)) {
+                    mListView.collapseGroupWithAnimation(groupPosition);
+                } else {
+                    mListView.expandGroupWithAnimation(groupPosition);
+                }
+                return true;
             }
-        });
 
+        });
 
         /*mListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -135,7 +183,8 @@ public class KeynoteActivity extends MainActivity {
 
 
 
-        /*Button button11 = (Button) findViewById(R.id.course7);
+
+        /*Button button11 = (Button) findViewById(R.id.course11);
         Drawable drawable = button11.getBackground();
         Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
         Bitmap bm = Course.toGrayscale(bitmap);
@@ -246,7 +295,6 @@ public class KeynoteActivity extends MainActivity {
 //                Log.d("index:"+ Integer.toString(a) +"," + Integer.toString(b), tmp.get(b));
 //            }
 //        }
-        knowledgeArray.remove(0);
         for (int a = 0; a < knowledgeArray.size(); ++a) {
             if (knowledgeArray.get(a).get(0).equals("Quiz")) {
                 knowledgeArray.remove(a);
@@ -290,4 +338,125 @@ public class KeynoteActivity extends MainActivity {
     }
 
 
+    private static class GroupItem {
+        String title;
+        List<ChildItem> items = new ArrayList<ChildItem>();
+    }
+
+    private static class ChildItem {
+        String title;
+
+    }
+
+    private static class ChildHolder {
+        TextView title;
+
+    }
+
+    private static class GroupHolder {
+        TextView title;
+    }
+
+    private class ExampleAdapter extends AnimatedExpandableListAdapter {
+        int ind = 0;
+        private LayoutInflater inflater;
+
+        private List<GroupItem> items;
+
+        public ExampleAdapter(Context context) {
+            inflater = LayoutInflater.from(context);
+        }
+
+        public void setData(List<GroupItem> items) {
+            this.items = items;
+        }
+
+        @Override
+        public ChildItem getChild(int groupPosition, int childPosition) {
+            return items.get(groupPosition).items.get(childPosition);
+        }
+
+        @Override
+        public long getChildId(int groupPosition, int childPosition) {
+            return childPosition;
+        }
+
+        @Override
+        public View getRealChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+            ChildHolder holder;
+            ChildItem item = getChild(groupPosition, childPosition);
+            if (convertView == null) {
+                holder = new ChildHolder();
+                convertView = inflater.inflate(R.layout.list_item, parent, false);
+                holder.title = (TextView) convertView.findViewById(R.id.textTitle);
+
+                convertView.setTag(holder);
+                convertView.setBackgroundResource(R.color.colorWhite);
+            } else {
+                holder = (ChildHolder) convertView.getTag();
+            }
+
+            holder.title.setText(item.title);
+
+
+            return convertView;
+        }
+
+        @Override
+        public int getRealChildrenCount(int groupPosition) {
+            return items.get(groupPosition).items.size();
+        }
+
+        @Override
+        public GroupItem getGroup(int groupPosition) {
+            return items.get(groupPosition);
+        }
+
+        @Override
+        public int getGroupCount() {
+            return items.size();
+        }
+
+        @Override
+        public long getGroupId(int groupPosition) {
+            return groupPosition;
+        }
+
+        @Override
+        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+            GroupHolder holder;
+            GroupItem item = getGroup(groupPosition);
+            if (convertView == null) {
+                holder = new GroupHolder();
+                convertView = inflater.inflate(R.layout.group_item, parent, false);
+                holder.title = (TextView) convertView.findViewById(R.id.textTitle);
+                convertView.setTag(holder);
+            } else {
+                holder = (GroupHolder) convertView.getTag();
+            }
+
+            holder.title.setText(item.title);
+            if(ind == 0){
+                convertView.setBackgroundResource(R.color.colorBack);
+                ind = 1;
+            }else{
+                convertView.setBackgroundResource(R.color.colorWhite);
+                ind = 0;
+            }
+            return convertView;
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return true;
+        }
+
+        @Override
+        public boolean isChildSelectable(int arg0, int arg1) {
+            return true;
+        }
+
+    }
+
 }
+

@@ -136,7 +136,7 @@
         "Topic": "assign",
         "Answer": "1",
         "Type": "MultipleChoice",
-        "Knowledge": "Variables' value could not contain only special characters(characters like !, @, #,etc).",
+        "Knowledge": "Variables' value can not contain only special characters(characters like !, @, #,etc).",
         "Instruction": "Does variable A have a valid value?",
         "Code": [
           "A = !@#$",
@@ -148,7 +148,7 @@
           "True",
           "False"
         ],
-        "Hint": "The value of a variable could be any special characters."
+        "Hint": "The value of a variable can be any special characters."
       },
       {
         "Difficulty": "Medium",
@@ -183,7 +183,7 @@
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "Values that been assigned to a variable could have many different type."
+        "Hint": "Values that been assigned to a variable can have many different type."
       },
       {
         "Difficulty": "Hard",
@@ -227,7 +227,7 @@
         "Topic": "reassign",
         "Answer": "CodeTrip\n",
         "Type": "Rearrange",
-        "Knowledge": "We could reassign the value of a variable by using another variable and the value type of these two variables could be different.",
+        "Knowledge": "We can reassign the value of a variable by using another variable and the value type of these two variables can be different.",
         "Instruction": "Rearrange the following code and let the value of A is equal to \"CodeTrip\".",
         "Code": [
           "A = B",
@@ -268,8 +268,8 @@
         "Topic": "reassign",
         "Answer": "No Answer",
         "Type": "ShortAnswer",
-        "Knowledge": "We can change the value of a variable by reassign another value to it and the new value could have the different type from it\"s old value.",
-        "Instruction": "Fill in the blank with different value other than 5.",
+        "Knowledge": "We can change the value of a variable by reassign another value to it and the new value can have the different type from it\"s old value.",
+        "Instruction": "Fill in the blank with different value.",
         "Code": [
           "A = 5",
           "A = [?] ",
@@ -285,7 +285,7 @@
         "Topic": "reassign",
         "Answer": "1",
         "Type": "MultipleChoice",
-        "Knowledge": "We could reassign the value of a variable by using another variable and the value type of these two variables could be different.",
+        "Knowledge": null,
         "Instruction": "What will be the value of A after the following code been executed.",
         "Code": [
           "A = 123",
@@ -300,7 +300,7 @@
           "456",
           "B"
         ],
-        "Hint": "We could also use other variables to do reassignment."
+        "Hint": "We can also use other variables to do reassignment."
       },
 
       {
@@ -573,7 +573,7 @@
         "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": "You could also fill the blank with variables."
+        "Hint": "You can also fill the blank with variables."
       },
       {
         "Difficulty": "Easy",
