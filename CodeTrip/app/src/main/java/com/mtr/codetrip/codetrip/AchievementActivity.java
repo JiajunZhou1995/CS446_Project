@@ -169,4 +169,19 @@ public class AchievementActivity extends AppCompatActivity implements Navigation
             return mImageView;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+//            super.onBackPressed();
+            Intent intent = new Intent();
+            intent.setClass(this,MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+    }
 }
