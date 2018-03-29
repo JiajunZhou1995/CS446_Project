@@ -42,7 +42,7 @@ public class AboutUsActivity extends AppCompatActivity implements NavigationView
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(5).setChecked(true);
+        navigationView.getMenu().getItem(4).setChecked(true);
 
         LinearLayout container = findViewById(R.id.activity_content);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
