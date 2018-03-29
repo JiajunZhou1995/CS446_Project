@@ -419,7 +419,7 @@ public class KeynoteActivity extends MainActivity {
                 holder.title = (TextView) convertView.findViewById(R.id.textTitle);
 
                 convertView.setTag(holder);
-                convertView.setBackgroundResource(R.color.colorWhite);
+                convertView.setBackgroundResource(R.color.colorBack);
             } else {
                 holder = (ChildHolder) convertView.getTag();
             }
@@ -462,6 +462,7 @@ public class KeynoteActivity extends MainActivity {
             } else {
                 holder = (GroupHolder) convertView.getTag();
             }
+            convertView.setBackgroundResource(R.color.colorWhite);
 
             holder.title.setText(item.title);
             /*if(ind == 0){

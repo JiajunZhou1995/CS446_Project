@@ -1437,7 +1437,9 @@
     "Title": "Quiz #1",
     "Total": "24",
     "Position": "6R0",
-    "Topics": ["no"],
+    "Topics": [
+      "no"
+    ],
     "Question": [
       {
         "Difficulty": "Medium",
@@ -1526,6 +1528,84 @@
         "CodeBlock": [],
         "Choice": [],
         "Hint": null
+      }
+    ]
+  },
+  {
+    "Available": "false",
+    "Unit": "1",
+    "Type": "Lecture",
+    "Title": "Method",
+    "Total": "1",
+    "Position": "7R0",
+    "Topics": [
+      "AndOr"
+    ],
+    "Question": [
+      {
+        "Difficulty": "Medium",
+        "Topic": "AndOr",
+        "Answer": "No Answer",
+        "Type": "Drag&Drop",
+        "Knowledge": "Logical expression in python are \"And\", \"Or\", \"Not\" and they will only return \"True\" or \"False\"",
+        "Instruction": "Fill the blank with different numerical values to see how will the value of A and B been changed.",
+        "Code": [
+          "A = [?] and [?] ",
+          "B = [?] or [?] ",
+          "C = not [?] ",
+          "print(A)",
+          "print(B)",
+          "print(C)"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          "3 > 2",
+          "4 < 5",
+          "3 == 3",
+          "2 <> 5",
+          "6 >= 5"
+        ],
+        "Choice": [],
+        "Hint": "Not true is equal to right."
+      }
+    ]
+  },
+  {
+    "Available": "false",
+    "Unit": "1",
+    "Type": "Lecture",
+    "Title": "IF",
+    "Total": "1",
+    "Position": "8R1",
+    "Topics": [
+      "AndOr"
+    ],
+    "Question": [
+      {
+        "Difficulty": "Medium",
+        "Topic": "AndOr",
+        "Answer": "No Answer",
+        "Type": "Drag&Drop",
+        "Knowledge": "Logical expression in python are \"And\", \"Or\", \"Not\" and they will only return \"True\" or \"False\"",
+        "Instruction": "Fill the blank with different numerical values to see how will the value of A and B been changed.",
+        "Code": [
+          "A = [?] and [?] ",
+          "B = [?] or [?] ",
+          "C = not [?] ",
+          "print(A)",
+          "print(B)",
+          "print(C)"
+        ],
+        "Console": "1",
+        "CodeBlock": [
+          "3 > 2",
+          "4 < 5",
+          "3 == 3",
+          "2 <> 5",
+          "6 >= 5"
+        ],
+        "Choice": [],
+        "Hint": "Not true is equal to right."
       }
     ]
   }
