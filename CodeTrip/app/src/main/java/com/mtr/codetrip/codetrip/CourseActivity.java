@@ -127,7 +127,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         } else if (id == R.id.sidebar_achievement) {
             intent.setClass(this,AchievementActivity.class);
 //            startActivity(intent);
-        } else if (id == R.id.sidebar_setting) {
+//        } else if (id == R.id.sidebar_setting) {
 
         } else if (id == R.id.sidebar_about_us) {
             intent.setClass(this,AboutUsActivity.class);
@@ -137,7 +137,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         drawer.closeDrawer(GravityCompat.START,true);
         startActivity(intent);
 
-        if (id != R.id.sidebar_setting )finish();
+//        if (id != R.id.sidebar_setting )finish();
 
         return true;
     }

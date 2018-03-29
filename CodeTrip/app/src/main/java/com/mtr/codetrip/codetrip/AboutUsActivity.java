@@ -83,7 +83,7 @@ public class AboutUsActivity extends AppCompatActivity implements NavigationView
         } else if (id == R.id.sidebar_achievement) {
             intent.setClass(this,AchievementActivity.class);
 //            startActivity(intent);
-        } else if (id == R.id.sidebar_setting) {
+//        } else if (id == R.id.sidebar_setting) {
 
         } else if (id == R.id.sidebar_about_us) {
             DrawerLayout drawer = findViewById(R.id.drawer_layout_main);
@@ -94,7 +94,7 @@ public class AboutUsActivity extends AppCompatActivity implements NavigationView
         drawer.closeDrawer(GravityCompat.START,true);
         startActivity(intent);
 
-        if (id != R.id.sidebar_setting )finish();
+//        if (id != R.id.sidebar_setting )finish();
 
         return true;
     }

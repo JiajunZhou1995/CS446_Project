@@ -21,10 +21,10 @@
             android:icon="@mipmap/sidebar_achievement"
             android:title="@string/navigation_achievement" />
 
-        <item
-            android:id="@+id/sidebar_setting"
-            android:icon="@mipmap/sidebar_setting"
-            android:title="@string/navigation_settings" />
+        <!--<item-->
+            <!--android:id="@+id/sidebar_setting"-->
+            <!--android:icon="@mipmap/sidebar_setting"-->
+            <!--android:title="@string/navigation_settings" />-->
 
         <item
             android:id="@+id/sidebar_about_us"
@@ -32,17 +32,17 @@
             android:title="@string/navigation_about_us" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+    <!--<item android:title="Communicate">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_share"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                <!--android:title="Share" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Send" />-->
+        <!--</menu>-->
+    <!--</item>-->
 
 </menu>
