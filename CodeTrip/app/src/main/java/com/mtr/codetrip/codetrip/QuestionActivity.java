@@ -142,8 +142,9 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
             String questionSQL = String.format("SELECT * FROM question WHERE courseid=%d",courseID);
             Cursor questionCursor = appDB.rawQuery(questionSQL, null);
             questionCursor.moveToFirst();
-            int questionID = questionCursor.getInt(questionCursor.getColumnIndex("questionid"));
+            int questionID = 0;
             while(!questionCursor.isAfterLast()){
+                questionID = questionCursor.getInt(questionCursor.getColumnIndex("questionid"));
                 oldIncorrectQuestionList.add(questionID);
                 questionCursor.moveToNext();
             }

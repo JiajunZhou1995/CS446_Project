@@ -1442,7 +1442,9 @@
     ],
     "Question": [
       {
-        "Answer": "2",
+        "Difficulty": "Medium",
+        "Topic": "Quiz",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "We have a array [5,2,3,4]. What's the value at index 1?",
@@ -1458,7 +1460,9 @@
         "Hint": "Array index start at 0"
       },
       {
-        "Answer": "2",
+        "Difficulty": "Medium",
+        "Topic": "Quiz",
+        "Answer": "1",
         "Type": "MultipleChoice",
         "Knowledge": null,
         "Instruction": "What's the value for c?",
@@ -1476,8 +1480,10 @@
         "Hint": "False or False"
       },
       {
-        "Answer": "[2,8,10,12,15,7]",
-        "Type": "ShortAnswer",
+        "Difficulty": "Medium",
+        "Topic": "Quiz",
+        "Answer": "10\n",
+        "Type": "Rearrange",
         "Knowledge": null,
         "Instruction": "Rearrange code to print 10.",
         "Code": [

@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity
         SQLiteDatabase appDB = this.openOrCreateDatabase(course,Context.MODE_PRIVATE,null);
 
 //        appDB.execSQL("DROP TABLE IF EXISTS course");
-
+//        appDB.execSQL("DROP TABLE IF EXISTS question");
 
 
         try {
