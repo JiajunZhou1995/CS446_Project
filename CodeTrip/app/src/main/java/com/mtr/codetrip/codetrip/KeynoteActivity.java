@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.SearchView;
+import android.view.inputmethod.InputMethodManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -165,23 +166,42 @@ public class KeynoteActivity extends MainActivity {
         mListView.setAdapter(eAdapter);
         mListView.setTextFilterEnabled(true);
 
+
+
+        /*public void hideSoftKeyboard() {
+            if(getCurrentFocus()!=null) {
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+        }*/
+
+
+
         SearchView mSearchView = findViewById(R.id.search);
+        mSearchView.setOnClickListener(this);
         mSearchView.setSubmitButtonEnabled(true);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                eAdapter.filterData(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newtext) {
-                mAdapter.getFilter().filter(newtext);
+                eAdapter.filterData(newtext);
                 return false;
             }
         });
+
         //Changed
-
-
+        mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                eAdapter.filterData("empty");
+                return false;
+            }
+        });
 
 
         /*Button button11 = (Button) findViewById(R.id.course11);
@@ -295,8 +315,9 @@ public class KeynoteActivity extends MainActivity {
 //                Log.d("index:"+ Integer.toString(a) +"," + Integer.toString(b), tmp.get(b));
 //            }
 //        }
+        knowledgeArray.remove(0);
         for (int a = 0; a < knowledgeArray.size(); ++a) {
-            if (knowledgeArray.get(a).get(0).equals("Quiz")) {
+            if (knowledgeArray.get(a).get(0).contains("Quiz")) {
                 knowledgeArray.remove(a);
                 continue;
             }
@@ -362,13 +383,15 @@ public class KeynoteActivity extends MainActivity {
         private LayoutInflater inflater;
 
         private List<GroupItem> items;
+        private List<GroupItem> allitems = new ArrayList<>();
 
         public ExampleAdapter(Context context) {
             inflater = LayoutInflater.from(context);
         }
 
-        public void setData(List<GroupItem> items) {
-            this.items = items;
+        public void setData(List<GroupItem> everyitem) {
+            this.items = everyitem;
+            this.allitems = everyitem;
         }
 
         @Override
@@ -436,13 +459,13 @@ public class KeynoteActivity extends MainActivity {
             }
 
             holder.title.setText(item.title);
-            if(ind == 0){
+            /*if(ind == 0){
                 convertView.setBackgroundResource(R.color.colorBack);
                 ind = 1;
             }else{
                 convertView.setBackgroundResource(R.color.colorWhite);
                 ind = 0;
-            }
+            }*/
             return convertView;
         }
 
@@ -456,6 +479,36 @@ public class KeynoteActivity extends MainActivity {
             return true;
         }
 
+        public void filterData(String query) {
+
+            query = query.toLowerCase();
+
+
+
+            items = new ArrayList<>();
+            if (query=="empty") {
+                items.addAll(allitems);
+            } else {
+                Log.d("Parent:", String.valueOf(allitems.size()));
+                for (GroupItem eachItem : allitems) {
+                    GroupItem oneitem = new GroupItem();
+                    List<ChildItem> eachone = eachItem.items;
+                    List<ChildItem> changedChild = new ArrayList<>();
+                    for (ChildItem childitems : eachone) {
+                        if ((childitems.title).contains(query)){
+                            changedChild.add(childitems);
+                        }
+                    }
+                    if(changedChild.size() > 0){
+                        oneitem.title = eachItem.title;
+                        oneitem.items = changedChild;
+                        items.add(oneitem);
+                    }
+
+                }
+                notifyDataSetChanged();
+            }
+        }
     }
 
 }
