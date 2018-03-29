@@ -96,6 +96,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
 
     private int correctQuestionNum;
     private int totalQuestionNum;
+    private String courseType;
 
 //    private PopupWindow completePopView;
 
@@ -133,14 +134,16 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         Cursor cursor = appDB.rawQuery(sql, null);
         cursor.moveToFirst();
 
+        courseType = cursor.getString(cursor.getColumnIndex("type"));
         courseTitle = cursor.getString(cursor.getColumnIndex("title"));
         topicList = getStrArrayFromDB(cursor, "topics");
         cursor.close();
         appDB.close();
 
+
+
+
         MAX_PAGES = topicList.size() * 4;
-
-
 //        String sql = "SELECT * FROM course WHERE courseid =" + Integer.toString(courseID);
 //        @SuppressLint("Recycle") Cursor c = MainActivity.appDB.rawQuery(sql,null);
 //        c.moveToFirst();
@@ -159,6 +162,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
                 return true;
             }
         });
+
 
 
 
@@ -275,27 +279,11 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
     }
 
     public void onQuestionContinue(){
-//        NUM_PAGES++;
-//        currentProgress++;
-//        questionPicker.ganerateNextQuestion(true);
-//        Question currentSelectedQuestion = questionPicker.getCurrentQuestion();
-//
-//        if (currentSelectedQuestion==null){
-//            inflateCompletionPage();
-//            updateProgressBar(currentProgress);
-//            return;
-//        }
-//
-//        mPagerAdapter.notifyDataSetChanged();
-//        qustionProgress++;
 
         if (currentProgress++ == NUM_PAGES - 1){
             inflateCompletionPage();
-//            updateProgressBar();
             return;
         }
-//        NUM_PAGES++;
-
         mPager.setCurrentItem(currentProgress);
         updateProgressBar();
     }

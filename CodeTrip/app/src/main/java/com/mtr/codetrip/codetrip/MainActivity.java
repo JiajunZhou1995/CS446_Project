@@ -275,14 +275,14 @@ public class MainActivity extends AppCompatActivity
                     "FOREIGN KEY (courseid) REFERENCES course (courseid)," +
                     "PRIMARY KEY (questionid, courseid))");
 
-//        try {
-////            if (!myDatabaseUtil.tableIsExist("course") || !myDatabaseUtil.tableIsExist("question")){
-//                readDataToDb(appDB);
-////            }
-//
-//        } catch (IOException | JSONException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            if (!myDatabaseUtil.tableIsExist("course") || !myDatabaseUtil.tableIsExist("question")){
+                readDataToDb(appDB);
+            }
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
 
 //        @SuppressLint("Recycle") Cursor c = appDB.rawQuery("select * from course", null);
 
