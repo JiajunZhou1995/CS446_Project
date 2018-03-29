@@ -100,10 +100,10 @@ public abstract class Question extends Observable{
         TextView knowledgeTV = rootView.findViewById(R.id.question_knowledge);
         TextView instructionTV = rootView.findViewById(R.id.question_instruction);
 
-        TextView questionIDTV = rootView.findViewById(R.id.question_id);
+        //TextView questionIDTV = rootView.findViewById(R.id.question_id);
         TextView topicTV = rootView.findViewById(R.id.quesiton_topic);
         TextView difficultyTV = rootView.findViewById(R.id.question_difficulty);
-        questionIDTV.setText(String.format("Question Id: %d",questionID));
+        //questionIDTV.setText(String.format("Question Id: %d",questionID));
         topicTV.setText(String.format("Topic: %s",topic));
         difficultyTV.setText(String.format("Level: %s",difficulty));
         switch (difficulty) {
@@ -117,8 +117,6 @@ public abstract class Question extends Observable{
                 difficultyTV.setTextColor(context.getColor(R.color.colorFireBrick));
                 break;
         }
-
-
 
         if (!knowledge.equals("null")){
             knowledgeTV.setText(Html.fromHtml(knowledge));
