@@ -112,7 +112,7 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         totalQuestionNum = 0;
         isReview = false;
         incorrectQuestionList = new ArrayList<>();
-        oldIncorrectQuestionList = null;
+        oldIncorrectQuestionList = new ArrayList<>();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
@@ -135,10 +135,24 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         cursor.moveToFirst();
 
         courseType = cursor.getString(cursor.getColumnIndex("type"));
+        if (courseType.equals("Quiz")){
+            isReview= true;
+
+
+            String questionSQL = String.format("SELECT * FROM question WHERE courseid=%d",courseID);
+            Cursor questionCursor = appDB.rawQuery(questionSQL, null);
+            questionCursor.moveToFirst();
+            int questionID = questionCursor.getInt(questionCursor.getColumnIndex("questionid"));
+            while(!questionCursor.isAfterLast()){
+                oldIncorrectQuestionList.add(questionID);
+                questionCursor.moveToNext();
+            }
+        }
         courseTitle = cursor.getString(cursor.getColumnIndex("title"));
         topicList = getStrArrayFromDB(cursor, "topics");
         cursor.close();
         appDB.close();
+
 
 
 
@@ -151,6 +165,14 @@ public class QuestionActivity extends FragmentActivity implements View.OnClickLi
         NUM_PAGES=1;
         totalQuestionNum = 1;
 //        NUM_PAGES = c.getInt(c.getColumnIndex("total"));
+
+
+        if (courseType.equals("Quiz")){
+            MAX_PAGES = oldIncorrectQuestionList.size();
+            NUM_PAGES = MAX_PAGES;
+            totalQuestionNum = MAX_PAGES;
+
+        }
         progressBar = findViewById(R.id.question_progressbar);
 
         progressBar.setMax(MAX_PAGES*1000000);
