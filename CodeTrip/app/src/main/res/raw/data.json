@@ -767,6 +767,7 @@
         "Topic": "Parentheses",
         "Answer": "0\n",
         "Type": "Drag&Drop",
+        "Type": "Drag&Drop",
         "Knowledge": null,
         "Instruction": "Drop operators into appropriate blank to let A equal to B.",
         "Code": [
@@ -1431,101 +1432,61 @@
     ]
   },
   {
-    "Available": "true",
-    "Unit": "0",
+    "Available": "false",
     "Type": "Quiz",
-    "Title": "Quiz #1",
-    "Total": "24",
+    "Unit": "0",
+    "Title": "Quiz",
+    "Total": "4",
     "Position": "6R0",
-    "Topics": ["no"],
     "Question": [
       {
-        "Difficulty": "Medium",
-        "Topic": "no",
-        "Answer": "0",
+        "Answer": "3",
         "Type": "MultipleChoice",
         "Knowledge": null,
-        "Instruction": "What's the result for the following expression.",
-        "Code": [
-          "A = (20 - 10) / 5 * 15 % 3"
-        ],
-        "Console": "1",
+        "Instruction": "What will be the index of '1' in array [5,2,3,4]?",
+        "Code": [],
+        "Console": "0",
         "CodeBlock": [],
         "Choice": [
           "0",
           "1",
           "2",
-          "3"
+          "None"
         ],
-        "Hint": null
+        "Hint": "Array index start at 0"
       },
       {
-        "Difficulty": "Medium",
-        "Topic": "no",
-        "Answer": "False",
-        "Type": "Rearrange",
-        "Knowledge": null,
-        "Instruction": "Rearrange the following code to see if you can make A, B, C all evaluted to be true !",
-        "Code": [
-          "A = 3 != 3",
-          "B = 5 == 2",
-          "C = 2 >= 1",
-          "C = not C",
-          "C = B and (not C)",
-          "print(C)"
-        ],
-        "Console": "3",
-        "CodeBlock": [],
-        "Choice": [],
-        "Hint": null
-      },
-      {
-        "Difficulty": "Medium",
-        "Topic": "no",
-        "Answer": "1",
+        "Answer": "2",
         "Type": "MultipleChoice",
         "Knowledge": null,
-        "Instruction": "What is the output of this program?",
+        "Instruction": "What's the value for c?",
         "Code": [
-          "A = 12345",
-          "B = \"12345\"",
-          "print(A == B)"
+          "a = False",
+          "b = a",
+          "c = a or b"
         ],
-        "Console": "1",
+        "Console": "0",
         "CodeBlock": [],
         "Choice": [
           "True",
           "False"
         ],
-        "Hint": null
+        "Hint": "False or False"
       },
       {
-        "Difficulty": "Medium",
-        "Topic": "no",
-        "Answer": "[2,8,10,12,15,7]\n",
+        "Answer": "[2,8,10,12,15,7]",
         "Type": "ShortAnswer",
         "Knowledge": null,
-        "Instruction": "Put the answer for the array after we changed the value for it.",
+        "Instruction": "Rearrange code to print 10.",
         "Code": [
-          "x = [1,3,6,4,5,2]",
-          "x[0] = 2",
-          "x[1] = 8",
-          "x[2] = 10",
-          "x[3] = 12",
-          "x[4] = 15",
-          "x[5] = 7",
-          "x = [[?],[?],[?],[?],[?],[?]]",
-          "print(x[0])",
-          "print(x[1])",
-          "print(x[2])",
-          "print(x[3])",
-          "print(x[4])",
-          "print(x[5])"
+          "y = x * 10",
+          "print(y)",
+          "x = 1"
         ],
-        "Console": "6",
+        "Console": "1",
         "CodeBlock": [],
         "Choice": [],
-        "Hint": null
+        "Hint": "print 10"
       }
     ]
   }
