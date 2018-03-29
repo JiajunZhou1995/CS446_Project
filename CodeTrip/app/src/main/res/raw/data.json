@@ -1,7 +1,7 @@
 [
   {
     "Available": "true",
-    "Unit": "1",
+    "Unit": "0",
     "Type": "Lecture",
     "Title": "Print",
     "Total": "1",
@@ -84,7 +84,7 @@
   },
   {
     "Available": "false",
-    "Unit": "2",
+    "Unit": "0",
     "Type": "Lecture",
     "Title": "Variables",
     "Total": "42",
@@ -328,7 +328,7 @@
   },
   {
     "Available": "false",
-    "Unit": "3",
+    "Unit": "0",
     "Type": "Lecture",
     "Title": "Arithmetic",
     "Total": "24",
@@ -808,7 +808,7 @@
   },
   {
     "Available": "false",
-    "Unit": "4",
+    "Unit": "0",
     "Type": "Lecture",
     "Title": "Comparsion",
     "Total": "24",
@@ -1268,7 +1268,7 @@
   },
   {
     "Available": "false",
-    "Unit": "5",
+    "Unit": "0",
     "Type": "Lecture",
     "Title": "Logical",
     "Total": "2",
@@ -1329,7 +1329,7 @@
   },
   {
     "Available": "false",
-    "Unit": "6",
+    "Unit": "0",
     "Type": "Lecture",
     "Title": "Array",
     "Total": "2",
@@ -1383,7 +1383,7 @@
   },
   {
     "Available": "false",
-    "Unit": "7",
+    "Unit": "0",
     "Type": "Lecture",
     "Title": "Syntax",
     "Total": "2",
@@ -1432,7 +1432,7 @@
   },
   {
     "Available": "true",
-    "Unit": "1",
+    "Unit": "0",
     "Type": "Quiz",
     "Title": "Quiz #1",
     "Total": "24",

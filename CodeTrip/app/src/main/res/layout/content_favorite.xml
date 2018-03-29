@@ -17,7 +17,10 @@
         android:iconifiedByDefault="true"
         android:layout_marginTop="60dp"
         android:queryHint="Unit Name"
-        android:background="@color/colorWhite"/>
+        android:background="@color/colorWhite">
+
+    </SearchView>
+
 
     <com.mtr.codetrip.codetrip.Utility.AnimatedExpandableListView
         android:id="@+id/list"
