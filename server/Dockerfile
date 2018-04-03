@@ -1,9 +1,10 @@
 FROM ubuntu:latest
-RUN apt-get update -y
-RUN apt-get install -y python-pip3 python-dev build-essential
+RUN sudo yum install python34
+RUN curl -O https://bootstrap.pypa.io/get-pip.py
+RUN python3 get-pip.py --user
 COPY . /app
 WORKDIR /app
 RUN pip3 install -r requirements.txt
-ENTRYPOINT ["python"]
+ENTRYPOINT ["python3"]
 CMD ["app.py"]
 

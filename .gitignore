@@ -7,3 +7,5 @@ CodeTrip/.idea/misc.xml
 CodeTrip/app/.idea/*
 *.apk
 CodeTrip/app/release/output.json
+.DS_Store
+App_info/CodeTrip.mov
