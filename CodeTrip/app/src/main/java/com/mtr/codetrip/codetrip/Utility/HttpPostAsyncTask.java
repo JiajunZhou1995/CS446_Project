@@ -38,7 +38,7 @@ public class HttpPostAsyncTask extends AsyncTask<String, Void, String> {
 
         try {
             // This is getting the url from the string we passed in
-            URL url = new URL("http://aws.jiajunzhou.ca:80");
+            URL url = new URL("http://aws.jiajunzhou.ca:5000");
 
             // Create the urlConnection
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
